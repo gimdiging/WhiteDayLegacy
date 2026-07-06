@@ -1,0 +1,306 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//						I t e m S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					o_가마.scp
+//
+//	熱血man: akekakek		last update: 2000.09.04
+//  --------------------------------------------------
+
+
+
+Init()
+{
+	SendMessage("", "스크립트설정", "handle " + $G_File + ".handle");
+	SendMessage("", "스크립트설정", "handleA " + $G_File + ".handle");
+	SendMessage("", "픽거리설정", "200 300" );
+	SendMessage("", "스크립트설정", "tow " + $G_File);
+	SendMessage("", "스크립트설정", "dummy " + "null");
+	SendMessage("", "스크립트설정", "dummy0 " + "null");
+	SendMessage("", "스크립트설정", "dummy1 " + "null");
+
+	switch($본2_영호_가마안에있는토우)
+	{
+	case -1:
+		{
+			SendMessage("", "페이드", "hottow 0 0 0");		// 뜨거운토우
+			SendMessage("", "페이드", "chantow 0 0 0");		// 차가운토우
+			SendMessage("", "페이드", "Mesh01 0 0 1");		// 깨진토우
+			SendMessage("", "페이드", "ankwuntow 0 0 0");	// 안군거
+			SendMessage("", "페이드", "kwuntow 0 0 0");		// 군거
+			break;
+		}
+
+	case 0:
+		{
+			SendMessage("", "페이드", "hottow 0 0 0");		// 뜨거운토우
+			SendMessage("", "페이드", "chantow 0 0 0");		// 차가운토우
+			SendMessage("", "페이드", "Mesh01 0 0 0");		// 깨진토우
+			SendMessage("", "페이드", "ankwuntow 0 0 0");	// 안군거
+			SendMessage("", "페이드", "kwuntow 0 0 0");		// 군거
+			break;
+		}
+
+	case 1:
+		{
+			SendMessage("", "페이드", "hottow 0 0 0");		// 뜨거운토우
+			SendMessage("", "페이드", "chantow 0 0 0");		// 차가운토우
+			SendMessage("", "페이드", "Mesh01 0 0 0");		// 깨진토우
+			SendMessage("", "페이드", "ankwuntow 0 0 1");	// 안군거
+			SendMessage("", "페이드", "kwuntow 0 0 0");		// 군거
+			break;
+		}
+
+	case 2:
+		{
+			SendMessage("", "페이드", "hottow 0 0 1");		// 뜨거운토우
+			SendMessage("", "페이드", "chantow 0 0 0");		// 차가운토우
+			SendMessage("", "페이드", "Mesh01 0 0 0");		// 깨진토우
+			SendMessage("", "페이드", "ankwuntow 0 0 0");	// 안군거
+			SendMessage("", "페이드", "kwuntow 0 0 0");		// 군거
+			break;
+		}
+
+	case 3:
+		{
+			SendMessage("", "페이드", "hottow 0 0 0");		// 뜨거운토우
+			SendMessage("", "페이드", "chantow 0 0 1");		// 차가운토우
+			SendMessage("", "페이드", "Mesh01 0 0 0");		// 깨진토우
+			SendMessage("", "페이드", "ankwuntow 0 0 0");	// 안군거
+			SendMessage("", "페이드", "kwuntow 0 0 0");		// 군거
+			break;
+		}
+	case 4:
+		{
+			SendMessage("", "페이드", "hottow 0 0 0");		// 뜨거운토우
+			SendMessage("", "페이드", "chantow 0 0 0");		// 차가운토우
+			SendMessage("", "페이드", "Mesh01 0 0 0");		// 깨진토우
+			SendMessage("", "페이드", "ankwuntow 0 0 0");	// 안군거
+			SendMessage("", "페이드", "kwuntow 0 0 1");		// 군거
+			break;
+		}
+	}
+//	SetObjName("가마");
+	SetObjValue("MotionName", "");
+	SetObjValue("가마상태", 0);		// 1정보x, 2서있기, 3열려있기
+	SetObjValue("토우상태", -1);		// -1깨진, 1안군, 2뜨거운, 3차가운
+}
+
+handle.pick()
+{
+	if($본2_영호_아기발동중 == 0 && $아기완료 == 0)
+		return "자동후진";
+
+	if(GetObjValue("MotionName") == "열기" || GetObjValue("MotionName") == "닫기" )
+	{
+		SendMessage("", "캐쉬초기화", "");		
+		return "";
+	}
+
+	$가마상태 = GetObjValue("가마상태");
+	return $가마상태 == 0 ? "보기" : "잡기";
+}
+
+handle.click()
+{
+	if($본2_영호_아기발동중 == 0 && $아기완료 == 0)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s910"));
+		SendMessage("사운드", "연주", "조작불가.wav");
+		return;
+	}
+
+	$가마상태 = GetObjValue("가마상태");
+	$토우상태 = $본2_영호_가마안에있는토우;
+
+	if($가마상태 == 1)
+	{	
+		SendMessage("가마", "애니메이션", "열기");
+		$본2_영호_가마열려있냐 = 1;
+		if(GetObjValue("MotionName") == "열기")
+		{
+			$가마상태 = 2;
+			
+			// 1안군, 2뜨거운, 3차가운
+			if($본2_영호_타이머동작했냐 == 0)
+			{
+				SetObjValue("가마상태", $가마상태);
+				$본2_영호_가마안에있는토우 = $토우상태;
+				return;
+			}
+			$본2_영호_타이머동작했냐 = 0;
+			if($토우상태 == 1 )
+			{
+				SendMessage("", "페이드", "ankwuntow 0 0 0");	// 안군거
+				SendMessage("", "페이드", "hottow 0 0 1");	// 뜨거운
+			}
+			if( $토우상태 == 3 && $본2_영호_토우굽기단계 == 2)
+			{
+				SendMessage("", "페이드", "chantow 0 0 0");	// 차가운
+				SendMessage("", "페이드", "hottow 0 0 1");	// 뜨거운
+			}
+			if( $토우상태 == 3 && $본2_영호_토우굽기단계 == 4)
+			{
+				SendMessage("", "페이드", "chantow 0 0 0");	// 차가운
+				SendMessage("", "페이드", "kwuntow 0 0 1");	// 군
+				$본2_영호_가마안에있는토우 = 4;
+				return;
+			}
+			if($토우상태 != 0)
+				$토우상태 = 2;
+		}
+	}
+	else if($가마상태 == 2)
+	{
+		SendMessage("가마", "애니메이션", "닫기");
+		if(GetObjValue("MotionName") == "닫기")
+			$가마상태 = 1;
+		$본2_영호_가마열려있냐 = 0;
+	}
+	else
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s26"));	
+		$가마상태 = 1;
+	}
+
+	SetObjValue("가마상태", $가마상태);
+	$본2_영호_가마안에있는토우 = $토우상태;
+}
+
+pick()
+{
+	if(GetObjValue("MotionName") == "열기" || GetObjValue("MotionName") == "닫기" )
+	{
+		SendMessage("", "캐쉬초기화", "");		
+		return "";
+	}
+
+	if($본2_영호_가마안에있는토우 == -1)
+		return "보기";
+
+	if($본2_영호_가마안에있는토우 > 0)
+		return "잡기";
+
+	switch($G_UserItem)
+	{
+		case "안군토우" :
+			return "i" + $G_UserItem;
+		case "냉장고용차가운토우" :
+			return "i차가운토우";
+		case "냉장고용뜨거운토우" :
+			return "i뜨거운토우";
+		case "계수대용뜨거운토우" :
+			return "i뜨거운토우";
+		case "계수대용차가운토우" :
+			return "i차가운토우";
+
+//		default :
+//			return "";
+	}
+}
+
+click()
+{
+	$토우상태 = $본2_영호_가마안에있는토우;
+	// 0x,1안군, 2뜨거운, 3차가운
+
+	switch($토우상태)
+	{
+		case -1 :
+			SendMessage("", "페이드", "Mesh01 1 1 0");	// 깨진거
+			$토우상태 = 0;
+			break;
+
+		case 1 :
+			SendMessage("유저", "획득", "안군토우");
+			SendMessage("자막", "문자출력", "3," +  GetString("it_167"));
+			SendMessage("", "페이드", "ankwuntow 1 1 0");	// 안군거
+			$토우상태 = 0;
+			break;
+
+		case 2 :
+//			SendMessage("유저", "획득", "냉장고용뜨거운토우");
+			if($본2_영호_토우굽기단계 == 0 || $본2_영호_토우굽기단계 == 1)
+			{
+				// 냉장고로
+				$본2_영호_토우굽기단계 = 1; 
+				SendMessage("유저", "획득", "냉장고용뜨거운토우");
+				SendMessage("자막", "문자출력", "3," +  GetString("it_277"));
+			}
+			if($본2_영호_토우굽기단계 == 2 || $본2_영호_토우굽기단계 == 3)
+			{
+				// 계수대로
+				$본2_영호_토우굽기단계 = 3; 
+				SendMessage("유저", "획득", "계수대용뜨거운토우");
+				SendMessage("자막", "문자출력", "3," +  GetString("it_282"));
+			}
+				
+			SendMessage("", "페이드", "hottow 1 1 0");		// 뜨거운토우
+			$토우상태 = 0;
+			break;
+
+		case 3 :
+			if($본2_영호_토우굽기단계 == 2)
+			{
+				SendMessage("유저", "획득", "냉장고용차가운토우");
+				SendMessage("자막", "문자출력", "3," +  GetString("it_262"));
+			}
+			if($본2_영호_토우굽기단계 == 4)
+			{
+				SendMessage("유저", "획득", "계수대용차가운토우");
+				SendMessage("자막", "문자출력", "3," +  GetString("it_887"));
+			}
+
+			SendMessage("", "페이드", "chantow 1 1 0");		// 차가운토우
+			$토우상태 = 0;
+			break;
+
+		case 4 :
+			SendMessage("유저", "획득", "군토우");
+			SendMessage("자막", "문자출력", "3," +  GetString("it_97"));
+			SendMessage("", "페이드", "kwuntow 1 1 0");	// 군거
+			$토우상태 = 0;
+			break;
+
+		case 0 :
+			if($G_UserItem == "안군토우")
+			{
+				$토우상태 = 1;
+				SendMessage("유저", "폐기", "안군토우");
+				SendMessage("", "페이드", "ankwuntow 1 0 1");
+			}
+			if($G_UserItem == "냉장고용뜨거운토우")
+			{
+				$토우상태 = 2;
+				SendMessage("유저", "폐기", "냉장고용뜨거운토우");
+				SendMessage("", "페이드", "hottow 1 0 1");
+			}
+
+			if($G_UserItem == "계수대용뜨거운토우")
+			{
+				$토우상태 = 2;
+				SendMessage("유저", "폐기", "계수대용뜨거운토우");
+				SendMessage("", "페이드", "hottow 1 0 1");
+			}
+			if($G_UserItem == "냉장고용차가운토우")
+			{
+				$토우상태 = 3;
+				SendMessage("유저", "폐기", "냉장고용차가운토우");
+				SendMessage("", "페이드", "chantow 1 0 1");
+			}
+			if($G_UserItem == "계수대용차가운토우")
+			{
+				$토우상태 = 3;
+				SendMessage("유저", "폐기", "계수대용차가운토우");
+				SendMessage("", "페이드", "chantow 1 0 1");
+			}
+			break;
+	}
+
+	$본2_영호_가마안에있는토우 = $토우상태;
+}

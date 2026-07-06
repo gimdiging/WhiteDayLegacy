@@ -1,0 +1,187 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					o_피씨본체01.scp
+//
+//	熱血man: agneau					last update: 2001.01.11
+//  ------------------------------------------------------------
+
+Init()
+{	
+	SendMessage("", "스크립트설정", "computer " + $G_File + ".body");
+	SendMessage("","스크립트설정","cd-rom " + $G_File + ".cd");
+	
+	SendMessage("","TurnGlow","off 0");		// cd-rom
+	SendMessage("","TurnGlow","on 1");		// 전원
+	
+	SetObjValue("step",0);
+	SetObjValue("MotionName", "서있기");
+	SetObjValue("motion", OFF);
+	
+	SendMessage("","페이드","cd 0 0 0");
+
+	if($신관_세환_CD == 1)	
+	{
+		light();	
+		SendMessage("", "애니메이션", "정지");
+	}
+}
+
+body.pick()
+{
+	if($수위추적모드 == ON)
+		return "자동후진";
+
+	return "보기";
+}
+
+body.click()
+{
+	if($수위추적모드 == ON)
+	{
+		SendMessage("사운드", "연주", "조작불가.wav");
+		SendMessage("자막", "문자출력", GetString("s12"));
+		return;
+	}
+
+	if($G_LightFactor < $standard_light)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s4"));
+		return;
+	}
+
+	SendMessage("자막","문자출력후대기", GetString("s112"));
+}
+
+cd.pick()
+{	
+	if($신관_세환_문서출력 == TRUE && $신관_세환_CD == 0)
+		return "";
+
+	if(GetObjValue("motion") == ON)
+	{
+		SendMessage("", "캐쉬초기화", "");
+		return "";
+	}
+
+	if(GetObjValue("step") == 0 || $G_LightFactor < $standard_light)
+		return "보기";
+			
+	if($G_UserItem == "열쇠뺀시디")
+		return "i시디";
+		
+	if($신관_세환_CD == 1)
+		return "잡기";
+
+	return "보기";
+}
+
+cd.click()
+{
+	if($G_LightFactor < $standard_light)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s4"));
+		return;
+	}
+
+	if(GetObjValue("step") == 0)
+	{
+		SendMessage("자막","문자출력후대기", GetString("s113"));
+		SetObjValue("step",1);
+		return;
+	}		
+
+	if(TakeObjValue("레이져프린터", "motion") == ON)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s114"));
+		return;
+	}
+	
+	if($G_UserItem == "열쇠뺀시디")
+	{				
+		SetObjValue("motion", ON);
+		$신관_세환_CD = 1;
+
+		SendMessage("","애니메이션","*서있기");
+		SendMessage("","페이드","cd 0.3 0 1");		
+		SendMessage("유저","폐기","@열쇠뺀시디");
+		SendMessage("자막", "문자출력", "3," + GetString("s93"));
+		
+		SetTimer(1,"cd_in");		
+		SetTimer(3,"light");
+		SetTimer(3, "monitor_on");
+		return;
+	}
+
+	if($신관_세환_CD == 1)
+	{
+		SetObjValue("motion", ON);
+		$신관_세환_CD = 0;
+
+		SendMessage("신관모니터", "텍스쳐변경", "moni-2");
+		SendMessage("", "애니메이션", "시디빼기");
+		SendMessage("","TurnGlow","off 0");
+		SetTimer(2, "cd_out");
+		return;
+	}
+	
+	SendMessage("자막","문자출력후대기", GetString("s113"));
+}
+
+cd_out()
+{
+	SetObjValue("motion", OFF);
+	SendMessage("유저","획득","열쇠뺀시디");
+	SendMessage("","페이드","cd 1 1 0");			
+	SendMessage("신관모니터", "캐쉬초기화", "");
+	SendMessage("자막", "문자출력", "3," + GetString("it_162"));
+}
+
+monitor_on()
+{	
+	SetObjValue("motion", OFF);
+	SendMessage("신관모니터", "텍스쳐변경", "moni-3");	
+	SendMessage("신관모니터", "캐쉬초기화", "");
+}
+
+light()
+{
+	$ON = "glow_on";
+	$OFF = "glow_off";
+
+	SetTimer(0.1,$ON);
+	SetTimer(1.5,$OFF);
+	SetTimer(1.8,$ON);
+	SetTimer(1.9,$OFF);
+	SetTimer(2.3,$ON);
+	SetTimer(2.4,$OFF);
+	SetTimer(2.6,$ON);
+	SetTimer(3.0,$OFF);
+	SetTimer(3.3,$ON);
+	SetTimer(3.8,$OFF);	
+
+	if($신관_세환_CD == 1)
+		SetTimer(4,"light");
+}
+
+glow_on()
+{
+	if($신관_세환_CD == 1)
+		SendMessage("신관컴퓨터본체","TurnGlow","on 0");	
+}
+
+glow_off()
+{
+	SendMessage("신관컴퓨터본체","TurnGlow","off 0");
+}
+
+cd_in()
+{
+	SendMessage("","애니메이션","시디넣기");
+}

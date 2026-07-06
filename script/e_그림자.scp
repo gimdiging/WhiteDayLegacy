@@ -1,0 +1,392 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					e_그림자.scp
+//
+//	熱血man: agneau					 update: 2000.07.17
+//  --------------------------------------------------
+
+Init()
+{
+	SetObjValue("Step", 0);
+	SetObjValue("LightCount", 0);
+	SendMessage("", "발광", "Recursive on");
+	SendMessage("", "페이드", "Recursive 0 0 0");
+}
+
+RunEvent()
+{	
+	if(GetObjValue("LightCount") <= 1)
+		Step1();
+	else if(GetObjValue("LightCount") == 5)
+		Step3();
+	else
+		Step2();
+}
+
+Step1()
+{
+	$Step = GetObjValue("Step");
+	SetObjValue("Step", $Step + 1);
+	
+	switch($Step)
+	{
+		case 0:
+		{			
+			if(GetObjValue("LightCount") == 0)
+			{
+				SendMessage("자막", "활성화", "");
+				SendMessage("자막", "와이드모드", "켜기"); 
+				SendMessage("사운드", "연주", "data/sound/event/본관귀신/귀신bgm.wav");					
+				SendMessage("카메라", "쳐다보기", "" + FindCamera("귀신이벤트"));
+			}
+			SendMessage("타이머", "스크립트설정", "2 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 1:
+		{	
+			if(GetObjValue("LightCount") == 0)
+				SendMessage("카메라", "카메라이동", FindCamera("귀신이벤트a") + " 7");
+			SendMessage("타이머", "스크립트설정", "8.5 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 2:
+		{			
+			if(GetObjValue("LightCount") == 0)
+			{
+				SendMessage("카메라", "FOV변환", "75 40 0.2");
+				SendMessage("사운드", "연주멈춤", "나영울음소리");
+				SendMessage("사운드", "연주멈춤", "나영울음루프");
+				SendMessage("오디오", "연주멈춤", "");
+				SendMessage("사운드", "연주", "data/sound/event/본관귀신/놀람.wav");
+			}
+
+			SendMessage("사운드", "연주", "data/sound/event/본관1_벼락강타.wav");			
+			SendMessage("타이머", "스크립트설정", "0.07 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 3:
+		{
+			ShowAllObject();
+			SendMessage("타이머", "스크립트설정", "0 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 4:
+		{
+			SendMessage("나영", "발광하기", "255 255 255 0 0 0 0.26");
+			SendMessage("배경", "천둥", "0.26");
+
+			SendMessage("그림자", "페이드", "Recursive 0.26 1 0");
+			SendMessage("타이머", "스크립트설정", "0.26 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 5:
+		{
+			ShowAllObject();
+			SendMessage("타이머", "스크립트설정", "0 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 6:
+		{
+			SendMessage("나영", "발광하기", "255 255 255 0 0 0 3");
+			SendMessage("배경", "천둥", "3.0");
+
+			SendMessage("그림자", "페이드", "Recursive 3 1 0");
+			SendMessage("타이머", "스크립트설정", "3 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 7:
+		{
+			SendMessage("나영", "발광", "Recursive off");
+			SendMessage("타이머", "스크립트설정", "1 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 8:
+		{
+			if(GetObjValue("LightCount") == 0)
+			{
+				SendMessage("그림자", "텍스쳐변경", "shadow2");
+				SendMessage("나영", "애니메이션", "떨어지기");
+				SendMessage("카메라", "FOV변환", "40 75 0.5");
+				SetObjValue("Step", 2);
+				SetObjValue("LightCount", 1);
+			}
+			else
+			{
+				SendMessage("나영", "회전", "-165");
+				SendMessage("나영", "애니메이션", "기어달리기");
+				SendMessage("카메라", "카메라쳐다보기", GetObjPos("나영") + " 5");
+//				SendMessage("카메라", "타겟오브젝트로", "나영");
+				SendMessage("사운드", "연주", "data/sound/event/본관귀신/기어올때.wav");
+				SetObjValue("Step", 0);
+				SetObjValue("LightCount", 2);
+			}
+			SendMessage("타이머", "스크립트설정", "1.5 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+	}
+}
+
+Step2()
+{
+	$Step = GetObjValue("Step");
+	SetObjValue("Step", $Step + 1);
+	
+	switch($Step)
+	{
+		case 0:
+		{
+			SendMessage("사운드", "연주", "data/sound/event/본관1_벼락강타.wav");
+			SendMessage("타이머", "스크립트설정", "0.07 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 1:
+		{
+			ShowAllObject();
+			SendMessage("타이머", "스크립트설정", "0 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 2:
+		{
+			SendMessage("나영", "발광하기", "255 255 255 0 0 0 0.26");
+			SendMessage("배경", "천둥", "0.26");
+
+			SendMessage("그림자", "페이드", "Recursive 0.26 1 0");
+			SendMessage("타이머", "스크립트설정", "0.26 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 3:
+		{
+			ShowAllObject();
+			SendMessage("타이머", "스크립트설정", "0 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 4:
+		{
+			SendMessage("나영", "발광하기", "255 255 255 0 0 0 3");
+			SendMessage("배경", "천둥", "3.0");
+
+			SendMessage("그림자", "페이드", "Recursive 3 1 0");
+			SendMessage("타이머", "스크립트설정", "3 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 5:
+		{
+			SendMessage("나영", "발광", "Recursive off");
+			SetObjValue("Step", 0);
+			SetObjValue("LightCount", GetObjValue("LightCount") + 1);
+
+			if(GetObjValue("LightCount") == 5 && Version() == "Demo")
+			{
+				SetTimer(0,"EndLogo1");
+				SetTimer(3, "EndSound");
+				SetTimer(5,"EndLogo2");
+				SetTimer(12, "Fade");
+				SetTimer(17,"gameover");
+				return;
+			}			
+
+			SendMessage("타이머", "스크립트설정", "2.5 0 1 e_그림자.RunEvent *obj 그림자");
+			
+			if(GetObjValue("LightCount") == 5)
+			{
+				SendMessage("나영", "페이드", "Recursive 1 1 0");
+				SetTimer(1, "Delete나영 *obj 나영");				
+			}
+			break;
+		}
+	}
+}
+
+Step3()
+{
+	$Step = GetObjValue("Step");
+	SetObjValue("Step", $Step + 1);
+	
+	switch($Step)
+	{
+		case 0:
+		{
+			SendMessage("사운드", "연주", "data/sound/event/본관1_벼락강타.wav");
+			SendMessage("타이머", "스크립트설정", "0.07 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 1:
+		{
+			ShowAllObject();
+			SendMessage("타이머", "스크립트설정", "0 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 2:
+		{
+			SendMessage("나영", "발광하기", "255 255 255 0 0 0 0.26");
+			SendMessage("배경", "천둥", "0.26");
+
+			SendMessage("그림자", "페이드", "Recursive 0.26 1 0");
+			SendMessage("타이머", "스크립트설정", "0.26 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 3:
+		{
+			ShowAllObject();
+			SendMessage("타이머", "스크립트설정", "0 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 4:
+		{
+			SendMessage("나영", "발광하기", "255 255 255 0 0 0 3");
+			SendMessage("배경", "천둥", "3.0");
+
+			SendMessage("그림자", "페이드", "Recursive 3 1 0");
+			SendMessage("타이머", "스크립트설정", "6 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 5:
+		{
+			SendMessage("사운드", "연주", "data/sound/event/본관1_벼락준비.wav");
+			SendMessage("나영", "발광", "Recursive off");			
+						
+			SendMessage("카메라", "쳐다보지말기", "");			
+			SendMessage("자막", "와이드모드", "끄기");
+			SendMessage("자막", "비활성", "");		
+			if($본관1_세환_교실앞대화 == FALSE)
+			{
+				if(TakeObjValue("정찰용수위", "단계") == 0)
+					RunScript("정찰용수위", "캐릭터_수위._리셋");			
+				else
+					RunScript("정찰용수위", "캐릭터_수위._정지");			
+			}
+			break;
+		}
+	}
+}
+
+ShowAllObject()
+{
+	SendMessage("그림자", "페이드", "Recursive 0 1 1");	
+	SendMessage("나영", "발광색", "Recursive 255 255 255");
+	SendMessage("나영", "발광", "Recursive on");
+}
+
+Delete나영()
+{	
+	SendMessage("유저", "쳐다보지말기", "");	
+	SendMessage("", "Stop", "");			
+	SendMessage("", "애니메이션", "서있기");	
+	SetTimer(0,"ghost0");	
+}
+
+EndLogo1()
+{
+	LoadObject("WObjWallPaper", "logo1", "*image data/misc/image/title/continue1.jpg");
+	SendMessage("logo1", "켜기", "");
+	SendMessage("logo1", "값지정", "알파 0");
+	SendMessage("logo1", "값지정", "델타 1");	
+}
+
+EndLogo2()
+{
+	LoadObject("WObjWallPaper", "logo2", "*image data/misc/Image/title/continue2.jpg");
+	SendMessage("logo2", "켜기", "");
+	SendMessage("logo2", "값지정", "알파 0");
+	SendMessage("logo2", "값지정", "델타 1");	
+}
+
+EndSound()
+{
+	SendMessage("사운드", "연주", "demo_ending.wav");
+}
+
+Fade()
+{
+	SendMessage("black", "값지정", "알파 0");
+	SendMessage("black", "값지정", "델타 4");
+}
+
+gameover()
+{
+	DeleteObject("logo1");
+	DeleteObject("logo2");
+
+	RunScript("유저", "오브젝트_유저._유저._아이템장비취소");
+	SendMessage("허드", "끄기", "프로세스");
+
+	RunScript("", "_whiteday.DestroyStage");
+
+	SendMessage("사운드", "사운드완전초기화", "");
+	SendMessage("main", "VIS초기화", "");
+
+	RunScript("", "_whiteday.DestroyMainObject");
+
+	SendMessage("main", "게임시작", "멈춤");
+	ChangeScript("menu");
+}
+
+ghost0()
+{
+	RunScript("","_whiteday.FlashBack");
+	LoadObject("WObjNPC", "변신성아","*scale 1.00 *pet 변신성아.pet  *block 0 *group -1 *optimize *pos -894.80959412 150.188179 -402.848419 *rot 0.00 90.00 0.00 *FlagShow 1 *Show 1");
+	SendMessage("변신성아", "발광", "Recursive on");
+	SendMessage("변신성아", "쳐다보기", "유저 1000");
+	SendMessage("사운드", "연주", "data/sound/귀신목소리.wav");
+	SetTimer(2.5, "e_그림자.ghost1");
+}
+ghost1()
+{
+	SendMessage("변신성아", "페이드", "Recursive 3 1 0");
+	SendMessage("사운드", "연주", "data/sound/귀신비명.wav");
+	LoadObject("WObjPanel", "", "*diffuse ff0000 *delay 1 *type 1");
+	RunScript("","_whiteday.FlashBack");
+	SetTimer(2.5, "e_그림자.ghost2");
+}
+ghost2()
+{
+	DeleteObject("변신성아");
+	RunScript("","_whiteday.FlashBack");
+	LoadObject("WObjNPC", "나영가리키기","*scale 1.50 *pet 나영가리키기.pet  *block 0 *group -1 *optimize *pos -875.19 150.75 -644.94  *rot 0.00 0.00 0.00 *FlagShow 1 *Show 1");
+	SendMessage("나영가리키기", "발광", "Recursive on");
+	SendMessage("사운드", "연주", "data/sound/event/본관1_벼락강타.wav");
+	SendMessage("유저", "쳐다보기", "나영가리키기 1000");
+	SendMessage("카메라", "FOV변환", "145 25 0.2");
+	SetTimer(2.5, "e_그림자.ghost3");
+}
+ghost3()
+{
+	DeleteObject("나영가리키기");
+	SendMessage("유저", "쳐다보지말기", "");
+	SendMessage("사운드", "연주", "data/sound/귀신놀림.wav");
+	SendMessage("카메라", "FOV변환", "25 75 0.5");
+	SendMessage("카메라", "공격", "-100 100 10 0 100 5");
+	LoadObject("WObjPanel", "", "*diffuse ff0000 *delay 1 *type 1");
+	RunScript("","_whiteday.FlashBack");
+	SendMessage("허드", "더하기BPM", "130");
+	SetTimer(3, "e_그림자.ghost4");
+}
+ghost4()
+{
+	RunScript("","_whiteday.FlashBack");
+	SendMessage("사운드", "연주", "data/sound/event/본관1_벼락강타.wav");
+	LoadObject("WObjNPC", "목귀신","*scale 1.50 *pet e_목귀신.pet  *block 0 *group -1 *optimize *pos -826.80 130.30 -372.80  *rot 0.00 90.00 0.00 *FlagShow 1 *Show 1");
+	SendMessage("목귀신", "발광", "Recursive on");
+	SendMessage("유저", "쳐다보기", "목귀신 1000");
+	SetTimer(2, "e_그림자.ghost5");
+}
+ghost5()
+{
+	SendMessage("목귀신", "페이드", "Recursive 2 1 0");	
+	SendMessage("사운드", "연주", "따귀_데미지.wav");
+	LoadObject("WObjPanel", "", "*diffuse ff0000 *delay 0.3 *type 1");
+	SetTimer(2, "e_그림자.ghost6");
+}
+ghost6()
+{
+	DeleteObject("목귀신");
+	SendMessage("유저", "쳐다보지말기", "");
+	SendMessage("사운드", "연주", "나영웃음.wav");
+}

@@ -1,0 +1,62 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  S c r i p t F i l e 
+//
+//  (C) Sonnori 2000						e_신관.scp
+//
+//	熱血man: doocub				last update: 2000.10.10
+//  --------------------------------------------------
+
+_홀처음진입()
+{
+	DeleteObject("");		// delete event area
+
+	if($진행루트 == 1 || $신관_세환_열쇠쳐다보기 == 1)
+		return;
+	
+	SendMessage("매크로","Play","e_newkey.cut01");
+/*
+	LoadObject("WObjDyLight", "조명에걸린열쇠light", "*pos " + FindPoint("천장열쇠조명") + " *diffuse ffff55 *intensity 150");
+	SendMessage("조명에걸린열쇠light", "켜기", "");
+
+	SendMessage("열쇠10", "발광색", "Recursive 200 200 150");
+	SendMessage("열쇠10", "발광", "Recursive on");
+
+	SendMessage("자막", "활성화", "");
+	SendMessage("자막", "와이드모드", "켜기");
+	SendMessage("사운드", "연주", "data/sound/event/단서발견1.adp");
+	SendMessage("유저", "쳐다보기", "열쇠10");
+	SendMessage("카메라", "fov", "50");
+	SendMessage("타이머", "스크립트설정", "2 0 1 e_신관._홀처음진입2");
+*/
+}
+
+_홀처음진입2()
+{
+	SendMessage("카메라", "fov", "10");
+	SendMessage("타이머", "스크립트설정", "1 0 1 e_신관._홀처음진입3");
+}
+
+_홀처음진입3()
+{
+	SendMessage("자막", "문자출력", "7," + GetString("s14"));
+	SendMessage("타이머", "스크립트설정", "8 0 1 e_신관._홀처음진입끝");
+}
+
+_홀처음진입끝()
+{	
+	DeleteObject("조명에걸린열쇠light");
+	SendMessage("열쇠10", "발광", "Recursive off");
+
+	SendMessage("유저", "쳐다보지말기", "");
+	SendMessage("자막", "와이드모드", "끄기");
+	SendMessage("자막", "비활성", "");	
+	SendMessage("카메라", "fov", "75");
+	$신관_세환_열쇠쳐다보기 = 1;
+	ChangeObjValue("문_K2", "No_Auto", 0);
+	RunScript("정찰용수위", "캐릭터_수위._리셋");
+//	SetTimer(5,"문_신관.auto_close *obj 2층중앙홀진입문");
+}

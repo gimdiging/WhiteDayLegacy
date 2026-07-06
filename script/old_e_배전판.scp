@@ -1,0 +1,311 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000				e_배전판.scp
+//
+//	熱血man: matzzang		last EventMode: 2000.07.22
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "handle " + $G_File);
+	SendMessage("", "스크립트설정", "switchA " + $G_File + ".SwitchA");
+	SendMessage("", "스크립트설정", "switchB " + $G_File + ".SwitchB");
+	SendMessage("", "스크립트설정", "switchC " + $G_File + ".SwitchC");
+	SendMessage("", "스크립트설정", "switchD " + $G_File + ".SwitchD");
+	
+	SetObjName("배전판");
+
+	SetObjValue("Step", 0);
+	SetObjValue("OpenFlag", CLOSE);
+	SetObjValue("MotionName", "");
+	SetObjValue("Steel1", ON);
+	SetObjValue("Steel2", OFF);
+	SetObjValue("Steel3", OFF);
+	SetObjValue("Steel4", ON);
+	SetObjValue("Switch1", ON);
+	SetObjValue("Switch2", ON);
+	SetObjValue("Switch3", ON);
+	SetObjValue("Switch4", ON);
+	
+	SetObjValue("Play1", FALSE);
+	SetObjValue("Play3", FALSE);
+
+	SetObjValue("Alram", -1);
+
+	SendMessage("", "발광", "lamp01 on");
+	SendMessage("", "발광", "lamp02 on");
+	SendMessage("", "발광", "lamp03 on");
+	SendMessage("", "발광", "lamp04 on");
+	SendMessage("", "애니메이션", "서있기");
+}
+
+pick()
+{
+	return GetObjValue("Step") == 0 ? "보기" : "잡기";
+}
+
+click()
+{
+	if(GetObjValue("Step") == 0)
+	{
+		SendMessage("자막", "문자출력", "3," +  GetString("old_s18"));
+		SetObjValue("Step", 1);
+	}
+	else
+	{
+		if(GetObjValue("OpenFlag") == CLOSE)
+		{
+			SendMessage("", "애니메이션", "열기");
+			if(GetObjValue("MotionName") == "열기")
+			{
+				SetObjValue("OpenFlag", OPEN);
+			}
+		}
+		else
+		{
+			SendMessage("", "애니메이션", "닫기");
+			if(GetObjValue("MotionName") == "닫기")
+			{
+				SetObjValue("OpenFlag", CLOSE);
+			}
+		}
+	}
+}
+
+SwitchA.pick()
+{
+	return $old_Mission1 == OFF ? "잡기" : "";
+}
+
+SwitchA.click()
+{
+	if($old_Mission1 == OFF)
+	{
+		SetObjValue("Switch1", GetObjValue("Switch1") == ON ? OFF : ON);
+		SetObjValue("Steel1", !GetObjValue("Steel1"));
+		SetObjValue("Steel3", !GetObjValue("Steel3"));
+		SendMessage("도난방지기", "TurnGlow", (GetObjValue("Steel1") == ON ? "on" : "off") + " 0");
+		SendMessage("화재경보기", "TurnGlow", (GetObjValue("Steel3") == ON ? "on" : "off") + " 0");
+		SendMessage("사운드", "연주3d", GetObjPos("배전판") + " 배전판스위치,data/sound/벽스위치OFF.wav");
+		EventMode();
+	}
+}
+
+SwitchB.pick()
+{
+	return $old_Mission1 == OFF ? "잡기" : "";
+}
+
+SwitchB.click()
+{
+	if($old_Mission1 == OFF)
+	{
+		SetObjValue("Switch2", GetObjValue("Switch2") == ON ? OFF : ON);
+		SetObjValue("Steel2", !GetObjValue("Steel2"));
+		SetObjValue("Steel3", !GetObjValue("Steel3"));
+		SendMessage("전자금고", "TurnGlow", (GetObjValue("Steel2") == ON ? "on" : "off") + " 0");
+		SendMessage("전자금고", "TurnGlow", (GetObjValue("Steel2") == ON ? "on" : "off") + " 1");
+		SendMessage("화재경보기", "TurnGlow", (GetObjValue("Steel3") == ON ? "on" : "off") + " 0");
+		SendMessage("사운드", "연주3d", GetObjPos("배전판") + " 배전판스위치,data/sound/벽스위치OFF.wav");
+		EventMode();
+	}
+}
+
+SwitchC.pick()
+{
+	return $old_Mission1 == OFF ? "잡기" : "";
+}
+
+SwitchC.click()
+{
+	if($old_Mission1 == OFF)
+	{
+		SetObjValue("Switch3", GetObjValue("Switch3") == ON ? OFF : ON);
+		SetObjValue("Steel3", !GetObjValue("Steel3"));
+		SendMessage("화재경보기", "TurnGlow", (GetObjValue("Steel3") == ON ? "on" : "off") + " 0");
+		SendMessage("사운드", "연주3d", GetObjPos("배전판") + " 배전판스위치,data/sound/벽스위치OFF.wav");
+		EventMode();
+	}
+}
+
+SwitchD.pick()
+{
+	return $old_Mission1 == OFF ? "잡기" : "";
+}
+
+SwitchD.click()
+{
+	if($old_Mission1 == OFF)
+	{
+		SetObjValue("Switch4", GetObjValue("Switch4") == ON ? OFF : ON);
+		SetObjValue("Steel4", !GetObjValue("Steel4"));
+		SetObjValue("Steel3", !GetObjValue("Steel3"));
+		SendMessage("측정기", "TurnGlow", (GetObjValue("Steel4") == ON ? "on" : "off") + " 0");
+		SendMessage("측정기", "TurnGlow", (GetObjValue("Steel4") == ON ? "on" : "off") + " 1");
+		SendMessage("화재경보기", "TurnGlow", (GetObjValue("Steel3") == ON ? "on" : "off") + " 0");
+		SendMessage("사운드", "연주3d", GetObjPos("배전판") + " 배전판스위치,data/sound/벽스위치OFF.wav");
+		EventMode();
+	}
+}
+
+EventMode()
+{
+	$Init  = GetObjValue("Init");
+	$Play1 = GetObjValue("Play1");
+	$Play3 = GetObjValue("Play3");
+	
+	for($i = 1; $i <= 4; $i++)
+	{
+		if(GetObjValue("Switch" + $i) == ON)
+		{
+			SendMessage("배전판", "본회전", "switch0" + $i + " 0 0");
+		}
+		else
+		{
+			SendMessage("배전판", "본회전", "switch0" + $i + " 70 0");
+		}
+	}
+
+	$old_count = 0;
+	
+	if(GetObjValue("Steel1") == ON)
+	{
+		SendMessage("배전판", "발광색", "lamp01 255 0 0");
+		SendMessage("배전판", "TurnGlow", "on 0");
+		SendMessage("도난방지기", "발광", "thief_lamp on");
+		SendMessage("사운드", "연주3d", GetObjPos("도난방지기") + " loop,도난방지기_루프,data/sound/event/도난방지기_루프.wav");
+		if($Play1 == FALSE)
+		{
+			SetObjValue("Play1", TRUE);
+		}
+	}
+	else
+	{
+		SendMessage("배전판", "발광색", "lamp01 0 255 0");
+		SendMessage("배전판", "TurnGlow", "off 0");
+		SendMessage("도난방지기", "발광", "thief_lamp off");
+		SendMessage("사운드", "연주멈춤", "도난방지기_루프");
+	 	if($Play1 == TRUE) 
+		{
+			SendMessage("사운드", "연주3d", GetObjPos("도난방지기") + " data/sound/event/도난방지기_끝.wav");
+			SetObjValue("Play1", FALSE);
+		}
+		$old_count++;
+	}
+
+	if(GetObjValue("Steel2") == ON)
+	{
+		SendMessage("배전판", "발광색", "lamp02 255 0 0");
+		SendMessage("배전판", "TurnGlow", "on 1");
+		SendMessage("전자금고", "발광", "safe-lamp01 on");
+		SendMessage("전자금고", "발광", "safe-lamp02 on");
+		SendMessage("사운드", "연주3d", GetObjPos("전자금고") + " loop,전자금고_루프,data/sound/event/전자금고_루프.wav");
+	}
+	else
+	{
+		SendMessage("배전판", "발광색", "lamp02 0 255 0");
+		SendMessage("배전판", "TurnGlow", "off 1");
+		SendMessage("전자금고", "발광", "safe-lamp01 off");
+		SendMessage("전자금고", "발광", "safe-lamp02 off");
+		SendMessage("사운드", "연주멈춤", "전자금고_루프");
+		$old_count++;
+	}
+
+	if(GetObjValue("Steel3") == ON)
+	{
+		SendMessage("배전판", "발광색", "lamp03 255 0 0");
+		SendMessage("배전판", "TurnGlow", "on 2");
+		SendMessage("화재경보기", "발광", "fire_lamp on");
+		SendMessage("사운드", "연주3d", GetObjPos("화재경보기") + " loop,화재경보기_루프,data/sound/event/화재경보기_루프.wav");
+
+		if($Play3 == FALSE)
+		{
+			SetObjValue("Play3", TRUE);
+		}
+	}
+	else
+	{
+		SendMessage("배전판", "발광색", "lamp03 0 255 0");
+		SendMessage("배전판", "TurnGlow", "off 2");
+		SendMessage("화재경보기", "발광", "fire_lamp off");
+		SendMessage("사운드", "연주멈춤", "화재경보기_루프");
+	 	if($Play3 == TRUE)
+		{
+			SendMessage("사운드", "연주3d", GetObjPos("화재경보기") + " data/sound/event/화재경보기_끝.wav");
+			SetObjValue("Play3", FALSE);
+		}
+		$old_count++;
+	}
+
+	if(GetObjValue("Steel4") == ON)
+	{
+		SendMessage("배전판", "발광색", "lamp04 255 0 0");
+		SendMessage("배전판", "TurnGlow", "on 3");
+		SendMessage("측정기", "발광", "lamp05 on");
+		SendMessage("측정기", "발광", "lamp06 on");
+		SendMessage("사운드", "연주3d",GetObjPos("측정기") +  " loop,측정기_루프,data/sound/event/측정기_루프.wav");
+	}
+	else
+	{
+		SendMessage("배전판", "발광색", "lamp04 0 255 0");
+		SendMessage("배전판", "TurnGlow", "off 3");
+		SendMessage("측정기", "발광", "lamp05 off");
+		SendMessage("측정기", "발광", "lamp06 off");
+		SendMessage("사운드", "연주멈춤", "측정기_루프");
+		$old_count++;
+	}
+
+	if($old_count == 4 && $old_Mission1 == OFF)
+	{
+		$old_Mission1 = ON;
+
+		SendMessage("오디오", "연주", "data/sound/bgm/미궁02.adp");
+
+		SendMessage("자막", "활성화", "");
+		SendMessage("자막", "와이드모드", "켜기");
+			
+		SendMessage("타이머", "스크립트설정", "3 0 1 old_e_전자금고.BeginEvent");
+		SendMessage("타이머", "스크립트설정", "1 0 1 old_o_금의부적.Kill금의부적");
+
+		SendMessage("유저", "쳐다보기", "전자금고");
+		SendMessage("배경", "끄기", "fri");
+
+		$old_대화_성아 = "old_talk1_3";
+		SendMessage("성아", "위치", "" + FindPoint("old_성아위치3"));
+		SendMessage("성아", "회전", "6");
+		SendMessage("성아", "애니메이션", "두리번거리기");
+		SendMessage("성아", "표정바꿔", "무섭m");
+		return;
+	}
+	
+	if(GetObjValue("Alram") == -1)
+	{
+		SendMessage("타이머", "스크립트설정", "0 0 1 old_e_배전판.Alram");
+		SendMessage("사운드", "연주3d", "-1338.91 71.7727 -724.893 loop,가스나오는소리,data/sound/가스나오는소리루프.wav");
+		SetObjValue("Alram", FALSE);
+	}
+}
+
+Alram()
+{
+	if($old_Mission1 == ON)
+	{
+		SendMessage("배경", "끄기", "fri");
+		return;
+	}
+	
+	SetObjValue("Alram", GetObjValue("Alram") == ON ? OFF : ON);
+	SendMessage("배경", GetObjValue("Alram") == ON ? "켜기" : "끄기", "fri");
+
+	if($old_Mission1 == OFF)
+	{
+		 SendMessage("타이머", "스크립트설정", "1 0 1 old_e_배전판.Alram");
+	}
+}

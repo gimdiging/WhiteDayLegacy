@@ -1,0 +1,347 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000				o_번호자물통.scp
+//
+//	熱血man: akekakek		last update: 2000.08.31
+//  --------------------------------------------------
+
+// 열기
+//Cylinder01 ~ 04
+Init()
+{
+	SendMessage("", "스크립트설정", "handle " + $G_File);
+	SendMessage("", "스크립트설정", "dummy0 " + "null");
+	SendMessage("", "스크립트설정", "dummy1 " + "null");
+
+//	SetObjName("번호자물통");
+	SetObjValue("한번",0);
+
+	if($본2_번호자물통해결했나 == 1)
+	{
+		SendMessage("", "끄기", "");
+	}
+	else
+	{
+//		LoadObject("WObjNumLock","번호자물","");
+	}
+
+}
+
+pick()
+{
+	if($전화기확인 == 0 || $손노리확인 == 0)
+		return "자동후진";
+
+	if(GetObjValue("한번") == 0)
+		return "보기";
+
+	return "잡기";
+}
+
+click()
+{
+	if($전화기확인 == 0)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s912"));
+		SendMessage("사운드", "연주", "조작불가.wav");
+		return;
+	}
+
+	if($전화기확인 == 1 && $손노리확인 == 0)
+	{
+		if($랜덤C == 0)
+		SendMessage("자막", "문자출력후대기", GetString("s886"));
+		else if($랜덤C == 1)
+		SendMessage("자막", "문자출력후대기", GetString("s887"));
+		else if($랜덤C == 2)
+		SendMessage("자막", "문자출력후대기", GetString("s888"));
+		else if($랜덤C == 3)
+		SendMessage("자막", "문자출력후대기", GetString("s889"));
+		else if($랜덤C == 4)
+		SendMessage("자막", "문자출력후대기", GetString("s890"));
+		return;
+	}
+
+	if(GetObjValue("한번") == 0)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s64")); // 정술
+		SetObjValue("한번",1);
+		return;
+	}
+	SendMessage("번호자물", "켜기", "");
+
+}
+
+right()
+{
+	SetTimer(1,"_off");
+	$본2_번호자물통해결했나 = 1;
+	$본2_음악실이벤트중 = 0;
+	RunScript("","o_피아노._그냥피아노");
+	SendMessage("음악실피", "애니메이션", "*서있기");
+	SendMessage("음악실피", "끄기", "");
+	SendMessage("타이머", "스크립트설정", "1.1 0 1 o_번호자물통.ok");
+	SendMessage("타이머", "스크립트설정", "0 0 1 " + "문_본관1.numberopen" + " *obj 문_음악부속실"); //doorchange
+	SendMessage("번호자물통", "애니메이션", "열기");
+	SendMessage("번호자물통", "페이드", "Recursive 1 1 0");
+}
+
+wrong()
+{
+	SetTimer(1,"_off");
+	$GameOverMode = 1;
+	SetTimer(5, "오브젝트_유저._유저.dead");
+}
+
+_off()
+{
+	SendMessage("번호자물", "끄기", "");
+}
+
+rot1()
+{
+	SendMessage("번호자물통", "본회전", "Cylinder01 "+ $번호자물쇠회전버퍼 * 3.6 + " 1");
+	$번호자물쇠회전버퍼++;
+	if($번호자물쇠회전버퍼 >= 9)
+	{
+		$번호자물쇠회전버퍼 = 0;
+		SendMessage("타이머", "스크립트설정", "0 0 1 o_번호자물통.input");
+	}
+}
+
+rot2()
+{
+	SendMessage("번호자물통", "본회전", "Cylinder01 "+ $번호자물쇠회전버퍼 * -3.6 + " 1");
+	$번호자물쇠회전버퍼++;
+	if($번호자물쇠회전버퍼 >= 9)
+	{
+		$번호자물쇠회전버퍼 = 0;
+		SendMessage("타이머", "스크립트설정", "0 0 1 o_번호자물통.input");
+	}
+}
+
+input()
+{
+	switch($자물통단계)
+	{
+		case 0 :
+		{
+			SendMessage("자막", "선택_가로", "커서초기화안함,첫번째 번호를 선택해주십시오\n \n<< \n " + $번호자리1 + "\n >>");
+			break;
+		}
+		
+		case 1 :
+		{
+			SendMessage("사운드", "연주", "data/sound/번호자물쇠돌리는소리.wav");
+			if ($G_UserSelect == 2)
+			{
+				$번호자리1--;
+				if($번호자리1 < 0)
+					$번호자리1 = 9;
+				$자물통단계 = 0;
+				//$번호자물쇠회전버퍼 = 0;
+				SendMessage("번호자물통", "본회전", "Cylinder01 "+ $번호자리1 * 36 + " 1");
+				SendMessage("타이머", "스크립트설정", "0 0 1 o_번호자물통.input");
+
+				return;
+			}	else
+			if ($G_UserSelect == 3)
+			{
+				SendMessage("타이머", "스크립트설정", "0 0 1 o_번호자물통.input");				
+			}	else
+			if ($G_UserSelect == 4)							
+			{
+				$번호자리1++;
+				if($번호자리1 > 9)
+					$번호자리1 = 0;
+				$자물통단계 = 0;
+				//$번호자물쇠회전버퍼 = 0;
+				SendMessage("번호자물통", "본회전", "Cylinder01 "+ $번호자리1 * -36 + " 1");
+				SendMessage("타이머", "스크립트설정", "0 0 1 o_번호자물통.input");
+
+				return;
+			}			
+
+			break;
+		}
+
+		case 2 :
+		{
+			SendMessage("자막", "선택_가로", "커서초기화안함,두번째 번호를 선택해주십시오\n" + $번호자리1 + "\n<< \n " + $번호자리2 + "\n >>");
+			break;
+		}
+		
+		case 3 :
+		{
+			SendMessage("사운드", "연주", "data/sound/번호자물쇠돌리는소리.wav");
+			if($G_UserSelect == 2)			
+			{
+				$번호자리2--;
+				if($번호자리2 < 0)
+					$번호자리2 = 9;
+				$자물통단계 = 2;
+				SendMessage("번호자물통", "본회전", "Cylinder02 "+ $번호자리1 * 36 + " 1");
+				SendMessage("타이머", "스크립트설정", "0 0 1 o_번호자물통.input");
+				return;
+			}	else
+			if($G_UserSelect == 3)							
+			{
+				SendMessage("타이머", "스크립트설정", "0 0 1 o_번호자물통.input");				
+			}	else
+			if($G_UserSelect == 4)							
+			{
+				$번호자리2++;
+				if($번호자리2 > 9)
+					$번호자리2 = 0;
+				$자물통단계 = 2;
+				SendMessage("번호자물통", "본회전", "Cylinder02 "+ $번호자리1 * -36 + " 1");
+				SendMessage("타이머", "스크립트설정", "0 0 1 o_번호자물통.input");
+				return;
+			}			
+
+			break;
+		}
+
+		case 4 :
+		{
+			SendMessage("자막", "선택_가로", "커서초기화안함,세번째 번호를 선택해주십시오\n" + $번호자리1 + " " + $번호자리2 + " " +"\n<< \n " + $번호자리3 + "\n >>");
+			break;
+		}
+		
+		case 5 :
+		{
+			SendMessage("사운드", "연주", "data/sound/번호자물쇠돌리는소리.wav");
+			if($G_UserSelect == 2)							
+			{
+				$번호자리3--;
+				if($번호자리3 < 0)
+					$번호자리3 = 9;
+				$자물통단계 = 4;
+				SendMessage("번호자물통", "본회전", "Cylinder03 "+ $번호자리1 * 36 + " 1");
+				SendMessage("타이머", "스크립트설정", "0 0 1 o_번호자물통.input");
+				return;
+			}	else
+			if($G_UserSelect == 3)							
+			{
+				SendMessage("타이머", "스크립트설정", "0 0 1 o_번호자물통.input");				
+			}	else
+			if($G_UserSelect == 4)							
+			{
+				$번호자리3++;
+				if($번호자리3 > 9)
+					$번호자리3 = 0;
+				$자물통단계 = 4;
+				SendMessage("번호자물통", "본회전", "Cylinder03 "+ $번호자리1 * -36 + " 1");
+				SendMessage("타이머", "스크립트설정", "0 0 1 o_번호자물통.input");
+				return;
+			}			
+
+			break;
+		}
+
+		case 6 :
+		{
+			SendMessage("자막", "선택_가로", "커서초기화안함,네번째 번호를 선택해주십시오\n" + $번호자리1 + " " + $번호자리2 + " " + $번호자리3 + " " +"\n<< \n " + $번호자리4 + "\n >>");
+//			SendMessage("자막", "선택_가로", "네번째 번호를 선택해주십시오\n" + $번호자리1 + " " + $번호자리2 + " " + $번호자리3 + " " + $번호자리4 + " " +"\n<< \n " + $번호자리4 + "\n >>");
+			break;
+		}
+		
+		case 7 :
+		{
+			SendMessage("사운드", "연주", "data/sound/번호자물쇠돌리는소리.wav");
+			if($G_UserSelect == 2)							
+			{
+				$번호자리4--;
+				if($번호자리4 < 0)
+					$번호자리4 = 9;
+				$자물통단계 = 6;
+				SendMessage("번호자물통", "본회전", "Cylinder04 "+ $번호자리1 * 36 + " 1");
+				SendMessage("타이머", "스크립트설정", "0 0 1 o_번호자물통.input");
+				return;
+			}	else
+			if($G_UserSelect == 3)							
+			{
+				SendMessage("타이머", "스크립트설정", "0 0 1 o_번호자물통.input");
+			}	else
+			if($G_UserSelect == 4)			
+			{
+				$번호자리4++;
+				if($번호자리4 > 9)
+					$번호자리4 = 0;
+				$자물통단계 = 6;
+				SendMessage("번호자물통", "본회전", "Cylinder04 "+ $번호자리1 * -36 + " 1");
+				SendMessage("타이머", "스크립트설정", "0 0 1 o_번호자물통.input");
+				return;
+			}			
+
+			break;
+		}
+
+		case 8 :
+		{
+			SendMessage("자막", "선택_가로", GetString("s227") + $번호자리1 + " " + $번호자리2 + " " + $번호자리3 + " " + $번호자리4 + " " + GetString("s228"));
+			break;
+		}
+
+		case 9 :
+		{
+			SendMessage("타이머", "스크립트설정", "0 0 1 o_번호자물통.input");
+			break;
+		}
+
+		case 10 :
+		{
+			if( $번호자리1 == $번호자물정답1 && $번호자리2 == $번호자물정답2 && $번호자리3 == $번호자물정답3 && $번호자리4 == $번호자물정답4)
+			{
+				SendMessage("자막", "문자출력", "3," + GetString("s65")); // 정술
+
+				$본2_번호자물통해결했나 = 1;
+				$본2_음악실이벤트중 = 0;
+				SendMessage("음악실피", "애니메이션", "*서있기");
+
+				//  태근씨 이거 3초 안됨.
+				SendMessage("타이머", "스크립트설정", "1.1 0 1 o_번호자물통.ok");
+				SendMessage("타이머", "스크립트설정", "0 0 1 " + "문_본관1.numberopen" + " *obj 음악부속실문"); //doorchange
+				SendMessage("번호자물통", "애니메이션", "열기");
+				SendMessage("번호자물통", "페이드", "Recursive 1 1 0");
+			}
+			else
+			{
+				SendMessage("자막", "문자출력", "3," + GetString("s66")); // 정술
+				//  태근씨 이거 3초 안됨.
+			}
+			
+			SendMessage("타이머", "스크립트설정", "0 0 1 o_번호자물통.input");
+
+			$자물통단계 = 11;
+
+			return;
+		}
+
+		case 11 :
+		{
+			SendMessage("유저", "쳐다보지말기", "");
+			SendMessage("자막", "비활성", "");
+			SendMessage("자막", "와이드모드", "끄기");
+			SendMessage("자막", "실행함수", "");
+
+			return;
+		}
+
+	}
+	$자물통단계++;
+	return;
+}
+
+ok()
+{
+	SendMessage("번호자물통", "끄기", "");
+}
+

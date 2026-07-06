@@ -1,0 +1,146 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					e_나무알.scp
+//
+//	熱血man: gimdiging			last update: 2017.04.10
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "egg " + $G_File);
+	SendMessage("", "픽거리설정", "150 300");	
+	SendMessage("", "발광색", "Recursive 50 150 50");
+	SendMessage("", "발광", "Recursive on");
+	SendMessage("", "끄기", "");
+	SetObjValue("life", ON);
+	SetObjValue("heart",0);
+	if($Mission4_나무 == ON)	
+		DeleteObject("");	
+}
+
+Init심장a()
+{
+	Init();
+	SetObjValue("heart",1);
+}
+
+Init심장b()
+{
+	Init();
+	SetObjValue("heart",2);
+}
+
+Init심장c()
+{
+	Init();
+	SetObjValue("heart",3);
+}
+
+Init심장d()
+{
+	Init();
+	SetObjValue("heart",4);
+}
+
+Init심장e()
+{
+	Init();
+	SetObjValue("heart",5);
+}
+
+Init처리()
+{	
+	SendMessage("", "끄기", "");
+
+	if($Mission4_나무 == ON)	
+	DeleteObject("");
+}
+
+Init투명처리()
+{
+	Init처리();	
+	SendMessage("", "페이드" ,"Recursive 0 0 0");
+}
+
+pick()
+{	
+	if($G_UserItem == "용액" && GetObjValue("life") == ON)
+		return "i독극물";
+
+	return "";
+}
+
+click()
+{	
+	if($G_UserItem == "용액" && $소방용도끼 == 0 && GetObjValue("life") == ON)
+	SendMessage("자막", "문자출력후대기", GetString("s923"));
+	if($G_UserItem == "용액" && $소방용도끼 == 1 && GetObjValue("life") == ON)
+	{
+	SetObjValue("life", OFF);
+	SendMessage("유저", "아이템장비취소", "");
+	SendMessage("", "발광하기", "50 150 50 150 255 255 1.0");
+	SendMessage("", "애니메이션", "데미지");
+	SendMessage("사운드", "연주", "양동이로불끄는소리.wav");
+	SendMessage("사운드", "연주", "도플_몸통.wav");
+	SendMessage("", "페이드", "Recursive 3 1 0");
+	SendMessage("", "충돌체크", "off");
+	SetTimer(0, "e_나무알.fade");
+	SetTimer(2, "e_나무알._살아라");
+	SetTimer(4, "e_나무알._죽어라");	
+	}
+}
+
+fade()
+{		
+	if(GetObjValue("heart") == 1)
+	SendMessage("촉수알_1", "페이드", "Recursive 1 1 0");
+	if(GetObjValue("heart") == 2)
+	SendMessage("촉수알_2", "페이드", "Recursive 1 1 0");
+	if(GetObjValue("heart") == 3)
+	SendMessage("촉수알_3", "페이드", "Recursive 1 1 0");
+	if(GetObjValue("heart") == 4)
+	SendMessage("촉수알_4", "페이드", "Recursive 1 1 0");
+	if(GetObjValue("heart") == 5)
+	SendMessage("촉수알_5", "페이드", "Recursive 1 1 0");
+}
+
+_살아라()
+{		
+	if(GetObjValue("heart") == 1)
+	DeleteObject("촉수알_1");
+	if(GetObjValue("heart") == 2)
+	DeleteObject("촉수알_2");
+	if(GetObjValue("heart") == 3)
+	DeleteObject("촉수알_3");
+	if(GetObjValue("heart") == 4)
+	DeleteObject("촉수알_4");
+	if(GetObjValue("heart") == 5)
+	DeleteObject("촉수알_5");
+}
+
+_죽어라()
+{
+//	SendMessage("", "발광하기", "255 255 255 50 150 50 3.0");
+//	SendMessage("사운드", "연주", "약품.wav");
+
+	DeleteObject("");		
+	$본관1_촉수_남은심장--;
+
+	if($본관1_촉수_남은심장 == 0)
+	{
+	SendMessage("유저", "폐기", "@용액");
+	SendMessage("사운드", "연주", "귀신_데미지.wav");
+	for($i = 1; $i < 17; $i++)
+		DeleteObject("촉수_" + $i);
+
+	for($i = 1; $i < 5; $i++)
+		DeleteObject("길막촉수_" + $i);
+	}	
+}

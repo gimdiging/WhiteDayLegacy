@@ -1,0 +1,168 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//
+//  (C) Sonnori 2000				collection.scp
+//
+//	熱血man: agneau			last update: 2000.06.29
+//  --------------------------------------------------
+
+Init()
+{	
+	SetObjValue("step", 0);
+	SetObjValue("lightLimit", 0);
+	SetObjValue("hide", 0);
+	SendMessage("", "스크립트설정", "package " + $G_File);
+
+	SetObjValue("info", GetWDBItem("item.wdb", "" + GetObjValue("objName"), "보기"));
+	SetObjValue("get", GetWDBItem("item.wdb", "" + GetObjValue("objName"), "습득"));	
+	
+	if(GetValue("$b_" + GetObjValue("objName")) == 1 || Version() == "Demo")
+		DeleteObject("");
+}
+
+Init포가튼사가()
+{	
+	SetObjValue("objName", "포가튼사가");	
+	SendMessage("", "픽거리설정", "200 300");
+	Init();		
+}
+
+Init어스토니아()
+{	
+	SetObjValue("objName", "어스토니시아");	
+	Init();
+}
+
+Init어스토니아한정()
+{	
+	SetObjValue("objName", "어스토니시아한정");	
+	Init();
+}
+
+Init악튜한정()
+{	
+	SetObjValue("objName", "악튜러스한정");		
+	SendMessage("", "스크립트설정", "dummy null");
+	SendMessage("", "픽거리설정", "150 300");
+	Init();
+}
+
+Init포사가이드()
+{	
+	SetObjValue("hide", 1);
+	SetObjValue("objName", "포가튼퍼펙가이드");	
+	SendMessage("", "픽거리설정", "80 80");
+	SendMessage("", "페이드", "Recursive 0 0 0");
+	Init();	
+}
+
+Init강철대만판()
+{	
+	SetObjValue("objName", "강철제국대만");	
+	Init();
+}
+
+Init포사저가()
+{	
+	SetObjValue("objName", "포가튼사가저가");	
+	Init();
+	SetObjValue("lightLimit", 1);
+}
+
+Init악튜러스()
+{	
+	SetObjValue("objName", "악튜러스");			
+	Init();		
+	SetObjValue("lightLimit", 1);
+	SendMessage("", "끄기", "");
+}
+
+pick()
+{	
+	if(GetObjValue("step") == 2)
+		return "";
+
+	if(GetObjValue("step") == 0 || (GetObjValue("lightLimit") == 0 && $G_LightFactor < $standard_light))
+		return "보기";
+
+	if(GetObjValue("step") == 1)
+		return "잡기";
+
+	return "";
+}
+
+click()
+{
+	if(GetObjValue("lightLimit") == 0 && $G_LightFactor < $standard_light)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s4"));
+		return;
+	}
+
+	if(GetObjValue("step") == 0)
+	{
+		if(GetObjValue("info") != "")
+			SendMessage("자막", "문자출력후대기", "" + GetObjValue("info"));
+		SetObjValue("step", 1);
+		return;
+	}
+
+	SetTimer(0,"Hidden");
+	SetObjValue("step", 2);
+	if(GetObjValue("hide") == 0)
+		SendMessage("", "페이드", "Recursive 1 1 0");
+	SendMessage("유저", "획득", "" + GetObjValue("objName"));
+	SetValue("$b_" + GetObjValue("objName"), 1);
+	if(GetObjValue("get") != "")
+		SendMessage("자막", "문자출력", "3," + GetObjValue("get"));
+	SetTimer(1,"Release");
+
+	$컬렉션아이템갯수++;
+}
+
+Release()
+{
+	DeleteObject("");
+}
+
+Hidden()
+{
+	if($컬렉션아이템갯수 == 1)
+	SendMessage("유저", "획득", "성아");
+	else if($컬렉션아이템갯수 == 2)
+	SendMessage("유저", "획득", "지현");
+	else if($컬렉션아이템갯수 == 3)	
+	SendMessage("유저", "획득", "소영");
+	else if($컬렉션아이템갯수 == 4)
+	SendMessage("유저", "획득", "나영");
+	else if($컬렉션아이템갯수 == 5)
+	SendMessage("유저", "획득", "희민");
+	else if($컬렉션아이템갯수 == 6)
+	SendMessage("유저", "획득", "인협");
+	else if($컬렉션아이템갯수 == 7)
+	SendMessage("유저", "획득", "봉구");
+	else if($컬렉션아이템갯수 == 8)
+	SendMessage("유저", "획득", "달수");
+	else if($컬렉션아이템갯수 == 9)
+	SendMessage("유저", "획득", "은미");
+	else if($컬렉션아이템갯수 == 10)
+	{
+	SendMessage("유저", "획득", "원령");
+	SendMessage("유저", "획득", "열쇠꺼내는종이");
+	}
+	SetTimer(5,"Health");
+}
+
+Health()
+{
+	if($컬렉션아이템갯수 == 4 || $컬렉션아이템갯수 == 6 || $컬렉션아이템갯수 == 9 || $컬렉션아이템갯수 == 10)
+	{
+	SendMessage("유저", "획득", "@드링크 2");
+	SendMessage("유저", "획득", "@반창고 2");
+	}
+}

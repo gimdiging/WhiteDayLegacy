@@ -1,0 +1,168 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					o_수의빛.scp
+//
+//	熱血man: agneau				last update: 2001.02.28
+//  -------------------------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "use " + $G_File);
+
+	SetObjValue("Step", 0);
+	SetObjValue("KeyName", "수의조각");
+	SetObjValue("Lock", "$문_L2");		
+
+	SendMessage("", "페이드", "Mesh31 0 0 0");	
+	SendMessage("", "발광색", "Recursive 80 80 80");
+	SendMessage("", "발광", "Recursive on");
+
+	if($G_수의진해결 == FALSE)
+	SendMessage("", "위치", "2390.383301 -7.679122 391.874543");
+
+	if($G_수의진해결 == TRUE)
+	{
+		SendMessage("", "페이드", "Mesh31 0 1 1");
+		SendMessage("", "애니메이션", "합체끝");
+		return;
+	}
+
+//	SendMessage("", "파티클생성", "*start_pos sphere(in) %p 30 *target_pos sphere(delta)(in) %z -50 *blackhole on pos %p *diffuse 0d6060 " + GetWDBParticle("particle.wdb", "수의빛", "파티클내용") );
+		
+}
+
+pick()
+{	
+	if($수위추적모드 == ON)
+		return "자동후진";
+
+	$KeyName = GetObjValue("KeyName");		
+
+	if($G_수의진해결 == FALSE)
+	{
+		if(GetObjValue("Step") == 0)
+			return "보기";
+		else
+			return $G_UserItem == $KeyName ? "i수의조각" : "보기";
+	}
+
+	return "";
+}
+
+click()
+{	
+	if($수위추적모드 == ON)
+	{
+		SendMessage("사운드", "연주", "조작불가.wav");
+		SendMessage("자막", "문자출력", "3," + GetString("s12"));
+		return;
+	}
+
+	if($컬렉션아이템갯수 < 9)
+	{
+		SendMessage("자막", "문자출력", "3," + GetString("s922"));
+		return;
+	}
+
+	$KeyName  = GetObjValue("KeyName");
+	$Lock = GetValue(GetObjValue("Lock"));
+	$Step = GetObjValue("Step");		
+		
+	if($G_수의진해결 == FALSE)
+	{
+		if($Step == 0)
+		{
+			SetObjValue("Step", 1);			
+			SendMessage("자막", "문자출력후대기", GetString("s73"));
+			SendMessage("", "위치", "1951.20 147.00 479.90");
+			RunScript("","_whiteday.FlashBack");
+		}
+		else
+		{
+			if($G_UserItem == $KeyName)
+			{									
+				SetTimer(0, "item.FadingOfDummy *obj 수조각진");
+
+								
+				SendMessage("", "파티클생성", "*origin pos %p  " + GetWDBParticle("particle.wdb", "각진의파장", "파티클내용") );
+				
+				
+				SendMessage("유저", "폐기", "@수의조각");
+				SendMessage("", "페이드", "Mesh31 0 1 1");			
+				SendMessage("", "애니메이션", "합체");		
+				$G_수의진해결 = TRUE;
+
+				SendMessage("사운드", "연주멈춤", "수의귀기");
+				SendMessage("사운드", "연주3d", GetObjPos("") + " 귀기부착.wav");
+				
+				if($수위추적모드 == ON)			
+				{
+					$신관_세환_매크로손수위등장 = FALSE;
+					SendMessage("매크로용손수위", "끄기", "");
+				}
+				
+				RunScript("정찰용수위", "캐릭터_수위.Disable");				
+				SetTimer(0,"call_macro._15");									
+			}
+			else
+				SendMessage("자막", "문자출력후대기", GetString("s39"));
+		}
+	}
+	else			
+		SendMessage("자막", "문자출력후대기", GetString("s40"));
+}
+
+Initlast()
+{
+	SendMessage("", "스크립트설정", "use " + $G_File + ".last");	
+	SendMessage("", "발광색", "Recursive 200 200 200");
+	SendMessage("", "발광", "Recursive on");
+
+	SetObjValue("한번만",0);
+}
+
+last.pick()
+{
+	if(GetObjValue("한번만") == 0)
+		return "잡기";
+}
+
+last.click()
+{
+	if(GetObjValue("한번만") == 0 && $last_조각모으기 == 1)
+	{
+		SendMessage("", "애니메이션", "액션");	
+		SetObjValue("한번만",1);
+		SendMessage("", "페이드", "Mesh31 4 1 0");
+		SendMessage("", "페이드", "Mesh32 4 1 0");
+		SendMessage("", "페이드", "Mesh33 4 1 0");
+		SendMessage("", "페이드", "Mesh34 4 1 0");
+		SendMessage("", "페이드", "Mesh35 4 1 0");
+		SendMessage("", "페이드", "Mesh36 4 1 0");
+		SendMessage("유저", "획득", "수의조각@");
+		$last_조각모으기 = 2;
+		SendMessage("허드", "라스트맵켜", "3" );
+		SetTimer(0, "캐릭터_성아.get_item");
+		SetTimer(0, "item.FadingOfDummy *obj 미궁수조각진");
+
+	}
+}
+
+soundon()
+{
+	if($G_수의진해결 == FALSE)
+		SendMessage("사운드", "연주3d", GetObjPos("수의빛") + " loop,수의귀기,귀기_루프.wav");
+}
+
+soundoff()
+{
+	if($G_수의진해결 == FALSE)
+		SendMessage("사운드", "연주멈춤", "수의귀기");
+}

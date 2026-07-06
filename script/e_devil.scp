@@ -1,0 +1,808 @@
+//e_devil.
+//성아위치
+//시작위치
+//소영위치
+
+portal1()
+{
+	SendMessage("파티" , "파티클생성", "*origin pos " + FindPoint("포탈") + " " + GetWDBParticle("particle2.wdb", "포탈02", "파티클내용") );
+}
+
+portal2()
+{
+	SendMessage("파티2" , "파티클생성", "*origin pos " + FindPoint("포탈") + " " + GetWDBParticle("particle2.wdb", "포탈", "파티클내용") );
+}
+
+$현재떨어지고있는줄 = 27;
+
+_모두떨어져라()
+{
+//	SendMessage("바닥_" + $현재떨어지고있는줄 + "_1", "애니메이션", "떨어지기1");
+//	SendMessage("바닥_" + $현재떨어지고있는줄 + "_2", "애니메이션", "떨어지기2");
+//	SendMessage("바닥_" + $현재떨어지고있는줄 + "_3", "애니메이션", "떨어지기3");
+//	SendMessage("바닥_" + $현재떨어지고있는줄 + "_1", "중력", "on");
+//	SendMessage("바닥_" + $현재떨어지고있는줄 + "_2", "중력", "on");
+//	SendMessage("바닥_" + $현재떨어지고있는줄 + "_3", "중력", "on");
+//
+//	if($현재떨어지고있는줄 == 1)
+//		return;
+//
+//	$현재떨어지고있는줄--;
+//
+//	SetTimer(1,"e_devil._모두떨어져라");
+	SendMessage("매크로", "Play", "devil_scenez._001");		
+
+}
+
+_함정1()
+{
+	SendMessage("바닥_18_3", "텍스쳐애니", "30 ice *noloop");
+	SetTimer(1,"e_devil._함정1__1");
+}
+
+_함정1__1()
+{
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_18_3", "애니메이션", "떨어지기3");
+	SendMessage("바닥_18_3", "중력", "on");
+	SendMessage("바닥_17_2", "텍스쳐애니", "30 ice *noloop");
+	SetTimer(1,"e_devil._함정1_1");
+	
+}
+
+_함정1_1()
+{
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_17_2", "애니메이션", "떨어지기2");
+	SendMessage("바닥_17_2", "중력", "on");
+}
+
+_함정2()
+{
+	SendMessage("바닥_15_1", "텍스쳐애니", "30 ice *noloop");
+	SetTimer(1,"e_devil._함정2__1");
+}
+
+_함정2__1()
+{
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_15_1", "애니메이션", "떨어지기1");
+	SendMessage("바닥_15_1", "중력", "on");
+	SendMessage("바닥_14_1", "텍스쳐애니", "30 ice *noloop");
+	SetTimer(1,"e_devil._함정2_1");
+}
+
+_함정2_1()
+{
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_14_1", "애니메이션", "떨어지기3");
+	SendMessage("바닥_14_1", "중력", "on");
+}
+
+_함정3()
+{
+	SendMessage("바닥_13_2", "텍스쳐애니", "30 ice *noloop");
+	SetTimer(1,"e_devil._함정3__1");
+}
+
+_함정3__1()
+{
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_13_2", "애니메이션", "떨어지기2");
+	SendMessage("바닥_13_2", "중력", "on");
+	SendMessage("바닥_13_2", "텍스쳐애니", "30 ice *noloop");
+	SetTimer(1,"e_devil._함정3_1");
+}
+
+_함정3_1()
+{
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_13_2", "애니메이션", "떨어지기1");
+	SendMessage("바닥_13_2", "중력", "on");
+}
+
+_함정4()
+{
+	SendMessage("바닥_10_2", "텍스쳐애니", "30 ice *noloop");
+	SetTimer(1,"e_devil._함정4__1");
+}
+
+_함정4__1()
+{
+	SendMessage("바닥_10_1", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_10_2", "애니메이션", "떨어지기1");
+	SendMessage("바닥_10_2", "중력", "on");
+	SetTimer(1,"e_devil._함정4_1");
+}
+
+_함정4_1()
+{
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_10_1", "애니메이션", "떨어지기1");
+	SendMessage("바닥_10_1", "중력", "on");
+}
+
+_함정5()
+{
+	SendMessage("바닥_9_3", "텍스쳐애니", "30 ice *noloop");
+	SetTimer(1,"e_devil._함정5__1");	
+}
+
+_함정5__1()
+{
+	SendMessage("사운드", "연주", "돌떨어지기C.wav");
+	SendMessage("바닥_9_3", "애니메이션", "떨어지기3");
+	SendMessage("바닥_9_3", "중력", "on");
+	SendMessage("바닥_8_3", "텍스쳐애니", "30 ice *noloop");
+	SetTimer(1,"e_devil._함정5_1");	
+}
+
+_함정5_1()
+{
+	SendMessage("사운드", "연주", "돌떨어지기C.wav");
+	SendMessage("바닥_8_3", "중력", "on");
+	SendMessage("바닥_8_3", "애니메이션", "떨어지기1");
+	SendMessage("바닥_7_3", "텍스쳐애니", "30 ice *noloop");
+	SetTimer(1,"e_devil._함정5_2");
+}
+
+_함정5_2()
+{
+	SendMessage("사운드", "연주", "돌떨어지기C.wav");
+	SendMessage("바닥_7_3", "중력", "on");
+	SendMessage("바닥_7_3", "애니메이션", "떨어지기2");
+}
+
+
+_함정6()
+{
+	SendMessage("바닥_5_3", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("바닥_5_1", "텍스쳐애니", "30 ice *noloop");
+	SetTimer(1,"e_devil._함정6__1");
+}
+
+_함정6__1()
+{
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_5_3", "애니메이션", "떨어지기3");
+	SendMessage("바닥_5_1", "애니메이션", "떨어지기2");
+	SendMessage("바닥_5_3", "중력", "on");
+	SendMessage("바닥_5_1", "중력", "on");
+	SendMessage("바닥_4_3", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("바닥_4_1", "텍스쳐애니", "30 ice *noloop");
+	SetTimer(1,"e_devil._함정7");
+}
+
+_함정7()
+{
+	SendMessage("사운드", "연주", "돌떨어지기C.wav");
+	SendMessage("바닥_4_3", "애니메이션", "떨어지기2");
+	SendMessage("바닥_4_1", "애니메이션", "떨어지기1");
+	SendMessage("바닥_4_3", "중력", "on");
+	SendMessage("바닥_4_1", "중력", "on");
+	SendMessage("바닥_3_3", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("바닥_3_1", "텍스쳐애니", "30 ice *noloop");
+	SetTimer(1,"e_devil._함정8");
+}
+
+_함정8()
+{
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_3_3", "애니메이션", "떨어지기3");
+	SendMessage("바닥_3_1", "애니메이션", "떨어지기2");
+	SendMessage("바닥_3_3", "중력", "on");
+	SendMessage("바닥_3_1", "중력", "on");
+}
+
+_메인()
+{
+	SendMessage("바닥_7_2", "애니메이션", "떨어지기2");
+	SendMessage("바닥_7_2", "중력", "on");
+	DeleteObject("희민");
+	SendMessage("바닥_21_1", "텍스쳐애니", "30 ice *noloop");
+	SetTimer(13,"e_devil._바닥1");
+}
+
+_바닥1()
+{
+	SendMessage("바닥_21_3", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_21_1", "중력", "on");
+	SendMessage("바닥_21_1", "애니메이션", "떨어지기2" );
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥2");
+}
+
+_바닥2()
+{
+	SendMessage("바닥_21_2", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_21_3", "중력", "on");
+	SendMessage("바닥_21_3", "애니메이션", "떨어지기1");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥3");
+}
+
+_바닥3()
+{
+	SendMessage("바닥_20_2", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기C.wav");
+	SendMessage("바닥_21_2", "중력", "on");
+	SendMessage("바닥_21_2", "애니메이션", "떨어지기1");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥4");
+}
+
+_바닥4()
+{
+	SendMessage("바닥_20_1", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_20_2", "중력", "on");
+	SendMessage("바닥_20_2", "애니메이션", "떨어지기3" );
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥5");
+}
+
+_바닥5()
+{
+	SendMessage("바닥_20_3", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_20_1", "중력", "on");
+	SendMessage("바닥_20_1", "애니메이션", "떨어지기2");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥6");
+}
+
+_바닥6()
+{
+	SendMessage("바닥_19_3", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기C.wav");
+	SendMessage("바닥_20_3", "중력", "on");
+	SendMessage("바닥_20_3", "애니메이션", "떨어지기2");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥7");
+}
+
+_바닥7()
+{
+	SendMessage("바닥_19_2", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_19_3", "중력", "on");
+	SendMessage("바닥_19_3", "애니메이션", "떨어지기1" );
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥8");
+}
+
+_바닥8()
+{
+	SendMessage("바닥_19_1", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_19_2", "중력", "on");
+	SendMessage("바닥_19_2", "애니메이션", "떨어지기2");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥9");
+}
+
+_바닥9()
+{
+	SendMessage("바닥_18_2", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기C.wav");
+	SendMessage("바닥_19_1", "중력", "on");
+	SendMessage("바닥_19_1", "애니메이션", "떨어지기1");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥10");
+}
+
+_바닥10()
+{
+	SendMessage("바닥_18_3", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_18_2", "중력", "on");
+	SendMessage("바닥_18_2", "애니메이션", "떨어지기3" );
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥11");
+}
+
+_바닥11()
+{
+	SendMessage("바닥_18_1", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_18_3", "중력", "on");
+	SendMessage("바닥_18_3", "애니메이션", "떨어지기2");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥12");
+}
+
+_바닥12()
+{
+	SendMessage("바닥_17_3", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기C.wav");
+	SendMessage("바닥_18_1", "중력", "on");
+	SendMessage("바닥_18_1", "애니메이션", "떨어지기3");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥13");
+}
+
+_바닥13()
+{
+	SendMessage("바닥_17_1", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_17_3", "중력", "on");
+	SendMessage("바닥_17_3", "애니메이션", "떨어지기3" );
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥14");
+}
+
+_바닥14()
+{
+	SendMessage("바닥_17_2", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_17_1", "중력", "on");
+	SendMessage("바닥_17_1", "애니메이션", "떨어지기2");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥15");
+}
+
+_바닥15()
+{
+	SendMessage("바닥_16_1", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기C.wav");
+	SendMessage("바닥_17_2", "중력", "on");
+	SendMessage("바닥_17_2", "애니메이션", "떨어지기2");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥16");
+}
+
+_바닥16()
+{
+	SendMessage("바닥_16_2", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_16_1", "중력", "on");
+	SendMessage("바닥_16_1", "애니메이션", "떨어지기1" );
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥17");
+}
+
+_바닥17()
+{
+	SendMessage("바닥_16_3", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_16_2", "중력", "on");
+	SendMessage("바닥_16_2", "애니메이션", "떨어지기2");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥18");
+}
+
+_바닥18()
+{
+	SendMessage("바닥_15_1", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기C.wav");
+	SendMessage("바닥_16_3", "중력", "on");
+	SendMessage("바닥_16_3", "애니메이션", "떨어지기1");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥19");
+}
+
+_바닥19()
+{
+	SendMessage("바닥_15_3", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_15_1", "중력", "on");
+	SendMessage("바닥_15_1", "애니메이션", "떨어지기3" );
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥20");
+}
+
+_바닥20()
+{
+	SendMessage("바닥_15_2", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_15_3", "중력", "on");
+	SendMessage("바닥_15_3", "애니메이션", "떨어지기1");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥21");
+}
+
+_바닥21()
+{
+	SendMessage("바닥_14_3", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기C.wav");
+	SendMessage("바닥_15_2", "중력", "on");
+	SendMessage("바닥_15_2", "애니메이션", "떨어지기1");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥22");
+}
+
+_바닥22()
+{
+	SendMessage("바닥_14_1", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_14_3", "중력", "on");
+	SendMessage("바닥_14_3", "애니메이션", "떨어지기3" );
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥23");
+}
+
+_바닥23()
+{
+	SendMessage("바닥_14_2", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_14_1", "중력", "on");
+	SendMessage("바닥_14_1", "애니메이션", "떨어지기3");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥24");
+}
+
+_바닥24()
+{
+	SendMessage("바닥_13_3", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기C.wav");
+	SendMessage("바닥_14_2", "중력", "on");
+	SendMessage("바닥_14_2", "애니메이션", "떨어지기1");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥25");
+}
+
+_바닥25()
+{
+	SendMessage("바닥_13_2", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_13_3", "중력", "on");
+	SendMessage("바닥_13_3", "애니메이션", "떨어지기3" );
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥26");
+}
+
+_바닥26()
+{
+	SendMessage("바닥_13_1", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_13_2", "중력", "on");
+	SendMessage("바닥_13_2", "애니메이션", "떨어지기2");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥27");
+}
+
+_바닥27()
+{
+	SendMessage("바닥_12_1", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기C.wav");
+	SendMessage("바닥_13_1", "중력", "on");
+	SendMessage("바닥_13_1", "애니메이션", "떨어지기2");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥28");
+}
+
+_바닥28()
+{
+	SendMessage("바닥_12_2", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_12_1", "중력", "on");
+	SendMessage("바닥_12_1", "애니메이션", "떨어지기2" );
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥29");
+}
+
+_바닥29()
+{
+	SendMessage("바닥_12_3", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_12_2", "중력", "on");
+	SendMessage("바닥_12_2", "애니메이션", "떨어지기2");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥30");
+}
+
+_바닥30()
+{
+	SendMessage("바닥_11_3", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기C.wav");
+	SendMessage("바닥_12_3", "중력", "on");
+	SendMessage("바닥_12_3", "애니메이션", "떨어지기1");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥31");
+}
+
+_바닥31()
+{
+	SendMessage("바닥_11_1", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_11_3", "중력", "on");
+	SendMessage("바닥_11_3", "애니메이션", "떨어지기1" );
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥32");
+}
+
+_바닥32()
+{
+	SendMessage("바닥_11_2", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_11_1", "중력", "on");
+	SendMessage("바닥_11_1", "애니메이션", "떨어지기1");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥33");
+}
+
+_바닥33()
+{
+	SendMessage("바닥_10_1", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기C.wav");
+	SendMessage("바닥_11_2", "중력", "on");
+	SendMessage("바닥_11_2", "애니메이션", "떨어지기2");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥34");
+}
+
+_바닥34()
+{
+	SendMessage("바닥_10_3", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_10_1", "중력", "on");
+	SendMessage("바닥_10_1", "애니메이션", "떨어지기3" );
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥35");
+}
+
+_바닥35()
+{
+	SendMessage("바닥_10_2", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_10_3", "중력", "on");
+	SendMessage("바닥_10_3", "애니메이션", "떨어지기3");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥36");
+}
+
+_바닥36()
+{
+	SendMessage("바닥_9_1", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기C.wav");
+	SendMessage("바닥_10_2", "중력", "on");
+	SendMessage("바닥_10_2", "애니메이션", "떨어지기2");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥37");
+}
+
+_바닥37()
+{
+	SendMessage("바닥_9_2", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_9_1", "중력", "on");
+	SendMessage("바닥_9_1", "애니메이션", "떨어지기3" );
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥38");
+}
+
+_바닥38()
+{
+	SendMessage("바닥_9_3", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_9_2", "중력", "on");
+	SendMessage("바닥_9_2", "애니메이션", "떨어지기2");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥39");
+}
+
+_바닥39()
+{
+	SendMessage("바닥_8_2", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기C.wav");
+	SendMessage("바닥_9_3", "중력", "on");
+	SendMessage("바닥_9_3", "애니메이션", "떨어지기3");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥40");
+}
+
+_바닥40()
+{
+	SendMessage("바닥_8_1", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_8_2", "중력", "on");
+	SendMessage("바닥_8_2", "애니메이션", "떨어지기1" );
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥41");
+}
+
+_바닥41()
+{
+	SendMessage("바닥_8_3", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_8_1", "중력", "on");
+	SendMessage("바닥_8_1", "애니메이션", "떨어지기3");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥42");
+}
+
+_바닥42()
+{
+	SendMessage("바닥_7_3", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기C.wav");
+	SendMessage("바닥_8_3", "중력", "on");
+	SendMessage("바닥_8_3", "애니메이션", "떨어지기1");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥43");
+}
+
+_바닥43()
+{
+	SendMessage("바닥_7_1", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_7_3", "중력", "on");
+	SendMessage("바닥_7_3", "애니메이션", "떨어지기2" );
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥44");
+}
+
+_바닥44()
+{
+	SendMessage("바닥_7_2", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_7_1", "중력", "on");
+	SendMessage("바닥_7_1", "애니메이션", "떨어지기2");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥45");
+}
+
+_바닥45()
+{
+	SendMessage("바닥_6_3", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기C.wav");
+	SendMessage("바닥_7_2", "중력", "on");
+	SendMessage("바닥_7_2", "애니메이션", "떨어지기2");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥46");
+}
+
+_바닥46()
+{
+	SendMessage("바닥_6_2", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_6_3", "중력", "on");
+	SendMessage("바닥_6_3", "애니메이션", "떨어지기1" );
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥47");
+}
+
+_바닥47()
+{
+	SendMessage("바닥_6_1", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_6_2", "중력", "on");
+	SendMessage("바닥_6_2", "애니메이션", "떨어지기1");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥48");
+}
+
+_바닥48()
+{
+	SendMessage("바닥_5_2", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기C.wav");
+	SendMessage("바닥_6_1", "중력", "on");
+	SendMessage("바닥_6_1", "애니메이션", "떨어지기3");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥49");
+}
+
+_바닥49()
+{
+	SendMessage("바닥_5_3", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_5_2", "중력", "on");
+	SendMessage("바닥_5_2", "애니메이션", "떨어지기3" );
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥50");
+}
+
+_바닥50()
+{
+	SendMessage("바닥_5_1", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_5_3", "중력", "on");
+	SendMessage("바닥_5_3", "애니메이션", "떨어지기3");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥51");
+}
+
+_바닥51()
+{
+	SendMessage("바닥_4_3", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기C.wav");
+	SendMessage("바닥_5_1", "중력", "on");
+	SendMessage("바닥_5_1", "애니메이션", "떨어지기2");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥52");
+}
+
+_바닥52()
+{
+	SendMessage("바닥_4_1", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_4_3", "중력", "on");
+	SendMessage("바닥_4_3", "애니메이션", "떨어지기2" );
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥53");
+}
+
+_바닥53()
+{
+	SendMessage("바닥_4_2", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_4_1", "중력", "on");
+	SendMessage("바닥_4_1", "애니메이션", "떨어지기3");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥54");
+}
+
+_바닥54()
+{
+	SendMessage("바닥_3_2", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기C.wav");
+	SendMessage("바닥_4_2", "중력", "on");
+	SendMessage("바닥_4_2", "애니메이션", "떨어지기1");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥55");
+}
+
+_바닥55()
+{
+	SendMessage("바닥_3_1", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_3_2", "중력", "on");
+	SendMessage("바닥_3_2", "애니메이션", "떨어지기3" );
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥56");
+}
+
+_바닥56()
+{
+	SendMessage("바닥_3_3", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_3_1", "중력", "on");
+	SendMessage("바닥_3_1", "애니메이션", "떨어지기1");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥57");
+}
+
+_바닥57()
+{
+	SendMessage("바닥_2_1", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기C.wav");
+	SendMessage("바닥_3_3", "중력", "on");
+	SendMessage("바닥_3_3", "애니메이션", "떨어지기3");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥58");
+}
+
+_바닥58()
+{
+	SendMessage("바닥_2_3", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기A.wav");
+	SendMessage("바닥_2_1", "중력", "on");
+	SendMessage("바닥_2_1", "애니메이션", "떨어지기3" );
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥59");
+}
+
+_바닥59()
+{
+	SendMessage("바닥_2_2", "텍스쳐애니", "30 ice *noloop");
+	SendMessage("사운드", "연주", "돌떨어지기B.wav");
+	SendMessage("바닥_2_3", "중력", "on");
+	SendMessage("바닥_2_3", "애니메이션", "떨어지기2");
+	if($DIE == 0)
+		SetTimer(0.1,"e_devil._바닥60");
+}
+
+_바닥60()
+{
+	SendMessage("사운드", "연주", "돌떨어지기C.wav");
+	SendMessage("바닥_2_2", "중력", "on");
+	SendMessage("바닥_2_2", "애니메이션", "떨어지기1");
+	if($막판리플레이횟수 == 1)
+	{
+	$GameOverMode = 1;
+	RunScript("", "오브젝트_유저._유저.dead");
+	}
+}
+

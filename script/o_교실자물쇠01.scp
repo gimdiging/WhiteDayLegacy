@@ -1,0 +1,230 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000				o_교실자물쇠01.scp
+//
+//	熱血man: matzzang		last update: 2000.07.20
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "lock " + $G_File);
+	SetObjValue("KeyName", "마스터키");
+	SetObjValue("iconname", "마스터키");
+	SetObjValue("열쇠버리기",0);// 0이면안버리기 1이면버리기
+}
+
+Init강당탈의실()
+{
+	Init();
+	SetObjValue("Lock", "$체육관_영호_남자탈의실잠김");
+	SetObjValue("KeyName", "열쇠9");
+	SetObjValue("iconname", "열쇠9");
+	SetObjValue("열쇠버리기",1);
+	if($체육관_영호_남자탈의실잠김 ==  UNLOCK)
+		DeleteObject("");	
+}
+
+// main2
+
+Init미술실()
+{
+	Init();
+	SetObjValue("Lock", "$문_미술실A");
+	SetObjValue("KeyName", "미술실열쇠");
+	SetObjValue("iconname", "미술실열쇠");
+	SetObjValue("열쇠버리기",1);
+	if($문_미술실A ==  UNLOCK)
+		DeleteObject("");	
+}
+
+Init교무실()
+{
+	Init();
+	SetObjValue("Lock", "$문_교무실C_B");
+	SetObjValue("KeyName", "교무실열쇠");
+	SetObjValue("iconname", "교무실열쇠");
+	SetObjValue("열쇠버리기",1);
+	if($문_교무실C_B ==  UNLOCK)
+		DeleteObject("");	
+}
+
+Init기계실습실뒤()
+{
+	Init();
+	SetObjValue("Lock", "$문_기계실습실뒤");
+	if($문_기계실습실뒤 ==  UNLOCK)
+		DeleteObject("");	
+}
+
+Init체육창고뒤()
+{
+	Init();
+	SetObjValue("Lock", "$문_체육창고뒤");
+	if($문_체육창고뒤 ==  UNLOCK)
+		DeleteObject("");	
+}
+
+Init상담실()
+{
+	Init();
+	SetObjValue("Lock", "$문_상담실");
+	SetObjValue("KeyName", "마스터키");
+	SetObjValue("iconname", "마스터키");
+	if($문_상담실 ==  UNLOCK)
+		DeleteObject("");	
+}
+
+Init교무실A()
+{
+	Init();
+	SetObjValue("Lock", "$문_교무실A");
+	SetObjValue("KeyName", "마스터키");
+	SetObjValue("iconname", "마스터키");
+	if($문_교무실A ==  UNLOCK)
+		DeleteObject("");	
+}
+
+Init교무실B()
+{
+	Init();
+	SetObjValue("Lock", "$문_교무실B");
+	SetObjValue("KeyName", "마스터키");
+	SetObjValue("iconname", "마스터키");
+	if($문_교무실B ==  UNLOCK)
+		DeleteObject("");	
+}
+
+Init양호실()
+{
+	Init();
+	SetObjValue("Lock", "$문_양호실");
+	SetObjValue("KeyName", "마스터키");
+	SetObjValue("iconname", "마스터키");
+	if($문_양호실 ==  UNLOCK)
+		DeleteObject("");	
+}
+
+Init본관창고()
+{
+	Init();
+	SetObjValue("Lock", "$문_A2_15");
+	SetObjValue("KeyName", "마스터키");
+	SetObjValue("iconname", "마스터키");
+	if($문_A2_15 ==  UNLOCK)
+		DeleteObject("");	
+}
+
+Init상담실2()
+{
+	Init();
+	SetObjValue("Lock", "$문_상담실2층");
+	SetObjValue("KeyName", "마스터키");
+	SetObjValue("iconname", "마스터키");
+	if($문_상담실2층 ==  UNLOCK)
+		DeleteObject("");	
+}
+
+Init과학실B_B()
+{
+	Init();
+	SetObjValue("Lock", "$문_과학실B_B");
+	SetObjValue("KeyName", "마스터키");
+	SetObjValue("iconname", "마스터키");
+	if($문_과학실B_B ==  UNLOCK)
+		DeleteObject("");	
+}
+
+Init음악실A()
+{
+	Init();
+	SetObjValue("Lock", "$문_음악실A");
+	SetObjValue("KeyName", "음악실열쇠");
+	SetObjValue("iconname", "학생부열쇠");
+	SetObjValue("열쇠버리기",1);
+	if($문_음악실A ==  UNLOCK)
+		DeleteObject("");	
+}
+
+pick()
+{
+	$KeyName = GetObjValue("KeyName");
+	$Lock = GetValue(GetObjValue("Lock"));
+	
+	if($Lock == LOCK)
+	{
+		if(GetObjValue("Lock") == "$문_교무실C_B" && $진행루트 == 1 && $_09b == 1 && $_10b_1 == 0 && $G_UserItem == "교무실열쇠")
+			return "자동후진";
+
+		if($G_UserItem == $KeyName)
+			return "i" + GetObjValue("iconname");
+
+		return "잡기";
+	}
+	return "";
+}
+
+click()
+{
+	$KeyName  = GetObjValue("KeyName");
+	$Lock = GetValue(GetObjValue("Lock"));
+
+	if($Lock == LOCK)
+	{
+		if(GetObjValue("Lock") == "$문_교무실C_B" && $진행루트 == 1 && $_09b == 1 && $_10b_1 == 0 && $G_UserItem == "교무실열쇠")
+		{
+			SendMessage("자막", "문자출력후대기", GetString("s131"));
+			SendMessage("사운드", "연주", "조작불가.wav");
+			if($_09b == 1 && $_10b == 0)
+			SetTimer(5, "call_macro.macro1");
+			else if($_10b == 1 && $_10b_1 == 0)
+			SetTimer(5, "call_macro.macro2");
+			return;
+		}
+
+		SendMessage("", "시끄러워", "1");
+			
+		if($G_UserItem == $KeyName)
+		{
+			SendMessage("", "페이드", "Tube 1 1 0");
+			SendMessage("", "페이드", "ja 1 1 0");
+			SendMessage("사운드", "연주", "열쇠로자물쇠열기,data\sound\열쇠로자물쇠열기.wav");
+
+			if($KeyName == "마스터키")
+				$마스터키Unlock++;
+
+			if(GetObjValue("열쇠버리기") == 1 || $마스터키Unlock == 23)
+			{
+				if($마스터키Unlock == 23)
+					$마스터키Unlock++;
+
+				SendMessage("유저", "폐기", "@" + $G_UserItem);
+				SendMessage("자막", "문자출력후대기", GetString("s29"));
+
+				if(GetObjValue("Lock") == "$체육관_영호_남자탈의실잠김")
+				{
+					RunScript("남자탈의실문","강당문.lockon");
+				}
+			}
+			else			
+				SendMessage("자막", "문자출력후대기", GetString("s30"));			
+
+			SetValue(GetObjValue("Lock"), UNLOCK);
+
+			if (GetObjValue("Lock") == "$문_미술실A")
+				$문_미술실B = UNLOCK;
+		}
+		else
+		{
+			SendMessage("", "애니메이션", "흔들기");
+			SendMessage("사운드", "연주", "자물쇠소리,data/sound/자물쇠흔드는소리.wav");
+			SendMessage("자막", "문자출력후대기", GetString("s31"));
+		}
+	}
+}
