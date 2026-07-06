@@ -1,0 +1,117 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000		오브젝트_복도배출돌리기.scp
+//
+//	熱血man: matzzang		last update: 2000.07.24
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "handle " + $G_File);	
+	SetObjValue("MotionName", "");
+	SetObjValue("Step", 0);
+}
+
+Init안쪽()
+{
+	Init();	
+	SetObjValue("mission", "복도가스배출기1");
+	SetObjValue("gasID", 1);
+
+	if($b_가스밸브 == 2)
+		SetObjValue("Step", 2);
+}
+
+Init바깥쪽()
+{
+	Init();	
+	SetObjValue("mission", "복도가스배출기2");
+	SetObjValue("gasID", 2);
+
+	if($b_가스밸브 == 2)
+		SetObjValue("Step", 2);
+}
+
+pick()
+{
+	$Step = GetObjValue("Step");
+	
+	if($Step == 0)	
+		return "보기";	
+		
+	if($G_UserItem != "작업장갑")
+		return "잡기";	
+
+	if($G_UserItem == "작업장갑")
+		return "i흰색장갑";	
+}
+
+click()
+{
+	if($유저_조명아이템장비 == FALSE)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s4"));	
+		return;
+	}
+
+	if($G_UserItem != "작업장갑")
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s927"));
+		return;
+	}
+
+	$Step = GetObjValue("Step");	
+	
+	if($Step == 0)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s139"));
+	}
+	else if($Step == 1)
+	{		
+		SendMessage("", "애니메이션", "열기");
+
+		SendMessage("자막", "활성화", "");
+		SendMessage("자막", "와이드모드", "켜기");				
+		SetTimer(6, "Event");
+
+		switch(GetObjValue("gasID"))
+		{
+			case 1:
+				if($b_가스밸브 == 1)
+					$본관1_세환_가스밸브상태 = 3;
+				else
+					$본관1_세환_가스밸브상태 = 1;
+				break;
+
+			case 2:
+				if($b_가스밸브 == 1)
+					$본관1_세환_가스밸브상태 = 3;
+				else
+					$본관1_세환_가스밸브상태 = 2;
+				break;
+		}
+
+		$b_가스밸브++;
+	}
+	else	
+		SendMessage("자막", "문자출력후대기", GetString("s140"));
+	
+	SetObjValue("Step", $Step + 1);
+}
+
+Event()
+{
+	if($b_가스밸브 == 2)
+	SendMessage("유저", "폐기", "작업장갑");
+	RunScript(GetObjValue("mission"), "오브젝트_복도가스배출기.Mission");
+	SendMessage("자막", "비활성", "");
+	SendMessage("자막", "와이드모드", "끄기");
+	SendMessage("자막", "문자출력", "3," + GetString("s141"));
+}

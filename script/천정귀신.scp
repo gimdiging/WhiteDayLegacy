@@ -1,0 +1,1160 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  S c r i p t F i l e 
+//
+//  (C) Sonnori 2000						천정귀신.scp
+//
+//	熱血man: agneau					last update: 2001.03.21
+//  ------------------------------------------------------
+
+//////////////////////	음악실 천정귀신 /////////////////////////////////
+
+
+_음악실거미.StartUp()
+{		
+	if($b_음악실거미 == 1)
+		DeleteObject("");	
+
+//	SendMessage("", "NOCLIP", "on");
+	SendMessage("", "TurnGlow", "off 0");
+	SendMessage("", "TurnGlow", "off 1");	
+}
+
+_음악실거미.damage()
+{
+	if($b_음악실거미 == 1)
+		return;	
+
+	switch(GetObjValue("enemy"))
+	{
+		case "태극패":
+			$AI_천정귀신 = OFF;
+			SendMessage("", "거미공격체크", "");
+			SetTimer(0, "e_핸드폰메시지._신관어학실");			
+			SendMessage("", "페이드", "Recursive 5 1 0");			
+			SendMessage("사운드", "연주3d", GetObjPos("", "머리") + " 거미_도망.wav");
+
+//			SetTimer(3, "_태극패깨짐");			
+			SetTimer(5, "Release");
+			$b_음악실거미 = 1;
+
+//			태극패 부서지는 연출추가
+
+			break;		
+	}	
+}
+
+_태극패깨짐()
+{
+	if($b_깨진태극패 == 0)
+	{
+	SendMessage("자막", "문자출력", "3," +  GetString("s180"));
+	SendMessage("유저", "폐기", "@태극패");
+	SendMessage("유저", "획득", "@깨진태극패");
+	SendMessage("사운드", "연주", "태극패_깨짐.wav");
+	SendMessage("유저", "아이템장비", "취소");
+	SendMessage("유저", "아이템장비취소", "");
+	$b_깨진태극패 = 1;
+	}
+}
+
+_음악실거미.아파이눔아()
+{
+	SendMessage("사운드", "연주3d", GetObjPos("", "머리") + " 앗뜨거,거미_데미지.wav");
+//	현성씨 파티클
+	SendMessage("","파티클생성", "*origin pos %p " + GetWDBParticle("particle2.wdb", "거미소녀죽을때", "파티클내용");
+}
+
+_음악실거미.이젠괜찮아()
+{
+//	SendMessage("사운드", "연주멈춤", "앗뜨거");	
+}
+
+Release()
+{
+	DeleteObject("음악실천정귀신");
+}
+
+hide()
+{	
+	SendMessage("사운드", "연주멈춤", "거미발소리");
+	DeleteObject("음악실천정귀신");
+}
+
+attack()
+{	
+	if($b_음악실진입 == 0)
+	{
+		$b_음악실진입 = 1;
+		SetTimer(0, "e_핸드폰메시지._신관거미소녀");
+	}
+
+	if($b_음악실거미 == 1)
+	{
+		DeleteObject("");
+		return;
+	}	
+	
+	if($AI_천정귀신 == OFF)
+	{
+		$AI_천정귀신 = ON;
+		SendMessage("음악실천정귀신", "거미공격체크", "유저 " + FindPoint("음악실벽"));	
+	}
+}
+
+stop()
+{
+	if($b_음악실거미 == 1)
+	{
+		DeleteObject("");
+		return;
+	}
+	
+	if($AI_천정귀신 == ON)
+	{
+		$AI_천정귀신 = OFF;
+		SendMessage("음악실천정귀신", "Stop", "");
+		SendMessage("음악실천정귀신", "애니메이션", "서있기");
+		SendMessage("음악실천정귀신", "거미공격체크", "");
+	}
+}
+
+check_user()
+{		
+	if($b_음악실거미 == 1)
+		return;	
+	
+	SendMessage("", "애니메이션", "서있기");
+	SendMessage("음악실천정귀신", "거미공격체크", "유저 " + FindPoint("음악실벽"));
+}
+
+_음악실거미.Attack()
+{	
+	if($AI_천정귀신 == OFF)
+		return;
+
+	SendMessage("", "거미공격체크", "");	
+	SetTimer(0,"spider_attack");	
+}
+
+_음악실거미.Attack_ready()
+{	
+	if($AI_천정귀신 == OFF)
+		return;
+
+	SendMessage("", "거미공격체크", "");
+	SendMessage("사운드", "연주", "loop,거미발소리,거미_이동02.wav");
+	SendMessage("", "애니메이션", "전진");
+	SendMessage("", "거미공격", "유저 600");
+}
+
+_음악실거미.SideMove()
+{	
+	if($AI_천정귀신 == OFF)
+		return;
+
+	SendMessage("", "회전", "-90 0.5");
+	SendMessage("", "애니메이션", "전진");
+	SendMessage("", "z축강제이동", GetWallPos(GetObjPos(""), GetObjPos("유저")) + " 600");							
+	SendMessage("사운드", "연주", "거미_이동01.wav");	
+}
+
+_음악실거미.Stare()
+{
+	if($AI_천정귀신 == OFF)
+		return;
+
+	SendMessage("", "동작하며돌기", GetObjPos("유저") + " 20 숨쉬기");		
+}
+
+_음악실거미.Return()
+{
+	if($AI_천정귀신 == OFF)
+		return;
+
+	SendMessage("", "회전", "-90 0.5");
+	SendMessage("", "강제이동", FindPoint("음악실벽") + " 600 *script 천정귀신.check_user");
+	SendMessage("사운드", "연주멈춤", "거미발소리");
+	SendMessage("사운드", "연주", "거미발소리,거미_이동02.wav");
+}
+
+_음악실거미.Rotate()
+{
+	if($AI_천정귀신 == OFF)
+		return;
+
+	if(x_distance(FindPoint("음악실벽"), GetObjPos("유저")) < 50)
+		SendMessage("", "회전", "90 0.5");
+	else
+		SendMessage("", "회전", "-90 0.5");
+}
+
+spider_attack()
+{
+	if($AI_천정귀신 == OFF)
+		return;
+
+	SendMessage("", "Stop", "");
+	SendMessage("", "애니메이션", "서있기");
+//	SendMessage("", "TurnGlow", "off 0");
+//	SendMessage("", "TurnGlow", "off 1");	
+	SendMessage("사운드", "연주멈춤", "거미발소리");
+	SendMessage("자막", "활성화", "");	
+	SendMessage("유저", "강제이동", GetObjPos("음악실천정귀신","머리") + " 500 *script 천정귀신.look");		
+}
+
+look()
+{
+	if($AI_천정귀신 == OFF)
+		return;
+
+	SendMessage("유저", "쳐다보기", "음악실천정귀신 180");			
+	SetTimer(1,"ascent");
+}
+
+ascent()
+{
+	if($AI_천정귀신 == OFF)
+		return;
+
+	SendMessage("유저", "중력", "off");	
+	SendMessage("사운드", "연주", "거미_올리기.wav");
+	SendMessage("유저", "끌려올라가기", "음악실천정귀신 200");
+	SetTimer(1, "damage");
+}
+
+damage()
+{
+	if($AI_천정귀신 == OFF)
+		return;
+
+//	SendMessage("음악실천정귀신", "TurnGlow", "on 0");
+//	SendMessage("음악실천정귀신", "TurnGlow", "on 1");
+	SendMessage("유저", "쳐다보지말기", "");				
+	SendMessage("유저", "x축강제이동", FindPoint("음악실뒤벽") + " 1200 *script 천정귀신.play");		
+}
+
+play()
+{	
+	if($AI_천정귀신 == OFF)
+		return;
+
+	SendMessage("음악실천정귀신", "빨리돌기포인트", "" + GetObjPos("유저"));
+	SendMessage("음악실천정귀신", "애니메이션", "전진");
+	SendMessage("음악실천정귀신", "강제이동", FindPoint("음악실벽") + " 600 *script 천정귀신.check_user");
+	SendMessage("사운드", "연주", "거미_벽부딪힘.wav");
+	SendMessage("유저", "공격", "천정귀신");
+	SendMessage("유저", "중력", "on");	
+	SendMessage("자막", "비활성", "");	
+}
+
+
+///////////////////////// 교실 거미 ////////////////////////////////////////////
+
+_교실거미.StartUp()
+{
+	if($b_교실거미 == 1)
+		DeleteObject("");	
+
+	SendMessage("", "위치", "0 0 0");
+	SendMessage("", "TurnGlow", "off 0");	
+	SendMessage("", "TurnGlow", "off 1");
+	SetObjValue("status", "stop");		// stop, attack, chase, return, wait, stay, attack_ready
+	SetObjValue("damage", "true");
+}
+
+_교실거미.아파이눔아()
+{
+	if(GetObjValue("damage") == "false")
+		return;
+
+	SendMessage("사운드", "연주3d", GetObjPos("", "머리") + " 앗뜨거,거미_데미지.wav");
+// 현성씨 파티클
+	SendMessage("","파티클생성", "*origin pos %p " + GetWDBParticle("particle2.wdb", "거미소녀죽을때", "파티클내용");
+}
+
+_교실거미.이젠괜찮아()
+{
+//	SendMessage("사운드", "연주멈춤", "앗뜨거");	
+}
+
+_교실거미.damage()
+{	
+	if(GetObjValue("damage") == "false")
+		return;
+
+	$AI_교실거미 = OFF;
+	$b_교실거미 = 1;	
+	SetTimer(3, "_태극패깨짐");	
+	
+	SendMessage("", "Stop", "");
+//	SendMessage("", "TurnGlow", "off 0");
+//	SendMessage("", "TurnGlow", "off 1");
+	SendMessage("", "페이드", "Recursive 3 1 0");
+	SendMessage("사운드", "연주3d", GetObjPos("", "머리") + " 거미_도망.wav");
+
+	if(GetObjValue("status") == "chase")
+	{
+		SendMessage("", "애니메이션", "서있기");
+		SendMessage("사운드", "연주멈춤", "거미이동");
+	}
+
+	SetObjValue("status", "wait");
+	SetTimer(5,"classspider_wait *obj 교실거미");
+	SetObjValue("damage", "false");
+
+	$spider_showfactor *= 2;
+
+/*	switch($spider_showfactor)
+	{
+		case 1:
+			$spider_showfactor = 2;
+			break;
+		case 2:
+			$spider_showfactor = 4;
+			break;
+		case 5:
+			$spider_showfactor = 10;
+			break;
+		case 10:
+			$spider_showfactor = -1;
+			break;
+	}*/
+}
+
+classspider_appear()
+{	
+	$AI_교실거미 = ON;
+	SetObjValue("status", "stop");	
+
+	SendMessage("", "중심위치", "" + GetGhostPos("" + $user_class));
+	SendMessage("", "페이드", "Recursive 1 0 1");
+//	SendMessage("", "TurnGlow", "on 0");
+//	SendMessage("", "TurnGlow", "on 1");	
+	SendMessage("사운드", "연주", "거미_나타남.wav");
+	SetTimer(1, "classspider_chase *obj 교실거미");	
+}
+
+classspider_chase()
+{	
+	if($AI_교실거미 == OFF || GetObjValue("status") == "return" || GetObjValue("status") == "attack" || GetObjValue("status") == "wait")
+		return;
+
+	if(xz_distance(GetObjPos("유저"), GetObjPos("", "머리")) < 100)				
+		SetTimer(0, "classspider_attract *obj 교실거미");	
+	else
+	{		
+		if(GetObjValue("status") != "chase")
+		{			
+			SendMessage("사운드", "연주", "loop,거미이동,거미_이동01.wav");
+			SendMessage("", "애니메이션", "전진");
+		}
+
+		SetObjValue("status", "chase");		
+		SendMessage("", "빨리돌기포인트", "" + GetObjPos("유저"));		
+		SendMessage("", "강제이동", GetObjPos("유저") + " 300");
+		SetTimer(0.3, "classspider_chase *obj 교실거미");
+	}
+}
+
+classspider_attract()
+{
+	if($AI_교실거미 == OFF)
+		return;
+
+	if(GetObjValue("status") == "chase")	
+		SendMessage("사운드" ,"연주멈춤", "거미이동");
+
+	$AI_형체있는인간 = OFF;
+	SetObjValue("status", "attack");
+	SendMessage("", "Stop", "");
+	SendMessage("", "애니메이션", "서있기");
+//	SendMessage("", "TurnGlow", "off 0");
+//	SendMessage("", "TurnGlow", "off 1");
+	SendMessage("자막", "활성화", "");
+	SendMessage("유저", "강제이동", GetObjPos("교실거미", "머리") + " 100 *script 천정귀신.classspider_look");	
+}
+
+classspider_look()
+{
+//	SendMessage("", "위치쳐다보기", GetObjPos("교실거미", "머리") + " 360");
+	SendMessage("", "중력", "off");
+	SendMessage("", "끌려올라가기", "교실거미 200");
+	SetTimer(2, "classspider_throw *obj 교실거미");
+}
+
+classspider_throw()
+{
+//	SendMessage("", "TurnGlow", "on 0");	
+//	SendMessage("", "TurnGlow", "on 1");		
+
+//	SendMessage("유저", "쳐다보지말기", "");	
+//	$throw_point = GetThrowPoint("" + $user_class, "" + GetObjPos("유저", "머리"));	
+//	SendMessage("유저", "x축강제이동", $throw_point + " 1200 *script 천정귀신.classspider_damage");
+
+	$throw_point = GetThrowPoint("" + $user_class, GetObjPos("유저"));	
+	SendMessage("유저", "강제이동", $throw_point + " 1000 *script 천정귀신.classspider_damage");
+}
+
+classspider_damage()
+{	
+	SendMessage("사운드", "연주", "교실벽.wav");
+	SendMessage("유저", "공격", "교실거미");	
+	SendMessage("유저", "중력", "on");
+	SendMessage("자막", "비활성", "");	
+	ChangeObjValue("교실거미", "status", "attack_ready");
+	SetTimer(4, "classspider_chase *obj 교실거미");
+	if(xz_distance(GetObjPos("유저"), GetObjPos("교실거미")) > 900)
+	SendMessage("유저", "위치", "" + $교실유저좌표);
+	$AI_형체있는인간 = ON;
+}
+
+classspider_hide()
+{	
+	if(GetObjValue("status") != "stay" && GetObjValue("status") != "stop")
+		return;
+
+	$AI_교실거미 = OFF;
+	SendMessage("사운드", "연주", "거미_사라짐.wav");
+//	SendMessage("", "TurnGlow", "off 0");
+//	SendMessage("", "TurnGlow", "off 1");
+	SendMessage("", "페이드", "Recursive 1 1 0");	
+	SetObjValue("status", "wait");
+	SetObjValue("damage", "true");
+	SetTimer(5, "classspider_wait *obj 교실거미");
+}
+
+classspider_forcehide()
+{
+	$AI_교실거미 = OFF;
+
+	if(GetObjValue("status") == "chase")
+	{
+		SendMessage("사운드", "연주멈춤", "거미이동");
+		SendMessage("", "애니메이션", "서있기");
+	}
+
+	SendMessage("", "Stop", "");	
+//	SendMessage("", "TurnGlow", "off 0");
+//	SendMessage("", "TurnGlow", "off 1");
+	SendMessage("", "페이드", "Recursive 0 0 0");	
+	SetObjValue("status", "stop");
+}
+
+classspider_wait()
+{
+	SetObjValue("status", "stop");
+}
+
+classspider_return()
+{
+	SetObjValue("status", "return");	
+	SendMessage("사운드", "연주", "loop,거미이동,거미_이동01.wav");
+	SendMessage("", "빨리돌기포인트", "" + GetStayPos("" + $user_class));		
+	SendMessage("", "애니메이션", "전진");
+	SendMessage("", "강제이동", GetStayPos("" + $user_class) + " 200 *script 천정귀신.classspider_stay");
+}
+
+classspider_stay()
+{
+	if($AI_교실거미 == OFF)	
+		return;
+
+	SetObjValue("status", "stay");
+
+	if($신관_세환_교실들어감 == TRUE)	
+		RunScript("교실거미", "천정귀신.classspider_chase");	
+	else
+	{		
+		SendMessage("사운드", "연주멈춤", "거미이동");
+		SendMessage("", "애니메이션", "서있기");	
+		SendMessage("", "빨리돌기포인트", "" + GetObjPos("유저"));	
+		SetTimer(5,"classspider_hide *obj 교실거미");
+	}
+}
+
+classspider_status()
+{
+	$status = GetObjValue("status");
+
+	switch($status)
+	{
+		case "stop":					
+			if($신관_세환_교실들어감 == FALSE)
+			{								
+//				$show = 3 * $spider_showfactor;
+//				if(Random($show) == 0)
+					RunScript("교실거미", "천정귀신.classspider_appear");
+			}
+			break;
+
+		case "chase":
+			RunScript("교실거미", "천정귀신.classspider_return");			
+			break;
+
+		case "wait":
+		case "attack":
+		case "return":	
+		case "attack_ready":
+			break;
+		
+		case "stay":
+			RunScript("교실거미", "천정귀신.classspider_chase");
+			break;	
+	}
+
+	$신관_세환_교실들어감 = TRUE;
+}
+
+_1반()
+{			
+	if($b_교실거미 == 1)
+	{
+		DeleteObject("");
+		return;
+	}
+
+	$교실유저좌표 = "1785.43 141 1426.24";
+
+	$user_class = "1반";
+	RunScript("교실거미", "천정귀신.classspider_status");	
+}
+
+_2반()
+{			
+	if($b_교실거미 == 1)
+	{
+		DeleteObject("");
+		return;
+	}
+
+	$교실유저좌표 = "2104.43 141 1424.22";
+
+	$user_class = "2반";
+	RunScript("교실거미", "천정귀신.classspider_status");	
+}
+
+_3반()
+{			
+	if($b_교실거미 == 1)
+	{
+		DeleteObject("");
+		return;
+	}
+
+	$교실유저좌표 = "2420.34 141 1426.72";
+
+	$user_class = "3반";
+	RunScript("교실거미", "천정귀신.classspider_status");	
+}
+
+_4반()
+{			
+	if($b_교실거미 == 1)
+	{
+		DeleteObject("");
+		return;
+	}
+
+	$교실유저좌표 = "1785.79 141 474.05";
+
+	$user_class = "4반";
+	RunScript("교실거미", "천정귀신.classspider_status");	
+}
+
+_5반()
+{			
+	if($b_교실거미 == 1)
+	{
+		DeleteObject("");
+		return;
+	}
+
+	$교실유저좌표 = "2272.54 141 472.84";
+
+	$user_class = "5반";
+	RunScript("교실거미", "천정귀신.classspider_status");	
+}
+
+_6반()
+{			
+	if($b_교실거미 == 1)
+	{
+		DeleteObject("");
+		return;
+	}
+
+	$교실유저좌표 = "2593.38 141 471.27";
+
+	$user_class = "6반";
+	RunScript("교실거미", "천정귀신.classspider_status");	
+}
+
+_7반()
+{			
+	if($b_교실거미 == 1)
+	{
+		DeleteObject("");
+		return;
+	}
+
+	$교실유저좌표 = "1785.91 269 1426.64";
+
+	$user_class = "7반";
+	RunScript("교실거미", "천정귀신.classspider_status");	
+}
+
+_8반()
+{			
+	if($b_교실거미 == 1)
+	{
+		DeleteObject("");
+		return;
+	}
+
+	$교실유저좌표 = "2105.21 269 1426.24";
+
+	$user_class = "8반";
+	RunScript("교실거미", "천정귀신.classspider_status");	
+}
+
+_9반()
+{			
+	if($b_교실거미 == 1)
+	{
+		DeleteObject("");
+		return;
+	}
+
+	$교실유저좌표 = "2421.75 269 1429.13";
+
+	$user_class = "9반";
+	RunScript("교실거미", "천정귀신.classspider_status");	
+}
+
+_10반()
+{			
+	if($b_교실거미 == 1)
+	{
+		DeleteObject("");
+		return;
+	}
+
+	$교실유저좌표 = "1785.80 269 475.33";
+
+	$user_class = "10반";
+	RunScript("교실거미", "천정귀신.classspider_status");	
+}
+
+_11반()
+{			
+	if($b_교실거미 == 1)
+	{
+		DeleteObject("");
+		return;
+	}
+
+	$교실유저좌표 = "2269.03 269 473.51";
+
+	$user_class = "11반";
+	RunScript("교실거미", "천정귀신.classspider_status");	
+}
+
+_12반()
+{			
+	if($b_교실거미 == 1)
+	{
+		DeleteObject("");
+		return;
+	}
+
+	$교실유저좌표 = "2589.08 269 473.55";
+
+	$user_class = "12반";
+	RunScript("교실거미", "천정귀신.classspider_status");	
+}
+
+_out()
+{
+	if($b_교실거미 == 1)
+	{
+		DeleteObject("");
+		return;
+	}
+
+	if($신관_세환_교실들어감 == FALSE)
+		return;
+
+	$교실유저좌표 = "";
+
+	$신관_세환_교실들어감 = FALSE;
+	if(TakeObjValue("교실거미", "status") == "chase" || TakeObjValue("교실거미", "status") == "attack_ready")	
+		RunScript("교실거미", "천정귀신.classspider_return");	
+}
+
+
+
+
+///////////////////////// 은미배틀용 복도거미 ///////////////////////////////////
+
+_복도거미.StartUp()
+{
+	if($신관_세환_은미이벤트 == 2)
+		DeleteObject("");	
+
+	$AI_복도거미 = OFF;
+	
+//	SendMessage("", "끄기", "");
+	SendMessage("", "페이드", "Recursive 0 0 0");
+	SendMessage("", "TurnGlow", "off 0");
+	SendMessage("", "TurnGlow", "off 1");
+	SendMessage("", "발광", "Recursive on");
+}
+
+_복도거미.damage()
+{
+	if(GetObjValue("status") == "attack")
+		return;
+
+	$AI_복도거미 = OFF;
+
+	SendMessage("사운드", "연주멈춤", "거미이동");
+	SendMessage("사운드", "연주", "loop,거미도망,거미_이동02.wav");
+
+	if(ComparePos(FindPoint("fix_camera"), GetObjPos("복도거미"), 2) > 0)	
+	{
+		SendMessage("", "빨리돌기포인트", "" + FindPoint("복도거미hide_1"));	
+		SetTimer(1,"corridorspider_runaway1 *obj 복도거미");		
+	}
+	else	
+	{
+		SendMessage("", "빨리돌기포인트", "" + FindPoint("복도거미hide_2"));	
+		SetTimer(1,"corridorspider_runaway2 *obj 복도거미");		
+	}		
+}
+
+corridorspider_runaway1()
+{
+	SendMessage("", "z축강제이동", GetWallPos(GetObjPos("복도거미"), FindPoint("복도거미hide_1")) + " 300 *script 천정귀신.corridorspider_hide");	
+}
+
+corridorspider_runaway2()
+{
+	SendMessage("", "z축강제이동", GetWallPos(GetObjPos("복도거미"), FindPoint("복도거미hide_2")) + " 300 *script 천정귀신.corridorspider_hide");	
+}
+
+corridorspider_hide()
+{		
+	SetObjValue("status", "stop");
+	SendMessage("", "애니메이션", "서있기");
+	SendMessage("", "페이드", "Recursive 0 0 0");
+	SendMessage("사운드", "연주멈춤", "거미도망");
+}
+
+corridorspider_appear()
+{
+	if($AI_복도거미 == ON)
+		return;
+
+	$AI_복도거미 = ON;
+	SetObjValue("status", "stop");
+
+//	$spider_point = GetSpiderPoint("유저");
+
+//	if($spider_point != "0")
+//	{
+//		SendMessage("", "위치", "" + FindPoint("" + $spider_point));
+		SendMessage("", "빨리돌기포인트", "" + GetObjPos("유저"));
+		SendMessage("", "페이드", "Recursive 1 0 1");		
+		SendMessage("사운드", "연주", "거미_나타남.wav");	
+		SetTimer(1,"corridorspider_chase *obj 복도거미");
+//	}
+//	else
+//	{
+//		TextOut("No StartPoint Near You");	// debug
+//		$AI_복도거미 = OFF;
+//		SetTimer(5,"corridorspider_appear *obj 복도거미");
+//		return;
+//	}
+}
+
+corridorspider_chase()
+{
+	if($AI_복도거미 == OFF)
+		return;
+
+	$xz_dis = xz_distance(GetObjPos("유저"), GetObjPos("복도거미", "머리"));
+	$y = GetObjPosY("유저");
+
+	if($y < 240)
+	{
+		RunScript("복도거미", "천정귀신.corridorspider_restrict");
+		SetTimer(0.1, "corridorspider_rechase1");
+		return;
+	}
+
+	if($y > 370 && xz_distance(GetObjPos("유저"), GetObjPos("신관배전판")) < 300)
+	{
+		RunScript("복도거미", "천정귀신.corridorspider_restrict");
+		SetTimer(0.1, "corridorspider_rechase2");
+		return;
+	}
+
+	if($xz_dis < 150)
+	{
+		SetTimer(0, "corridorspider_attract *obj 복도거미");
+		return;
+	}
+//	else if($xz_dis > 500)
+//	{
+//		TextOut("Chase_Fail!!");	// debug		
+//		SendMessage("", "Stop", "");
+//		SendMessage("", "애니메이션", "서있기");
+//		SendMessage("", "페이드", "Recursive 1 1 0");		
+//		SendMessage("사운드", "연주멈춤", "거미이동");
+//		SetObjValue("status", "stop");
+//		$AI_복도거미 = OFF;
+//		return;
+//	}
+
+	if(GetObjValue("status") != "chase")
+	{
+		SendMessage("사운드", "연주", "loop,거미이동,거미_이동01.wav");
+		SendMessage("", "애니메이션", "전진");
+		SetObjValue("status", "chase");
+	}
+
+	if(x_distance(GetObjPos("유저"), GetObjPos("","머리")) > 100)
+	{				
+		if(ComparePos(GetObjPos("유저"), GetObjPos("", "머리"), 0) > 0)
+		{			
+			SendMessage("", "회전", "90");			
+			SendMessage("", "x축강제이동", ConvObjPos("유저", "0 -100") + " 500");
+		}
+		else
+		{			
+			SendMessage("", "회전", "-90");			
+			SendMessage("", "x축강제이동", ConvObjPos("유저", "0 100") + " 500");
+		}
+		
+		SetTimer(0.5, "corridorspider_chase *obj 복도거미");
+	}
+	else if(z_distance(GetObjPos("유저"), GetObjPos("","머리")) > 100)
+	{				
+		if(ComparePos(GetObjPos("유저"), GetObjPos("", "머리"), 2) > 0)
+		{
+			SendMessage("", "회전", "180");			
+			SendMessage("", "z축강제이동", ConvObjPos("유저", "2 -100") + " 500");
+		}
+		else
+		{
+			SendMessage("", "회전", "0");			
+			SendMessage("", "z축강제이동", ConvObjPos("유저", "2 100") + " 500");
+		}
+		
+		SetTimer(0.5, "corridorspider_chase *obj 복도거미");
+	}
+}
+
+corridorspider_rechase1()
+{
+	$y = GetObjPosY("유저");
+
+	if($y > 240)
+	{
+		RunScript("복도거미", "천정귀신.corridorspider_appear");
+		return;
+	}
+
+	SetTimer(0.1, "corridorspider_rechase1");
+}
+
+corridorspider_rechase2()
+{
+	$y = GetObjPosY("유저");
+
+	if($y > 370 && xz_distance(GetObjPos("유저"), GetObjPos("신관배전판")) > 300)
+	{
+		RunScript("복도거미", "천정귀신.corridorspider_appear");
+		return;
+	}
+	SetTimer(0.1, "corridorspider_rechase2");
+}
+
+corridorspider_attract()
+{	
+	if($AI_복도거미 == OFF)
+		return;
+
+	$AI_형체있는인간 = OFF;	
+	$복도거미잡히기전 = GetObjPos("유저");
+	SendMessage("", "Stop", "");
+	SendMessage("", "애니메이션", "서있기");
+	SendMessage("사운드", "연주멈춤", "거미이동");
+	SetObjValue("status", "attack");
+	SendMessage("자막", "활성화", "");
+	SendMessage("유저", "강제이동", GetObjPos("복도거미") + " 100");
+	SetTimer(1,"corridorspider_look *obj 유저");
+	SendMessage("사운드", "연주", "거미_올리기.wav");	
+}
+
+corridorspider_look()
+{		
+	$y = GetObjPosY("유저");
+
+	SendMessage("", "위치쳐다보기", GetObjPos("복도거미", "머리") + " 360");
+	SendMessage("", "중력", "off");
+	SendMessage("", "끌려올라가기", "복도거미 200");
+	if($y > 370)
+	SetTimer(2,"corridorspider_damage *obj 유저");
+	else
+	SetTimer(3,"corridorspider_damage *obj 유저");
+}
+
+corridorspider_damage()
+{
+	SendMessage("유저", "공격", "복도거미");
+	SendMessage("", "쳐다보지말기", "");
+	SendMessage("", "중력", "on");
+	SendMessage("자막", "비활성", "");
+	SetTimer(4,"corridorspider_chase *obj 복도거미");
+	$AI_형체있는인간 = ON;
+	SendMessage("유저", "위치", "" + $복도거미잡히기전);
+	SendMessage("사운드", "연주", "거미_벽부딪힘.wav");
+}
+
+corridorspider_restrict()
+{			
+	if($AI_복도거미 == OFF)
+		return;
+	
+	$AI_복도거미 = OFF;
+	SetObjValue("status", "stop");
+
+	SendMessage("사운드", "연주멈춤", "거미이동");
+	SendMessage("사운드", "연주", "거미_사라짐.wav");
+	SendMessage("", "Stop", "");
+	SendMessage("", "애니메이션", "서있기");	
+	SendMessage("", "페이드", "Recursive 1 1 0");	
+}
+
+///////////////////////// 본관 거미 ////////////////////////////////////////////
+
+_본관거미.StartUp()
+{
+	if($게임모드 == 0 || $게임모드 == 4)
+		DeleteObject("");	
+
+	SendMessage("", "페이드", "Recursive 0 0 0");
+	SendMessage("", "TurnGlow", "off 0");	
+	SendMessage("", "TurnGlow", "off 1");
+	SetObjValue("status", "stop");		// stop, attack, chase, return, wait, stay, attack_ready
+}
+
+mbspider_appear()
+{	
+	$AI_본관거미 = ON;
+	SetObjValue("status", "stop");	
+
+	SendMessage("", "페이드", "Recursive 1 0 1");
+	SendMessage("", "TurnGlow", "on 0");
+	SendMessage("", "TurnGlow", "on 1");	
+	SendMessage("사운드", "연주", "거미_나타남.wav");
+	SetTimer(1, "mbspider_chase *obj 본관거미");	
+}
+
+mbspider_chase()
+{	
+	if($AI_본관거미등장 == FALSE)
+	{
+		RunScript("본관거미", "천정귀신.mbspider_return");
+		return;
+	}
+
+	if($AI_본관거미 == OFF || GetObjValue("status") == "return" || GetObjValue("status") == "attack" || GetObjValue("status") == "wait")
+		return;
+
+	if(xz_distance(GetObjPos("유저"), GetObjPos("", "머리")) < 100)				
+		SetTimer(0, "mbspider_attract *obj 본관거미");	
+	else
+	{		
+		if(GetObjValue("status") != "chase")
+		{			
+			SendMessage("사운드", "연주", "loop,거미이동,거미_이동01.wav");
+			SendMessage("", "애니메이션", "전진");
+		}
+
+		SetObjValue("status", "chase");		
+		SendMessage("", "빨리돌기포인트", "" + GetObjPos("유저"));		
+		SendMessage("", "강제이동", GetObjPos("유저") + " 300");
+		SetTimer(0.3, "mbspider_chase *obj 본관거미");
+	}
+}
+
+mbspider_attract()
+{
+	if($AI_본관거미 == OFF)
+		return;
+
+	if(GetObjValue("status") == "chase")	
+		SendMessage("사운드" ,"연주멈춤", "거미이동");
+
+	$AI_형체있는인간 = OFF;
+	SetObjValue("status", "attack");
+	SendMessage("", "Stop", "");
+	SendMessage("", "애니메이션", "서있기");
+	SendMessage("", "TurnGlow", "off 0");
+	SendMessage("", "TurnGlow", "off 1");
+	SendMessage("자막", "활성화", "");
+	SendMessage("유저", "쳐다보기", "본관거미 180");
+	SendMessage("유저", "강제이동", GetObjPos("본관거미", "머리") + " 100 *script 천정귀신.mbspider_look");	
+}
+
+mbspider_look()
+{
+	SendMessage("", "중력", "off");
+	SendMessage("", "끌려올라가기", "본관거미 200");
+	SetTimer(2, "mbspider_throw *obj 본관거미");
+}
+
+mbspider_throw()
+{
+	SendMessage("", "TurnGlow", "on 0");	
+	SendMessage("", "TurnGlow", "on 1");		
+
+	SendMessage("유저", "강제이동", FindPoint("본관거미데미지") + " 1000 *script 천정귀신.mbspider_damage");
+}
+
+mbspider_damage()
+{	
+	SendMessage("사운드", "연주", "교실벽.wav");
+	SendMessage("유저", "공격", "교실거미");	
+	SendMessage("유저", "중력", "on");
+	SendMessage("유저", "쳐다보지말기", "");
+	SendMessage("자막", "비활성", "");	
+	ChangeObjValue("본관거미", "status", "attack_ready");
+	SetTimer(4, "mbspider_chase *obj 본관거미");
+	$AI_형체있는인간 = ON;
+}
+
+mbspider_hide()
+{	
+	if(GetObjValue("status") != "stay" && GetObjValue("status") != "stop")
+		return;
+
+	$AI_본관거미 = OFF;
+	SendMessage("사운드", "연주", "거미_사라짐.wav");
+	SendMessage("", "TurnGlow", "off 0");
+	SendMessage("", "TurnGlow", "off 1");
+	SendMessage("", "페이드", "Recursive 1 1 0");	
+	SetObjValue("status", "wait");
+	SetTimer(0, "mbspider_wait *obj 본관거미");
+}
+
+mbspider_forcehide()
+{
+	$AI_본관거미 = OFF;
+
+	if(GetObjValue("status") == "chase")
+	{
+		SendMessage("사운드", "연주멈춤", "거미이동");
+		SendMessage("", "애니메이션", "서있기");
+	}
+
+	SendMessage("", "Stop", "");	
+	SendMessage("", "TurnGlow", "off 0");
+	SendMessage("", "TurnGlow", "off 1");
+	SendMessage("", "페이드", "Recursive 0 0 0");	
+	SetObjValue("status", "stop");
+}
+
+mbspider_wait()
+{
+	SetObjValue("status", "stop");
+}
+
+mbspider_return()
+{
+	SetObjValue("status", "return");	
+	SendMessage("사운드", "연주", "loop,거미이동,거미_이동01.wav");
+	SendMessage("", "빨리돌기포인트", "" + FindPoint("본관거미중심"));		
+	SendMessage("", "애니메이션", "전진");
+	SendMessage("", "강제이동", FindPoint("본관거미중심") + " 200 *script 천정귀신.mbspider_stay");
+}
+
+mbspider_stay()
+{
+	if($AI_본관거미 == OFF)	
+		return;
+
+	SetObjValue("status", "stay");
+
+	if($AI_본관거미등장 == TRUE)	
+		RunScript("본관거미", "천정귀신.mbspider_chase");	
+	else
+	{		
+		SendMessage("사운드", "연주멈춤", "거미이동");
+		SendMessage("", "애니메이션", "서있기");	
+		SendMessage("", "빨리돌기포인트", "" + GetObjPos("유저"));	
+		SetTimer(1,"mbspider_hide *obj 본관거미");
+	}
+}
+
+mbspider_status()
+{
+	$status = GetObjValue("status");
+
+	switch($status)
+	{
+		case "stop":					
+			if($AI_본관거미등장 == FALSE)
+				RunScript("본관거미", "천정귀신.mbspider_appear");
+			break;
+
+		case "chase":
+			RunScript("본관거미", "천정귀신.mbspider_return");			
+			break;
+
+		case "wait":
+		case "attack":
+		case "return":	
+		case "attack_ready":
+			break;
+		
+		case "stay":
+			RunScript("본관거미", "천정귀신.mbspider_chase");
+			break;	
+	}
+
+	$AI_본관거미등장 = TRUE;
+}
+
+mbspider_check()
+{			
+	if($게임모드 == 0 || $게임모드 == 4)
+	{
+		DeleteObject("");
+		return;
+	}
+
+	RunScript("본관거미", "천정귀신.mbspider_status");	
+}
+
+mbspider_out()
+{
+	if($게임모드 == 0 || $게임모드 == 4)
+	{
+		DeleteObject("");
+		return;
+	}
+
+	if($AI_본관거미등장 == FALSE)
+		return;
+
+	$AI_본관거미등장 = FALSE;
+	if(TakeObjValue("본관거미", "status") == "chase" || TakeObjValue("본관거미", "status") == "attack_ready")	
+		RunScript("본관거미", "천정귀신.mbspider_return");	
+}

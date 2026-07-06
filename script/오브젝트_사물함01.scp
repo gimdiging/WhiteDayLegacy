@@ -1,0 +1,171 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000			오브젝트_사물함01.scp
+//
+//	熱血man: agneau				last update: 2001.07.05
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "door " + $G_File);
+	for($i = 1; $i < 6; $i++)
+		SendMessage("", "스크립트설정", "dummy" + $i + " null");
+	SetObjValue("OpenFlag", 0);
+	SetObjValue("Ghost", 0);
+}
+
+Init1반()
+{
+	Init();
+	SetObjValue("Ghost", 1);
+}
+
+Init3반()
+{
+	Init();
+	SetObjValue("Ghost", 2);
+}
+
+Init4반()
+{
+	Init();
+	SetObjValue("Ghost", 3);
+}
+
+Init5반()
+{
+	Init();
+	SetObjValue("Ghost", 4);
+}
+
+Init7반()
+{
+	Init();
+	SetObjValue("Ghost", 5);
+}
+
+Init9반()
+{
+	Init();
+	SetObjValue("Ghost", 6);
+}
+
+Init10반()
+{
+	Init();
+	SetObjValue("Ghost", 7);
+}
+
+Init12반()
+{
+	Init();
+	SetObjValue("Ghost", 8);
+}
+
+pick()
+{
+	if(GetObjValue("MotionName") == "열기" || GetObjValue("MotionName") == "닫기")
+	{
+		SendMessage("", "캐쉬초기화", "");
+		return "";
+	}
+
+	if($G_LightFactor <= $standard_light)
+		return "보기";
+
+	return "잡기";
+}
+
+click()
+{
+	if($G_LightFactor < $standard_light)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s4"));	
+		return;
+	}	
+
+	$OpenFlag = GetObjValue("OpenFlag");
+	$Ghost = GetObjValue("Ghost");
+	SendMessage("", "시끄러워", "1");
+
+	switch($OpenFlag)
+	{
+		case 0:
+			SendMessage("", "애니메이션", "열기");
+			SetObjValue("OpenFlag", 1);
+			break;
+
+		case 1:
+			SendMessage("", "애니메이션", "닫기");
+			SetObjValue("OpenFlag", 0);
+			break;
+	}
+
+	if($OpenFlag == 0 && $Ghost != 0)
+	{
+		$appear = Random(3);
+
+		if($appear == 1)
+		RunScript("", "오브젝트_사물함01.samulclassappear");
+	}
+}
+
+samulclassappear()
+{
+	$Ghost = GetObjValue("Ghost");
+
+	if(Random(2))
+	LoadObject("WObjNPC", "사물함귀신","*scale 0.50 *pet 캐릭터_젊은은미.pet  *block 0 *group -1 *optimize *pos 0.00 0.00 0.00  *rot 0.00 0.00 0.00 *FlagShow 1 *Show 1");
+	else
+	LoadObject("WObjNPC", "사물함귀신","*scale 0.50 *pet 지현머리통.pet  *block 0 *group -1 *optimize *pos 0.00 0.00 0.00  *rot 0.00 0.00 0.00 *FlagShow 1 *Show 1");
+
+	if($Ghost == 1)
+	SendMessage("사물함귀신", "위치@", "-1835.40 20.10 1355.50");
+	else if($Ghost == 2)
+	SendMessage("사물함귀신", "위치@", "-1979.29 -19.31 719.49");
+	else if($Ghost == 3)
+	SendMessage("사물함귀신", "위치@", "-2001.70 -1.20 403.10");
+	else if($Ghost == 4)
+	SendMessage("사물함귀신", "위치@", "-1977.50 -18.70 77.90");
+	else if($Ghost == 5)
+	SendMessage("사물함귀신", "위치@", "-1979.70 110.30 1360.00");
+	else if($Ghost == 6)
+	SendMessage("사물함귀신", "위치@", "-1977.30 108.20 720.40");
+	else if($Ghost == 7)
+	SendMessage("사물함귀신", "위치@", "-1834.40 147.60 399.40");
+	else if($Ghost == 8)
+	SendMessage("사물함귀신", "위치@", "-1840.50 149.20 -249.50");
+
+	SetTimer(0.1,"오브젝트_사물함01.samulclass");
+}
+
+samulclass()
+{
+	SendMessage("사운드", "연주", "도플_하우링.wav");
+	SendMessage("사물함귀신", "발광색", "Recursive 90 131 181");	
+	SendMessage("사물함귀신", "발광", "Recursive on");
+	SendMessage("사물함귀신", "쳐다보기", "유저 100");
+	SendMessage("유저", "쳐다보기", "사물함귀신 100");
+	SendMessage("유저", "이동속도", "0.5");
+	SendMessage("유저", "픽금지", "on");
+	SetTimer(3, "오브젝트_사물함01.samulclassdamage");
+}
+samulclassdamage()
+{
+	SendMessage("유저", "이동속도", "1");
+	SendMessage("유저", "픽금지", "off");
+	SendMessage("사운드", "연주", "귀신공격01.wav");
+	SendMessage("사운드", "연주", "따귀_데미지.wav");
+	SendMessage("유저", "쳐다보지말기", "");
+	SendMessage("카메라", "흔들기", "1");
+	LoadObject("WObjPanel", "", "*diffuse ff0000 *delay 0.3 *type 1");
+	SendMessage("카메라", "공격", "40 10 5 75 10 0.8"); 				
+	DeleteObject("사물함귀신");
+}

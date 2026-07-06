@@ -1,0 +1,46 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y
+//
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000			오브젝트_전기판넬.scp
+//
+//	熱血man: gimdiging		last update: 2018.12.23
+//  ------------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "handle " + $G_File);
+}
+
+pick()
+{
+	if($문_전기제어실 == UNLOCK && $문_전기제어실1 == LOCK)
+		return "잡기";
+
+	return "보기";
+}
+
+click()
+{
+	if($문_전기제어실 == UNLOCK && $문_전기제어실1 == LOCK)
+	{
+	SendMessage("자막", "문자출력후대기", GetString("s188"));
+	SendMessage("사운드", "연주", "신관_카드키록해제.wav");
+	$문_전기제어실1	= UNLOCK;
+	return;
+	}
+
+	if($신관_세환_은미이벤트 == 1 && $경보기전원공급 == 1)
+	{
+	$경보기전원공급 = 2;
+	SendMessage("사운드","연주","data/sound/대형판넬레버.wav");
+	SendMessage("자막", "문자출력후대기", GetString("s189"));
+	return;
+	}
+	SendMessage("자막", "문자출력후대기", GetString("s208"));
+}

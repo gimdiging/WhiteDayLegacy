@@ -1,0 +1,94 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000			오브젝트_의자03.scp
+//
+//	熱血man: agneau			last update: 2001.04.27
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "chair " + $G_File);
+	SendMessage("", "스크립트설정", "stool " + $G_File + ".foot");
+	SendMessage("", "스크립트설정", "dummyA null");
+	SendMessage("", "스크립트설정", "dummyB null");
+	
+	SendMessage("", "픽거리설정", "200 300");	
+	SetObjValue("state", "stand");
+	SetObjValue("MotionName", "서있기");
+
+	SendMessage("", "값지정", "*openscript 오브젝트_의자03.collide");
+}
+
+pick()
+{
+//	if(GetObjValue("MotionName") == "서있기" || GetObjValue("MotionName") == "세우기" || GetObjValue("MotionName") == "리복")
+//	{
+//		SendMessage("", "캐쉬초기화", "");
+//		return "";
+//	}	
+
+	if(GetObjValue("MotionName") == "리복완성" || GetObjValue("MotionName") == "넘어져있기")
+		return "잡기";			
+
+	return "";
+}
+
+click()
+{	
+	SendMessage("", "애니메이션", "세우기");
+	SetObjValue("state", "stand");	
+}
+
+foot.pick()
+{
+	if(GetObjValue("MotionName") == "서있기")
+		return "사다리오르기";
+
+	return "";
+}
+
+foot.click()
+{
+	if(CheckHeight(GetObjPos(""), GetObjPos("유저")) > 50)			
+		return;	
+
+	if(CheckHeight(GetObjPos(""), GetObjPos("유저", "머리")) < 50)
+		SendMessage("자막", "문자출력후대기", GetString("s156"));	
+	else
+		SendMessage("유저", "오르기", "1층방화셔터앞의자 머리");
+}
+
+turn_over()
+{
+	RunScript("1층방화셔터앞의자", "오브젝트_의자03.floor");
+	SendMessage("1층방화셔터앞의자", "위치y", "-20");
+	SendMessage("카메라", "카메라떨림", "50 10 0.6");
+	SendMessage("카메라", "카메라떨림", "20 20 1");	
+}
+
+floor()
+{
+	SendMessage("", "애니메이션", "리복");
+	SetObjValue("state", "floor");
+}
+
+collide()
+{		
+	if(TakeObjValue("1층방화셔터앞의자", "state") == "stand")
+	{
+		SendMessage("1층방화셔터앞의자", "애니메이션", "리복");
+		ChangeObjValue("1층방화셔터앞의자", "state", "floor");
+	}
+	else
+	{
+		SendMessage("1층방화셔터앞의자", "애니메이션", "세우기");
+		ChangeObjValue("1층방화셔터앞의자", "state", "stand");
+	}	
+}

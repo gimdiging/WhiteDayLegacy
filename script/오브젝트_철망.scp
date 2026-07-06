@@ -1,0 +1,175 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000				오브젝트_철망.scp
+//
+//	熱血man: agneau			last update: 2001.04.26
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "handle " + $G_File);		
+	SetObjValue("step", 0);
+}
+
+Init화장실쪽철망()
+{
+	Init();
+	SendMessage("", "픽거리설정", "300 500");
+	SetObjValue("type", 1);
+	SetObjValue("ObjName", "화장실쪽철망");
+	if($b_화장실쪽철망 == 1)
+		DeleteObject("");
+}
+
+Init기계실습실쪽철망()
+{
+	Init();
+	SetObjValue("type", 2);
+	SetObjValue("ObjName", "기계실쪽철망");
+	if($b_기계실쪽철망 == 1)
+		DeleteObject("");
+}
+
+Init가정실습실통로()
+{
+	Init();
+	SetObjValue("type", 3);
+	SetObjValue("ObjName", "가정실습실통로");
+	if($b_가정실습실통로 == 1)
+		DeleteObject("");
+}
+
+pick()
+{
+	if(GetValue("$b_" + GetObjValue("ObjName")) == 1)
+		return "";
+
+	$Step = GetObjValue("step");
+
+	if(GetObjValue("type") == 1)
+	{
+		if($Step == 0 || $G_LightFactor <= $standard_light)
+			return "보기";
+		else
+		{
+			if($G_UserItem == "니퍼")
+				return "i니퍼";
+			return "잡기";
+		}
+	}		
+
+	if($Step == 0)
+		return "보기";
+	else
+	{
+		if($G_UserItem == "니퍼")
+			return "i니퍼";
+		return "잡기";
+	}			
+}
+
+click()
+{
+	$Step = GetObjValue("step");
+
+	if($유저_조명아이템장비 == FALSE)
+		{
+			SendMessage("자막", "문자출력후대기", GetString("s4"));	
+			return;
+		}
+
+	if(GetObjValue("type") == 1)
+	{
+		if($Step == 0)
+		{
+			SendMessage("자막", "문자출력후대기", GetString("s166"));
+			SetObjValue("step", 1);
+			return;
+		}		
+		
+		if(CheckHeight(GetObjPos("유저"), GetObjPos("")) > 200)
+		{
+			SendMessage("자막", "문자출력후대기", GetString("s167"));			
+			return;
+		}
+
+		if($G_UserItem == "니퍼")							
+		{
+			KillSound();
+			$Mission1_철망 = ON;			
+		}
+		else
+			SendMessage("자막", "문자출력후대기", GetString("s168"));
+
+		return;
+	}
+		
+	if($Step == 0)
+	{
+		if(GetObjValue("type") == 2)
+		SendMessage("자막", "문자출력후대기", GetString("s169"));
+		else if(GetObjValue("type") == 3)
+		SendMessage("자막", "문자출력후대기", GetString("s952"));
+		SetObjValue("step", 1);
+		return;
+	}
+	
+	if($G_UserItem == "니퍼")
+		KillSound();		
+	else
+		SendMessage("자막", "문자출력후대기", GetString("s168"));
+}
+
+KillSound()
+{
+	SendMessage("자막", "활성화", "");
+	SendMessage("자막", "와이드모드", "켜기");
+	SendMessage("사운드", "연주", "data/sound/event/철망자르는니퍼.wav");
+	SetValue("$b_" + GetObjValue("ObjName"), 1);
+	SetTimer(5, "KillItem");	
+}
+
+KillItem()
+{		
+	SendMessage("", "페이드", "Recursive 1 1 0");
+
+	if(GetObjValue("type") == 1)
+		SendMessage("자막", "문자출력", "4," + GetString("s170"));
+	else if(GetObjValue("type") == 2)
+	{
+		SendMessage("자막", "문자출력", "4," + GetString("s170"));
+//		SendMessage("유저", "폐기", "@니퍼");
+		SendMessage("기계실통로발판", "켜기", "");
+		SetTimer(0,"e_핸드폰메시지._본관1기계실습실이벤트");
+	}	
+	else if(GetObjValue("type") == 3)
+	{
+		SendMessage("자막", "문자출력", "4," + GetString("s170"));
+		SendMessage("유저", "폐기", "@니퍼");
+	}	
+	SendMessage("사운드", "연주", "data/sound/아이템획득.wav");
+	SetTimer(1,"Release");
+}
+
+Release()
+{
+	DeleteObject("");
+	SendMessage("자막", "와이드모드", "끄기");
+	SendMessage("자막", "비활성", "");
+}
+
+near()
+{
+	$본관1_세환_환풍통로오르기 = FALSE;
+	SendMessage("통로발판", "캐쉬초기화", "");
+
+	if($신관_세환_은미이벤트 == 0)
+		RunScript("정찰용수위", "캐릭터_수위._화장실쪽환풍구Out");
+}

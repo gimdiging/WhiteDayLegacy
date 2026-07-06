@@ -1,0 +1,181 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000				오브젝트_냉장고.scp
+//
+//	熱血man: akekakek		last update: 2000.08.29
+//  --------------------------------------------------
+// 다이나믹 라이트를 넣으려 했으나 실패함.
+// ani-ray01
+Init()
+{
+	SendMessage("","스크립트설정","handle " + $G_File);
+	SendMessage("","스크립트설정","dummy0 " + "null");
+	SendMessage("","스크립트설정","dummy1 " + "null");
+	SendMessage("","스크립트설정","dummy " + "null");
+
+	SendMessage("", "스크립트설정", "tow " + $G_File + ".tow");
+
+	SendMessage("", "페이드", "ani-ray01 0 1 0");
+
+	
+	SetObjValue("MotionName", "");
+	SetObjValue("OpenFlag", 0);
+
+//	SetObjValue("냉장고에있는토우상태",0); 
+//	LoadObject("WObjDyLight", "냉장고먼저라이트", "*pos "+ FindPoint("냉장고라이트") +" *diffuse ffffff");// cc9542");
+//	SendMessage("냉장고먼저라이트", "끄기", "");
+}
+
+tow.pick()
+{
+	if($본2_영호_토우굽기단계 < 1)
+		return "";
+
+	if($G_UserItem == "냉장고용뜨거운토우")
+	{
+		return "i뜨거운토우";
+	}
+
+	if($본2_영호_냉장고에있는토우상태 == 0)
+		return "";
+	else
+		return "잡기";
+
+}
+
+tow.click()
+{
+	if($본2_영호_토우굽기단계 < 1)
+		return;
+
+	if($본2_영호_냉장고에있는토우상태 == 1)
+	{
+		SendMessage("유저", "획득", "냉장고용뜨거운토우");
+		SendMessage("자막", "문자출력", "3," +  GetString("it_277"));
+		SendMessage("냉장고용뜨거운토우", "켜기", "");
+		SendMessage("냉장고용뜨거운토우", "페이드", "Recursive 1 1 0");
+		$본2_영호_냉장고에있는토우상태 = 0;
+		return;
+	}
+	if($본2_영호_냉장고에있는토우상태 == 2)
+	{
+		SendMessage("유저", "획득", "냉장고용차가운토우");
+		SendMessage("자막", "문자출력", "3," +  GetString("it_262"));
+		SendMessage("냉장고용차가운토우", "켜기", "");
+		SendMessage("냉장고용차가운토우", "페이드", "Recursive 1 1 0");
+		$본2_영호_냉장고에있는토우상태 = 0;
+		$본2_영호_토우굽기단계 = 2; 
+		return;
+	}
+			
+	if($G_UserItem == "냉장고용뜨거운토우")
+	{
+		SendMessage("유저", "폐기", "냉장고용뜨거운토우");
+		SendMessage("냉장고용뜨거운토우", "켜기", "");
+		SendMessage("냉장고용뜨거운토우", "페이드", "Recursive 1 0 1");
+		$본2_영호_냉장고에있는토우상태 = 1;
+	}
+}
+
+pick()
+{
+	if(GetObjValue("MotionName") == "열기" || GetObjValue("MotionName") == "닫기")
+	{
+		SendMessage("", "캐쉬초기화", "");
+		return "";
+	}
+
+	return "잡기";
+}
+//냉장고라이트
+click()
+{
+	$OpenFlag	= GetObjValue("OpenFlag");
+	SendMessage("", "시끄러워", "0");
+	
+	switch($OpenFlag)
+	{
+		case 0:
+		{
+			$본2_영호_냉장고문열렸나 = 1;
+			$본2_영호_냉장고변수 = 0;
+			SendMessage("", "애니메이션", "열기");
+//			SendMessage("배경", "켜기", "freezer"); // 냉장고용
+			SendMessage("타이머", "스크립트설정", "1.26 0 1 " + $G_File + "._불켜기");
+			
+			if(GetObjValue("MotionName") == "열기")
+			{
+				SetObjValue("OpenFlag", $OpenFlag = 1);
+			}
+			return;
+		}
+		case 1:
+		{
+			$본2_영호_냉장고문열렸나 = 0;
+			SendMessage("", "애니메이션", "닫기");
+//			SendMessage("배경", "끄기", "freezer"); // 냉장고용
+			SendMessage("타이머", "스크립트설정", "1.36 0 1 " + $G_File + "._불끄기");
+			if(GetObjValue("MotionName") == "닫기")
+			{
+				if($본2_영호_냉장고에있는토우상태 == 1)
+				{
+					$본2_영호_냉장고변수 = 1;
+					SetTimer(4,"오브젝트_냉장고._토우식히기끝");
+				}
+				
+				SetObjValue("OpenFlag", $OpenFlag = 0);
+			}
+			return;
+		}
+	}
+}
+
+_사라져()
+{
+	SendMessage("냉장고용뜨거운토우", "끄기", "");
+}
+
+_불켜기()
+{
+	SendMessage("배경", "켜기", "freezer"); // 냉장고용
+}
+
+_불끄기()
+{
+	SendMessage("배경", "끄기", "freezer"); // 냉장고용
+}
+
+charge()
+{
+}
+
+_켜기냉장소스몰등()
+{
+	SendMessage("냉장고먼저라이트", "켜기", "");
+}
+
+_끄기냉장소스몰등()
+{
+	SendMessage("냉장고먼저라이트", "끄기", "");
+}
+
+_토우식히기끝()
+{
+	if($본2_영호_냉장고변수 == 1)
+	{
+		SendMessage("냉장고용차가운토우", "켜기", "");
+		SendMessage("냉장고용뜨거운토우", "페이드", "Recursive 1 1 0");					
+		SendMessage("냉장고용차가운토우", "페이드", "Recursive 1 0 1");
+		SendMessage("냉장고용차가운토우", "파티클생성", "*origin pos " + FindPoint("차가워") + " " + GetWDBParticle("particle2.wdb", "냉장고", "파티클내용") );
+		SendMessage("타이머", "스크립트설정", "1 0 1 " + $G_File + "._사라져");
+
+		$본2_영호_냉장고에있는토우상태 = 2;
+	}
+}

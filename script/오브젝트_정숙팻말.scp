@@ -1,0 +1,126 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000			오브젝트_정숙팻말.scp
+//
+//	熱血man: matzzang		last update: 2000.09.26
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "board " + $G_File);
+	SendMessage("", "픽거리설정", "200 300");
+	SetObjValue("MotionName", "서있기");	
+	SetObjValue("status", 0);	
+}
+
+pick()
+{
+	if(GetObjValue("MotionName") != "넘어져있기")
+	{
+		SendMessage("", "캐쉬초기화", "");
+		return "";
+	}
+
+	return "잡기";
+}
+
+click()
+{	
+	SendMessage("", "애니메이션", "#서기");
+        RunScript("","_whiteday.FlashBack");
+	if(GetObjValue("status") == 1)			
+		SetTimer(0.6, "Rotate *obj " + GetObjName());
+
+	SetObjValue("status", 0);
+}
+
+///////////////////////// 본관1 ///////////////////////
+
+_넘어져1()
+{	
+	RunScript("정숙팻말", "오브젝트_정숙팻말.floor1");
+}
+
+
+_넘어져2()
+{			
+	RunScript("정숙팻말", "오브젝트_정숙팻말.floor2");
+}
+
+//////////////////////// 본관2 ///////////////////////
+
+_넘어져A()
+{	
+	RunScript("1층정숙팻말", "오브젝트_정숙팻말.floor1");
+}
+
+_넘어져B()
+{			
+	RunScript("1층정숙팻말", "오브젝트_정숙팻말.floor2");
+}
+
+_넘어져C()
+{	
+	RunScript("2층정숙팻말", "오브젝트_정숙팻말.floor1");
+}
+
+_넘어져D()
+{			
+	RunScript("2층정숙팻말", "오브젝트_정숙팻말.floor2");
+}
+
+///////////////////////////////////////////////////////
+
+floor1()
+{
+	if(GetObjValue("status") == 0)
+	{
+		SetObjValue("status", 1);
+		if(GetObjName() != "정숙팻말")
+			SendMessage("", "회전", "-90");
+		else
+			SendMessage("", "회전", "0");
+		SendMessage("", "애니메이션", "넘어지기");	
+		SendMessage("사운드", "연주", "data/sound/간판넘어지는소리.wav");
+                RunScript("","_whiteday.FlashBack");
+		SendMessage("", "캐쉬초기화", "");	
+		if($EnterObj != "정찰용수위")
+			SendMessage("", "시끄러워", "2");
+	}
+}
+
+floor2()
+{
+	if(GetObjValue("status") == 0)
+	{
+		SetObjValue("status", 2);
+
+		if(GetObjName() != "정숙팻말")
+			SendMessage("", "회전", "90");
+		else
+			SendMessage("", "회전", "180");
+
+		SendMessage("", "애니메이션", "넘어지기");
+		SendMessage("사운드", "연주", "data/sound/간판넘어지는소리.wav");	
+                RunScript("","_whiteday.FlashBack");
+		SendMessage("", "캐쉬초기화", "");	
+		if($EnterObj != "정찰용수위")
+			SendMessage("", "시끄러워", "2");
+	}		
+}
+
+Rotate()
+{
+
+	if(GetObjName() != "정숙팻말")
+		SendMessage("", "회전", "-90");
+	else
+		SendMessage("", "회전", "0");
+}

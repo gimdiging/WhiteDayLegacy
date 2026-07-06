@@ -1,0 +1,77 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  S c r i p t F i l e 
+//
+//  (C) Sonnori 2000						형체있는인간.scp
+//
+//	熱血man: JK, gimdiging					last update: 2018.01.06
+//  ------------------------------------------------------
+
+Init()
+{
+	SendMessage("", "충돌체크", "off");
+	SendMessage("", "발광색", "Recursive 38 122 217");
+	SendMessage("", "발광", "Recursive on");
+}
+
+_형체있는인간0()
+{
+	if($게임모드 == 0 || $게임모드 == 4)
+		return;
+
+	if($현재스테이지 != "본관1" && $현재스테이지 != "본관2" && $현재스테이지 != "신관")
+		return;
+
+	$AI_형체있는인간등장++;
+	if($AI_형체있는인간등장 == 4)
+	$AI_형체있는인간등장 = 1;
+
+	SendMessage("형체있는인간" + $AI_형체있는인간등장, "위치", "" + GetObjPos("유저"));
+	SendMessage("형체있는인간" + $AI_형체있는인간등장, "쳐다보기", "유저");
+	SendMessage("형체있는인간" + $AI_형체있는인간등장, "페이드", "Recursive 0 0 0");
+	SetTimer(0.1, "형체있는인간._형체있는인간1");
+}
+
+_형체있는인간1()
+{
+	$Y0 = GetObjPosY("유저");
+	$Y1 = GetObjPosY("형체있는인간" + $AI_형체있는인간등장);
+
+	$Y2 = $Y0 - $Y1;
+
+	if(xz_distance(GetObjPos("유저"), GetObjPos("형체있는인간" + $AI_형체있는인간등장)) > 500)
+		SendMessage("형체있는인간" + $AI_형체있는인간등장, "위치", "" + GetObjPos("유저"));
+
+	if(SightRange("유저", "형체있는인간" + $AI_형체있는인간등장, 35))
+	{
+		if($Y2 < 35 && $Y2 > -35 && xz_distance(GetObjPos("유저"), GetObjPos("형체있는인간" + $AI_형체있는인간등장)) < 200 && $AI_형체있는인간 == ON)
+		{
+			SendMessage("형체있는인간" + $AI_형체있는인간등장, "페이드", "Recursive 0 1 1");
+			SendMessage("카메라", "FOV변환", "75 30 0.2");
+			SendMessage("사운드", "연주", "data/sound/macro/빵02.wav");
+			SendMessage("유저", "빨리돌기포인트", "" + GetObjPos("형체있는인간" + $AI_형체있는인간등장));
+			SendMessage("유저", "쳐다보기", "형체있는인간" + $AI_형체있는인간등장 + " 1000");
+			SetTimer(1, "형체있는인간._형체있는인간2");
+			return;
+		}
+	}
+
+	SendMessage("형체있는인간" + $AI_형체있는인간등장, "빨리돌기포인트", "" + GetObjPos("유저"));
+	SetTimer(0.1, "형체있는인간._형체있는인간1");
+}
+
+_형체있는인간2()
+{
+	SendMessage("유저", "쳐다보지말기", "");
+	SendMessage("카메라", "FOV변환", "25 75 0.5");
+	SetTimer(0, "형체있는인간._형체있는인간3");
+}
+
+_형체있는인간3()
+{
+	SendMessage("형체있는인간" + $AI_형체있는인간등장, "위치", "0.0 0.0 0.0");
+	SetTimer(60, "형체있는인간._형체있는인간0");
+}

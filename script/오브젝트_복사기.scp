@@ -1,0 +1,374 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//						I t e m S c r i p t F i l e 
+//
+//  (C) Sonnori 2000			오브젝트_복사기.scp
+//
+//	熱血man: matzzang		last update: 2000.07.22
+//  --------------------------------------------------
+
+Init()
+{	
+	SendMessage("", "스크립트설정", "map " + $G_File + ".map");
+	SendMessage("", "스크립트설정", "button " + $G_File + ".button");	
+	SendMessage("", "스크립트설정", "open " + $G_File);
+	SendMessage("", "스크립트설정", "table " + $G_File + ".table");
+	SendMessage("", "스크립트설정", "secret_door " + $G_File + ".door");	
+	SendMessage("", "스크립트설정", "dummyA null");
+	SendMessage("", "스크립트설정", "dummyB null");
+	SendMessage("", "스크립트설정", "dummyC null");
+
+	if($b_강철제국 == 0 && Version() != "Demo")
+		SendMessage("", "스크립트설정", "collection " + $G_File + ".collect");
+	else
+		SendMessage("", "페이드", "se 0 0 0");
+	
+	SetObjValue("Step", 0);
+	SetObjValue("paper_step", 0);
+	SetObjValue("button_count", 0);
+	SetObjValue("OpenFlag", 0);
+	SetObjValue("collection_step", 0);
+	SetObjValue("place", 0);
+
+	SetObjValue("MotionName", "");
+	SetObjValue("복사기상태", OFF);
+
+	SendMessage("", "페이드", "lighting_ray 0 0 0");
+
+	if($b_정전공지 == 1)
+		SendMessage("", "페이드", "paper 0 0 0");	
+}
+
+door.pick()
+{
+	if(GetObjValue("MotionName") == "옆문열기" || GetObjValue("MotionName") == "옆문닫기" || GetObjValue("MotionName") == "작동")
+	{
+		SendMessage("", "캐쉬초기화", "");
+		return "";
+	}
+
+	if(GetObjValue("복사기상태") == OFF)
+	{
+		if($G_LightFactor <= $standard_light)
+			return "보기";
+
+		return "잡기";
+	}
+
+	return "";	
+}
+
+door.click()
+{
+	if($G_LightFactor < $standard_light)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s4"));	
+		return;
+	}
+
+	if($b_정전공지 == 0)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s16"));
+		SendMessage("사운드", "연주", "data/sound/돌리는문잠긴것.wav");
+		return;
+	}
+
+	$OpenFlag = GetObjValue("OpenFlag");
+
+	switch($OpenFlag)
+	{
+		case 0:
+			SendMessage("", "애니메이션", "옆문열기");
+			SetObjValue("OpenFlag", 1);
+			break;
+
+		case 1:
+			SendMessage("", "애니메이션", "옆문닫기");
+			SetObjValue("OpenFlag", 0);
+			break;
+	}
+}
+
+collect.pick()
+{
+	if($b_강철제국 == 1 || GetObjValue("OpenFlag") == 0)
+		return "";
+
+	if(GetObjValue("collection_step") == 0 || $G_LightFactor <= $standard_light)
+		return "보기";
+
+	return "잡기";
+}
+
+collect.click()
+{
+	if($Mission3_복사기ON == ON)
+	{
+		SendMessage("자막", "문자출력", "3," + GetString("s142"));
+		SendMessage("유저", "공격", "복사기");
+		return;
+	}
+
+	if($G_LightFactor < $standard_light)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s4"));	
+		return;
+	}
+
+	$step = GetObjValue("collection_step");
+
+	if($step == 0)
+	{
+		SetObjValue("collection_step", 1);
+		SendMessage("자막", "문자출력후대기", GetString("s143"));				
+	}
+	else
+	{
+		SetTimer(0,"collection.Hidden");
+		SendMessage("유저", "획득", "강철제국");
+		SendMessage("", "페이드", "se 1 1 0");
+		SendMessage("자막", "문자출력", "3," + GetString("s144"));
+		$b_강철제국 = 1;
+		$컬렉션아이템갯수++;
+	}
+}
+
+map.pick()
+{
+	if($b_정전공지 == 1 || GetObjValue("복사기상태") == ON || GetObjValue("button_count") == 0)
+		return "";
+
+	if(GetObjValue("paper_step") == 0 || $G_LightFactor <= $standard_light)
+		return "보기";
+
+	return "잡기";
+}
+
+map.click()
+{
+	if($G_LightFactor < $standard_light)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s4"));	
+		return;
+	}
+
+	$Paper_Step = GetObjValue("paper_step");
+
+	if($Paper_Step == 0)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s145"));
+		SetObjValue("paper_step",1);
+		return;
+	}
+	
+	if($Paper_Step == 1)
+	{
+		SendMessage("", "페이드", "paper 3 1 0");
+		SendMessage("다이어리", "획득", "정전 공지");
+		SendMessage("자막", "문자출력", "3," + GetString("s146"));
+		SendMessage("사운드", "연주", "data/sound/아이템획득.wav");
+		SetObjValue("paper_step",2);		
+		$b_정전공지 = 1;
+		return;
+	}
+/*
+	if(GetObjValue("button_count") >= $special_event2 && $b_본관지도 == 0)
+	{
+		SendMessage("", "페이드", "paper 1 1 0");		
+		SendMessage("자막", "문자출력", "3,보물 지도를 얻었습니다.");
+		SendMessage("사운드", "연주", "data/sound/아이템획득.wav");	
+		SetObjValue("paper_step", $special_event2 + 2 );
+		SendMessage("", "캐쉬초기화", "");
+		$b_본관지도 = 1;
+	}*/
+}
+
+button.pick()
+{
+	if(GetObjValue("MotionName") == "열기" || GetObjValue("MotionName") == "닫기" || GetObjValue("MotionName") == "작동")
+	{
+		SendMessage("", "캐쉬초기화", "");
+		return "";
+	}
+
+	if(GetObjValue("복사기상태") == OFF)
+	{
+		if($G_LightFactor <= $standard_light)
+			return "보기";
+
+		return "잡기";
+	}
+
+	return "";	
+}
+
+button.click()
+{
+	if($G_LightFactor < $standard_light)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s4"));	
+		return;
+	}
+
+	if($Mission3_복사기ON == OFF)	
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s147"));
+	}
+	else if(GetObjValue("Step") != 2)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s148"));
+	}
+	else
+	{
+		if(GetObjValue("복사기상태") == OFF)
+		{
+			SetObjValue("button_count", GetObjValue("button_count") + 1);		
+			
+			SendMessage("", "애니메이션", "작동");
+			SendMessage("", "시끄러워", "3");
+			SendMessage("", "페이드", "lighting_ray 0 1 1");	
+			SetTimer(3.5, "light_on *obj 복사기");	
+
+			if(GetObjValue("place") == 1 && $Item_야광스틱충전 == FALSE)							
+				SetTimer(1.5, "glow *obj 야광스틱충전");
+
+			if(GetObjValue("button_count") == 1 && $b_정전공지 == 0)
+			{
+				SendMessage("", "페이드", "paper 0 1 1");								
+				SetTimer(5.5, "_종이나오기 *obj 복사기");
+//				$b_본관1지도 = 0;
+			}
+
+			SetObjValue("복사기상태", ON);			
+			SendMessage("타이머", "스크립트설정", "6.5 0 1" + $G_File + "._복사기정지 *obj 복사기");
+		}
+		else
+			SendMessage("자막", "문자출력후대기", GetString("s149"));
+	}
+
+	SendMessage("사운드", "연주", "복사기_스위치,data/sound/복사기_스위치.wav");
+}
+
+table.pick()
+{
+	if(GetObjValue("place") == 0 && $Item_야광스틱충전 == FALSE)
+	{
+		if($야광스틱 == 1)
+			return "잡기";
+
+		if($야광스틱 == 0)
+			return "보기";
+	}
+
+	if(GetObjValue("place") == 1 && $Item_야광스틱충전 == TRUE)
+		return "잡기";
+
+	return "";
+}
+
+table.click()
+{
+	$place = GetObjValue("place");
+	SendMessage("", "캐쉬초기화", "");
+
+	if($place == 0 && $Item_야광스틱충전 == FALSE && $야광스틱 == 0)
+	SendMessage("자막", "문자출력후대기", GetString("s951"));	
+
+	if($place == 0 && $Item_야광스틱충전 == FALSE && $야광스틱 == 1)
+	{
+	SetObjValue("place", 1);
+	SendMessage("유저", "폐기", "야광스틱");
+	SendMessage("유저", "아이템장비", "취소");
+	SendMessage("유저", "아이템장비취소", "");
+	LoadObject("WObjStaticBody", "야광스틱충전","*scale 1.0 *pet 아이템_야광봉.pet  *block 0 *group -1 *optimize *pos -831.1 10 1633.2 *rot 90.00 0.00 0.00 *FlagShow 1 *Show 1");
+	}
+	else if($place == 1 && $Item_야광스틱충전 == TRUE)
+	{
+	SetObjValue("place", 0);
+	SendMessage("유저", "획득", "야광스틱");
+	SendMessage("자막", "문자출력", "3," + GetString("it_902"));
+	SendMessage("야광스틱충전", "페이드", "Recursive 1 1 0");
+	SetTimer(2, "Release  *obj 야광스틱충전");
+	SendMessage("유저", "폐기", "양초");
+	}
+}
+
+_종이나오기()
+{
+	SendMessage("", "애니메이션", "종이나오기");
+}
+
+_복사기정지()
+{
+	SendMessage("", "캐쉬초기화", "");
+	SetObjValue("복사기상태", OFF);	
+}
+
+pick()
+{
+	if(GetObjValue("MotionName") == "열기" || GetObjValue("MotionName") == "닫기" || GetObjValue("MotionName") == "작동")
+	{
+		SendMessage("", "캐쉬초기화", "");
+		return "";
+	}
+
+	$Step = GetObjValue("Step");
+
+	if($Step == 0 || $G_LightFactor <= $standard_light)	
+		return "보기";	
+	
+	return "잡기";	
+}
+
+click()
+{
+	if($G_LightFactor < $standard_light)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s4"));	
+		return;
+	}
+
+	$Step = GetObjValue("Step");
+	if($Step == 0)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s150"));
+		SetObjValue("Step", $Step + 1);
+		return;
+	}
+	
+	if($Step == 1)
+	{
+		SendMessage("", "애니메이션", "열기");
+		SetObjValue("Step", 2);
+	}
+	else
+	{
+		SendMessage("", "애니메이션", "닫기");
+		SetObjValue("Step", 1);
+	}
+}
+
+light_on()
+{
+	SendMessage("", "페이드", "lighting_ray 0 0 0");
+	if(GetObjValue("place") == 1 && $Item_야광스틱충전 == FALSE)
+	{
+	$Item_야광스틱충전 = TRUE;
+	SendMessage("", "캐쉬초기화", "");
+	}
+}
+
+glow()
+{
+	SendMessage("", "발광", "bong on");
+}
+
+Release()
+{
+	DeleteObject("");
+}

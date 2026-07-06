@@ -1,0 +1,794 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//				C h a r a c t o r S c r i p t F i l e 
+//
+//  (C) Sonnori 2000				캐릭터_지현.scp
+//
+//	熱血man: agneau			last update: 2001.06.28
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "talk " + $G_File);
+	SendMessage("", "스크립트설정", "dummy null");
+	SendMessage("", "픽거리설정", "100 200");		
+	SendMessage("", "목각도제한", "-75");
+	SendMessage("", "위치", "0 0 0");
+
+	if (GetRegistry("Option\CostumeShow") == "1")
+	{
+		if (GetRegistry("Option\RemovedCostume") == "1")
+		SendMessage("", "ChangeMesh", "100_지현_cos.pet"); 
+		else
+		SendMessage("", "ChangeMesh", "지현_cos.pet"); 
+	}
+	else if (GetRegistry("Option\LowPolygon") == "0") 
+	    SendMessage("", "ChangeMesh", "지현_high.pet"); 	
+}
+
+InitGym()
+{
+	SendMessage("", "스크립트설정", "talk " + $G_File + ".gym");
+	SendMessage("", "스크립트설정", "dummy null");
+	SendMessage("", "픽거리설정", "100 200");		
+	SendMessage("", "목각도제한", "-75");
+	SendMessage("", "위치", "0 0 0");
+
+	if (GetRegistry("Option\CostumeShow") == "1")
+	{
+		if (GetRegistry("Option\RemovedCostume") == "1")
+		SendMessage("", "ChangeMesh", "100_지현_cos.pet"); 
+		else
+		SendMessage("", "ChangeMesh", "지현_cos.pet"); 
+	}
+	else if (GetRegistry("Option\LowPolygon") == "0") 
+	    SendMessage("", "ChangeMesh", "지현_high.pet"); 	
+}
+
+gym.pick()
+{
+	return "보기";
+}
+
+gym.click()
+{
+	SendMessage("자막", "문자출력후대기", GetString("s181"));
+}
+
+pick()
+{
+	if(GetObjValue("지진") == ON)
+	{
+		SendMessage("", "캐쉬초기화", "");
+		return "";
+	}
+
+	if($수위추적모드 == ON)
+		return "말하기";
+
+	if($대화단계 == -1 || $현재스테이지 == "강당")
+		return "";
+
+	if($대화상태 == ON)
+	{
+		SendMessage("", "캐쉬초기화", "");
+		return "";
+	}
+	
+	return "말하기";
+}
+
+click()
+{
+	if($수위추적모드 == ON)
+	{
+		SendMessage("자막", "문자출력", "3,......");
+		return;
+	}
+
+	$대화상태 = ON;
+//	SendMessage("", "애니메이션", "서있기");
+	SendMessage("자막", "실행함수", "캐릭터_지현." + $대화_지현);
+	RunScript("지현", "캐릭터_지현." + $대화_지현);
+}
+
+_대화10A()
+{
+	switch($대화단계)
+	{
+		case 0:
+			SendMessage("자막", "다이얼로그출력", "d10a_043");
+			break;
+		case 1:
+			$대화상태 = OFF;			
+			break;
+		case 2:
+			SendMessage("자막", "다이얼로그출력", "d10a_044");
+			break;
+		case 3:
+			$대화상태 = OFF;		
+			break;
+		case 4:
+			SendMessage("자막", "다이얼로그출력", "d10a_045");
+			break;
+		case 5:
+			$대화상태 = OFF;			
+			break;
+		case 6:
+			SendMessage("자막", "다이얼로그출력", "d10a_046");
+			break;
+		case 7:
+			$대화상태 = OFF;			
+			break;
+		case 8:
+			SendMessage("자막", "다이얼로그출력", "d10a_047");
+			break;		
+	}
+
+	if($대화단계 == 8)
+	{
+		$지현_호감도--;
+		$대화단계 = -1;
+		$대화상태 = OFF;
+		SendMessage("", "캐쉬초기화", "");
+		SendMessage("자막", "실행함수", "");
+		return;
+	}
+
+	$대화단계++;
+}
+
+_대화13B()
+{
+	switch($대화단계)
+	{
+		case 0:
+			SendMessage("자막", "다이얼로그출력", "d13b_023");
+			break;
+		case 1:
+			$대화상태 = OFF;			
+			break;
+		case 2:
+			SendMessage("자막", "다이얼로그출력", "d13b_024");
+			break;
+		case 3:
+			$대화상태 = OFF;		
+			break;
+		case 4:
+			SendMessage("자막", "다이얼로그출력", "d13b_025");
+			break;
+		case 5:
+			$대화상태 = OFF;			
+			break;
+		case 6:
+			SendMessage("자막", "다이얼로그출력", "d13b_026");
+			break;
+		case 7:
+			$대화상태 = OFF;			
+			break;
+		case 8:
+			SendMessage("자막", "다이얼로그출력", "d13b_027");
+			break;
+		case 9:
+			$대화상태 = OFF;			
+			break;		
+		case 10:
+			SendMessage("자막", "다이얼로그출력", "d13b_028");
+			break;		
+	}
+
+	if($대화단계 == 10)
+	{
+		$지현_호감도-=2;
+		$대화단계 = -1;
+		$대화상태 = OFF;
+		SendMessage("", "캐쉬초기화", "");
+		SendMessage("자막", "실행함수", "");
+		return;
+	}
+
+	$대화단계++;
+}
+
+_대화11A()
+{
+	switch($대화단계)
+	{
+		case 0:
+			SendMessage("자막", "다이얼로그출력", "d11a_1_001");
+			break;
+		case 1:
+			$대화상태 = OFF;			
+			break;
+		case 2:
+			SendMessage("자막", "다이얼로그출력", "d11a_1_002");
+			break;
+		case 3:
+			$대화상태 = OFF;		
+			break;
+		case 4:
+			SendMessage("자막", "다이얼로그출력", "d11a_1_003");
+			break;
+		case 5:
+			$대화상태 = OFF;			
+			break;
+		case 6:
+			SendMessage("자막", "다이얼로그출력", "d11a_1_004");
+			break;
+		case 7:
+			$대화상태 = OFF;			
+			break;
+		case 8:
+			SendMessage("자막", "다이얼로그출력", "d11a_1_005");
+			break;
+		case 9:
+			$대화상태 = OFF;			
+			break;		
+		case 10:
+			SendMessage("자막", "다이얼로그출력", "d11a_1_006");
+			break;
+		case 11:
+			$대화상태 = OFF;			
+			break;	
+		case 12:
+			SendMessage("자막", "다이얼로그출력", "d11a_1_007");
+			break;
+		case 13:
+			$대화상태 = OFF;			
+			break;	
+		case 14:
+			SendMessage("자막", "다이얼로그출력", "d11a_1_008");
+			break;
+		case 15:
+			$대화상태 = OFF;			
+			break;	
+		case 16:
+			SendMessage("자막", "다이얼로그출력", "d11a_1_009");
+			break;
+		case 17:
+			$대화상태 = OFF;			
+			break;	
+		case 18:
+			SendMessage("자막", "다이얼로그출력", "d11a_1_010");
+			break;		
+	}
+
+	if($대화단계 == 18)
+	{
+		$지현_호감도-=2;
+		$대화단계 = -1;
+		$대화상태 = OFF;
+		SendMessage("", "캐쉬초기화", "");
+		SendMessage("자막", "실행함수", "");
+		return;
+	}
+
+	$대화단계++;
+}
+
+////////////////////////////////////////////////////////
+//		 지현 AI
+//
+
+_지현.StartUp()
+{
+	$AI_지현 = OFF;	
+	SetObjValue("life", ON);
+	SetObjValue("move", 0);
+	SendMessage("", "자동발소리", "여운동");		
+}
+
+_지현.제자리()			// 음악실이벤트 이전, 미술실이벤트 이후
+{		
+	SetObjValue("follow", 0);
+	RunScript("지현", "캐릭터_지현._지현.첨부터");	
+}
+
+_지현.제자리2()			// 신관 서고
+{
+	SetObjValue("follow", 0);	
+	RunScript("지현", "캐릭터_지현._지현.첨부터");	
+	SetObjValue("backward", 1);
+}
+
+_지현.따라가기()		// 음악실이벤트 이후
+{
+	SetObjValue("follow", 1);
+	RunScript("지현", "캐릭터_지현._지현.첨부터");	
+}
+
+_지현.첨부터()
+{
+	$AI_지현 = ON;		
+	$NPC = "지현";
+	$대화상태 = OFF;
+
+	SetObjValue("find_target", 0);		// 관심대상물체관련
+	SetObjValue("weird_action", 0);		// 찝적대기관련
+	SetObjValue("chase", 0);			// 따라가기관련
+	SetObjValue("enemy", "");			// 데미지관련
+	SetObjValue("runaway", 0);			// 수위도망관련	
+	SetObjValue("단계", 0);
+	SetObjValue("지진", OFF);
+	SetObjValue("backward", 0);
+
+	SendMessage("", "걷기동작", "빨리걷기");
+	SendMessage("", "관심물체체크", "on");
+	SendMessage("", "캐쉬초기화", "");
+	SendMessage("자막", "말하는사람", "지현");				
+
+	if($지현_호감도 < $지현_방어거리_호감도기준)
+		$NPC_심리적방어거리 = $NPC_낮은호감도_방어거리;
+	else
+		$NPC_심리적방어거리 = $NPC_높은호감도_방어거리;
+		
+	SendMessage("", "거리체크", "on");		// 심리적 안정거리
+}
+
+_지현.Escape()
+{
+	SendMessage("", "NOCLIP", "on");
+	SetTimer(1, "NoClip");
+}
+
+NoClip()
+{
+	SendMessage("", "NOCLIP", "off");
+}
+
+_지현.Process()
+{
+	if($AI_지현 == OFF || GetObjValue("지진") == ON)
+		return;
+
+	if(GetObjValue("runaway") == 1)
+	{		
+		switch(GetObjValue("단계"))
+		{
+			case 0 :										
+				SendMessage("", "이동", FindPoint("수위이동위치01") + " 달리기");					
+				break;	
+			case 1 :					
+				SendMessage("", "이동", FindPoint("수위이동위치02") + " 달리기");					
+				break;	
+			case 2 :
+				SendMessage("", "이동", FindPoint("수위이동위치03") + " 달리기");
+				break;
+			case 3 :										
+				SendMessage("", "이동", FindPoint("수위이동위치04") + " 달리기");
+				break;
+			case 4 :
+				SendMessage("", "이동", FindPoint("수위이동위치05") + " 달리기");
+				break;	
+			case 5:					
+				SendMessage("", "이동", FindPoint("수위이동위치06") + " 달리기");
+				break;	
+			case 6 :					
+				if($현재스테이지 == "신관")
+					SendMessage("", "이동", FindPoint("수위이동위치07") + " 달리기");
+				else
+				{
+					SendMessage("", "이동", FindPoint("수위이동위치06") + " 달리기");
+					SetObjValue("단계", 4);
+				}
+				break;
+			case 7 :										
+				SendMessage("", "이동", FindPoint("수위이동위치08") + " 달리기");										
+				break;
+			case 8:															
+				SendMessage("", "이동", FindPoint("수위이동위치09") + " 달리기");
+				SetObjValue("단계", 0);
+				return;
+			case 9:
+				SendMessage("", "이동", FindPoint("수위이동위치10") + " 달리기");					
+				break;
+			case 10:
+				SendMessage("", "이동", FindPoint("수위이동위치11") + " 달리기");					
+				break;
+			case 11:															
+				SendMessage("", "이동", FindPoint("수위이동위치12") + " 달리기");
+				break;
+			case 12:															
+				SendMessage("", "이동", FindPoint("수위이동위치13") + " 달리기");
+				break;
+			case 13:															
+				SendMessage("", "이동", FindPoint("수위이동위치14") + " 달리기");
+				SetObjValue("단계", 1);
+				return;				
+		}		
+
+		SetObjValue("단계", GetObjValue("단계") + 1);
+	}
+
+	if(GetObjValue("find_target") == 1)
+	{
+		SetObjValue("find_target", 0);			
+		SendMessage("", "애니메이션", "서있기");		
+	}
+}
+
+_지현.damage()
+{	
+	switch(GetObjValue("enemy"))
+	{
+		case "정찰용수위":			
+			SendMessage("", "Stop", "");
+			SendMessage("", "애니메이션", "맞기");
+			SendMessage("유저", "공격", "지현");
+			if(GetObjValue("life") == ON)
+			{
+				SetObjValue("life", OFF);
+				SendMessage("사운드", "연주3d", GetObjPos("") + " 지현_데미지.wav");
+			}
+			break;
+		case "따귀":
+			if(xz_distance(GetObjPos(""), GetObjPos("유저")) < 100 && SightRange("", "유저", 45))
+				SendMessage("유저", "공격", "따귀");			
+			break;
+		case "발공격":
+			if(xz_distance(GetObjPos(""), GetObjPos("유저")) < 100 && SightRange("", "유저", 45))
+				SendMessage("유저", "공격", "발공격");
+			break;
+	}	
+}
+
+_지현.in70()
+{
+	if($AI_지현 == OFF || $대화상태 == ON || GetObjValue("지진") == ON || GetObjValue("backward") == 1 || GetObjValue("runaway") == 1)
+		return;		
+
+	SendMessage("", "쳐다보기", "유저 360");
+
+	if(GetObjValue("find_target") == 1)
+	{
+		SetObjValue("find_target", 0);
+		SendMessage("", "Stop", "");
+	}
+
+	SendMessage("", "빨리돌기포인트", GetObjPos("유저") + " *script 캐릭터_지현.backward");	
+}
+
+_지현.out70()
+{
+	if($AI_지현 == OFF || $대화상태 == ON || GetObjValue("지진") == ON || GetObjValue("backward") == 1 || GetObjValue("runaway") == 1)
+		return;	
+
+	if($지현_호감도 > $지현_방어거리_호감도기준)
+		SendMessage("", "애니메이션", "서있기");
+}
+
+_지현.in200()
+{	
+	if($AI_지현 == OFF || $대화상태 == ON || GetObjValue("지진") == ON || GetObjValue("backward") == 1 || GetObjValue("runaway") == 1)
+		return;	
+
+	if(GetObjValue("follow") == 1 && GetObjValue("chase") == 1)		// add
+	{
+		SetObjValue("chase", 0);
+		SendMessage("", "따라가기", "");
+		SendMessage("", "애니메이션", "서있기");
+		return;
+	}
+
+	if(SightRange("유저", "", 45) && $지현_호감도 < $지현_방어거리_호감도기준)
+	{		
+		if(SightRange("", "유저", 45))		
+			SendMessage("", "빨리돌기포인트", GetObjPos("유저") + " *script 캐릭터_지현.backward");			
+		else		
+			SendMessage("", "빨리돌기포인트", Perpendicular("유저", "") + " *script 캐릭터_지현.backward");		
+	}	
+}
+
+_지현.out200()
+{
+	if($AI_지현 == OFF || GetObjValue("지진") == ON || GetObjValue("backward") == 1 || GetObjValue("move") == 1 || GetObjValue("runaway") == 1)
+		return;	
+
+	if($지현_호감도 < $지현_방어거리_호감도기준)
+		SendMessage("", "애니메이션", "서있기");
+}
+
+_지현.in500()
+{
+	if($대화상태 == ON || GetObjValue("지진") == ON || GetObjValue("runaway") == 1)
+		return;		
+}
+
+_지현.out500()
+{
+	if($AI_지현 == OFF || $대화상태 == ON || GetObjValue("지진") == ON || GetObjValue("runaway") == 1)
+		return;		
+
+	if(GetObjValue("follow") == 1 && GetObjValue("find_target") == 0 && GetObjValue("chase") == 0)
+	{
+		SendMessage("", "따라가기", "유저");	// add
+		SetObjValue("chase", 1);
+	}
+}
+
+_지현.in1000()
+{
+	if($AI_지현 == OFF || GetObjValue("runaway") == 1 || GetObjValue("follow") == 0)
+		return;
+
+	SendMessage("", "걷기동작", "빨리걷기");	// add
+	SendMessage("", "따라가기", "유저");	// add
+}
+
+_지현.out1500()
+{
+	if($AI_지현 == OFF || GetObjValue("runaway") == 1 || GetObjValue("follow") == 0)
+		return;
+
+	SendMessage("", "걷기동작", "달리기");	// add
+	SendMessage("", "따라가기", "유저");	// add
+}
+
+backward()
+{	
+	if($AI_지현 == OFF || GetObjValue("지진") == ON || GetObjValue("runaway") == 1)
+		return;
+
+	SendMessage("", "애니메이션", "^%뒤로걷기.MTN");
+}
+
+_지현.Stare()
+{
+	if($AI_지현 == OFF || GetObjValue("지진") == ON || GetObjValue("move") == 1 || GetObjValue("chase") == 1 || GetObjValue("runaway") == 1)
+		return;	
+
+	if(GetObjValue("find_target") == 0)
+		SendMessage("", "쳐다보기", "유저 360");
+}
+
+_지현.StareNone()
+{
+	if($AI_지현 == OFF || GetObjValue("move") == 1 || GetObjValue("chase") == 1 || GetObjValue("runaway") == 1)
+		return;
+
+	if(GetObjValue("backward") == 1)
+		SendMessage("", "동작없이돌기", GetObjPos("유저") + " 240");
+
+	if(GetObjValue("find_target") == 0)
+		SendMessage("", "쳐다보지말기", "");
+}
+
+_지현.LookAt()		// 관심대상물체가 사정거리 안에 들어왔을 때(한번에 하나씩만 보도록 하자!)
+{
+	if($AI_지현 == OFF || $대화상태 == ON || GetObjValue("지진") == ON || GetObjValue("runaway") == 1)
+		return;	
+
+	SetObjValue("find_target", 1);
+	SendMessage("", "쳐다보기", "" + $strange);
+
+	if(GetObjValue("chase") == 0)
+		SendMessage("", "이동", $strange + " 걷기");	// add
+}
+
+_지현.LookNothing()
+{
+	if($AI_지현 == OFF || $대화상태 == ON || GetObjValue("runaway") == 1)
+		return;	
+
+	if(GetObjValue("find_target") == 1)
+	{
+		SetObjValue("find_target", 0);
+		SendMessage("", "쳐다보지말기", "");
+	}
+}
+
+_지현._똥침()
+{	
+	if($AI_지현 == OFF || ($대화상태 == ON && GetObjValue("stare") == 0))			
+		return;		
+
+	SendMessage("", "애니메이션", "서있기");
+	SendMessage("", "빨리돌기포인트", GetObjPos("유저") + " *script 캐릭터_지현._지현.attack_badguy");
+}
+
+_지현.Warn()
+{
+	if($AI_지현 == OFF || $대화상태 == ON || GetObjValue("지진") == ON || GetObjValue("runaway") == 1)			
+		return;		
+
+	if(SightRange("유저", "", 60))
+	{
+		SendMessage("", "애니메이션", "서있기");
+		SendMessage("", "빨리돌기포인트", GetObjPos("유저") + " *script 캐릭터_지현._지현.attack_badguy");
+	}
+}
+
+_지현.attack_badguy()
+{		
+	if($AI_지현 == OFF || $대화상태 == ON || GetObjValue("지진") == ON || GetObjValue("runaway") == 1)
+		return;	
+	
+	$대화단계 = -1;
+	SendMessage("", "캐쉬초기화", "");
+//	SetTimer(3, "_대화가능");
+
+	if(GetObjValue("weird_action") == 0)
+	{
+		SetObjValue("weird_action", 1);		
+		SendMessage("자막", "다이얼로그출력", "d00_008");		
+		return;
+	}
+		
+	$지현_호감도 -= 2;
+	SetObjValue("weird_action", 0);		
+	SendMessage("자막", "다이얼로그출력", "d00_009");
+
+	if(CheckHeight(GetObjPos("", "머리"), GetObjPos("유저", "머리")) < 50)			
+		SendMessage("", "애니메이션", "따귀");				
+	else	
+		SendMessage("", "애니메이션", "발공격");						
+}
+
+_대화가능()
+{
+	$대화상태 = OFF;
+}
+
+_지현.Quake()
+{
+	if($AI_지현 == OFF || GetObjValue("runaway") == 1)
+		return;
+
+	SetObjValue("지진", ON);
+	SetObjValue("find_target", 0);
+	SetObjValue("chase", 0);
+	SendMessage("", "Stop", "");
+	SendMessage("", "따라가기", "");
+	SendMessage("", "쳐다보지말기", "");
+	SendMessage("", "애니메이션", "%지진으로비틀.MTN");
+	SendMessage("사운드", "연주3d", GetObjPos("") + " 지현_지진.wav");
+	
+	SetTimer(2, "QuakeEnd");
+}
+
+QuakeEnd()
+{
+	SetObjValue("지진", OFF);
+	if(GetObjValue("move") == 1 && GetObjValue("step") < GetObjValue("stepNum") + 1)
+		SendMessage("", "이동", GetObjValue("movepoint" + GetObjValue("step")) + " 빨리걷기");	
+}
+
+_지현.RunAway()
+{
+	if($AI_지현 == OFF)
+		return;
+
+	SetObjValue("runaway", 1);
+	get_nextpoint();		
+	SendMessage("", "이동", FindPoint("" + $escape_point) + " 달리기");
+	SetTimer($NPC_지치는시간제한, "outofbreath");
+}
+
+outofbreath()
+{
+	if($AI_지현 == OFF)
+		return;
+
+	SetObjValue("runaway", 0);
+	SendMessage("", "Stop", "");
+	SendMessage("", "애니메이션", "지치기");
+}
+
+get_nextpoint()		// 추적실패후 순찰을 시작할 위치
+{
+	$escape_point = GetNearestRoute("");
+
+	switch($escape_point)
+	{		
+		case "수위이동위치01":
+			$current_goal = 0;
+			SetObjValue("단계", 1);
+			break;	
+
+		case "수위이동위치02":
+			$current_goal = 1;
+			SetObjValue("단계", 2);
+			break;
+
+		case "수위이동위치03":
+			$current_goal = 2;
+			SetObjValue("단계", 3);
+			break;
+
+		case "수위이동위치04":
+			$current_goal = 3;
+			SetObjValue("단계", 4);
+			break;
+
+		case "수위이동위치05":
+			$current_goal = 4;
+			SetObjValue("단계", 5);
+			break;
+
+		case "수위이동위치06":
+			$current_goal = 5;
+			SetObjValue("단계", 6);
+			break;		
+
+		case "수위이동위치07":	
+			$current_goal = 6;
+			SetObjValue("단계", 7);
+			break;		
+
+		case "수위이동위치08":	
+			$current_goal = 7;
+			SetObjValue("단계", 8);
+			break;	
+			
+		case "수위이동위치09":	
+			$current_goal = 8;
+			SetObjValue("단계", 0);
+			break;	
+
+		case "수위이동위치10":	
+			$current_goal = 9;
+			SetObjValue("단계", 10);
+			break;	
+
+		case "수위이동위치11":	
+			$current_goal = 10;
+			SetObjValue("단계", 11);
+			break;	
+
+		case "수위이동위치12":	
+			$current_goal = 11;
+			SetObjValue("단계", 12);
+			break;	
+
+		case "수위이동위치13":	
+			$current_goal = 12;
+			SetObjValue("단계", 13);
+			break;	
+
+		case "수위이동위치14":	
+			$current_goal = 13;
+			SetObjValue("단계", 1);
+			break;	
+	}
+}
+
+_지현.FailChase()
+{
+	RunScript("지현", "캐릭터_지현._지현.첨부터");
+}
+
+_지현.MoveFail()
+{
+//	RunScript("지현", "캐릭터_지현._지현.Disable");
+	RunScript("지현", "캐릭터_지현._지현.첨부터");
+//	SendMessage("자막", "문자출력후대기", "지현이를 찾아서 어디서 못가는지 봐주세요. ㅠ.ㅠ");	// debug
+}
+
+_지현.Disable()
+{
+	if($AI_지현 == OFF)
+		return;
+
+	$AI_지현 = OFF;
+	$NPC = "";
+	SendMessage("", "Stop", "");
+	SendMessage("", "관심물체체크", "off");	
+	SendMessage("", "따라가기", "");	
+	SendMessage("", "거리체크", "off");
+	SendMessage("", "쳐다보지말기", "");
+	SendMessage("", "애니메이션", "정지");
+}
+
+_서고지현out()
+{
+	if($진행루트 == 1 && $신관_세환_서고대화이벤트 == 1)
+	{
+		DeleteObject("");
+		RunScript("지현", "캐릭터_지현._지현.Disable");
+	}
+}
