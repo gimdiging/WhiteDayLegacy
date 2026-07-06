@@ -1,0 +1,741 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//									M a c r o F i l e
+//
+//  (C) Sonnori 2000					call_macro.scp
+//
+//	熱血man: agneau				last update: 2001.02.21
+//  --------------------------------------------------
+
+// $진행루트 = 0 >> a루트
+
+_1()
+{				
+	DeleteObject("");
+	if($본관1_세환_기계실앞대화 == FALSE)
+	{
+		$본관1_세환_기계실앞대화 = TRUE;		
+		SendMessage("매크로", "Play", "sc01.cut01");
+		RunScript("문_시작통로", "문_본관1.열려라참깨");
+	}
+}
+
+_2()
+{	
+	DeleteObject("");
+	if($본관1_세환_알람이벤트 == FALSE && $b_가정실습실열쇠 == 1)
+	{
+		$본관1_세환_알람이벤트 = TRUE;
+		SendMessage("매크로", "Play", "sc03.cut01");
+	}
+}
+
+_3()
+{				
+	DeleteObject("");
+	if($본관1_세환_학적부실이벤트 == FALSE)
+	{
+		RunScript("성아", "캐릭터_성아._성아.Disable");
+		SendMessage("성아", "위치", "0 0 0");
+		$본관1_세환_학적부실이벤트 = TRUE;
+		SendMessage("매크로", "Play", "sc03-1.cut01");				
+		SendMessage("개구멍막기", "켜기", "");
+		SendMessage("기계실막기", "켜기", "");
+		SendMessage("화장실막기", "켜기", "");			
+	}
+}
+
+_5()
+{	
+	if($본관1_세환_시작통로2층 == CLOSE || $본관1_세환_교실앞대화 == TRUE || $수위추적모드 == ON || $b_번개 == 0)
+		return;
+	
+	DeleteObject("");
+	
+	$매크로전_문상태 = TakeObjValue("문_중앙통로2층", "OpenFlag");
+	SendMessage("문_중앙통로2층", "애니메이션", "*서있기");
+	ChangeObjValue("문_중앙통로2층", "OpenFlag", 0);		
+	
+	SendMessage("소영", "쳐다보지말기", "");
+	RunScript("정찰용수위", "캐릭터_수위.Disable");	
+	$본관1_세환_교실앞대화 = TRUE;	
+	SendMessage("매크로", "Play", "sc05.cut01");	
+}
+
+_소영등장()
+{
+	if(Version() != "Demo" && $G_금의진해결 == TRUE && $본관1_세환_교실앞대화 == FALSE && $본관1_세환_시작통로2층 == CLOSE)
+	{
+		DeleteObject("");
+		$AI_소영 = ON;
+		SendMessage("소영", "좋은위치", "" + FindPoint("목이벤트전소영위치"));
+		SendMessage("소영", "애니메이션", "서있기");
+		SendMessage("소영", "쳐다보기", "유저");
+		SendMessage("소영", "회전", "0");
+		$본관1_세환_시작통로2층 = OPEN;
+	}
+
+	if($b_나영다시등장 == 1)	
+		$b_나영다시등장 = 2;				
+}
+
+_6()
+{			
+	if($본관1_세환_방송실이벤트 == FALSE && $b_목의조각 == 1 && $수위추적모드 == OFF)
+	{				
+		DeleteObject("");
+		$본관1_세환_방송실이벤트 = TRUE;
+		RunScript("정찰용수위", "캐릭터_수위.Disable");	
+		SendMessage("매크로", "Play", "sc07.cut01");			
+		$문_2층방화셔터 = UNLOCK;
+		return;
+	}	
+}
+
+_8a()
+{	
+	if($본관1_세환_방송실이벤트 == TRUE && $본관1_세환_분기결정 == FALSE)
+	{
+		DeleteObject("");
+//		SendMessage("사운드", "연주멈춤", "귀곡성");		
+		$본관1_세환_분기결정 = TRUE;		
+		SendMessage("매크로", "Play", "sc08.cut01");		
+	}
+}
+
+_8b()
+{		
+	if($본관1_세환_방송실이벤트 == TRUE && $본관1_세환_분기결정 == FALSE)			
+	{
+//		SendMessage("사운드", "연주멈춤", "귀곡성");
+		$진행루트 = 1;
+		$본관1_세환_분기결정 = TRUE;	
+		SendMessage("매크로", "Play", "sc33.cut01");	
+		SendMessage("소영이의목걸이", "켜기", "");
+	}
+}
+
+_09a_1()
+{
+	if($수위추적모드 == ON)
+		return;
+
+// 이벤트 박스로 호출되지 않는다. 함수호출
+	if($진행루트 == 1)
+		return;
+	
+	if($_09a_1 == 0)
+	{
+		$_09a_1 = 1;
+
+		RunScript("정찰용수위", "캐릭터_수위.Disable");	
+		SendMessage("매크로", "Play", "sc09.cut01");
+	}
+}
+
+_09b()
+{
+	if($수위추적모드 == ON)
+		return;
+
+	// 이벤트 박스로 호출되지 않는다. 함수호출
+	if($진행루트 == 0)
+		return;
+
+	$소영이때문에못나가기 = 1;
+	// scene34
+
+	if($_09b == 0)
+	{
+		$_09b = 1;
+		RunScript("정찰용수위", "캐릭터_수위.Disable");	
+		SendMessage("매크로", "Play", "sc34.cut01");
+	}
+
+}
+
+_10a()
+{
+	if($수위추적모드 == ON)
+		return;
+
+	// 여기또 막는거 필요하겠네...
+	DeleteObject("");
+	if($진행루트 == 1)
+		return;
+	if($_10a == 0)
+	{
+		$_10a = 1;
+		RunScript("정찰용수위", "캐릭터_수위.Disable");	
+		SendMessage("매크로", "Play", "sc10.cut01");
+	}
+}
+
+_10b()
+{
+	if($수위추적모드 == ON)
+		return;
+
+	//열쇠를 얻었을때.
+	if($진행루트 == 0)
+		return;
+
+	if ($EnterObj == "소영")
+	{
+		$본2_영호_소영b루트도착변수 = 1;
+		if($본2_영호_유저교무실앞이동중 == 1)
+		{
+			DeleteObject("");
+			if($_10b == 0)
+			{
+				$_10b = 1;
+				SendMessage("매크로", "Play", "sc35.cut01");
+			}
+		}
+		return;
+	}
+
+	if ($EnterObj == "유저")
+	{
+		$본2_영호_유저교무실앞이동중 = 1;
+		if($본2_영호_소영b루트도착변수 == 1)
+		{
+			$본2_영호_유저교무실앞이동중 = 0;
+			DeleteObject("");
+			
+			if($_10b == 0)
+			{
+				$_10b = 1;						
+				SendMessage("매크로", "Play", "sc35.cut01");			
+			}
+		}
+		
+	}
+
+}
+
+_10b_1()
+{
+	if($진행루트 == 0)
+		return;
+
+	if ($EnterObj == "소영")
+	{
+		$본2_영호_소영b루트도착변수 = 2;
+		if($본2_영호_유저교무실앞이동중 == 1)
+		{
+			DeleteObject("");
+
+			if($_10b_1 == 0)
+			{
+				$_10b_1 = 1;
+				SendMessage("매크로", "Play", "sc36.cut01");
+			}
+		}	
+
+		return;
+	}
+
+	if ($EnterObj == "유저" && $본2_영호_소영b루트도착변수 == 2)
+	{
+		$본2_영호_유저교무실앞이동중 = 0;
+		DeleteObject("");
+		if($_10b_1 == 0)
+		{
+			$_10b_1 = 1;
+		
+			SendMessage("매크로", "Play", "sc36.cut01");
+		}
+		return;
+	}
+}
+
+_11a()
+{
+	if($본2_영호_음악실이벤트완료 == 0)
+		return;
+
+	RunScript("","o_벽전화._off_p");
+
+	DeleteObject("");
+	$본2_영호_음악실이벤트완료 = 2;
+	if($진행루트 == 1)
+		return;
+
+//	if($대화_10 == 3)
+//		return;
+
+//	if($대화_10 == 2 || $지현_호감도 < $지현_호감도기준1)
+//		return;
+	
+	if($_11a == 0)
+	{
+		$_11a = 1;
+
+		SendMessage("매크로", "Play", "sc11.cut01");
+	}
+
+}
+
+_11a_1()
+{
+	if($수위추적모드 == ON)
+		return;
+
+	if($본2_영호_음악실이벤트완료 != 2)
+		return;
+	DeleteObject("");
+	if($진행루트 == 1)
+		return;
+
+	if($대화_10 == 3)
+		return;
+
+	if($대화_10 == 2 && $지현_호감도 < $지현_호감도기준1)
+		return;
+	
+	if($_11a_1 == 0)
+	{
+		$_11a_1 = 1;
+
+		SendMessage("매크로", "Play", "sc12.cut01");
+	}
+}
+
+_11a_2()
+{
+	if($수위추적모드 == ON)
+		return;
+
+	if($본2_영호_음악실이벤트완료 != 2)
+		return; 
+	DeleteObject("");
+	if($진행루트 == 1)
+		return;
+
+	if($대화_10 == 3)
+		return;
+
+	if($대화_10 == 2 && $지현_호감도 < $지현_호감도기준1)
+		return;
+
+	if($_11a_2 == 0)
+	{
+		$_11a_2 = 1;
+	
+		SendMessage("매크로", "Play", "sc13.cut01");
+		$아기스탭 = 1;
+//		RunScript("", "e_아기.start_1");	
+	}
+}
+
+_11a_3()
+{
+	if($수위추적모드 == ON)
+		return;
+
+	if($본2_영호_미술실이벤트완료 == 0)
+		return; 
+
+	if($진행루트 == 1)
+		return;
+
+	if($대화_10 == 3)
+		return;
+
+	if($대화_10 == 2 && $지현_호감도 < $지현_호감도기준1)
+		return;
+
+	DeleteObject("");
+	if($_11a_3 == 0)
+	{
+		$_11a_3 = 1;
+
+		RunScript("정찰용수위", "캐릭터_수위.Disable");	
+		SendMessage("매크로", "Play", "sc14.cut01");
+	}
+
+}
+
+_11b()
+{
+	if($수위추적모드 == ON)
+		return;
+
+	DeleteObject("");
+	if($_11b == 0)
+	{
+		$_11b = 1;
+		if($진행루트 == 0)
+		{
+			SendMessage("매크로", "Play", "main2_scenez._002");
+			return;
+		}
+
+		$소영이때문에못나가기 = 0;
+		
+		SendMessage("매크로", "Play", "sc37.cut01");
+	}
+}
+
+_12a()
+{	
+	if($진행루트 == 1 || $신관_세환_역사관이벤트 == TRUE)
+		return;
+
+	$신관_세환_역사관이벤트 = TRUE;
+	DeleteObject("");		
+	SendMessage("매크로", "Play", "sc15.cut00");
+}
+
+_12b()
+{		
+	if($진행루트 == 1 && $신관_세환_신관앞대화 == FALSE && $b_신관의공지사항 == 1)		
+	{
+		DeleteObject("");
+		$신관_세환_신관앞대화 = TRUE;		
+		SendMessage("매크로", "Play", "sc41.cut01");			
+		$대화상태 = 0FF;
+		$대화_소영 = "_대화12B_1";
+
+		SendMessage("배경", "켜기", "stair2f");
+		SendMessage("2층복도천정등", "발광", "Recursive on");		
+	}
+}
+
+_12b_1()	// 역사관 앞에 소영이와 둘이 도착했을 때
+{		
+	if($신관_세환_역사관앞대화 == FALSE)		
+	{
+	$신관_세환_역사관앞대화 = TRUE;
+	RunScript("문_역사관1","문_본관1._닫쳐있어");
+	RunScript("문_역사관2","문_본관1._닫쳐있어");
+	RunScript("문_역사관3","문_본관1._닫쳐있어");
+	RunScript("문_역사관4","문_본관1._닫쳐있어");
+	RunScript("소영", "캐릭터_소영._소영.Disable");
+
+	SendMessage("매크로", "Play", "sc48.cut01");	
+	}
+}
+
+_12b_2()	// 일정거리 이상 벗어나서 소영이 문을 열 경우
+{	
+	if($진행루트 == 1 && $신관_세환_캔커피이벤트 == 0 && $신관_세환_신관앞대화 == TRUE)
+	{		
+		DeleteObject("");
+		$신관_세환_캔커피이벤트 = 1;
+		SendMessage("매크로", "Play", "sc43.cut01-1");
+	}
+}
+
+_12b_3()	// 유저가 문을 열었을 경우
+{
+	$신관_세환_캔커피이벤트 = 1;
+	ChangeObjValue("문_휴계실", "No_Auto", 0);
+	SendMessage("매크로", "Play", "sc43.cut01");	
+}
+
+_12b_4()	// 소영이가 노란색 카드키로 문 열어주는 매크로
+{
+	if($신관_세환_홀진입문앞대화 == FALSE)
+	{
+		$신관_세환_홀진입문앞대화 = TRUE;
+		RunScript("소영", "캐릭터_소영._소영.Disable");
+		SendMessage("매크로", "Play", "sc50.cut00");
+	}
+}
+
+// 커피캔 이벤트 관련..
+
+NoAction()
+{	
+	if($신관_세환_캔커피이벤트 == 1)
+	{
+		$신관_세환_캔커피이벤트 = 2;		
+
+		$대화단계 = 0;
+		$대화_소영 = "_대화12B_3";
+		$대화상태 = OFF;
+		SendMessage("소영", "캐쉬초기화", "");
+
+		if($신관_세환_휴계실에있나 == TRUE)
+		{
+			SendMessage("자막", "활성화", "");
+			RunScript("", "_whiteday.FadeOut");						
+			SetTimer(2, "_소영역사관으로");
+		}
+		else					
+		{
+			SendMessage("소영", "좋은위치", "" + FindPoint("소영역사관으로"));	
+			SendMessage("소영", "이동", FindPoint("소영마중나오기") + " 걷기 *script 캐릭터_소영._소영.따라가기");						
+		}
+	}
+}
+
+_소영역사관으로()
+{
+	SendMessage("소영", "애니메이션", "서있기");
+	SendMessage("소영", "좋은위치", "" + FindPoint("소영역사관으로"));	
+	SendMessage("자막", "말하는사람", "소영");
+	SendMessage("자막", "다이얼로그출력", "d12b_043b");	
+	
+	RunScript("소영", "캐릭터_소영.따라가기");
+	RunScript("", "_whiteday.FadeIn");
+	SendMessage("자막", "비활성", "");
+}
+
+restingroom_in()
+{
+	$신관_세환_휴계실있나 = TRUE;
+
+	if($신관_세환_캔커피이벤트 == 1)
+	{
+		SendMessage("유저", "찾기아이템", "캔커피 $신관_세환_캔커피소지");			
+		SendMessage("소영", "캐쉬초기화", "");
+	}
+}
+
+restingroom_out()
+{
+	$신관_세환_휴계실있나 = FALSE;
+}
+
+_13a()
+{	
+	if($진행루트 == 1 || $신관_세환_어학실이벤트 == TRUE || $수위추적모드 == ON)			
+		return;
+	
+	DeleteObject("");
+	$신관_세환_어학실이벤트 = TRUE;	
+	SendMessage("사운드", "연주멈춤", "지현울기");
+		
+	if($신관_세환_열쇠쳐다보기 == 1)
+		RunScript("정찰용수위", "캐릭터_수위.Disable");			
+
+	SendMessage("매크로", "Play", "sc17.cut04");
+}
+
+_13b()
+{	
+	if($진행루트 == 0 || $신관_세환_서고대화이벤트 == 1 || $수위추적모드 == ON)
+		return;
+		
+	DeleteObject("");
+	RunScript("정찰용수위", "캐릭터_수위.Disable");	
+	$신관_세환_서고대화이벤트 = 1;	
+	SendMessage("매크로", "Play", "sc51.cut01");
+}
+
+_14()
+{				
+	$신관_세환_음악선생님이벤트 = TRUE;
+	SendMessage("매크로", "Play", "sc19.cut01");
+}
+
+_15()
+{			
+	$신관_세환_은미이벤트 = 1;			
+	SendMessage("매크로", "Play", "sc20.cut01");
+}
+
+_15b()
+{	
+	if($진행루트 == 0 || $신관_세환_음악선생님이벤트 == FALSE || $신관_세환_소영과의대화 == TRUE)
+		return;
+
+		
+	DeleteObject("");
+	$신관_세환_소영과의대화 = TRUE;
+	SendMessage("매크로", "Play", "sc52.cut01");	
+}
+
+_17()
+{
+	DeleteObject("");
+
+	if($체육관_영호_sc27_한번 == 1)
+		return;
+
+	$체육관_영호_sc27_한번 = 1;
+
+//	SendMessage("불1", "켜기");
+//	SendMessage("불2", "켜기");
+//	SendMessage("불3", "켜기");
+//	SendMessage("불4", "켜기");
+//	SendMessage("불5", "켜기");
+
+	RunScript("","e_화의진._A켜기");
+	RunScript("","e_화의진._B켜기");
+	RunScript("","e_화의진._C켜기");
+
+	SendMessage("더미1", "켜기");
+	SendMessage("더미2", "켜기");
+	SendMessage("더미3", "켜기");
+
+	SendMessage("더미1", "충돌체크", "on");
+	SendMessage("더미2", "충돌체크", "on");
+	SendMessage("더미3", "충돌체크", "on");
+
+	SendMessage("매크로", "Play", "sc27.cut01");
+}
+
+_18()
+{
+	if($체육관_영호_불진압 != 1)
+		return;
+
+//	$체육관_영호_불진압 = 2;
+	DeleteObject("");
+
+	if($진행루트 == 0)
+	{
+		SendMessage("매크로", "Play", "sc29.cut01");
+	}
+	else
+	{
+		SendMessage("매크로", "Play", "sc53.cut01");
+	}
+
+}
+
+_19a()
+{
+	if($진행루트 == 1)
+		return;
+	if($체육관_영호_불진압 != 2)
+		return;
+	DeleteObject("");
+	SendMessage("매크로", "Play", "sc32.cut01");
+}
+
+_19b()
+{
+	if($진행루트 == 0)
+		return;
+	if($체육관_영호_불진압 != 2)
+		return;
+	SendMessage("매크로", "Play", "sc54.cut01");
+}
+
+// A,B 루트 분기에서 결정을 못 했을 경우
+select()
+{
+	if($본관1_세환_분기결정 == FALSE)
+	{
+		$본관1_세환_분기결정 = TRUE;		
+		SendMessage("자막", "선택아이템", "0");		
+		SendMessage("매크로", "Play", "sc08.cut01");		
+	}
+}
+
+into_history()
+{
+	if($진행루트 == 0 || $신관_세환_캔커피이벤트 == 0 || $신관_세환_역사관앞대화 == TRUE)
+		return;
+
+	switch($EnterObj)
+	{
+		case "유저":
+			if($신관_세환_역사관앞도착 == 2)
+			{
+				$신관_세환_역사관앞도착 = 3;
+				_12b_1();
+			}
+			else if($신관_세환_역사관앞도착 == 0)
+				$신관_세환_역사관앞도착 = 1;
+
+			break;
+
+		case "소영":
+			if($신관_세환_역사관앞도착 == 1)
+			{
+				$신관_세환_역사관앞도착 = 3;
+				_12b_1();
+			}
+			else if($신관_세환_역사관앞도착 == 0)
+				$신관_세환_역사관앞도착 = 2;
+
+			break;
+	}
+}
+
+out_history()
+{
+	if($진행루트 == 0 || $신관_세환_캔커피이벤트 == 0 || $신관_세환_역사관앞대화 == TRUE)
+		return;
+
+	switch($EnterObj)
+	{
+		case "유저":
+			if($신관_세환_역사관앞도착 == 1)
+				$신관_세환_역사관앞도착 = 0;
+
+			break;
+		case "소영":
+			if($신관_세환_역사관앞도착 == 2)
+				$신관_세환_역사관앞도착 = 0;
+
+			break;
+	}
+}
+
+front_of_door()
+{
+	if($진행루트 == 0 || $b_카드키_황 == 0 || $신관_세환_홀진입문앞대화 == TRUE)
+		return;
+
+	switch($EnterObj)
+	{
+		case "유저":
+			if($신관_세환_2층문앞도착 == 2)
+			{
+				$신관_세환_2층문앞도착 = 3;				
+				_12b_4();
+			}
+			else if($신관_세환_2층문앞도착 == 0)
+				$신관_세환_2층문앞도착 = 1;
+			break;
+
+		case "소영":
+			if($신관_세환_2층문앞도착 == 1)
+			{
+				$신관_세환_2층문앞도착 = 3;				
+				_12b_4();
+			}
+			else if($신관_세환_2층문앞도착 == 0)
+				$신관_세환_2층문앞도착 = 2;
+			break;
+	}	
+}
+
+out_of_door()
+{
+	if($진행루트 == 0 || $b_카드키_황 == 0 || $신관_세환_홀진입문앞대화 == TRUE)
+		return;
+
+	if($신관_세환_2층문앞도착 == 1)
+		$신관_세환_2층문앞도착 = 0;	
+}
+
+macro1()
+{
+	if($_10b == 0)
+	{
+		$_10b = 1;
+		SendMessage("매크로", "Play", "sc35.cut01");
+	}
+}
+
+macro2()
+{
+	if($_10b_1 == 0)
+	{
+		$_10b_1 = 1;
+		SendMessage("매크로", "Play", "sc36.cut01");
+	}
+}

@@ -1,0 +1,516 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					e_도플갱어.scp
+//
+//	熱血man: agneau				last update: 2001.5.22
+//  --------------------------------------------------
+
+Init()
+{
+}
+
+appear()
+{	
+	if($신관_세환_무용실이벤트 == 0)
+	{
+		if($EnterObj == "유저")
+			SendMessage("기쉰","켜기","");
+//		else
+//			SendMessage("기쉰수위","켜기","");
+	}
+
+//	SetTimer(0,"o_오디오2.remotemode");
+}
+
+disappear()
+{	
+	if($신관_세환_무용실이벤트 == 0)
+	{
+		if($EnterObj == "유저")
+			SendMessage("기쉰","끄기","");
+//		else
+//			SendMessage("기쉰수위", "끄기", "");
+	}
+
+//	SetTimer(0,"o_오디오2.handmode");
+}
+
+start()
+{
+	SendMessage("도플갱어", "애니메이션", "장풍 0.6");
+	SendMessage("에네르기", "위치변환", GetObjPos("도플갱어") + " 30 -15");	
+	SendMessage("에네르기", "스케일", "0.1");
+	SendMessage("에네르기", "스케일", "3 3");
+	SendMessage("에네르기", "애니메이션", "기모으기");
+	SendMessage("사운드", "연주", "도플_기모으기.wav");
+	SendMessage("에네르기", "페이드", "Recursive 3 0 1");
+	SetTimer(1.5,"plazma_shoot");
+}
+
+/////////////////// 도플갱어 공격 패턴 /////////////////////
+
+attack_pattern()
+{
+	if($신관_세환_무용실매크로 == ON || $신관_세환_무용실이벤트 == 2)
+		return;	
+
+	if($도플갱어공격 == OFF && $신관_세환_소리강도 != 6)
+	{			
+		if($도플갱어_check == 5)
+		{
+			$도플갱어_check = 0;
+			$신관_세환_럴커공격횟수 = 0;
+			if($신관_세환_도플갱어upgrade == 0)
+				$신관_세환_장풍공격횟수 = 0;
+
+			if($도플갱어_attack == 0)											
+				RunScript("도플갱어", "e_도플갱어.wall_ready");
+			else
+			{
+				$도플갱어_attack = 0;
+
+				if($신관_세환_소리강도 == 0)
+					SetTimer(1.5,"attack_pattern *obj 도플갱어");
+				else
+					SetTimer(1,"attack_pattern *obj 도플갱어");
+			}
+			return;
+		}
+
+		if(z_distance(GetObjPos(""), GetObjPos("유저")) < 100)
+		{			
+			$신관_세환_럴커공격횟수 = 0;			
+			$신관_세환_장풍공격횟수++;
+			if($신관_세환_장풍공격횟수 == 5 && $신관_세환_도플갱어upgrade == 0)
+				upgrade();
+			else
+				RunScript("도플갱어", "e_도플갱어.plazma_ready");				
+		}
+		else if(($신관_세환_소리강도 != 6 || $신관_세환_스피커거리 < 1200) && $신관_세환_럴커공격횟수 < 2 && (xz_distance(GetObjPos(""), MirrorPos(GetObjPos("유저"), GetObjPos("무용실거울"))) > 300 || xz_distance(GetObjPos(""), GetObjPos("유저")) < 300))		
+		{
+			RunScript("도플갱어", "e_도플갱어.lurker_ready");			
+			$신관_세환_럴커공격횟수++;
+			$신관_세환_장풍공격횟수 = 0;
+		}
+		else
+		{
+			$신관_세환_럴커공격횟수 = 0;
+			$신관_세환_장풍공격횟수 = 0;			
+
+			if($신관_세환_도플갱어upgrade == 0)
+				SendMessage("", "빨리돌고이동", MirrorPos(GetObjPos("유저"), GetObjPos("무용실거울")) + " 달리기 *script e_도플갱어.Process");
+			else
+				SendMessage("", "빨리돌고이동", MirrorPos(GetObjPos("유저"), GetObjPos("무용실거울")) + " 달리기 *script e_도플갱어.Process");
+
+			if($신관_세환_소리강도 == 0)
+				SetTimer(1.5,"attack_pattern *obj 도플갱어");
+			else
+				SetTimer(1,"attack_pattern *obj 도플갱어");
+		}
+
+		$도플갱어_check++;
+	}
+}
+
+Process()
+{
+	if($신관_세환_무용실매크로 == ON || $신관_세환_무용실이벤트 == 2)
+		return;	
+
+	if($도플갱어공격 == OFF)
+	{
+		SendMessage("", "Stop", "");
+		SendMessage("", "애니메이션", "서있기");
+		SendMessage("", "빨리돌기포인트", "" + MirrorPos(GetObjPos(""), GetObjPos("무용실거울")));
+	}
+}
+
+//////////////////////////// 럴커 공격 ////////////////////////////////
+
+lurker_ready()
+{	
+	if($신관_세환_무용실매크로 == ON || $신관_세환_무용실이벤트 == 2)
+		return;		
+
+	$도플갱어공격 = ON;
+	SendMessage("", "Stop", "");
+	SendMessage("", "애니메이션", "서있기");
+	SendMessage("", "빨리돌기포인트", MirrorPos(GetObjPos(""), GetObjPos("유저")) + " *script e_도플갱어.lurker_warn");	
+}
+
+lurker_warn()
+{	
+	if($신관_세환_무용실매크로 == ON || $신관_세환_무용실이벤트 == 2)
+		return;
+
+	SendMessage("도플갱어", "애니메이션", "러커");
+
+	$delta = GetDeltaAngle("도플갱어", MirrorPos(GetObjPos("유저"), GetObjPos("무용실거울")));		
+		
+	$delta2 = 180 - $delta;	
+
+//	SendMessage("러커1", "위치변환", GetObjPos("도플갱어") + " " + $delta + " 100");
+//	SendMessage("러커11", "위치변환", MirrorPos(GetObjPos("도플갱어"), GetObjPos("무용실거울")) + " " + $delta2 + " 100");
+
+//	SetTimer(0,"warn_rise *obj 러커1");
+//	SetTimer(0,"warn_rise *obj 러커11");
+
+//	SetTimer(0.5,"warn_rise *obj 러커1");
+//	SetTimer(0.5,"warn_rise *obj 러커11");
+
+	SetTimer(1,"lurker_attack");
+}
+
+warn_rise()
+{
+	if($신관_세환_무용실매크로 == ON || $신관_세환_무용실이벤트 == 2)
+		return;	
+
+	SendMessage("", "애니메이션", "솟아오르기");
+	SendMessage("사운드", "연주3d", GetObjPos("") + " " + GetObjName() + ",도플_럴커공격.wav");
+}
+
+lurker_attack()
+{	
+	if($신관_세환_무용실매크로 == ON || $신관_세환_무용실이벤트 == 2)
+		return;	
+
+	$신관_세환_럴커공격제한1 = OFF;
+	$신관_세환_럴커공격제한2 = OFF;
+
+	for($i = 1; $i < 10; $i++)
+	{
+		$gap = 100 * $i;
+		$j = $i + 10;
+		SendMessage("러커" + $i, "위치변환", GetObjPos("도플갱어") + " " + $delta + " " + $gap);
+		SendMessage("러커" + $j, "위치변환", MirrorPos(GetObjPos("도플갱어"), GetObjPos("무용실거울")) + " " + $delta2 + " " + $gap);
+
+		$time = 0.2 * $i;
+		SetTimer($time,"rise1 *obj 러커" + $i);
+		SetTimer($time,"rise2 *obj 러커" + $j);
+	}
+
+	SetTimer(1, "attack_end");
+}
+
+rise1()
+{
+	if($신관_세환_무용실매크로 == ON || $신관_세환_무용실이벤트 == 2)
+		return;	
+
+	SendMessage("", "애니메이션", "솟아오르기");
+	SendMessage("사운드", "연주3d", GetObjPos("") + " " + GetObjName() + ",도플_럴커공격.wav");
+
+	if(xz_distance(GetObjPos(""), GetObjPos("유저")) < 50 && $신관_세환_럴커공격제한1 == OFF && $신관_세환_무용실매크로 == OFF)
+	{
+		$신관_세환_럴커공격제한1 = ON;
+				
+		RunScript("유저", "오브젝트_유저._유저.loose");		
+		SendMessage("유저", "공격", "럴커");
+		$신관_세환_시간간격유지A++;
+		SetTimer(3,"Nopick");
+		$도플갱어_attack++;
+	}
+}
+
+rise2()
+{
+	if($신관_세환_무용실매크로 == ON || $신관_세환_무용실이벤트 == 2)
+		return;	
+
+	SendMessage("", "애니메이션", "솟아오르기");
+	SendMessage("사운드", "연주3d", GetObjPos("") + " " + GetObjName() + ",도플_럴커공격.wav");
+
+	if(xz_distance(GetObjPos(""), GetObjPos("유저")) < 100 && $신관_세환_럴커공격제한2 == OFF && $신관_세환_무용실매크로 == OFF)
+	{
+		$신관_세환_럴커공격제한2 = ON;
+				
+		RunScript("유저", "오브젝트_유저._유저.loose");		
+		SendMessage("유저", "공격", "럴커");
+		$신관_세환_시간간격유지A++;
+		SetTimer(3,"Nopick");
+		$도플갱어_attack++;
+	}
+}
+
+//////////////////////// 파동권 ///////////////////////////
+
+plazma_ready()
+{		
+	if($신관_세환_무용실매크로 == ON || $신관_세환_무용실이벤트 == 2)
+		return;		
+
+	$도플갱어공격 = ON;
+	SendMessage("", "Stop", "");
+	SendMessage("", "애니메이션", "서있기");
+	SendMessage("", "빨리돌기포인트", MirrorPos(GetObjPos(""), GetObjPos("무용실거울")) + " *script e_도플갱어.plazma_attack");			
+}
+
+plazma_attack()
+{		
+	if($신관_세환_무용실매크로 == ON || $신관_세환_무용실이벤트 == 2)
+		return;	
+
+	if(x_distance(GetObjPos("유저"), GetObjPos("무용실거울")) < 700)
+	{
+		SendMessage("도플갱어", "애니메이션", "장풍");
+		SendMessage("에네르기", "위치변환", GetObjPos("도플갱어") + " 30 -15");
+		SendMessage("에네르기", "스케일", "0.1");
+		SendMessage("에네르기", "스케일", "2 2");
+		SendMessage("에네르기", "애니메이션", "기모으기");
+		SendMessage("사운드", "연주", "도플_기모으기.wav");
+		SendMessage("에네르기", "페이드", "Recursive 1.9 0 1");
+		SetTimer(1,"plazma_shoot");	
+	}
+	else
+		SetTimer(0, "crash");
+}
+
+plazma_shoot()
+{
+	SendMessage("에네르기", "애니메이션", "서있기");
+	SendMessage("에네르기", "페이드" ,"Recursive 0 0 0");
+
+	if($신관_세환_무용실매크로 == ON || $신관_세환_무용실이벤트 == 2)
+		return;		
+
+	if($신관_세환_도플갱어upgrade == 1)
+	{
+		$신관_세환_도플갱어upgrade = 2;
+		SendMessage("에네르기파", "스케일", "3 1");			
+	}			
+
+	SendMessage("에네르기파", "페이드", "Recursive 0 1 1");
+	SendMessage("에네르기파", "위치변환", GetObjPos("도플갱어") + " 30 -15");		
+	SendMessage("사운드", "연주", "도플_장풍.wav");
+
+	if($신관_세환_도플갱어upgrade == 0)
+		SendMessage("에네르기파", "장풍", "유저 " + FindPoint("장풍방향") + " 발사 1200 *script e_도플갱어.hide");
+	else
+		SendMessage("에네르기파", "장풍", "유저 " + FindPoint("장풍방향") + " 발사 1200 1 *script e_도플갱어.hide");
+}
+
+hide()
+{	
+	SendMessage("에네르기파", "페이드", "Recursive 0 0 0");
+	SetTimer(0, "attack_end");
+}
+
+//////////////////////// 자해 ///////////////////////////
+
+wall_ready()
+{		
+	if($신관_세환_무용실매크로 == ON || $신관_세환_무용실이벤트 == 2)
+		return;	
+
+	$도플갱어공격 = ON;
+	$신관_세환_박치기준비 = ON;	
+
+	switch($신관_세환_도플위치)
+	{
+		case 1:			
+			SendMessage("", "빨리돌고이동", GetWallPos(GetObjPos(""), FindPoint("heading_wall")) + " 달리기");
+			break;
+
+		case 2:
+			SendMessage("", "빨리돌고이동", GetWallPos(GetObjPos(""), FindPoint("oppo_wall")) + " 달리기 *script e_도플갱어.run");
+			break;
+
+		case 3:
+			SendMessage("", "빨리돌고이동", FindPoint("heading_wall_f") + " 달리기");
+			break;
+
+		case 4:
+			SendMessage("", "빨리돌고이동", GetWallPos(GetObjPos(""), FindPoint("oppo_wall")) + " 달리기 *script e_도플갱어.run");
+			break;
+
+		case 5:	
+			SendMessage("", "빨리돌고이동", FindPoint("heading_wall_b") + " 달리기");			
+			break;
+
+		case 6:
+			SendMessage("", "빨리돌고이동", GetWallPos(GetObjPos(""), FindPoint("oppo_wall")) + " 달리기 *script e_도플갱어.run");
+			break;		
+	}			
+}
+
+run()
+{
+	if($신관_세환_무용실매크로 == ON || $신관_세환_무용실이벤트 == 2)
+		return;	
+
+	switch($신관_세환_도플위치)
+	{
+		case 2:
+			SendMessage("", "빨리돌고이동", GetWallPos(GetObjPos(""), FindPoint("heading_wall")) + " 달리기");	
+			break;
+
+		case 4:
+			SendMessage("", "빨리돌고이동", FindPoint("heading_wall_f") + " 달리기");	
+			break;
+
+		case 6:
+			SendMessage("", "빨리돌고이동", FindPoint("heading_wall_b") + " 달리기");	
+			break;
+	}			
+}
+
+wall_heading()
+{
+	if($신관_세환_무용실매크로 == ON || $신관_세환_무용실이벤트 == 2)
+		return;		
+
+	if($EnterObj == "도플갱어" && $도플갱어공격 == ON && $신관_세환_무용실매크로 == OFF)
+	{		
+		RunScript("유저", "오브젝트_유저._유저.loose");		
+		SendMessage("" + $EnterObj, "Stop", "");
+		SendMessage("" + $EnterObj, "회전", "0");		
+		SendMessage("" + $EnterObj, "애니메이션", "박치기");
+		SendMessage("유저", "공격", "벽에헤딩");
+		$신관_세환_박치기준비 = OFF;
+		$신관_세환_도플위치 = 2;
+		SendMessage("사운드", "연주", "머리박기,도플_박치기.wav");
+				
+		$도플갱어_attack++;
+		SetTimer(5,"attack_end");
+		$신관_세환_시간간격유지A++;
+		SetTimer(5,"Nopick");
+		return;
+	}
+}
+
+////////////////////////////////// 끌어당기기 ////////////////////////////////////////
+
+crash()
+{
+	if($신관_세환_무용실매크로 == ON || $신관_세환_무용실이벤트 == 2)
+		return;	
+
+	SendMessage("에네르기", "애니메이션", "서있기");
+	SendMessage("에네르기", "페이드" ,"Recursive 0 0 0");
+
+	if($신관_세환_무용실매크로 == OFF)
+	{
+		SendMessage("도플갱어", "애니메이션", "끌어당기기");
+		SendMessage("에네르기", "위치변환", GetObjPos("도플갱어") + " 30 -15");
+		SendMessage("에네르기", "스케일", "0.1");
+		SendMessage("에네르기", "스케일", "2 1");
+		SendMessage("에네르기", "애니메이션", "기모으기");
+		SendMessage("사운드", "연주", "도플_기모으기.wav");
+		SendMessage("에네르기", "페이드", "Recursive 0.9 0 1");
+		SetTimer(1,"stick");		
+	}
+}
+
+stick()
+{
+	if($신관_세환_무용실매크로 == ON || $신관_세환_무용실이벤트 == 2)
+		return;	
+
+	SendMessage("에네르기", "애니메이션", "서있기");
+	SendMessage("에네르기", "페이드" ,"Recursive 0 0 0");
+	RunScript("유저", "오브젝트_유저._유저.loose");		
+	SendMessage("사운드", "연주", "도플_웃음02.wav");
+	SendMessage("유저", "x축강제이동", FindPoint("무용실거울") + " 1200 *script e_도플갱어.crush");
+}
+
+crush()
+{
+	if($신관_세환_무용실매크로 == ON || $신관_세환_무용실이벤트 == 2)
+		return;	
+	
+	SendMessage("유저", "공격", "유리벽충돌");
+	$도플갱어_attack++;	
+	SetTimer(1, "attack_end");
+	$신관_세환_시간간격유지A++;
+	SetTimer(3,"Nopick");	
+}
+
+//////////////////////////////////////////////////
+
+attack_end()
+{	
+	$이동속도 = $신관_세환_무용실내이동속도;	
+
+	if($신관_세환_스피커 == TRUE)
+		$이동속도 = 0.5 * $이동속도;
+
+	SendMessage("유저", "이동속도", "" + $이동속도);
+			
+	$도플갱어공격 = OFF;
+
+	SetTimer(0.5,"attack_pattern *obj 도플갱어");	
+}
+
+Nopick()
+{		
+	if($신관_세환_시간간격유지A == 1) 
+		SendMessage("유저", "픽금지", "off");
+
+	$신관_세환_시간간격유지A--;
+}
+
+upgrade()
+{
+	if($EnterObj == "도플갱어" || $신관_세환_장풍공격횟수 == 5)
+	{
+		if($신관_세환_도플갱어upgrade == 0)
+		{			
+			$신관_세환_도플갱어upgrade = 1;						
+			SendMessage("에네르기파", "발광", "Recursive on");	
+			SendMessage("에네르기", "발광", "Recursive on");
+			SendMessage("도플갱어", "텍스쳐변경", "hi_face_red");	
+			_나화났다();
+		}
+
+		SendMessage("도플갱어", "Stop", "");
+		SetTimer(0, "plazma_ready *obj 도플갱어");
+	}
+}
+
+area1()
+{
+	if($EnterObj == "도플갱어" && $신관_세환_박치기준비 == OFF)
+		$신관_세환_도플위치 = 1;
+}
+
+area2()
+{
+	if($EnterObj == "도플갱어" && $신관_세환_박치기준비 == OFF)
+		$신관_세환_도플위치 = 2;
+}
+
+area3()
+{
+	if($EnterObj == "도플갱어" && $신관_세환_박치기준비 == OFF)
+		$신관_세환_도플위치 = 3;
+}
+
+area4()
+{
+	if($EnterObj == "도플갱어" && $신관_세환_박치기준비 == OFF)
+		$신관_세환_도플위치 = 4;
+}
+area5()
+{
+	if($EnterObj == "도플갱어" && $신관_세환_박치기준비 == OFF)
+		$신관_세환_도플위치 = 5;
+}
+
+area6()
+{
+	if($EnterObj == "도플갱어" && $신관_세환_박치기준비 == OFF)
+		$신관_세환_도플위치 = 6;
+}
+
+_나화났다()
+{
+	//파티클
+	SendMessage("사운드", "연주3d", GetObjPos("도플갱어") + " 도플_기.wav");
+	SendMessage("도플갱어", "파티클생성", "*origin pos %p " +  GetWDBParticle("particle2.wdb", "도플갱어", "파티클내용"));
+}

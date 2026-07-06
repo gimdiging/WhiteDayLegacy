@@ -1,0 +1,119 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					E v e n t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000				e_movespeed.scp
+//
+//	熱血man: agneau			last EventMode: 2001.06.11
+//  --------------------------------------------------
+
+up()	// 옥상밖으로
+{		
+	if($문_K3 == UNLOCK)
+	{
+		DeleteObject("");
+		return;
+	}	
+
+	SendMessage("유저", "이동속도", "1");
+	$신관_세환_얍삽한놈 = OFF;			
+
+	if($게임모드 == 3)
+		return;
+	
+
+	if($신관_세환_유저옥상진입 == ON)
+	{				
+		$신관_세환_유저옥상진입 = OFF;		
+
+		if($수위추적모드 == ON)
+			return;		
+
+		if($신관_세환_수위옥상진입 == ON)										
+		{
+			$신관_세환_수위옥상진입 = OFF;
+			SendMessage("정찰용수위", "좋은위치", "" + FindPoint("수위시작위치2"));			
+			$current_goal = 4;			
+		}
+
+		RunScript("정찰용수위", "캐릭터_수위._정지");
+	}									
+}
+
+down()	// 옥상안으로
+{
+	if($문_K3 == UNLOCK)
+	{
+		DeleteObject("");
+		return;
+	}	
+
+	if($게임모드 == 3 && $EnterObj == "유저")
+	{
+		SendMessage("유저", "이동속도", "0.5");		
+		return;
+	}
+
+	switch($EnterObj)
+	{
+		case "정찰용수위" :
+			$신관_세환_수위옥상진입 = ON;
+			break;
+
+		case "유저" :
+			if($b_다우징 == 0)
+			$신관_세환_얍삽한놈 = ON;
+			else
+			$신관_세환_얍삽한놈 = OFF;
+
+			$신관_세환_유저옥상진입 = ON;
+			SendMessage("유저", "이동속도", "0.5");		
+
+			if($수위추적모드 == OFF)
+				RunScript("정찰용수위", "캐릭터_수위.Disable");
+			break;
+	}
+}
+
+checkguard()
+{
+	if($문_K3 == UNLOCK)
+	{
+		DeleteObject("");
+		return;
+	}
+
+	if($수위추적모드 == ON || $게임모드 == 3)
+		return;
+	
+	if($신관_세환_수위옥상진입 == ON)			
+		RunScript("정찰용수위", "캐릭터_수위.Disable");			
+	
+}
+
+normal_speed()
+{
+	SendMessage("유저", "이동속도", "1");
+	$신관_세환_은미공격 = OFF;
+}
+
+_물바닥()
+{
+	if($문_K3 == LOCK)			
+		SendMessage("유저", "바닥소리", "수의진");		
+
+	SendMessage("사운드", "연주", "loop,옥상비,수의진_비.wav");
+}
+
+_땅바닥()
+{
+	if($문_K3 == LOCK)
+		SendMessage("유저", "바닥소리", "");	
+
+	SendMessage("사운드", "연주멈춤", "옥상비");
+}

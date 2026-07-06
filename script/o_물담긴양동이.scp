@@ -1,0 +1,115 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					o_물담긴양동이.scp
+//
+//	熱血man: akekakek		last update: 2000.09.24
+//  --------------------------------------------------
+
+// 물부기
+// 물움직이기
+
+Init()
+{
+	SendMessage("", "중력", "on");
+	SetObjValue("한번" , 0);
+
+}
+
+Init양동이1()
+{
+	SendMessage("", "스크립트설정", "handle " + $G_File + ".yang1");
+	Init();
+//	SetObjName("양동이1");
+}
+
+Init양동이2()
+{
+	SendMessage("", "스크립트설정", "handle " + $G_File + ".yang2");
+	Init();
+//	SetObjName("양동이2");
+	SendMessage("", "애니메이션", "*물부기");
+	if($본관불껐냐 == TRUE)
+	DeleteObject("");
+}
+
+yang2.pick()
+{
+	if($화재진압중 == 0)
+		return "보기";
+	if(GetObjValue("한번") == 0)
+		return "보기";
+
+	return "잡기";
+}
+
+yang2.click()
+{
+	if($화재진압중 == 0)
+	{
+		SendMessage("자막", "문자출력", "3," + GetString("s57"));
+		return;
+	}
+	if(GetObjValue("한번") == 0)
+	{
+		SetObjValue("한번" , 1);
+		SendMessage("자막", "문자출력", "3," + GetString("s57"));	
+		return;
+	}
+
+	if($USER_CAPTUREITEM == FALSE)
+	{
+		$USER_CAPTUREITEM = TRUE;
+//		if($본2_영호_양동이를들었나2 == 0)
+		$본2_영호_양동이를들었나 = 1;
+//		$본2_영호_물이있냐 = 50;
+		$양동이충전 = 0;
+		
+//		if(GetObjValue("한번") == 1)
+//		{
+//			SendMessage("", "애니메이션", "물움직이기");
+//			SetObjValue("한번" , 2);
+//		}
+
+		SendMessage("유저", "캡춰", GetObjName() + " 팔");
+	}
+}
+
+yang1.pick()
+{
+	if(GetObjValue("한번") == 0)
+		return "보기";
+
+	return "잡기";
+}
+
+yang1.click()
+{
+	if(GetObjValue("한번") == 0)
+	{
+		SetObjValue("한번" , 1);
+		SendMessage("자막", "문자출력", "3," + GetString("s57"));	
+		return;
+	}
+
+	if($USER_CAPTUREITEM == FALSE)
+	{
+		$USER_CAPTUREITEM = TRUE;
+		if($본2_영호_양동이를들었나 == 0)
+			$본2_영호_양동이를들었나 = 50;
+//		$본2_영호_물이있냐 = 50;
+
+		if(GetObjValue("한번") == 1)
+		{
+			SendMessage("", "애니메이션", "물움직이기");
+			SetObjValue("한번" , 2);
+		}
+		SendMessage("유저", "캡춰", GetObjName() + " 팔");
+	}
+}

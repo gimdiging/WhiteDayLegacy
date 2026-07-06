@@ -1,0 +1,325 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000							o_배전판2.scp
+//
+//	熱血man: agneau						last update: 2001.01.10
+//  ------------------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "door " + $G_File + "._문");
+	SendMessage("", "스크립트설정", "light " + $G_File + "._전등");
+	SendMessage("", "스크립트설정", "power " + $G_File + "._전원");
+	SendMessage("", "스크립트설정", "alert " + $G_File + "._도난경보기");
+	SendMessage("", "스크립트설정", "switch " + $G_File + "._경보기스위치");
+	SetObjValue("MotionName", "");
+	SetObjValue("TurnOnFlag", OFF);
+	SetObjValue("Step", 0);
+	SetObjValue("Flag", OFF);
+
+	SendMessage("","TurnGlow","off 0");		// 전등
+	SendMessage("","TurnGlow","off 1");		// 전원
+	SendMessage("","TurnGlow","hide 2");	// 도난경보기
+
+	SendMessage("","본회전","C-Ext03 0 0");
+	SendMessage("","페이드","Box10 0 0 0");
+
+	switch($신관_세환_배전판)
+	{
+		case 0:
+			SendMessage("","TurnGlow","on 0");
+			break;
+		case 1:
+			SendMessage("","TurnGlow","on 1");
+			break;
+		case 2:
+			SendMessage("","TurnGlow","on 2");
+			break;
+	}
+}
+
+_문.pick()
+{
+	if($나영배전판 == 0)
+		return "자동후진";
+
+	if(GetObjValue("MotionName") == "열기" || GetObjValue("MotionName") == "닫기")
+	{
+		SendMessage("", "캐쉬초기화", "");
+		return "";
+	}
+
+	if(GetObjValue("함보기") == 0)
+		return "보기";
+
+	return "잡기";
+}
+
+_문.click()
+{
+	if($나영배전판 == 0)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s910"));
+		SendMessage("사운드", "연주", "조작불가.wav");
+		return;
+	}
+
+	if($G_LightFactor < $standard_light)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s4"));	
+		return;
+	}
+
+	$TurnOnFlag = GetObjValue("TurnOnFlag");
+	
+	if(GetObjValue("함보기") == 0)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s59"));
+		SetObjValue("함보기",1);
+		return;
+	}	
+	
+	if($TurnOnFlag == OFF)
+	{		
+		SetObjValue("TurnOnFlag",ON);
+		SendMessage("신관배전판","애니메이션","열기");
+//		SendMessage("사운드","연주","data/sound/배전함열기.wav");		
+	}
+	else
+	{				
+		SetObjValue("TurnOnFlag",OFF);		
+		SendMessage("신관배전판","애니메이션","닫기");
+//		SendMessage("사운드","연주","data/sound/배전함닫기.wav");
+	} 
+}
+
+_전등.pick()
+{
+	if($신관_세환_배전판 == 3 && $G_UserItem == "퓨즈")
+		return "퓨즈_퓨즈";
+		
+	if($신관_세환_배전판 == 0)
+		return "잡기";
+
+	return "보기";
+}
+
+_전등.click()
+{
+	if($신관_세환_배전판 == 0)
+	{
+		SendMessage("전등퓨즈","페이드","Recursive 1 1 0");
+		SendMessage("유저","획득","퓨즈");
+		$신관_세환_배전판 = 3;
+		SendMessage("","TurnGlow","off 0");
+		SetTimer(1,"o_신관스위치._4층끄기");
+		SendMessage("자막", "문자출력", "3," +  GetString("it_312"));
+		return;
+	}
+	
+	if($신관_세환_배전판 == 3 && $G_UserItem == "퓨즈")
+	{
+		SendMessage("전등퓨즈","페이드","Recursive 1 0 1");
+		SendMessage("유저","폐기","퓨즈");
+		$신관_세환_배전판 = 0;
+		SendMessage("","TurnGlow","on 0");
+		SetTimer(1,"o_신관스위치._4층켜기");
+		return;
+	}
+
+	SendMessage("자막","문자출력후대기", GetString("s60"));
+}
+
+_전원.pick()
+{
+	if($신관_세환_배전판 == 3 && $G_UserItem == "퓨즈")
+		return "퓨즈_퓨즈";
+	
+	if($신관_세환_배전판 == 1)	
+		return "잡기";
+
+	return "보기";
+}
+
+_전원.click()
+{
+	if($신관_세환_배전판 == 1)
+	{
+		SendMessage("전원퓨즈","페이드","Recursive 1 1 0");
+		SendMessage("유저","획득","퓨즈");
+		$신관_세환_배전판 = 3;
+		SendMessage("","TurnGlow","off 1");
+		RunScript("에어컨", "o_에어컨._에어컨_끄기");		
+		SendMessage("자막", "문자출력", "3," +  GetString("it_312"));	
+		return;
+	}
+	
+	if($신관_세환_배전판 == 3 && $G_UserItem == "퓨즈")
+	{
+		SendMessage("전원퓨즈","페이드","Recursive 1 0 1");
+		SendMessage("유저","폐기","퓨즈");
+		$신관_세환_배전판 = 1;
+		SendMessage("","TurnGlow","on 1");
+		RunScript("에어컨", "o_에어컨._에어컨_켜기");		
+		return;
+	}
+
+	SendMessage("자막","문자출력후대기", GetString("s60"));
+}
+
+_도난경보기.pick()
+{	
+	if($신관_세환_배전판 == 3 && $G_UserItem == "퓨즈")
+		return "퓨즈_퓨즈";
+	
+	if($신관_세환_배전판 == 2)	
+		return "잡기";
+
+	return "보기";
+}
+
+_도난경보기.click()
+{
+	if($신관_세환_배전판 == 2)
+	{		
+		if(GetObjValue("Flag") == ON)
+		{			
+			SendMessage("자막", "문자출력", "2," + GetString("s61"));
+			SendMessage("유저", "공격", "배전판");
+			return;
+		}
+
+		SendMessage("", "TurnGlow", "hide 2");
+		SendMessage("도난퓨즈","페이드","Recursive 1 1 0");
+		SendMessage("유저","획득","퓨즈");
+		$신관_세환_배전판 = 3;
+		SendMessage("자막", "문자출력", "3," +  GetString("it_312"));
+		return;
+	}
+	
+	if($신관_세환_배전판 == 3 && $G_UserItem == "퓨즈")
+	{		
+		if(GetObjValue("Flag") == ON)
+		{			
+			SendMessage("자막", "문자출력", "2," + GetString("s61"));
+			SendMessage("유저", "공격", "배전판");
+			return;
+		}
+
+		SendMessage("도난퓨즈","페이드","Recursive 1 0 1");
+		SendMessage("유저","폐기","퓨즈");
+		SendMessage("","TurnGlow","off 2");
+		$신관_세환_배전판 = 2;		
+		return;
+	}
+
+	SendMessage("자막","문자출력후대기", GetString("s60"));
+}
+
+_경보기스위치.pick()
+{
+	if($신관_세환_배전판레버 == OFF)
+		return "";
+
+	if(GetObjValue("Step") == 0)
+		return "보기";
+
+	return "잡기";
+}
+
+_경보기스위치.click()
+{
+	if($신관_세환_은미이벤트 == 2)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s62"));
+		return;
+	}
+
+	$FlagValue = GetObjValue("Flag");
+
+	if(GetObjValue("Step") == 0)
+	{
+		SendMessage("자막","문자출력후대기", GetString("s63"));
+		SetObjValue("Step",1);
+		return;
+	}
+
+	if($신관_세환_은미이벤트 == 0)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s6"));
+		return;
+	}
+
+	if($신관_세환_은미이벤트 == 1 && $경보기전원공급 != 2)
+	{
+	$경보기전원공급 = 1;
+	SendMessage("자막", "문자출력후대기", GetString("s953"));
+	return;
+	}
+
+	if($FlagValue == OFF)
+	{
+		SendMessage("","본회전","C-Ext03 90 0");
+		SendMessage("","본이동","C-Ext03 0 0 0");
+		SendMessage("사운드","연주","data/sound/배전함레버.wav");
+		SetObjValue("Flag",ON);
+
+		if($신관_세환_배전판 == 2)
+		{
+			bell();
+			$신관_세환_배전판레버 = OFF;
+			SendMessage("","TurnGlow","on 2");						
+			SetTimer($신관_세환_벨지속시간,"auto_off");
+			SetTimer($신관_세환_배전판조작간격, "pick_on");			
+		}	
+		return;
+	}
+
+	SendMessage("","본회전","C-Ext03 0 0");
+	SendMessage("","본이동","C-Ext03 0 0 0");
+	SendMessage("","TurnGlow","hide 2");		
+	SendMessage("사운드","연주","data/sound/배전함레버.wav");	
+	SetObjValue("Flag",OFF);	
+}
+
+pick_on()
+{
+	$신관_세환_배전판레버 = ON;
+	SendMessage("신관배전판", "캐쉬초기화", "");
+}
+
+bell()
+{
+	SendMessage("사운드", "연주", " loop,화재경보음,data/sound/event/화재경보기_루프.wav");
+	SendMessage("", "시끄러워", "4");
+	
+	if($신관_세환_은미이벤트 == 1)			
+		RunScript("은미", "캐릭터_은미.retreat");		
+}
+
+auto_off()
+{
+	if($신관_세환_은미이벤트 == 2)
+		return;
+
+	SendMessage("신관배전판","본회전","C-Ext03 0 0");
+	SendMessage("신관배전판","본이동","C-Ext03 0 0 0");
+	SendMessage("사운드","연주","data/sound/배전함레버.wav");	
+	SetObjValue("Flag",OFF);
+
+	if($신관_세환_배전판 == 2)
+	{
+		SendMessage("사운드","연주멈춤","화재경보음");
+		SendMessage("신관배전판", "TurnGlow", "off 2");
+		return;
+	}
+
+	SendMessage("신관배전판", "TurnGlow", "hide 2");
+}

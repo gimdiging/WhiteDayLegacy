@@ -1,0 +1,173 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					o_더미5.scp
+//
+//	熱血man: gimdiging		last update: 2000.07.24
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "디스플레이", "숨기기");
+	SendMessage("", "페이드", "Recursive 0 0 0");
+	SendMessage("", "끄기");
+	SetObjValue("불의소멸남은횟수",5);
+	SetObjValue("클릭할수있다", 1);
+	SetObjValue("현재불",1.0);
+}
+
+Init2()
+{
+	Init();
+	SendMessage("", "스크립트설정", "info " + $G_File);	
+}
+
+Init3()
+{
+	Init();
+	SendMessage("", "스크립트설정", "info " + $G_File + ".info");		
+}
+
+Init4()
+{
+	SendMessage("", "페이드", "Recursive 0 0 0");
+	SendMessage("", "끄기");	
+}
+
+Init5()
+{
+	//소화기D 거리체크
+	SendMessage("", "페이드", "Recursive 0 0 0");
+	SendMessage("", "충돌체크" ,"off");	
+}
+
+pick()
+{
+	if($체육관_영호_방화이벤트 == 0 || GetObjValue("클릭할수있다") == 0)
+	{
+		SendMessage("", "캐쉬초기화", "");
+		return "";
+	}
+
+	return "보기";
+}
+
+click()
+{	
+	if($소화기변수 != 4)
+	{
+	SendMessage("자막", "문자출력후대기", GetString("s929"));
+	return;
+	}
+	$불의소멸남은횟수 = GetObjValue("불의소멸남은횟수");
+
+	if($불의소멸남은횟수 == 0)
+	{
+	SendMessage("타이머", "스크립트설정", "2 0 1 o_더미5._D끄기");
+	return;
+	}
+
+	SetObjValue("불의소멸남은횟수",	$불의소멸남은횟수--);
+	SetObjValue("클릭할수있다", 0);
+	SetTimer(1,"_다시클릭할수있다");
+
+	SendMessage("강당불놀이메인4_1","사이즈변환",GetObjValue("현재불") + " 1");
+	SendMessage("강당불놀이메인4_2","사이즈변환",GetObjValue("현재불") + " 1");
+	SendMessage("강당불놀이메인4_3","사이즈변환",GetObjValue("현재불") + " 1");
+	SendMessage("강당불놀이메인4_4","사이즈변환",GetObjValue("현재불") + " 1");
+	SetObjValue("현재불", GetObjValue("현재불") - 0.15);
+
+	SendMessage("불장수", "애니메이션", "쏴");
+	SendMessage("파티3", "파티클생성", "*start_pos sphere(in) " + GetObjPos("유저", "유저정의") + " 2 *target_pos sphere(in) " + GetObjPos(GetObjName()) + " 20 " + GetWDBParticle("particle.wdb", "각소화기", "파티클내용"));
+	SendMessage("사운드", "연주", "data/sound/item/소화기d.wav");
+
+}
+
+_D끄기()
+{
+	SendMessage("강당불놀이메인4_1","사이즈변환","0 1");
+	SendMessage("강당불놀이메인4_2","사이즈변환","0 1");
+	SendMessage("강당불놀이메인4_3","사이즈변환","0 1");
+	SendMessage("강당불놀이메인4_4","사이즈변환","0 1");
+	SetTimer(1,"o_더미5._D끄기1");
+}
+
+_D끄기1()
+{
+	DeleteObject("강당불놀이메인4_1");
+	DeleteObject("강당불놀이메인4_2");
+	DeleteObject("강당불놀이메인4_3");
+	DeleteObject("강당불놀이메인4_4");
+	DeleteObject("더미4");
+}
+
+info.pick()
+{
+	if($체육관_영호_방화이벤트 == 0 || GetObjValue("클릭할수있다") == 0)
+	{
+		SendMessage("", "캐쉬초기화", "");
+		return "";
+	}
+
+	return "보기";
+}
+
+info.click()
+{	
+	if($소화기변수 != 1)
+	{
+	SendMessage("자막", "문자출력후대기", GetString("s928"));
+	return;
+	}
+	$불의소멸남은횟수 = GetObjValue("불의소멸남은횟수");
+
+	if($불의소멸남은횟수 == 0)
+	{
+	SendMessage("타이머", "스크립트설정", "2 0 1 o_더미5._E끄기");
+	return;
+	}
+
+	SetObjValue("불의소멸남은횟수",	$불의소멸남은횟수--);
+	SetObjValue("클릭할수있다", 0);
+	SetTimer(1,"_다시클릭할수있다");
+
+	SendMessage("E형으로끄는불1","사이즈변환",GetObjValue("현재불") + " 1");
+	SendMessage("E형으로끄는불2","사이즈변환",GetObjValue("현재불") + " 1");
+	SendMessage("E형으로끄는불3","사이즈변환",GetObjValue("현재불") + " 1");
+	SendMessage("E형으로끄는불4","사이즈변환",GetObjValue("현재불") + " 1");
+	SetObjValue("현재불", GetObjValue("현재불") - 0.15);
+
+	SendMessage("불장수", "애니메이션", "쏴");
+	SendMessage("파티3", "파티클생성", "*start_pos sphere(in) " + GetObjPos("유저", "유저정의") + " 2 *target_pos sphere(in) " + GetObjPos(GetObjName()) + " 20 " + GetWDBParticle("particle.wdb", "각소화기", "파티클내용"));
+	SendMessage("사운드", "연주", "data/sound/item/소화기a.wav");
+
+}
+
+_E끄기()
+{
+	SendMessage("E형으로끄는불1","사이즈변환","0 1");
+	SendMessage("E형으로끄는불2","사이즈변환","0 1");
+	SendMessage("E형으로끄는불3","사이즈변환","0 1");
+	SendMessage("E형으로끄는불4","사이즈변환","0 1");
+	SetTimer(1,"o_더미5._E끄기1");
+}
+
+_E끄기1()
+{
+	DeleteObject("E형으로끄는불1");
+	DeleteObject("E형으로끄는불2");
+	DeleteObject("E형으로끄는불3");
+	DeleteObject("E형으로끄는불4");
+	DeleteObject("더미5");
+}
+
+_다시클릭할수있다()
+{
+	SetObjValue("클릭할수있다", 1);	
+}

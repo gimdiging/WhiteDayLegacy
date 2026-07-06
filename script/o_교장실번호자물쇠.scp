@@ -1,0 +1,205 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000				o_교장실번호자물쇠.scp
+//
+//	熱血man: akekakek		last update: 2000.08.29
+//  --------------------------------------------------
+
+Init()
+{
+	for($i = 0; $i <= 9; $i++)
+	{
+		SendMessage("", "스크립트설정", "n" + $i + " " + $G_File + " *data " + $i);
+	}
+
+//	SendMessage("", "스크립트설정", "dummy1 " + "null");
+//	SendMessage("", "스크립트설정", "dummy0 " + "null");
+	
+//	SetObjName("교장실번호자물쇠");
+
+	SetObjValue("번호횟수", 1);
+	SetObjValue("번호1", -1);
+	SetObjValue("번호2", -1);
+	SetObjValue("번호3", -1);
+	SetObjValue("번호4", -1);
+	if($랜덤B == 0)
+	SetObjValue("암호", "2841");
+	else if($랜덤B == 1)
+	SetObjValue("암호", "8241");
+	else if($랜덤B == 2)
+	SetObjValue("암호", "1842");
+	else if($랜덤B == 3)
+	SetObjValue("암호", "4218");
+	else if($랜덤B == 4)
+	SetObjValue("암호", "2148");
+
+	SetObjValue("초기화", 0);
+
+	SetObjValue("한번보기",0);
+
+	if($본2_영호_교장실번호자물쇠해결 == 0)
+	{
+		SendMessage("", "TurnGlow", "on 0");
+	}
+	else
+	{
+		SendMessage("", "발광색", "lock_lamp 0 255 0");
+		SendMessage("", "TurnGlow", "off 0");
+	}
+
+}
+
+pick()
+{
+	if($본2_영호_칠판보기 == 0)
+		return "자동후진";
+
+	if($본2_영호_교장실번호자물쇠해결 == 1)
+		return "보기";
+	
+
+	if(GetObjValue("한번보기") == 0)
+		return "보기";
+
+	$번호횟수 = GetObjValue("번호횟수");
+
+	SetObjValue("번호" + $번호횟수, $G_BoundBoxData);
+
+	if(GetObjValue("초기화") == 1)
+	{
+		return "포인터";
+	}
+
+	return $번호횟수 == -1 ? "" : "잡기";
+}
+
+click()
+{
+	if($본2_영호_칠판보기 == 0)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s912"));
+		SendMessage("사운드", "연주", "조작불가.wav");
+		return;
+	}
+
+	if($본2_영호_교장실번호자물쇠해결 == 1)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s33"));
+		return;
+	}
+
+	if(GetObjValue("한번보기") == 0)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s34"));
+		SetObjValue("한번보기",1);
+		return;
+	}
+	
+	if(GetObjValue("초기화") == 1)
+	{
+		return;
+	}
+
+	$번호횟수 = GetObjValue("번호횟수");
+	$번호 = GetObjValue("번호" + $번호횟수);
+
+	if($번호횟수 == -1)
+	{
+		return;
+	}
+
+	if($번호횟수 == 1)
+	{
+		ChangeTexture("", "1번째번호");
+		ChangeTexture("", "2번째번호");
+		ChangeTexture("", "3번째번호");
+		ChangeTexture("", "4번째번호");
+	}
+
+	ChangeTexture("", "" + $번호횟수 + "-" + $번호); // 1_1
+	SendMessage("","본이동",$번호 + " 0 0 -0.2");
+	SetObjValue("눌린번호",  $번호);
+	SendMessage("타이머", "스크립트설정", "0.1 0 1 " + $G_File + ".Initkey" + " *obj 교장실번호자물쇠");
+	SendMessage("사운드", "연주", "data/sound/번호자물쇠_버튼누름.wav");
+	
+
+	if($번호횟수 == 4)
+	{
+		if(("" + GetObjValue("번호1") + GetObjValue("번호2") + GetObjValue("번호3") + GetObjValue("번호4")) == GetObjValue("암호"))
+		{
+			$본2_영호_교장실번호자물쇠해결 = 1;
+			SendMessage("", "발광색", "lock_lamp 0 255 0");
+			SendMessage("", "TurnGlow", "off 0");
+			SendMessage("사운드", "연주", "data/sound/번호자물쇠_맞음.wav");
+			SendMessage("자막", "문자출력후대기", GetString("s35"));
+			$번호횟수 = -1;
+			SetObjValue("번호횟수", $번호횟수);
+
+			SendMessage("타이머", "스크립트설정", "1 0 1 " + "문_본관1.numberpadopen" + " *obj 문_교장실"); // doorchange
+
+			SendMessage("타이머", "스크립트설정", "3 0 1 " + $G_File + ".Initerror" + " *obj 교장실번호자물쇠");
+
+			return;
+		}
+		else
+		{
+			SendMessage("사운드", "연주", "data/sound/번호자물쇠_틀림.wav");
+			SendMessage("자막", "문자출력후대기", GetString("s36"));
+			$번호횟수 = 0;
+			SetObjValue("초기화", 1);
+			SendMessage("타이머", "스크립트설정", "3 0 1 " + $G_File + ".Initerror" + " *obj 교장실번호자물쇠");
+			$GameOverMode = 1;
+			SetTimer(5, "오브젝트_유저._유저.dead");
+		}
+
+	}
+
+	$번호횟수++;
+	SetObjValue("번호횟수", $번호횟수);
+}
+
+Initerror()
+{
+	SetObjValue("초기화", 0);
+	ChangeTexture("", "1번째번호");
+	ChangeTexture("", "2번째번호");
+	ChangeTexture("", "3번째번호");
+	ChangeTexture("", "4번째번호");
+}
+
+Initkey()
+{
+	SendMessage("","본이동",GetObjValue("눌린번호") + " " +"0 0 0");
+}
+
+_칠판보기()
+{
+	if($수위추적모드 == ON)
+		return;
+
+	if($본2_영호_칠판보기 == 0)
+	{
+		SendMessage("자막", "와이드모드", "켜기");
+		SendMessage("자막", "활성화", "");
+		SendMessage("유저", "위치쳐다보기", "" + FindPoint("교장실암호칠판") );
+		
+		$본2_영호_칠판보기 = 1;
+		SendMessage("타이머", "스크립트설정", "5 0 1 o_교장실번호자물쇠._칠판보기끝");
+	}
+
+}
+
+_칠판보기끝()
+{
+	SendMessage("자막", "비활성", "");
+	SendMessage("자막", "와이드모드", "끄기");
+	SendMessage("유저", "쳐다보지말기", "");
+
+}

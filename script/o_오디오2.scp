@@ -1,0 +1,467 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000				o_오디오2.scp
+//
+//	熱血man: doocub				last update: 2000.10.11
+//  --------------------------------------------------
+
+Init()
+{
+	SetObjValue("step",0);
+	SetObjValue("OpenFlag", 0);
+	SetObjValue("special_cd", 0);
+}
+
+InitLCD()
+{
+	SendMessage("", "페이드", "Recursive 0 0 0");
+}
+
+Init가짜()
+{
+	Init();
+	SendMessage("", "페이드", "Cylinder01 0 0 0");
+	SendMessage("", "스크립트설정", "info " + $G_File + ".fake_body");
+	SendMessage("", "스크립트설정", "cd_tray " + $G_File + ".fake_cd");
+}
+
+Init진짜()
+{
+	Init();
+	SendMessage("", "스크립트설정", "info " + $G_File + ".body");
+	SendMessage("", "스크립트설정", "cd_tray " + $G_File + ".cd");
+	if($신관_세환_무용실이벤트 == 2 && $신관_세환_CD == 2)	
+		SendMessage("", "애니메이션", "열려있기");
+	if($신관_세환_CD != 2)
+		SendMessage("", "페이드", "Cylinder01 0 0 0");
+}
+
+body.pick()
+{
+	if($수위추적모드 == ON)
+		return "자동후진";
+
+	if(GetObjValue("step") == 0)
+		return "보기";
+
+	return "";
+}
+
+body.click()
+{
+	if($수위추적모드 == ON)
+	{
+		SendMessage("사운드", "연주", "조작불가.wav");
+		SendMessage("자막", "문자출력", "3," + GetString("s12"));
+		return;
+	}
+
+	SendMessage("자막", "문자출력후대기", GetString("s89"));
+	SetObjValue("step", 1);
+}
+
+cd.pick()
+{
+	if($수위추적모드 == ON)
+		return "자동후진";
+
+	if(GetObjValue("MotionName") == "열림" || GetObjValue("MotionName") == "닫힘")
+	{
+		SendMessage("", "캐쉬초기화", "");
+		return "";
+	}
+	
+	if(GetObjValue("step") <= 1 || $G_LightFactor <= $standard_light)
+		return "보기";
+
+	if($G_UserItem == "리모콘" && GetObjValue("OpenFlag") == 0)
+		return "i리모콘";
+
+	if($G_UserItem == "열쇠뺀시디" && GetObjValue("OpenFlag") == 1)
+		return "i시디";
+
+	return "잡기";
+}
+
+cd.click()
+{
+	if($수위추적모드 == ON)
+	{
+		SendMessage("사운드", "연주", "조작불가.wav");
+		SendMessage("자막", "문자출력", "3," + GetString("s12"));
+		return;
+	}
+
+	if($G_LightFactor < $standard_light)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s4"));	
+		return;
+	}
+
+	$Step = GetObjValue("step");
+	$OpenFlag = GetObjValue("OpenFlag");
+
+//	if($G_UserItem == "리모콘")
+//	{
+//		SendMessage("자막", "문자출력후대기", GetString("s90"));
+//		return;
+//	}
+
+	if($신관_세환_무용실이벤트 == 2)
+	{
+		if($신관_세환_CD == 2)
+		{			
+			SendMessage("", "페이드", "Cylinder01 1 1 0");			
+			SendMessage("유저", "획득", "열쇠뺀시디");
+			SetTimer(2,"close *obj 무용실진짜오디오");
+			$신관_세환_CD = 0;			
+			SendMessage("자막", "문자출력", "3," + GetString("it_162"));			
+			return;
+		}
+
+		SendMessage("자막", "문자출력후대기", GetString("s87"));
+		return;
+	}
+
+	if($Step == 0 || $수위추적모드 == ON)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s89"));
+		SetObjValue("step", 1);
+		return;
+	}
+
+	if($Step == 1)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s91"));
+		SetObjValue("step", 2);
+		return;
+	}
+
+	if($G_UserItem != "리모콘" && GetObjValue("OpenFlag") == 0)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s930"));
+		return;
+	}
+
+	if($신관_세환_오디오전원 == ON)
+	{
+		SendMessage("자막", "문자출력", "2," + GetString("s92"));
+		SendMessage("사운드", "연주", "자판기버튼.wav");
+		return;
+	}
+
+	switch($OpenFlag)
+	{
+		case 0:			
+			SendMessage("", "애니메이션", "열림");	
+			SetObjValue("OpenFlag", 1);
+			SendMessage("오디오LCD", "페이드", "Recursive 0 1 1");
+			break;
+
+		case 1:
+			SetObjValue("OpenFlag", 0);
+
+			if($G_UserItem == "열쇠뺀시디")
+			{
+				$신관_세환_무용실이벤트 = 1;
+				SendMessage("자막", "활성화", "");
+				SendMessage("자막", "와이드모드", "켜기");
+				SendMessage("유저", "앉아", "");
+				RunScript("정찰용수위", "캐릭터_수위.Disable");				
+				SendMessage("", "페이드", "Cylinder01 1 0 1");
+				SendMessage("사운드", "연주", "도플_cd놓기.wav");
+				SendMessage("유저", "폐기", "@열쇠뺀시디");
+				SendMessage("자막", "문자출력", "3," + GetString("s93"));
+				$신관_세환_CD = 2; 
+				SetTimer(2,"o_오디오2.close *obj 무용실진짜오디오");					
+				SetTimer(0, "o_무용실거울.random");				
+				if($게임모드 != 0 && $게임모드 != 4)
+				SendMessage("허드", "가스게이지켜", "300");			
+				$문_신관화장실 = LOCK;
+				RunScript("문_화장실남", "문_신관._닫쳐있어");	
+				return;
+			}
+			
+			SendMessage("", "애니메이션", "닫힘 0.5");	
+			break;
+	}				
+}
+
+_깜짝()
+{
+	SendMessage("사운드", "연주", "data/sound/event/깜짝소리_가야금.wav");
+}
+
+play_ready()
+{	
+	SendMessage("오디오LCD", "텍스쳐변경", "play");
+	SendMessage("사운드", "연주", "도플_버튼.wav");			
+	SendMessage("사운드", "연주3d", GetObjPos("오른쪽스피커") + " 오른쪽하우링,도플_하우링.wav");
+	SendMessage("사운드", "연주3d", GetObjPos("왼쪽스피커") + " 왼쪽하우링,도플_하우링.wav");
+//	SendMessage("사운드", "연주", "도플_하우링.wav");
+	
+	$신관_세환_오디오전원 = ON;
+	SetTimer(0,"o_무용실거울._진동");
+
+	$문_무용실 = LOCK;
+	$문_무용실1 = LOCK;
+
+	SetTimer(1,"mirror_vibration");
+}
+
+mirror_vibration()
+{
+	SendMessage("카메라", "쳐다보기", "" + FindCamera("무용실유리떨림"));
+	SetTimer(3, "look_audio");
+}
+
+look_audio()
+{
+	SendMessage("카메라", "쳐다보기", "" + FindCamera("무용실오디오"));
+	SendMessage("도플갱어", "위치", "" + FindPoint("도플시작위치"));
+	SendMessage("도플갱어", "회전", "-90");
+	DeleteObject("기쉰");
+	SetTimer(2,"play");
+}
+
+play()
+{		
+//	SendMessage("도플갱어", "애니메이션", "창문두드리기");
+	SendMessage("도플갱어", "텍스쳐변경", "hi_face_ghost");
+	SendMessage("도플갱어", "텍스쳐변경", "hi_body_ghost");	
+	SendMessage("도플갱어", "텍스쳐변경", "he_ghost_02");	
+	SendMessage("도플갱어", "텍스쳐변경", "he_ghost_03");	
+	SendMessage("도플갱어", "텍스쳐변경", "he_ghost_04");	
+	SendMessage("도플갱어", "텍스쳐변경", "he_ghost_05");	
+	SendMessage("도플갱어", "텍스쳐변경", "he_ghost_06");	
+	SendMessage("도플갱어", "텍스쳐변경", "he_ghost_08");	
+	SendMessage("도플갱어", "텍스쳐변경", "he_ghost_09");	
+	SendMessage("도플갱어", "텍스쳐변경", "he_ghost_12");	
+
+	SendMessage("카메라", "쳐다보지말기", "");
+	SendMessage("자막", "비활성", "");
+	SendMessage("자막", "와이드모드", "끄기");
+	SendMessage("유저", "쳐다보기", "도플갱어 180");
+	SendMessage("유저", "이동속도", "0");
+//	SetTimer(0,"o_무용실스피커.audio_on");			
+//	SetTimer(3,"look_up");
+	$신관_세환_도플쳐다보기 = 1;
+}
+
+look_up()
+{	
+	if($신관_세환_도플쳐다보기 == 2)
+	{
+		$신관_세환_도플쳐다보기 = 3;		
+//		SendMessage("자막", "와이드모드", "끄기");
+//		SendMessage("유저", "쳐다보기", "도플갱어 180");
+		SendMessage("사운드", "연주", "깜짝소리_가야금.wav");
+		SendMessage("사운드", "연주3d", GetObjPos("도플갱어") + " 도플놀람,도플_놀람.wav");		
+		SetTimer(3,"start");
+	}
+//	else if($신관_세환_도플쳐다보기 == 2)
+//	{
+//		$신관_세환_도플쳐다보기 = 3;		
+//		SendMessage("자막", "와이드모드", "끄기");		
+//		SendMessage("사운드", "연주", "깜짝소리_가야금.wav");
+//		SendMessage("사운드", "연주3d", GetObjPos("도플갱어") + " 도플놀람,도플_놀람.wav");		
+//		SetTimer(1,"start");
+//	}
+}
+
+start()
+{			
+	SendMessage("유저", "쳐다보지말기", "");	
+	SendMessage("사운드", "연주", "도플_웃음01.wav");	
+	
+	$이동속도 = $신관_세환_무용실내이동속도;
+	SendMessage("유저", "이동속도", "" + $이동속도);
+	SetTimer(0,"e_도플갱어.start");
+	SetTimer(0,"o_무용실스피커.audio_on");
+	return;
+}
+
+
+
+close()
+{	
+	SendMessage("", "애니메이션", "닫힘 0.5");
+	SendMessage("", "캐쉬초기화", "");
+	
+	if(GetObjName() == "무용실가짜오디오")
+	SendMessage("자막", "비활성", "");
+
+	if($신관_세환_무용실이벤트 == 1)
+	{		
+		if(GetObjName() == "무용실진짜오디오")			
+			SetTimer(3,"play_ready");
+	}
+}
+
+fake_body.pick()
+{
+	if($신관_세환_무용실이벤트 <= 1)
+		return "";
+
+	if($G_UserItem == "리모콘" && $special_event1 == ON)
+		return "i리모콘";
+
+	return "보기";
+}
+
+fake_body.click()
+{
+	if(GetObjValue("special_cd") == 0)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s79"));			
+		return;
+	}
+
+//	if(GetObjValue("step") <= 5)
+//	{
+//		SendMessage("자막", "문자출력후대기", GetString("s79"));			
+//		SetObjValue("step", GetObjValue("step") + 1);
+//		return;
+//	}
+
+	switch(GetObjValue("step"))
+	{	
+		case 1:
+			SendMessage("자막", "문자출력후대기", GetString("s79"));
+			break;
+
+		case 2:
+			SendMessage("자막", "문자출력후대기", GetString("s106"));
+			break;
+
+		case 3:
+			SendMessage("자막", "문자출력후대기", GetString("s6"));
+			break;
+
+		case 4:
+			SendMessage("자막", "문자출력후대기", GetString("s81"));
+			break;
+
+		case 5:
+			SendMessage("자막", "문자출력후대기", GetString("s87"));
+			break;
+
+		case 6:
+			SendMessage("자막", "문자출력후대기", GetString("s944"));
+			break;
+
+		case 7:
+			SendMessage("자막", "문자출력후대기", GetString("s945"));
+			$special_event1 = ON;
+			break;
+
+		case 8:
+			if($G_UserItem == "리모콘")
+			{
+				TextOut(GetString("s946"));
+				SetTimer(3,"start_event");
+			}
+			else 
+			{
+				SendMessage("자막", "문자출력후대기", GetString("s947"));
+				SetObjValue("step", 7);
+			}
+			break;			
+	}
+
+	SetObjValue("step", GetObjValue("step") + 1);
+
+}
+
+fake_cd.pick()
+{	
+	if($신관_세환_무용실이벤트 <= 1)
+		return "";
+
+	if(GetObjValue("MotionName") == "열림" || GetObjValue("MotionName") == "닫힘")
+	{
+		SendMessage("", "캐쉬초기화", "");
+		return "";
+	}
+
+	if($G_UserItem == "열쇠뺀시디" && GetObjValue("OpenFlag") == 1)
+		return "i시디";
+
+	return "잡기";
+}
+
+fake_cd.click()
+{	
+	if(GetObjValue("OpenFlag") == 0)
+	{
+		SendMessage("", "애니메이션", "열림");
+		SetObjValue("OpenFlag", 1);				
+	}
+	else
+	{
+		if($G_UserItem == "열쇠뺀시디")
+		{
+			SetObjValue("special_cd", 1);
+			SendMessage("자막", "활성화", "");			
+			SendMessage("", "페이드", "Cylinder01 1 0 1");
+			SendMessage("유저", "폐기", "열쇠뺀시디");
+			SetObjValue("OpenFlag", 0);
+			SetTimer(2,"close *obj 무용실가짜오디오");
+			return;
+		}
+		
+		if(GetObjValue("special_cd") == 1)
+		{
+			SetObjValue("special_cd", 0);
+			SendMessage("", "페이드", "Cylinder01 1 1 0");
+			SendMessage("유저", "획득", "열쇠뺀시디");
+			SendMessage("자막", "활성화", "");
+			SetTimer(2,"close *obj 무용실가짜오디오");
+			return;
+		}				
+
+		SendMessage("", "애니메이션", "닫힘 0.5");
+		SetObjValue("OpenFlag", 0);					
+	}		
+}
+
+start_event()
+{
+	TextOut(GetString("s948"));
+}
+
+remotemode()
+{	
+	if($신관_세환_리모콘거리 == OFF)
+	{
+		$신관_세환_리모콘거리 = ON;
+		SetTimer(0,"pickdistance");
+	}
+}
+
+handmode()
+{
+	$신관_세환_리모콘거리 = OFF;
+}
+
+pickdistance()
+{	
+	if($신관_세환_리모콘거리 == ON && $신관_세환_무용실이벤트 != 1)
+	{
+		if($G_UserItem == "리모콘")
+			SendMessage("무용실진짜오디오", "픽거리설정", "500 600");
+		else
+			SendMessage("무용실진짜오디오", "픽거리설정", "100 300");
+
+		SendMessage("무용실진짜오디오", "캐쉬초기화", "");
+
+		SetTimer(1,"pickdistance");
+	}
+}

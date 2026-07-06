@@ -1,0 +1,74 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000				o_신관3층자물쇠.scp
+//
+//	熱血man: doocub				last update: 2000.09.25
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "lock " + $G_File);
+
+	SetObjValue("LockID", "$문_심령동호회실");
+
+	if($문_심령동호회실 == UNLOCK)
+		DeleteObject("");
+}
+
+Init잠금고리()
+{
+	if($문_심령동호회실 == UNLOCK)
+		DeleteObject("");
+}
+
+pick()
+{
+	if($문_심령동호회실 == UNLOCK)
+		return "";
+
+	if($G_LightFactor <= $standard_light)
+		return "보기";
+
+	if($G_UserItem == "동아리방열쇠")
+		return "i열쇠9";
+
+	return "잡기";
+}
+
+click()
+{
+	if($G_LightFactor < $standard_light)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s4"));	
+		return;
+	}
+
+	if($G_UserItem == "동아리방열쇠")
+	{
+		SetValue(GetObjValue("LockID"), UNLOCK);
+		SendMessage("", "애니메이션", "열기");
+		SendMessage("", "페이드", "Recursive 2 1 0");
+		SendMessage("사운드", "연주", "신관_자물쇠따기,data/sound/신관_자물쇠따기.wav");
+		SendMessage("유저","폐기","동아리방열쇠");
+		RunScript("잠금고리", "문_잠금고리._사라져");
+		SetTimer(3,"Release");
+	}
+	else
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s75"));
+		SendMessage("사운드", "연주", "신관_자물쇠흔들기,data/sound/신관_자물쇠흔들기.wav");
+	}
+}
+
+Release()
+{
+	DeleteObject("");
+	SendMessage("자막", "문자출력", "3," + GetString("it_914"));
+}

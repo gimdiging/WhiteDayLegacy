@@ -1,0 +1,743 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//						E v e n t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000				o_신관스위치.scp
+//
+//	熱血man: agneau			last update: 2000.11.1
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "switch " + $G_File);
+	SetObjValue("MotionName", "");
+	SetObjValue("TurnOnFlag", OFF);
+	SetObjValue("LightCount", 1);
+	SetObjValue("LightName1", "");
+	SetObjValue("event",2);
+	SetObjValue("LightPower",1);		// LightPower 0: 교실 1: 기타 2: 4층 배전판 
+	SetObjValue("exList", 0);
+	SetObjValue("고장", 0);
+
+	if($b_교실스위치랜덤 == 0)
+	{
+		$b_교실스위치랜덤 = 1;
+		$전등폭파_randomset = Random(4) + 1;
+	}
+}
+
+// 1F
+
+Init역사관1()
+{
+	Init();
+	SetObjValue("LightName1", "b1-1");
+}
+
+Init역사관2()
+{
+	Init();
+	SetObjValue("LightName1", "b1-1");
+}
+
+Init이사장실()
+{
+	Init();
+	SetObjValue("exList", 1);
+	SetObjValue("LightName1", "b1-3");
+	SetObjValue("고장", 1);
+}
+
+Init음악감상실()
+{
+	Init();	
+	SetObjValue("exList", 1);
+	SetObjValue("LightName1", "b1-4");
+}
+
+Init무용실A()
+{
+	Init();	
+	SetObjValue("LightName1", "b1-5");
+}
+
+Init무용실B()
+{
+	Init();	
+	SetObjValue("LightName1", "b1-6");
+}
+
+Init심령동호회실()
+{
+	Init();
+	SetObjValue("LightName1", "b1-7");
+}
+
+Init식당()
+{
+	Init();
+	SetObjValue("LightName1", "b1-8");
+}
+
+Init전기제어실()
+{
+	Init();
+	SetObjValue("LightName1", "b1-9");
+}
+
+// 2F
+
+Init화실()
+{
+	Init();
+	SetObjValue("LightName1", "b2-1");
+}
+
+Init지구과학실()
+{
+	Init();
+	SetObjValue("LightName1", "b2-2");
+}
+
+Init어학실()
+{
+	Init();
+	SetObjValue("LightName1", "b2-3");
+}
+
+Init컴퓨터실()
+{
+	Init();
+	SetObjValue("exList", 1);
+	SetObjValue("LightName1", "b2-4");
+	SetObjValue("고장", 1);
+}
+
+Init교직원휴계실()
+{
+	Init();
+	SetObjValue("exList", 1);
+	SetObjValue("LightName1", "b2-5");
+}
+
+Init화장실남()
+{
+	Init();
+	SetObjValue("LightName1", "b2-6");
+	SetObjValue("exList", 1);
+	_불켜기();
+}
+
+Init화장실여()
+{
+	Init();
+	SetObjValue("LightName1", "b2-7");
+}
+
+Init3_1()
+{
+	Init();
+	SetObjValue("LightName1", "b2-8");
+	SetObjValue("exList", 1);
+	if($전등폭파_randomset == 1 || $전등폭파_randomset == 2)	
+		SetObjValue("event",1);			
+	else
+		SetObjValue("event",0);			
+}
+
+Init3_2()
+{
+	Init();
+	SetObjValue("LightName1", "b2-9");
+	SetObjValue("exList", 1);
+	if($전등폭파_randomset == 3)	
+		SetObjValue("event",1);		
+	else
+		SetObjValue("event",0);			
+}
+
+Init3_3()
+{
+	Init();
+	SetObjValue("LightName1", "b2-10");
+	SetObjValue("exList", 1);
+	if($전등폭파_randomset == 4)	
+		SetObjValue("event",1);			
+	else
+		SetObjValue("event",0);			
+}
+
+Init3_4()
+{
+	Init();
+	SetObjValue("LightName1", "b2-11");
+	SetObjValue("exList", 1);
+	if($전등폭파_randomset == 2)	
+		SetObjValue("event",1);			
+	else
+		SetObjValue("event",0);			
+}
+
+Init3_5()
+{
+	Init();
+	SetObjValue("LightName1", "b2-12");
+	SetObjValue("exList", 1);
+	if($전등폭파_randomset == 1 || $전등폭파_randomset == 3)	
+		SetObjValue("event",1);			
+	else
+		SetObjValue("event",0);			
+}
+
+Init3_6()
+{
+	Init();
+	SetObjValue("LightName1", "b2-13");
+	SetObjValue("exList", 1);
+	if($전등폭파_randomset == 3 || $전등폭파_randomset == 4)	
+		SetObjValue("event",1);			
+	else
+		SetObjValue("event",0);			
+}
+
+// 3F
+
+Init3_7()
+{
+	Init();
+	SetObjValue("LightName1", "b3-2");
+	SetObjValue("exList", 1);
+	if($전등폭파_randomset == 2 || $전등폭파_randomset == 4)	
+		SetObjValue("event",1);			
+	else
+		SetObjValue("event",0);			
+}
+
+Init3_8()
+{
+	Init();
+	SetObjValue("LightName1", "b3-3");
+	SetObjValue("exList", 1);
+	if($전등폭파_randomset == 1 || $전등폭파_randomset == 3)	
+		SetObjValue("event",1);			
+	else
+		SetObjValue("event",0);			
+}
+
+Init3_9()
+{
+	Init();
+	SetObjValue("LightName1", "b3-4");
+	SetObjValue("exList", 1);
+	if($전등폭파_randomset == 2 || $전등폭파_randomset == 4)	
+		SetObjValue("event",1);			
+	else
+		SetObjValue("event",0);			
+}
+
+Init3_10()
+{
+	Init();
+	SetObjValue("LightName1", "b3-5");
+	SetObjValue("exList", 1);
+	if($전등폭파_randomset == 1 || $전등폭파_randomset == 3)	
+		SetObjValue("event",1);			
+	else
+		SetObjValue("event",0);			
+}
+
+Init3_11()
+{
+	Init();
+	SetObjValue("LightName1", "b3-6");
+	SetObjValue("exList", 1);
+	if($전등폭파_randomset == 2)	
+		SetObjValue("event",1);			
+	else
+		SetObjValue("event",0);			
+}
+
+Init3_12()
+{
+	Init();
+	SetObjValue("LightName1", "b3-7");
+	SetObjValue("exList", 1);
+	if($전등폭파_randomset == 1 || $전등폭파_randomset == 4)	
+		SetObjValue("event",1);			
+	else
+		SetObjValue("event",0);			
+}
+
+// 4F
+
+Init열람실1()
+{
+	Init();
+	SetObjValue("LightName1", "b4-1");
+	SetObjValue("LightPower",2);
+}
+
+Init열람실2()
+{
+	Init();
+	SetObjValue("LightName1", "b4-1");
+	SetObjValue("LightPower",2);
+}
+
+Init열람실3()
+{
+	Init();
+	SetObjValue("LightName1", "b4-1");
+	SetObjValue("LightPower",2);
+}
+
+Init서고A()
+{
+	Init();
+	SetObjValue("LightName1", "b4-5");
+	SetObjValue("LightPower",2);	
+}
+
+Init서고B()
+{
+	Init();
+	SetObjValue("exList", 1);
+	SetObjValue("LightName1", "b4-6");
+	SetObjValue("LightPower",2);
+	SetObjValue("고장", 1);
+}
+
+Init자료검색실()
+{
+	Init();
+	SetObjValue("exList", 1);	
+	SetObjValue("고장", 1);
+}
+
+
+
+pick()
+{
+	return "잡기";
+}
+
+click()
+{
+	$TurnOnFlag = GetObjValue("TurnOnFlag");
+	$LightCount = GetObjValue("LightCount");
+	$Event		= GetObjValue("event");
+	$LightPower = GetObjValue("LightPower");
+
+	SendMessage("", "시끄러워", "0");
+
+		if($신관_세환_교실전력 == OFF && $Event != 2 && $게임모드 != 4)
+		{
+			SendMessage("자막","문자출력","3," + GetString("s45"));
+			return;
+		}
+		if(GetObjName() == "스위치_음악실" && $음악감상실귀신진행 == 1)
+		{	
+			SendMessage("자막","문자출력","3," + GetString("s77"));
+			return;
+		}	
+			
+		if($정전 == 1 && $Event == 2)
+		{
+			SendMessage("자막","문자출력","3," + GetString("s78"));
+			return;
+		}
+		
+	if($TurnOnFlag == OFF)
+	{				
+		if(GetObjName() == "스위치_역사관1" || GetObjName() == "스위치_역사관2")
+		{
+			RunScript("스위치_역사관1", $G_File + ".flagon" );
+			RunScript("스위치_역사관2", $G_File + ".flagon" );
+			return;
+		}
+
+		if(GetObjName() == "스위치_무용실1" || GetObjName() == "스위치_무용실2")
+		{
+			if($신관_세환_무용실이벤트 == 1)
+			{
+				SendMessage("자막", "문자출력후대기", GetString("s77"));
+				return;
+			}
+
+			RunScript("스위치_무용실1", $G_File + ".flagon" );
+			RunScript("스위치_무용실2", $G_File + ".flagon" );
+			return;
+		}
+
+		if($LightPower == 2)
+		{
+			if(GetObjName() == "스위치_열람실1" || GetObjName() == "스위치_열람실2" || GetObjName() == "스위치_열람실3")
+			{
+				RunScript("스위치_열람실1", $G_File + ".flagon");
+				RunScript("스위치_열람실2", $G_File + ".flagon");
+				RunScript("스위치_열람실3", $G_File + ".flagon");
+				return;
+			}
+			RunScript("", $G_File + ".flagon");
+			return;
+		}
+
+		if(GetObjValue("exList") == 0 && $신관_세환_은미이벤트 == 0)
+			SendMessage("정찰용수위", "리스트추가", "" + GetObjName());
+
+		SendMessage("", "애니메이션", "켜기");
+		SendMessage("", "TurnGlow", "off 0");		
+		SetObjValue("TurnOnFlag", ON);
+
+		if(GetObjValue("고장") == 1)
+		{			
+			SendMessage("자막","문자출력","3," + GetString("s78"));			
+			return;
+		}
+
+		if($Event == 1)
+			$신관_세환_불켜질교실수++;
+		else if($Event == 0) 
+			$신관_세환_불안켜질교실수++;				
+		
+		for($i = 1; $i <= $LightCount; $i++)				
+			SendMessage("배경", "켜기", GetObjValue("LightName" + $i));			
+
+		if($신관_세환_불켜질교실수 == 5 && $신관_세환_불안켜질교실수 == 0 && $신관_세환_열쇠이벤트 == FALSE && $신관_세환_홀조명 == ON)
+			SendMessage("매크로", "Play", "light_explode.cut01");		
+	}
+	else if($TurnOnFlag == ON)
+	{				
+		if(GetObjName() == "스위치_역사관1" || GetObjName() == "스위치_역사관2")
+		{
+			RunScript("스위치_역사관1", $G_File + ".flagoff" );
+			RunScript("스위치_역사관2", $G_File + ".flagoff" );
+			return;
+		}
+
+		if(GetObjName() == "스위치_무용실1" || GetObjName() == "스위치_무용실2")
+		{
+			if($신관_세환_무용실이벤트 == 1)
+			{
+				SendMessage("자막", "문자출력후대기", GetString("s77"));
+				return;
+			}
+
+			RunScript("스위치_무용실1", $G_File + ".flagoff" );
+			RunScript("스위치_무용실2", $G_File + ".flagoff" );
+			return;
+		}
+
+		if($LightPower == 2)
+		{
+			if(GetObjName() == "스위치_열람실1" || GetObjName() == "스위치_열람실2" || GetObjName() == "스위치_열람실3")
+			{
+				RunScript("스위치_열람실1", $G_File + ".flagoff");
+				RunScript("스위치_열람실2", $G_File + ".flagoff");
+				RunScript("스위치_열람실3", $G_File + ".flagoff");
+				return;
+			}
+			RunScript("", $G_File + ".flagoff");
+			return;
+		}
+
+		if(GetObjValue("exList") == 0 && $신관_세환_은미이벤트 == 0)
+		{
+			SendMessage("정찰용수위", "리스트삭제", "" + GetObjName());
+			if(GetObjName() == $detect_object)
+				$detect_object = "";
+		}
+
+		SendMessage("", "애니메이션", "끄기");
+		SendMessage("", "TurnGlow", "on 0");		
+		SetObjValue("TurnOnFlag", OFF);
+
+		if(GetObjValue("고장") == 1)
+		{			
+			SendMessage("자막","문자출력","3," + GetString("s78"));			
+			return;
+		}
+		
+		if($Event == 1)
+			$신관_세환_불켜질교실수--;
+		else if($Event == 0)
+			$신관_세환_불안켜질교실수--;
+		
+		for($i = 1; $i <= $LightCount; $i++)				
+			SendMessage("배경", "끄기", GetObjValue("LightName" + $i));
+
+		if($신관_세환_불켜질교실수 == 5 && $신관_세환_불안켜질교실수 == 0 && $신관_세환_열쇠이벤트 == FALSE && $신관_세환_홀조명 == ON)
+			SendMessage("매크로", "Play", "light_explode.cut01");		
+	}
+}
+
+_불켜기()
+{	
+	if(GetObjValue("TurnOnFlag") == ON)
+		return;
+
+	if(GetObjValue("exList") == 0 && $신관_세환_은미이벤트 == 0)
+		SendMessage("", "리스트추가", "" + GetObjName());
+
+	SendMessage("", "TurnGlow", "off 0");
+	SetObjValue("TurnOnFlag", ON);	
+	SendMessage("배경", "켜기", GetObjValue("LightName1"));
+}
+
+_불끄기()
+{
+	if(GetObjValue("TurnOnFlag") == OFF)
+		return;
+
+	if(GetObjValue("exList") == 0 && $신관_세환_은미이벤트 == 0)
+	{
+		SendMessage("", "리스트삭제", "" + GetObjName());
+		if(GetObjName() == $detect_object)
+			$detect_object = "";
+	}
+
+	SendMessage("", "TurnGlow", "on 0");
+	SetObjValue("TurnOnFlag", OFF);	
+	SendMessage("배경", "끄기", GetObjValue("LightName1"));
+}
+
+_켜()
+{
+	if(GetObjValue("TurnOnFlag") == ON)
+		return;
+
+	if(GetObjValue("exList") == 0 && $신관_세환_은미이벤트 == 0)
+		SendMessage("정찰용수위", "리스트추가", "" + GetObjName());
+
+	SendMessage("", "TurnGlow", "off 0");
+	SetObjValue("TurnOnFlag", ON);
+	SendMessage("", "애니메이션", "켜기");
+	SendMessage("배경", "켜기", GetObjValue("LightName1"));
+}
+
+_꺼()
+{
+	if(GetObjValue("TurnOnFlag") == OFF)
+		return;
+
+	if(GetObjValue("exList") == 0 && $신관_세환_은미이벤트 == 0)
+	{
+		SendMessage("정찰용수위", "리스트삭제", "" + GetObjName());
+		if(GetObjName() == $detect_object)
+			$detect_object = "";
+	}
+
+	SendMessage("", "TurnGlow", "on 0");
+	SetObjValue("TurnOnFlag", OFF);
+	SendMessage("", "애니메이션", "끄기");
+	SendMessage("배경", "끄기", GetObjValue("LightName1"));
+}
+
+/*
+turn_on()
+{
+	for($j = 1; $j <= 12; $j++)
+		RunScript("3학년" + $j + "반", $G_File + "._불켜기" );
+
+	if($신관_세환_불켜질교실수 == 5 && $신관_세환_불안켜질교실수 == 0 && $신관_세환_열쇠이벤트 == ON && $신관_세환_홀조명 == ON)
+		SendMessage("매크로", "Play", "light_explode.cut01");
+}
+
+turn_off()
+{
+	for($j = 1; $j <= 12; $j++)
+		RunScript("3학년" + $j + "반", $G_File + "._불끄기" );
+}
+*/
+
+flagon()
+{
+	$aa = ON;
+
+	if(GetObjValue("LightPower") == 2 && $신관_세환_배전판 != 0)
+		$aa = OFF;
+		
+	SendMessage("", "애니메이션", "켜기");
+	SendMessage("", "TurnGlow", "off 0");	
+
+	if($aa == ON)
+	{
+		SendMessage("배경", "켜기", GetObjValue("LightName1"));
+		if(GetObjValue("exList") == 0 && $신관_세환_은미이벤트 == 0)
+			SendMessage("정찰용수위", "리스트추가", "" + GetObjName());
+	}
+
+	SetObjValue("TurnOnFlag", ON);
+}
+
+flagoff()
+{
+	$bb = ON;
+
+	if(GetObjValue("LightPower") == 2 && $신관_세환_배전판 != 0)
+		$bb = OFF;
+
+	SendMessage("", "애니메이션", "끄기");
+	SendMessage("", "TurnGlow", "on 0");	
+
+	if($bb == ON)	
+	{
+		SendMessage("배경", "끄기", GetObjValue("LightName1"));
+		if(GetObjValue("exList") == 0 && $신관_세환_은미이벤트 == 0)
+		{
+			SendMessage("정찰용수위", "리스트삭제", "" + GetObjName());
+			if(GetObjName() == $detect_object)
+				$detect_object = "";
+		}
+	}
+
+	SetObjValue("TurnOnFlag", OFF);
+}
+
+_4층켜기()
+{
+	for($i = 1; $i <= 3; $i++)
+		RunScript("스위치_열람실" + $i, $G_File + "._불켜라");
+	
+	for($i = 1; $i <= 2; $i++)
+		RunScript("스위치_서고" + $i, $G_File + "._불켜라");
+
+//	RunScript("자료검색실", $G_File + "._불켜기");
+}
+
+_4층끄기()
+{
+	for($i = 1; $i <= 3; $i++)
+		RunScript("스위치_열람실" + $i, $G_File + "._불꺼라");
+	
+	for($i = 1; $i <= 2; $i++)
+		RunScript("스위치_서고" + $i, $G_File + "._불꺼라");
+
+//	RunScript("자료검색실", $G_File + "._불끄기");
+}
+
+_불켜라()
+{
+	if(GetObjValue("TurnOnFlag") == OFF)
+		return;
+
+	SendMessage("배경", "켜기", GetObjValue("LightName1"));
+}
+
+_불꺼라()
+{
+	if(GetObjValue("TurnOnFlag") == OFF)
+		return;
+
+	SendMessage("배경", "끄기", GetObjValue("LightName1"));
+}
+
+_수위불끄기()
+{
+	if(GetObjName() == "스위치_역사관1" || GetObjName() == "스위치_역사관2")
+	{
+		RunScript("스위치_역사관1", $G_File + ".flagoff" );
+		RunScript("스위치_역사관2", $G_File + ".flagoff" );
+		return;
+	}
+
+	if(GetObjName() == "스위치_무용실1" || GetObjName() == "스위치_무용실2")
+	{
+		RunScript("스위치_무용실1", $G_File + ".flagoff" );
+		RunScript("스위치_무용실2", $G_File + ".flagoff" );
+		return;
+	}
+
+	if(TakeObjValue("", "LightPower") == 2)
+	{
+		if(GetObjName() == "스위치_열람실1" || GetObjName() == "스위치_열람실2" || GetObjName() == "스위치_열람실3")
+		{
+			RunScript("스위치_열람실1", $G_File + ".flagoff");
+			RunScript("스위치_열람실2", $G_File + ".flagoff");
+			RunScript("스위치_열람실3", $G_File + ".flagoff");
+			return;
+		}
+		RunScript("", $G_File + ".flagoff");
+		return;
+	}
+	
+	SendMessage("정찰용수위", "리스트삭제", "" + GetObjName());
+
+	SendMessage("", "애니메이션", "끄기");
+	SendMessage("", "TurnGlow", "on 0");				
+	
+	for($i = 1; $i <= $LightCount; $i++)				
+		SendMessage("배경", "끄기", GetObjValue("LightName" + $i));
+
+	SetObjValue("TurnOnFlag", OFF);
+}
+
+/////////////////// 전등 폭파 이벤트 ///////////////////////
+
+flicker()
+{
+	$ON = "_전기공급ON";
+	$OFF = "_전기공급OFF";
+	$_ON = "o_신관조명.on";
+	$_OFF = "o_신관조명.off";
+
+	SetTimer(0.06, $OFF);
+	SetTimer(0.06, $_OFF);
+	
+	SetTimer(0.11, $ON);
+	SetTimer(0.11, $_ON);
+	
+	SetTimer(0.17, $OFF);
+	SetTimer(0.17, $_OFF);
+
+	SetTimer(0.22, $ON);
+	SetTimer(0.22, $_ON);
+
+	SetTimer(0.41, $OFF);
+	SetTimer(0.41, $_OFF);
+
+	SetTimer(0.65, $ON);
+	SetTimer(0.65, $_ON);
+
+	SetTimer(0.80, $OFF);
+	SetTimer(0.80, $_OFF);
+
+	SetTimer(1.15, $ON);
+	SetTimer(1.15, $_ON);
+
+	SetTimer(1.50, $OFF);
+	SetTimer(1.50, $_OFF);
+
+	SetTimer(1.80, $ON);
+	SetTimer(1.80, $_ON);
+
+//	SetTimer(2.50, $OFF);
+	SetTimer(2.50, $_OFF);	
+}
+
+_전기공급ON()
+{	
+	SendMessage("배경", "켜기", "hall");	
+}
+
+_전기공급OFF()
+{
+	SendMessage("배경", "끄기", "hall");	
+}
+
+particle()
+{
+	RunScript("신관홀조명","o_신관조명.fade");
+//	RunScript("신관홀조명","o_신관조명.off");	
+
+	SendMessage("사운드", "연주", "신관_진열장깨짐.wav");
+	LoadObject("WObjFragments", "", "*area 1900 150 880 2050 190 1000 *fragnum 256 *defvec -150 0 -150 *defamin 0 0 0 *defamax 300 0 300 *gennum 100 *gencount 1 *genfreq 4 *lifetime 3 *fadetime 1 *timedelta 1 *genscale 0.5 *genscaledelta 1 *rotangle -20 -5 0 *rotangledelta 0 10 -10 *gravec 0 -980 0 *fr 0.2 *elastic 0.3 *bcol 0 *pet0 data/puppet/obj/o_유리파편.pet");	
+	$b_중앙홀조명 = 1;
+	SendMessage("열쇠10", "중력", "on");
+	SendMessage("열쇠10", "애니메이션", "떨어지기");
+}

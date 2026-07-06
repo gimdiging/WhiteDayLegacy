@@ -1,0 +1,120 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					e_2d±Í½Å.scp
+//
+//	æðúìman: akekakek		last update: 2001.06.18
+//  --------------------------------------------------
+
+Init()
+{
+	SetObjName("Á¾ÀÌ±Í½Å");
+	SendMessage("Á¾ÀÌ±Í½Å", "ÆäÀÌµå", "Recursive 0 1 0");
+}
+
+_º»°ü±Í½Å()
+{
+	if (GetRegistry("Option\NoFloatingHead") == "True")
+		return;
+	
+	LoadObject("WObjGhost", "¸Ó¸®±Í½Å", "*imgname data/misc/Image/2d±Í½Å/}ghost_head.bmp *pos " + FindPoint("¸Ó¸®±Í½Å") + " *size 35 70");
+	SendMessage("¸Ó¸®±Í½Å", "ÆäÀÌµå", "on");
+}
+
+
+_1ºÐÈÄ¿¡¸Ó¸®±Í½Å»ì¾Æ¶ó()
+{
+	SetTimer(90,"e_2d±Í½Å._´Ù½Ã»ì¾Æ¶ó¸Ó¸®±Í½Å");
+}
+
+_´Ù½Ã»ì¾Æ¶ó¸Ó¸®±Í½Å()
+{
+	if (GetRegistry("Option\NoFloatingHead") == "True")
+		return;
+	
+	SendMessage("¸Ó¸®±Í½Å","ÄÑ±â","");
+	SendMessage("¸Ó¸®±Í½Å", "ÆäÀÌµå", "off" );
+	SendMessage("¸Ó¸®±Í½Å","ÀÌµ¿", "on 10");
+}
+
+_º»°ü±Í½Å³¯·Á()
+{
+	if (GetRegistry("Option\NoFloatingHead") == "True")
+		return;
+
+	DeleteObject("¸Ó¸®±Í½Å");
+//	DeleteObject("Ä¥ÆÇ±Í½Å");
+}
+
+_Ä¥ÆÇ±Í½Å()
+{
+	DeleteObject("");
+//	SendMessage("Ä¥ÆÇ±Í½Å", "À§Ä¡", "" + GetGhostPos("Ä¥ÆÇ±Í½Å1"));
+	SendMessage("»ç¿îµå", "¿¬ÁÖ", "data/sound/ºÐÇÊ±Í½Å.wav");
+}
+
+_Ä¥ÆÇ±Í½Å2()
+{
+	DeleteObject("");
+//	SendMessage("Ä¥ÆÇ±Í½Å", "À§Ä¡", "" + GetGhostPos("Ä¥ÆÇ±Í½Å2"));
+	SendMessage("»ç¿îµå", "¿¬ÁÖ", "data/sound/ºÐÇÊ±Í½Å.wav");
+}
+
+_¹ÌÈ¥¸ð±Í½Å()
+{
+	LoadObject("WObjGhost", "¹ÌÈ¥¸ð±Í½Å", "*imgname data/misc/Image/2d±Í½Å/~ghost_koreanclothes.bmp *pos " + FindPoint("¹ÌÈ¥¸ð±Í½Å") + " *size 75 170");
+	SendMessage("¹ÌÈ¥¸ð±Í½Å", "ÄÑ±â","");
+ 	SendMessage("¹ÌÈ¥¸ð±Í½Å","ÀÌµ¿", "off")
+	SendMessage("¹ÌÈ¥¸ð±Í½Å", "ÆäÀÌµå", "off");
+}
+
+_¹ÌÈ¥¸ð³¯·Á()
+{
+	DeleteObject("¹ÌÈ¥¸ð±Í½Å");
+}
+
+_Ä¥ÆÇ±Í½Å3()
+{
+	DeleteObject("");
+	SendMessage("»ç¿îµå", "¿¬ÁÖ3d", GetObjPos("11¹Ý±³½ÇÄ¥ÆÇ") + " loop,ÆÇ¼­¼Ò¸®,ºÐÇÊ±Í½Å.wav");
+	SetTimer(20, "stop");
+	SetTimer(0, "e_2d±Í½Å._Ä¥ÆÇ±Í½Å4");
+}
+
+stop()
+{
+	SendMessage("»ç¿îµå", "¿¬ÁÖ¸ØÃã", "ÆÇ¼­¼Ò¸®");
+	$11¹ÝÄ¥ÆÇ±Í½Å = 2;
+}
+
+_Ä¥ÆÇ±Í½Å4()
+{
+	DeleteObject("Ä¥ÆÇ±Í½Å");
+
+	if($11¹ÝÄ¥ÆÇ±Í½Å == 2)
+		return;
+
+	if($11¹ÝÄ¥ÆÇ±Í½Å == 0)
+	{
+		$Ä¥ÆÇ±Í½Å = "ghost_blackboard0";
+		$11¹ÝÄ¥ÆÇ±Í½Å = 1;
+	}
+	else if($11¹ÝÄ¥ÆÇ±Í½Å == 1)
+	{
+		$Ä¥ÆÇ±Í½Å = "ghost_blackboard1";
+		$11¹ÝÄ¥ÆÇ±Í½Å = 0;
+	}
+
+	LoadObject("WObjGhost", "Ä¥ÆÇ±Í½Å", "*imgname data/misc/Image/2d±Í½Å/}" + $Ä¥ÆÇ±Í½Å + ".bmp *pos " + FindPoint("Ä¥ÆÇ±Í½Å") + " *size 75 170 *lighting");
+
+	SendMessage("Ä¥ÆÇ±Í½Å", "ÄÑ±â","");
+ 	SendMessage("Ä¥ÆÇ±Í½Å","ÀÌµ¿", "off")
+	SendMessage("Ä¥ÆÇ±Í½Å", "ÆäÀÌµå", "off");
+	SetTimer(1, "e_2d±Í½Å._Ä¥ÆÇ±Í½Å4");	
+}

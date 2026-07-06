@@ -1,0 +1,132 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//				C h a r a c t o r S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					o_창틀.scp
+//
+//	熱血man: matzzang		last update: 2000.07.21
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "발광", "Recursive off");
+	SendMessage("", "스크립트설정", "open " + $G_File);
+}
+
+pick()
+{
+	if($b_나영다시등장 != 2)
+		return "보기";
+
+	return "";
+}
+
+click()
+{
+	SendMessage("자막", "문자출력후대기", GetString("s47"));
+
+	if($b_나영다시등장 == 0 && $수위추적모드 == OFF && $b_번개 == 1)
+	{
+		$b_나영다시등장 = 1;		
+		SendMessage("부적힌트", "위치", "" + FindPoint("나영다시등장"));
+		SendMessage("부적힌트", "애니메이션", "서있기");
+		SendMessage("부적힌트", "회전", "0");
+		SendMessage("부적힌트", "페이드", "Recursive 0 1 1");		
+		SendMessage("부적힌트", "픽거리설정", "500 500");
+		SendMessage("부적힌트", "스크립트설정", "ghost " + $G_File + ".ghost");
+		$AI_형체있는인간 = OFF;
+	}
+}
+
+ghost.pick()
+{
+	if($b_나영다시등장 == 1)
+	{
+		$b_나영다시등장 = 2;	
+		_나영다시등장();
+	}
+
+	return "";
+}
+
+
+_나영다시등장()
+{
+	SendMessage("자막", "활성화", "");
+	SendMessage("자막", "와이드모드", "켜기");	
+	SendMessage("유저", "쳐다보기", "부적힌트 1000");
+	SendMessage("카메라", "FOV변환", "75 25 0.2");
+	ChangeObjValue("그림자", "Step", 0);	
+	RunScript("그림자", "o_창틀.Lightning");
+}
+
+Lightning()
+{
+	$Step = GetObjValue("Step");
+	SetObjValue("Step", $Step + 1);
+	
+	switch($Step)
+	{
+		case 0:
+		{
+			SendMessage("사운드", "연주", "data/sound/event/본관1_벼락강타.wav");
+			SetTimer(0.07, "Lightning *obj 그림자");			
+			break;
+		}
+		case 1:
+		{
+			ShowAllObject();
+			SetTimer(0, "Lightning *obj 그림자");			
+			break;
+		}
+		case 2:
+		{
+			SendMessage("부적힌트", "발광하기", "255 255 255 0 0 0 0.26");
+			SendMessage("배경", "천둥", "0.26");
+
+			SendMessage("그림자", "페이드", "Recursive 0.26 1 0");
+			SetTimer(0.26, "Lightning *obj 그림자");			
+			break;
+		}
+		case 3:
+		{
+			ShowAllObject();
+			SetTimer(0, "Lightning *obj 그림자");			
+			break;
+		}
+		case 4:
+		{
+			SendMessage("부적힌트", "발광하기", "255 255 255 0 0 0 3");
+			SendMessage("배경", "천둥", "3.0");
+
+			SendMessage("그림자", "페이드", "Recursive 3 1 0");
+			SetTimer(4, "Lightning *obj 그림자");			
+			break;
+		}
+		case 5:
+		{
+			SendMessage("카메라", "FOV변환", "25 75 0.5");
+			SendMessage("사운드", "연주", "data/sound/event/본관1_벼락준비.wav");
+			SendMessage("부적힌트", "발광", "Recursive off");
+			SendMessage("부적힌트", "페이드", "Recursive 0 0 0");
+			SendMessage("유저", "쳐다보지말기", "");
+			SendMessage("자막", "와이드모드", "끄기");
+			SendMessage("자막", "비활성", "");			
+			$AI_형체있는인간 = ON;			
+			SendMessage("나영벽", "켜기", "");
+			break;
+		}
+	}
+}
+
+ShowAllObject()
+{
+	SendMessage("그림자", "페이드", "Recursive 0 1 1");	
+	SendMessage("부적힌트", "발광색", "Recursive 255 255 255");
+	SendMessage("부적힌트", "발광", "Recursive on");
+}

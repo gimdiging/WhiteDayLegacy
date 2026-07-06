@@ -1,0 +1,84 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000				o_양변기.scp
+//
+//	熱血man: agneau			last update: 2001.09.10
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "switch " + $G_File);
+	SendMessage("", "스크립트설정", "dummy null");
+	SendMessage("", "픽거리설정", "150 300");
+	SetObjValue("button", OFF);
+	SetObjValue("heal", 0);
+}
+
+Initheal()
+{
+	Init();
+	SetObjValue("heal", 1);
+	SendMessage("", "픽거리설정", "100 100");
+}
+
+pick()
+{
+	if(GetObjValue("button") == ON)
+	{
+		SendMessage("", "캐쉬초기화", "");
+		return "";
+	}
+
+	if($G_LightFactor <= $standard_light)
+		return "보기";
+
+	return "잡기";
+}
+
+click()
+{
+	if($G_LightFactor < $standard_light)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s4"));	
+		return;
+	}
+
+	if(GetObjValue("button") == OFF)
+	{
+		SetObjValue("button", ON);
+		SendMessage("사운드", "연주3d", GetObjPos("") + " 변기.wav");
+		SetTimer(7, "button_up");
+
+		if(GetObjValue("heal") == 1 && $신관_세환_양변기앉기 == TRUE)
+		{
+			SetObjValue("heal", 2);
+			SendMessage("사운드", "연주", "나무_꿀꺽1.wav");
+			SendMessage("유저", "heal", "100");			
+			$HP = 100;
+			LoadObject("WObjPanel", "", "*diffuse 2cb2c2 *delay 2 *type 1");
+			SendMessage("자막", "문자출력", "3," + GetString("s509"));
+		}
+	}
+}
+
+button_up()
+{
+	SetObjValue("button", OFF);
+}
+
+up()
+{
+	$신관_세환_양변기앉기 = TRUE;
+}
+
+down()
+{
+	$신관_세환_양변기앉기 = FALSE;
+}

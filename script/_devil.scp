@@ -1,0 +1,134 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  S c r i p t F i l e 
+//
+//  (C) Sonnori 2000						_devil.scp
+//
+//  --------------------------------------------------
+
+Create()
+{
+	RunScript("","_testValue.Init");
+
+	$현재스테이지 = "devil";
+	RunScript("", "_whiteday.StartBanner");
+
+	LoadWed("data/devil.wep");
+
+	SetTimer(0, "_devil.Create_init");
+}
+
+Create_init()
+{
+	LoadObject("WObjSun", "해", "*pos " + FindPoint("포탈"));
+	SendMessage("유저", "위치", "" + FindPoint("시작위치2"));
+	SendMessage("유저", "중력", "off");
+//	SendMessage("소영", "애니메이션", "안았다놓기");
+	SendMessage("소영", "표정바꿔", "보통e");
+	SendMessage("유저", "바닥소리", "콘크리트");
+	SendMessage("사운드", "미리읽기", "돌떨어지기A.wav");
+	SendMessage("사운드", "미리읽기", "돌떨어지기B.wav");
+	SendMessage("사운드", "미리읽기", "돌떨어지기C.wav");
+
+//	SendMessage("매크로", "Play", "devil_scenez._001");
+	SendMessage("매크로", "Play", "sc100.cut01");
+	SendMessage("허드", "세트BPM", "70");
+	SendMessage("배경", "광원", "" + FindPoint("포탈"));
+
+	LoadObject("WObjParticle", "파티", "");
+	LoadObject("WObjParticle", "파티2", "");
+
+//	SendMessage("파티" , "파티클생성", "*start_pos sphere(in) " + FindPoint("포탈") + " 1 " + GetWDBParticle("particle2.wdb", "포탈02", "파티클내용") );
+}
+
+Destroy()
+{
+	DeleteObject("해");
+
+//	DeleteObject("오디오BGM");
+	SendMessage("사운드","연주멈춤","데빌루프");
+	DeleteObject("파티");	
+	DeleteObject("파티2");
+	RunScript("", "_whiteday.ResetMainGameObject");
+}
+
+Create4Debug()
+{
+	if($막판리플레이횟수 == 3)
+	{
+		LoadObject("WObjPlayer", "유저", "*ai 오브젝트_유저._유저 *gravity");
+
+		SendMessage("main", "게임시작", "시작");
+		SendMessage("유저", "획득", "허드");
+		SendMessage("유저", "획득", "다이어리");
+		SendMessage("유저", "획득", "가방");
+		SendMessage("유저", "획득", "핸드폰");
+		SendMessage("유저", "획득", "지도");
+		SendMessage("유저", "획득", "포즈");
+		SendMessage("허드", "세트BPM", "70");
+	}
+
+	SendMessage("유저", "중력", "off");
+	SendMessage("유저", "위치", "" + FindPoint("시작위치2"));
+	SendMessage("유저", "캡춰", "카메라 머리");
+
+	DeleteObject("Logo.Loading");
+
+
+}
+
+ScriptMain()
+{
+	Create();
+	Create4Debug();
+}
+
+_gohappyending()
+{
+	RunScript("", "_whiteday.WhiteOut");
+	RunScript("", "_devil.Destroy");
+//	RunScript("", "_goodbye.ScriptMain");
+	SetTimer(1,"_goodbye.Create");
+	SetTimer(1.1,"_devil._Callend");
+	SendMessage("허드", "끄기", "프로세스"); 
+}
+
+_Callend()
+{
+	if($소영이들기 == TRUE)
+	{
+		if($소영_호감도 > $소영_호감도기준_해피_노말)
+		{
+			SendMessage("매크로", "Play", "sc57.cut01");
+		}
+		else
+		{
+			SendMessage("매크로", "Play", "sc58.cut01");
+		}
+	
+
+
+	}
+	else if($소영이들기 == FALSE)
+	{
+		if($소영_호감도 > $소영_호감도기준_해피_노말)
+		{
+			SendMessage("매크로", "Play", "badend.cut01");
+		}
+		else
+		{
+			SendMessage("매크로", "Play", "bedend.cut01");
+		}
+	}
+}
+
+_gameover()
+{
+
+	// 이벤트박스를 건들였을때.
+//	TextOut("떨어졌습니다.");
+//	SendMessage( "유저", "공격", "더미");
+}

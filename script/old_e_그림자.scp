@@ -1,0 +1,275 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					e_그림자.scp
+//
+//	熱血man: matzzang		last update: 2000.07.17
+//  --------------------------------------------------
+
+Init()
+{
+	SetObjName("그림자");
+	SetObjValue("Step", 0);
+	SetObjValue("LightCount", 0);
+	SetObjValue("FadeStep", 255);
+	SendMessage("", "발광", "Recursive on");
+	SendMessage("", "페이드", "Recursive 0 1 0");
+	SendMessage("", "애니메이션", "서있기");
+}
+
+RunEvent()
+{
+	$LightCount = GetObjValue("LightCount");
+	
+	if($LightCount <= 1)
+	{
+		Step1();
+	}
+	else if($LightCount == 5)
+	{
+		Step3();
+	}
+	else
+	{
+		Step2();
+	}
+}
+
+Step1()
+{
+	$Step = GetObjValue("Step");
+	SetObjValue("Step", $Step + 1);
+	
+	switch($Step)
+	{
+		case 0:
+		{
+			SendMessage("자막", "활성화", "");
+			SendMessage("자막", "와이드모드", "켜기"); 
+			SendMessage("유저", "위치바라보기", "" + FindPoint("나영그림자위치"));
+			SendMessage("타이머", "스크립트설정", "1 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 1:
+		{
+			SendMessage("사운드", "연주", "data/sound/event/본관1_벼락강타.wav");
+			SendMessage("타이머", "스크립트설정", "0.07 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 2:
+		{
+			ShowAllObject();
+			SendMessage("타이머", "스크립트설정", "0 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 3:
+		{
+			SetObjValue("FadeStep", 255);
+			SetObjValue("FadeDelta", 255 / (30.0 * 0.26) + 1);
+			SendMessage("타이머", "스크립트설정", "0 0.03333 " + (30.0 * 0.26) + " e_그림자.FadeOut *obj 그림자");
+
+			SendMessage("그림자", "페이드", "Recursive 0.26 1 0");
+			SendMessage("타이머", "스크립트설정", "0.26 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 4:
+		{
+			ShowAllObject();
+			SendMessage("타이머", "스크립트설정", "0 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 5:
+		{
+			SetObjValue("FadeStep", 255);
+			SetObjValue("FadeDelta", 255 / (30.0 * 3.0) + 1);
+			SendMessage("타이머", "스크립트설정", "0 0.03333 " + (30.0 * 3.0) + " e_그림자.FadeOut *obj 그림자");
+
+			SendMessage("그림자", "페이드", "Recursive 3 1 0");
+			SendMessage("타이머", "스크립트설정", "3 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 6:
+		{
+			SendMessage("나영", "발광", "Recursive off");
+			SendMessage("창틀", "발광", "Recursive off");
+			SendMessage("타이머", "스크립트설정", "1.0 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 7:
+		{
+			SetObjValue("LightCount", GetObjValue("LightCount") + 1);
+			SendMessage("타이머", "스크립트설정", "1.5 0 1 e_그림자.RunEvent *obj 그림자");
+			
+			if(GetObjValue("LightCount") == 1)
+			{
+				SendMessage("", "애니메이션", "그림자숨기기");
+				SendMessage("나영", "애니메이션", "떨어지기");
+				SetObjValue("Step", 1);
+			}
+			else
+			{
+				SendMessage("나영", "이동", FindPoint("나영이동위치") + " 기어달리기");
+				SetObjValue("Step", 0);
+			}
+			break;
+		}
+	}
+}
+
+Step2()
+{
+	$Step = GetObjValue("Step");
+	SetObjValue("Step", $Step + 1);
+	
+	switch($Step)
+	{
+		case 0:
+		{
+			SendMessage("사운드", "연주", "data/sound/event/본관1_벼락강타.wav");
+			SendMessage("타이머", "스크립트설정", "0.07 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 1:
+		{
+			ShowAllObject();
+			SendMessage("타이머", "스크립트설정", "0 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 2:
+		{
+			SetObjValue("FadeStep", 255);
+			SetObjValue("FadeDelta", 255 / (30.0 * 0.26) + 1);
+			SendMessage("타이머", "스크립트설정", "0 0.03333 " + (30.0 * 0.26) + " e_그림자.FadeOut *obj 그림자");
+
+			SendMessage("그림자", "페이드", "Recursive 0.26 1 0");
+			SendMessage("타이머", "스크립트설정", "0.26 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 3:
+		{
+			ShowAllObject();
+			SendMessage("타이머", "스크립트설정", "0 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 4:
+		{
+			SetObjValue("FadeStep", 255);
+			SetObjValue("FadeDelta", 255 / (30.0 * 3.0) + 1);
+			SendMessage("타이머", "스크립트설정", "0 0.03333 " + (30.0 * 3.0) + " e_그림자.FadeOut *obj 그림자");
+
+			SendMessage("그림자", "페이드", "Recursive 3 1 0");
+			SendMessage("타이머", "스크립트설정", "3 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 5:
+		{
+			SendMessage("나영", "발광", "Recursive off");
+			SendMessage("창틀", "발광", "Recursive off");
+			SetObjValue("Step", 0);
+			SetObjValue("LightCount", GetObjValue("LightCount") + 1);
+			SendMessage("타이머", "스크립트설정", "2.5 0 1 e_그림자.RunEvent *obj 그림자");
+			
+			if(GetObjValue("LightCount") == 5)
+			{
+				SendMessage("나영", "페이드", "Recursive 1 1 0");
+				SendMessage("타이머", "스크립트설정", "1 0 1 e_그림자.Delete나영 *obj 그림자");
+			}
+			break;
+		}
+	}
+}
+
+Step3()
+{
+	$Step = GetObjValue("Step");
+	SetObjValue("Step", $Step + 1);
+	
+	switch($Step)
+	{
+		case 0:
+		{
+			SendMessage("사운드", "연주", "data/sound/event/본관1_벼락강타.wav");
+			SendMessage("타이머", "스크립트설정", "0.07 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 1:
+		{
+			ShowAllObject();
+			SendMessage("타이머", "스크립트설정", "0 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 2:
+		{
+			SetObjValue("FadeStep", 255);
+			SetObjValue("FadeDelta", 255 / (30.0 * 0.26) + 1);
+			SendMessage("타이머", "스크립트설정", "0 0.03333 " + (30.0 * 0.26) + " e_그림자.FadeOut *obj 그림자");
+
+			SendMessage("그림자", "페이드", "Recursive 0.26 1 0");
+			SendMessage("타이머", "스크립트설정", "0.26 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 3:
+		{
+			ShowAllObject();
+			SendMessage("타이머", "스크립트설정", "0 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 4:
+		{
+			SetObjValue("FadeStep", 255);
+			SetObjValue("FadeDelta", 255 / (30.0 * 3.0) + 1);
+			SendMessage("타이머", "스크립트설정", "0 0.03333 " + (30.0 * 3.0) + " e_그림자.FadeOut *obj 그림자");
+
+			SendMessage("그림자", "페이드", "Recursive 3 1 0");
+			SendMessage("타이머", "스크립트설정", "6 0 1 e_그림자.RunEvent *obj 그림자");
+			break;
+		}
+		case 5:
+		{
+			SendMessage("사운드", "연주", "data/sound/event/본관1_벼락준비.wav");
+			SendMessage("나영", "발광", "Recursive off");
+			SendMessage("창틀", "발광", "Recursive off");
+			SendMessage("자막", "비활성", "");
+			SendMessage("자막", "와이드모드", "끄기");
+			SendMessage("유저", "쳐다보지말기", "");
+			DeleteObject("");
+			break;
+		}
+	}
+}
+
+ShowAllObject()
+{
+	SendMessage("그림자", "페이드", "Recursive 0 0 1");
+
+	SendMessage("나영", "발광", "Recursive on");
+	SendMessage("나영", "발광색", "Recursive 255 255 255");
+
+	SendMessage("창틀", "발광", "Recursive on");
+	SendMessage("창틀", "발광색", "Recursive 255 255 255");
+}
+
+Delete나영()
+{
+	DeleteObject("나영");
+}
+
+FadeOut()
+{
+	$FadeStep  = GetObjValue("FadeStep");
+	$FadeDelta = GetObjValue("FadeDelta");
+	
+	if($FadeStep >= 0)
+	{
+		SendMessage("나영", "발광색", "Recursive " + $FadeStep + " " + $FadeStep + " " + $FadeStep);
+		SendMessage("창틀", "발광색", "Recursive " + $FadeStep + " " + $FadeStep + " " + $FadeStep);
+	
+		SetObjValue("FadeStep", Max(Min($FadeStep - $FadeDelta, 255), 0));
+	}
+}

@@ -1,0 +1,305 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					_staffrole.scp
+//
+//	熱血man: akekakek		last update: 2000.10.23
+//  --------------------------------------------------
+
+Create()
+{
+	$ALLTIME = GetTime("시간계산용");
+
+	RunScript("","_testValue.Init");
+
+	$현재스테이지 = "staffroll";
+	RunScript("", "_whiteday._Display_Loading_panel");
+
+	SendMessage("허드", "끄기", "프로세스"); 
+	LoadWed("data/15sec.wep");
+	LoadObject("WObjLastStaffRoll", "나스텝롤", "");
+
+	endingtype();
+
+	if($게임모드 == 1)
+	{
+		if($소영_호감도 > $소영_호감도기준_해피_노말 && $소영이들기 == TRUE )
+			complete();
+
+		if($지현_호감도 > $지현_호감도기준_해피_노말)
+			complete();
+
+		if($성아_호감도 > $성아_호감도기준_해피_노말)
+			complete();
+	}
+
+	
+	if($컬렉션아이템갯수 == 10)
+	{		
+		// 0 이지모드 , 1 노말모드, 2 하드모드, 3 수위모드
+
+		if($게임모드 == 1)
+		{
+			if($소영_호감도 > $소영_호감도기준_해피_노말 && $소영이들기 == TRUE)
+				costume();
+
+			if($지현_호감도 > $지현_호감도기준_해피_노말)
+				costume();
+
+			if($성아_호감도 > $성아_호감도기준_해피_노말)
+				costume();
+
+		}
+		else if($게임모드 == 2)
+		{
+//				badvoice();
+			if($소영_호감도 > $소영_호감도기준_해피_노말 && $소영이들기 == TRUE)
+				patrolman();
+
+			if($지현_호감도 > $지현_호감도기준_해피_노말)
+				patrolman();
+
+			if($성아_호감도 > $성아_호감도기준_해피_노말)
+				patrolman();
+
+		}		
+	}
+
+	SendMessage("오디오", "SetVolume", "1.0");
+	SendMessage("main", "게임시작", "시작");
+	SetTimer(0, "StartUp");
+}
+
+endingtype()
+{
+	if($진행루트 == 1)
+	{
+		if($소영이들기 == TRUE)
+		{
+			if($소영_호감도 > $소영_호감도기준_해피_노말)
+			{
+				// 소영해피
+				$엔딩type = 1;
+			}
+			else
+			{
+				// 노말
+				$엔딩type = 2;
+			}
+		}
+		else if($소영이들기 == FALSE)
+		{
+			if($소영_호감도 > $소영_호감도기준_해피_노말)
+				{
+					// 소영배드
+					$엔딩type = 3;
+				}
+				else 
+				{
+					// 희민사망
+					$엔딩type = 8;
+				}
+		}
+	}
+
+	// 진행루트1일때는 _gym._성아엔딩 _지현엔딩 에서 함.
+
+	
+}
+
+complete()
+{
+	if(GetRegistry("Option\\NowComplete") == "0")
+	{
+		$추가된mode = 1;
+	}
+	SetRegistry("Option\\NowComplete","1");
+
+}
+
+costume()
+{
+	if(GetRegistry("Option\\CostumeChange") == "0")
+	{
+		$추가된option = 1;
+	}
+	SetRegistry("Option\\CostumeChange","1");
+}
+
+badvoice()
+{
+	if(GetRegistry("Option\\BadVoicePlay") == "0")
+	{
+		$추가된option = 2;
+	}
+	SetRegistry("Option\\BadVoicePlay","1");
+}
+
+patrolman()
+{
+	if(GetRegistry("Option\\PatrolManPlay") == "0")
+	{
+		$추가된option = 3;
+	}
+	SetRegistry("Option\\PatrolManPlay","1");
+}
+
+Destroy()
+{
+	DeleteObject("나스텝롤");
+//	DeleteObject("매크로");
+	SendMessage("타이머", "씬삭제", "");
+	SendMessage("main", "씬삭제", "");
+}
+
+Create4Debug()
+{
+}
+
+ScriptMain()
+{
+	Create();
+	Create4Debug();
+}
+
+StartUp()
+{
+	SendMessage("나스텝롤", "켜기", "235");
+	
+	SendMessage("오디오", "연주", "data/sound/movie/ending/palobina.adp");
+
+	SendMessage("스텝롤_희민", "자동발소리", "");
+	SendMessage("스텝롤_성아", "자동발소리", "");
+	SendMessage("스텝롤_때리는놈", "자동발소리", "");
+	SendMessage("스텝롤_맞는놈", "자동발소리", "");
+	SendMessage("스텝롤_나영", "자동발소리", "");
+	SendMessage("스텝롤_소영", "자동발소리", "");
+	SendMessage("스텝롤_지현", "자동발소리", "");
+	SendMessage("스텝롤_천정귀신", "자동발소리", "");
+	SendMessage("스텝롤_은미", "자동발소리", "");
+	SendMessage("스텝롤_도플갱어", "자동발소리", "");
+	SendMessage("스텝롤_고양이", "자동발소리", "");
+	SendMessage("스텝롤_이수위", "자동발소리", "");
+	SendMessage("스텝롤_손수위", "자동발소리", "");
+
+	SendMessage("매크로", "Play", "staffroll.cut01");
+
+
+}
+
+EndStaffRoll()
+{
+	// 여기에 안내문삽입.
+	if($성아해피엔딩 == 0 && $엔딩type != 8)
+	{
+		RunScript("", "_whiteday.FadeOut");
+		LoadObject("WObjClearPass", "점수판", "");
+		SendMessage("점수판","켜기","5 " + $엔딩type + " " + $추가된mode + " " + $추가된option); // 타임. 엔딩타잎 . 나오는게임모드. 옵션
+		//안내문
+	}
+	else if($성아해피엔딩 == 1 && $엔딩type != 8)
+	{
+		RunScript("", "_staffroll.Destroy");
+		SetTimer(1,"_staffroll._nextstart");
+	}
+	else if($성아해피엔딩 == 0 && $엔딩type == 8)
+	{
+		RunScript("", "_whiteday.FadeOut");
+		LoadObject("WObjClearPass", "점수판", "");
+		SendMessage("점수판","켜기","5");
+		if(GetLang() == "kor")
+		LoadObject("WObjWallPaper", "gameover", "*image data/yew.jpg");
+		else
+		LoadObject("WObjWallPaper", "gameover", "*image data/wey.jpg");
+		SendMessage("gameover", "값지정", "알파 1");
+	}
+}
+
+Endclearpass()
+{
+	// 안내문이 끝나면 들어오는곳
+	SendMessage("오디오","연주멈춤","");
+	DeleteObject("점수판");
+	RunScript("", "_whiteday.FadeIn");
+	if($성아해피엔딩 == 0 && $엔딩type == 8)
+	DeleteObject("gameover");
+	if($성아해피엔딩 == 0)
+	{
+		RunScript("", "_staffroll.Destroy");
+	}
+	else
+	{
+		$성아해피엔딩 = 0;
+	}
+	SetTimer(1,"_staffroll._nextstart");
+}
+
+_endsc99()
+{
+	RunScript("", "_goodbye.Destroy");
+	LoadObject("WObjWallPaper", "Fin", "*image data/misc/image/title/fin.jpg");	
+	
+	SendMessage("Fin", "켜기", "");
+
+	SendMessage("black", "값지정", "알파 0");
+	SendMessage("black", "값지정", "델타 1");
+	SetTimer(5,"_staffroll._endsc99_1");
+}
+
+_endsc99_1()
+{
+	DeleteObject("Fin");
+	RunScript("", "_whiteday.FadeOut");
+	LoadObject("WObjClearPass", "점수판", "");
+	SendMessage("점수판","켜기","5 " + $엔딩type + " " + $추가된mode + " " + $추가된option); // 타임. 엔딩타잎 . 나오는게임모드. 옵션
+}
+
+_nextstart()
+{
+	if($성아해피엔딩 == 1)
+	{
+		//ChangeScript("goodbye");
+		RunScript("", "_goodbye.Create");
+	}
+	else
+	{
+		SendMessage("main", "게임시작", "멈춤");
+		ChangeScript("menu");
+	}
+}
+
+_성아해피엔딩()
+{
+	$성아해피엔딩 = 1;
+	_엔딩_();
+}
+
+_엔딩_()
+{
+	SendMessage("허드", "끄기", "프로세스"); 
+	RunScript("", "_gym.Destroy");
+	RunScript("", "_whiteday.DestroyMainObject");
+	SetTimer(1,"_staffroll._엔딩1");
+}
+
+_엔딩_1()
+{
+	SendMessage("허드", "끄기", "프로세스"); 
+	RunScript("", "_goodbye.Destroy");
+	RunScript("", "_whiteday.DestroyMainObject");
+	SetTimer(1,"_staffroll._엔딩1");
+}
+
+_엔딩1()
+{
+	SendMessage("main", "게임시작", "멈춤");
+	RunScript("", "_staffroll.Create");
+}
+
+_지현해피엔딩2()
+{
+}

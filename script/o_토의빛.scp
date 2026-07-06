@@ -1,0 +1,179 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					o_토의빛.scp
+//
+//	熱血man: matzzang		last update: 2000.09.24
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "use " + $G_File);	
+
+	SetObjValue("Step", 0);
+	SetObjValue("Nopick", 0);
+	SetObjValue("KeyName", "토의조각");	
+	
+	SendMessage("", "페이드", "Mesh19 0 0 0");	
+	SendMessage("", "발광색", "Recursive 80 80 80");
+	SendMessage("", "발광", "Recursive on");
+
+//	$본2_영호_워프초기화 = 0;
+	if($G_토의진해결 == TRUE)
+	{
+		SendMessage("", "페이드", "Mesh19 0 1 1");
+		SendMessage("", "애니메이션", "합체끝");
+		
+//		$본2_영호_워프초기화 = 100;
+		return;
+	}
+
+	if($G_토의진해결 == FALSE)
+	SendMessage("", "위치", "-627.594727 376.032990 2099.279541");
+
+//	SendMessage("", "파티클생성", "*start_pos sphere(in) %p 30 *target_pos sphere(delta)(in) %z -50 *blackhole on pos %p *diffuse 60600d " + GetWDBParticle("particle.wdb", "토의빛", "파티클내용") );
+//	SendMessage("사운드", "연주3d", GetObjPos("") + " loop,토의귀기,귀기_루프.wav");
+}
+
+pick()
+{
+	if($수위추적모드 == ON)
+		return "자동후진";
+
+	if(GetObjValue("Nopick") == 1)
+	{
+		SendMessage("", "캐쉬초기화", "");
+		return "";
+	}
+
+	$KeyName = GetObjValue("KeyName");
+
+	if($G_토의진해결 == FALSE)
+	{
+		if(GetObjValue("Step") == 0)
+			return "보기";
+		else
+			return $G_UserItem == $KeyName ? "i토의조각" : "보기";
+	}
+	return "잡기";
+}
+
+click()
+{	
+	if($수위추적모드 == ON)
+	{
+		SendMessage("사운드", "연주", "조작불가.wav");
+		SendMessage("자막", "문자출력", "3," + GetString("s12"));
+		return;
+	}
+
+	if($컬렉션아이템갯수 < 6)
+	{
+		SendMessage("자막", "문자출력", "3," + GetString("s922"));
+		return;
+	}
+
+	$KeyName  = GetObjValue("KeyName");
+	$Step = GetObjValue("Step");
+	
+	if($G_토의진해결 == FALSE)
+	{
+		if($Step == 0)
+		{
+			SetObjValue("Step", 1);			
+			SendMessage("자막", "문자출력후대기", GetString("s111"));
+			SendMessage("", "위치", "75.37 147.10 1889.00");
+			RunScript("","_whiteday.FlashBack");
+		}
+		else
+		{
+			if($G_UserItem == $KeyName)
+			{				
+				SendMessage("유저", "폐기", "@토의조각");									
+
+				SendMessage("", "페이드", "Mesh19 0 1 1");
+				SendMessage("", "애니메이션", "합체");
+				
+//				$본2_영호_워프초기화 = 100;
+				$G_토의진해결 = TRUE;
+				
+				SetTimer(0, "item.FadingOfDummy *obj 토조각진");
+
+				SendMessage("", "파티클생성", "*origin pos %p " + GetWDBParticle("particle.wdb", "각진의파장", "파티클내용") );
+
+				
+				SendMessage("사운드", "연주멈춤", "토의귀기");
+				SendMessage("사운드", "연주3d", GetObjPos("") + " 귀기부착.wav");
+				
+				SetObjValue("Nopick", 1);
+				SetTimer(5, "pickValid");
+			}
+			else
+				SendMessage("자막", "문자출력후대기", GetString("s39"));
+		}
+	}
+	else				
+		SendMessage("자막", "문자출력후대기", GetString("s40"));
+}
+
+pickValid()
+{
+	SetObjValue("Nopick", 0);
+	SendMessage("", "캐쉬초기화", "");
+}
+
+
+Initlast()
+{
+	SendMessage("", "스크립트설정", "use " + $G_File + "._last");
+	SendMessage("", "발광색", "Recursive 200 200 200");
+	SendMessage("", "발광", "Recursive on");
+
+	SetObjValue("한번만",0);
+}
+
+_last.pick()
+{
+	if(GetObjValue("한번만") == 0)
+		return "잡기";
+}
+
+_last.click()
+{
+	if(GetObjValue("한번만") == 0 && $last_조각모으기 == 4)
+	{
+		$last_조각모으기 = 5;
+		$lastpasstime = GetTime("시간계산용") - $lastpasstime;
+		SendMessage("", "애니메이션", "액션");	
+		SetObjValue("한번만",1);
+		SendMessage("", "페이드", "Mesh19 4 1 0");
+		SendMessage("", "페이드", "Mesh20 4 1 0");
+		SendMessage("", "페이드", "Mesh21 4 1 0");
+		SendMessage("", "페이드", "Mesh22 4 1 0");
+		SendMessage("", "페이드", "Mesh23 4 1 0");
+		SendMessage("", "페이드", "Mesh24 4 1 0");
+
+		SendMessage("유저", "획득", "@토의조각@");
+//		SendMessage("오디오BGM", "연주이어서", "2 data/sound/bgm/라스트/lastbgm_끝.adp");
+		SendMessage("허드", "라스트맵켜", "0" );
+		RunScript("","_last._last끝");
+		SetTimer(0,"_goEndding");
+		SetTimer(0, "item.FadingOfDummy *obj 미궁토조각진");
+
+	}
+}
+
+_goEndding()
+{
+	SendMessage("매크로", "Play", "last_outro.cut01");
+	DeleteObject("오디오BGM");
+	SendMessage("허드", "라스트맵꺼", "" );
+//	RunScript("", "_last.Destroy");
+//	SetTimer(1,"_devil.Create");
+}

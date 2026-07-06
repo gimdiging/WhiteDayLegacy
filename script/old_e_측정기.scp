@@ -1,0 +1,38 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000				e_측정기.scp
+//
+//	熱血man: matzzang		last update: 2000.07.22
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "info " + $G_File);
+	SetObjValue("Step", 0);
+	SetObjName("측정기");
+}
+
+pick()
+{
+	return GetObjValue("Step") == 0 ? "보기" : "잡기";
+}
+
+click()
+{
+	if(GetObjValue("Step") == 0)
+	{
+		SendMessage("자막", "문자출력", "2," +  GetString("old_s21"));
+		SetObjValue("Step", GetObjValue("Step") + 1);
+	}
+	else
+	{
+		SendMessage("자막", "문자출력", "2," +  GetString("old_s22"));
+	}
+}

@@ -1,0 +1,166 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//				C h a r a c t o r S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					o_이름표.scp
+//
+//	熱血man: matzzang		last update: 2000.07.21
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "name " + $G_File);	
+}
+
+Init1a()
+{
+	Init();
+	SetObjValue("이름", GetString("s341"));
+}
+
+Init2a()
+{
+	Init();
+	SetObjValue("이름", GetString("s342"));
+}
+
+Init3a()
+{
+	Init();
+	SetObjValue("이름", GetString("s343"));
+}
+
+Init4a()
+{
+	Init();
+	SetObjValue("이름", GetString("s344"));
+}
+
+Init5a()
+{
+	Init();
+	SetObjValue("이름", GetString("s345"));
+}
+
+Init6a()
+{
+	Init();	
+	SetObjValue("이름", GetString("s346"));
+}
+
+Init7a()
+{
+	Init();
+	SetObjValue("이름", GetString("s347"));
+}
+
+Init8a()
+{
+	Init();
+	SetObjValue("이름", GetString("s348"));
+}
+
+Init9a()
+{
+	Init();
+	SetObjValue("이름", GetString("s349"));
+}
+
+Init10a()
+{
+	Init();
+	SetObjValue("이름", GetString("s350"));
+}
+
+Init11a()
+{
+	Init();
+	SetObjValue("이름", GetString("s351"));
+}
+
+Init1b()
+{
+	Init();
+	SetObjValue("이름", GetString("s352"));
+}
+
+Init2b()
+{
+	Init();
+	SetObjValue("이름", GetString("s353"));
+}
+
+Init3b()
+{
+	Init();
+	SetObjValue("이름", GetString("s354"));
+}
+
+Init4b()
+{
+	Init();
+	SetObjValue("이름", GetString("s355"));
+}
+
+Init5b()
+{
+	Init();
+	SetObjValue("이름", GetString("s356"));
+}
+
+Init7b()
+{
+	Init();
+	SetObjValue("이름", GetString("s357"));
+}
+
+Init8b()
+{
+	Init();
+	SetObjValue("이름", GetString("s358"));
+}
+
+Init9b()
+{
+	Init();
+	SetObjValue("이름", GetString("s359"));
+}
+
+Init10b()
+{
+	Init();
+	SetObjValue("이름", GetString("s360"));
+}
+
+Init11b()
+{
+	Init();
+	SetObjValue("이름", GetString("s361"));
+}
+
+Init12()
+{
+	Init();
+	SetObjValue("이름", GetString("s942"));
+}
+
+Init유저()
+{
+	if(Version() != "OnGameNet")
+		DeleteObject("");
+}
+
+pick()
+{
+	return "보기";
+}
+
+click()
+{	
+	SendMessage("자막", "문자출력후대기", GetObjValue("이름"));
+}

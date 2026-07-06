@@ -1,0 +1,158 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  S c r i p t F i l e 
+//
+//  (C) Sonnori 2000						_last.scp
+//
+//	熱血man: matzzang		last update: 2000.08.25
+//  --------------------------------------------------
+
+Create()
+{
+	RunScript("","_testValue.Init");
+
+	$현재스테이지 = "미궁";
+	RunScript("", "_whiteday.StartBanner");
+
+	LoadWed("data/last.wep", 1);
+
+	LoadObject("WObjParticle", "파티", "");
+	SetTimer(0, "Create_init");
+}
+
+Create_init()
+{
+	LoadObject("WObjStaticBody", "구름", "*scale 2.0 *motion 회전 *pos 0 0 0 *nolight *matchcam *pet data/puppet/effect/구름/구름.pet *showall *group 0");
+
+	SendMessage("유저", "위치", "" + FindPoint("시작위치"));
+	LoadObject("WTune", "오디오BGM", "");
+	LoadObject("WTune", "오디오폰", "");
+
+	SendMessage("배경", "bspmode", "4");
+
+
+
+//SendMessage("오디오BGM", "연주이어서", "2 data/sound/bgm/라스트/@lastbgm_루프.adp");
+//SendMessage("오디오BGM", "연주이어서", "-1 data/sound/bgm/라스트/lastbgm_끝.adp");
+}
+
+_로딩후시작()
+{
+	SendMessage("자막", "비활성", "");
+	SendMessage("매크로", "Play", "sc56.cut01");
+}
+
+_lastmacro()
+{
+	// 이부분은 세이브 후에 부릅니다.
+	SendMessage("매크로", "Play", "sc56.cut01");
+}
+
+Destroy()
+{
+	DeleteObject("오디오BGM");
+	DeleteObject("오디오폰");
+	DeleteObject("구름");
+	DeleteObject("파티");
+	RunScript("", "_whiteday.ResetMainGameObject");
+}
+
+_엔딩으로()
+{
+	RunScript("유저", "_last.Destroy");
+
+	SetTimer(0, "_staffroll._시작");
+}
+
+Create4Debug()
+{
+
+	LoadObject("WObjPlayer", "유저", "*ai 오브젝트_유저._유저 *gravity");
+	SendMessage("유저", "위치", "" + FindPoint("시작위치"));
+	SendMessage("유저", "캡춰", "카메라 머리");
+	SendMessage("허드", "켜기", "normal");
+	SendMessage("타이머", "스크립트설정", "0 0 1 _last._게임시작");
+	SendMessage("main", "게임시작", "시작");
+}
+
+ScriptMain()
+{
+	Create();
+	Create4Debug();
+}
+
+_게임시작()
+{
+	SendMessage("유저", "획득", "허드");
+	SendMessage("유저", "획득", "다이어리");
+	SendMessage("유저", "획득", "가방");
+	SendMessage("유저", "획득", "핸드폰");
+	SendMessage("유저", "획득", "지도");
+	SendMessage("유저", "획득", "포즈");
+	SendMessage("유저", "획득", "소화기A");
+
+	SendMessage("유저", "획득", "다우징");
+	SendMessage("유저", "획득", "선물봉투");
+	SendMessage("유저", "획득", "소영다이어리");
+	SendMessage("유저", "획득", "모기약");
+
+	SendMessage("유저", "획득", "나침반");		// 도움말을 볼수 있게 하는 아이템
+	SendMessage("유저", "획득", "구급상자");
+	SendMessage("유저", "획득", "태극패");
+	SendMessage("유저", "획득", "콩의눈");
+	SendMessage("유저", "획득", "도시락");
+
+}
+
+_last시작()
+{
+	SendMessage("허드", "라스트맵켜", "" );
+	$AI_유령성아 = ON;
+	SendMessage("유령성아", "위치", "" + FindPoint("시작위치"));
+	SetTimer(0, "캐릭터_성아._유령성아.첨부터 *obj 유령성아");
+	LoadObject("WObjFirePlane", "불a", "*area -387.00 0.00 34.03 -363.83 34.35 94.73 *sprsizex 32.0f *sprsizey 32.0f *sizex 128.0f *sizey 128.0f *firetype 0 *progresstime 0.1f *num 10 *col 2 *script _last.test.fire *list *pick");
+	LoadObject("WObjFirePlane", "불b", "*area -437.11 0.00 349.83 -414.75 45.93 409.46 *sprsizex 32.0f *sprsizey 32.0f *sizex 128.0f *sizey 128.0f *firetype 0 *progresstime 0.1f *num 10 *col 2 *script _last.test.fire *list *pick");
+	LoadObject("WObjFirePlane", "불c", "*area 320.96 0.00 515.90 383.56 44.60 549.44 *sprsizex 32.0f *sprsizey 32.0f *sizex 128.0f *sizey 128.0f *firetype 0 *progresstime 0.1f *num 10 *col 2 *script _last.test.fire *list *pick");
+	LoadObject("WObjFirePlane", "불d", "*area 64.91 0.00 -179.91 95.05 52.18 -148.31 *sprsizex 32.0f *sprsizey 32.0f *sizex 128.0f *sizey 128.0f *firetype 0 *progresstime 0.1f *num 10 *col 2 *script _last.test.fire *list *pick");
+	LoadObject("WObjFirePlane", "불e", "*area 384.17 0.00 -305.29 414.61 39.11 -294.67 *sprsizex 32.0f *sprsizey 32.0f *sizex 128.0f *sizey 128.0f *firetype 0 *progresstime 0.1f *num 10 *col 2 *script _last.test.fire *list *pick");
+	LoadObject("WObjFirePlane", "불f", "*area 611.10 0.00 -638.76 629.66 39.03 -608.86 *sprsizex 32.0f *sprsizey 32.0f *sizex 128.0f *sizey 128.0f *firetype 0 *progresstime 0.1f *num 10 *col 2 *script _last.test.fire *list *pick");
+	LoadObject("WObjFirePlane", "불g", "*area -639.89 0.00 -360.27 -609.58 39.04 -343.87 *sprsizex 32.0f *sprsizey 32.0f *sizex 128.0f *sizey 128.0f *firetype 0 *progresstime 0.1f *num 10 *col 2 *script _last.test.fire *list *pick");
+	LoadObject("WObjFirePlane", "불h", "*area -210.61 0.00 -446.29 -178.93 18.37 -416.86 *sprsizex 32.0f *sprsizey 32.0f *sizex 128.0f *sizey 128.0f *firetype 0 *progresstime 0.1f *num 10 *col 2 *script _last.test.fire *list *pick");
+	if($게임모드 != 0 && $게임모드 != 4)
+	SendMessage("허드", "가스게이지켜", "500");
+}
+
+_last끝()
+{
+	SendMessage("유령성아", "Stop", "");
+	$AI_유령성아 = OFF;
+	SendMessage("유령성아", "페이드", "Recursive 3 1 0");
+	if($게임모드 != 0 && $게임모드 != 4)
+	SendMessage("허드", "가스게이지꺼", "");
+}
+
+test.fire.Collision()
+{
+}
+
+test.fire.Init()
+{
+	SetObjValue("밝기", 1.0);
+}
+
+test.fire.Damage()
+{
+	SetObjValue("밝기", GetObjValue("밝기") - 0.1);
+
+	if (GetObjValue("밝기") < 0.1)
+	{
+		SendMessage("유령성아", "위치", "" + GetObjPos("유저"));
+		DeleteObject("");
+		return;
+	}
+
+	SendMessage("", "사이즈변환", GetObjValue("밝기") + " 1");
+}
