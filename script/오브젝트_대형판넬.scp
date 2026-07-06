@@ -1,0 +1,304 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000				오브젝트_대형판넬.scp
+//
+//	熱血man: agneau		last update: 2000.10.30
+//  --------------------------------------------------
+
+Init()
+{	
+	SendMessage("", "스크립트설정", "left " + $G_File + ".left_switch");
+	SendMessage("", "스크립트설정", "right " + $G_File + ".right_switch");
+	SendMessage("","TurnGlow","off 0");
+	SendMessage("","TurnGlow","off 1");
+	
+	SetObjValue("Right_Step",0);
+	SetObjValue("Left_Step",0);
+
+//	SetObjValue("Right_Flag",ON);
+//	SetObjValue("Left_Flag",OFF);
+
+	SendMessage("","본회전","C-Ext02 " + "0 0");
+	SendMessage("","본회전","C-Ext03 " + "0 0");
+
+	if($신관_세환_홀조명 == ON)
+	{		
+		SendMessage("","본회전","C-Ext02 " + "-90 0");
+		SendMessage("","TurnGlow","on 0");		
+
+		SendMessage("배경","켜기","hall");		
+	}
+
+	if($게임모드 == 4 || $신관_세환_교실전력 == ON)
+	{		
+		$신관_세환_교실전력 = ON;
+		SendMessage("","본회전","C-Ext03 " + "-90 0");
+		SendMessage("","TurnGlow","on 1");				
+	}
+
+}
+
+left_switch.pick()
+{
+	if(GetObjValue("Left_Step") == 0 || $G_LightFactor <= $standard_light)
+		return "보기";
+
+	return "잡기";
+}
+
+left_switch.click()
+{
+	if($G_LightFactor < $standard_light)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s4"));	
+		return;
+	}
+
+//	$left_flag = GetObjValue("Left_Flag");
+//	$right_flag = GetObjValue("Right_Flag");
+
+	if(GetObjValue("Left_Step") == 0)
+	{
+		SendMessage("자막","문자출력후대기", GetString("s137"));
+		SetObjValue("Left_Step",1);
+		return;
+	}
+/*
+	if($left_flag == OFF)
+	{		
+		SendMessage("전원차단기","본회전","C-Ext02 " + "0 0");
+		SendMessage("사운드","연주","data/sound/대형판넬레버.wav");					
+		SetObjValue("Left_Flag", ON);
+
+		if($신관_세환_열쇠이벤트 == ON)
+		{
+			SendMessage("","TurnGlow","on 0");
+		
+			$신관_세환_홀조명 = ON;
+
+			if(GetObjValue("Right_Flag") == OFF)		
+				 RunScript("전원차단기","오브젝트_대형판넬._시작");
+
+			SendMessage("배경","켜기","hall");
+			SendMessage("배경","켜기","center");
+			RunScript("신관홀조명","o_신관조명.on");
+
+			if($신관_세환_불켜질교실수 == 5 && $신관_세환_불안켜질교실수 == 0 && GetObjValue("Right_Flag") == ON)
+			{				
+				// glow 없애기
+				SetTimer(1,"i_떨어질열쇠.camera_on");
+			}
+			else
+			{
+				$신관_세환_시간간격유지A++;
+				SetTimer($신관_세환_홀스위치다운간격,"오브젝트_대형판넬.auto_off");
+			}
+
+			return;
+		}		
+		
+		SendMessage("자막","문자출력후대기","스위치가 고장난 것 같다.");
+	}
+	else if($left_flag == ON)
+	{		
+		SendMessage("전원차단기","본회전","C-Ext02 " + "-90 0");
+		SendMessage("사운드","연주","data/sound/대형판넬레버.wav");		
+		SetObjValue("Left_Flag", OFF);
+
+		if($신관_세환_열쇠이벤트 == ON)
+		{
+			SendMessage("","TurnGlow","off 0");
+			
+			$신관_세환_홀조명 = OFF;
+
+			if(GetObjValue("Right_Flag") == OFF)
+				RunScript("전원차단기","오브젝트_대형판넬._끝");
+
+			SendMessage("배경","끄기","hall");
+			SendMessage("배경","끄기","center");
+			RunScript("신관홀조명","o_신관조명.off");
+			return;
+		}
+
+		SendMessage("자막","문자출력후대기","스위치가 고장난 것 같다.");
+	}	
+*/
+	if($신관_세환_홀조명 == OFF)
+	{		
+		$신관_세환_홀조명 = ON;
+		SendMessage("","본회전","C-Ext02 " + "-90 0");
+		SendMessage("","TurnGlow","on 0");
+		SendMessage("사운드","연주","대형판넬레버.wav");					
+
+		SendMessage("배경","켜기","hall");
+		SendMessage("배경","켜기","center");
+		SendMessage("배경","켜기","light1f");
+		RunScript("신관홀조명","o_신관조명.on");
+		
+		if($신관_세환_불켜질교실수 == 5 && $신관_세환_불안켜질교실수 == 0 && $신관_세환_열쇠이벤트 == FALSE)														
+			SendMessage("매크로", "Play", "light_explode.cut01");			
+	}
+	else
+		SendMessage("자막","문자출력후대기", GetString("s138"));	
+}
+
+right_switch.pick()
+{
+	if(GetObjValue("Right_Step") == 0)
+		return "보기";
+
+	return "잡기";	
+}
+
+right_switch.click()
+{
+//	$left_flag = GetObjValue("Left_Flag");
+//	$right_flag = GetObjValue("Right_Flag");
+
+	if(GetObjValue("Right_Step") == 0)
+	{
+		SendMessage("자막","문자출력후대기", GetString("s907"));
+		SetObjValue("Right_Step",1);
+		return;
+	}
+
+/*
+	if($right_flag == OFF)
+	{
+		$신관_세환_교실전력 = ON;
+		SendMessage("전원차단기","본회전","C-Ext03 " + "-90 0");
+		SendMessage("사운드","연주","data/sound/대형판넬레버.wav");
+		SendMessage("","TurnGlow","on 1");
+		SetObjValue("Right_Flag", ON);
+		
+		if(GetObjValue("Left_Flag") == OFF || $신관_세환_열쇠이벤트 == OFF)		
+			RunScript("전원차단기","오브젝트_대형판넬._시작");
+
+		SetTimer(1,"o_신관스위치.turn_on");	
+	}
+	else if($right_flag == ON)
+	{
+		$신관_세환_교실전력 = OFF;
+		SendMessage("전원차단기","본회전","C-Ext03 " + "0 0");
+		SendMessage("사운드","연주","data/sound/대형판넬레버.wav");
+		SendMessage("","TurnGlow","off 1");
+		SetObjValue("Right_Flag", OFF);
+
+		if(GetObjValue("Left_Flag") == OFF || $신관_세환_열쇠이벤트 == OFF)
+			RunScript("전원차단기","오브젝트_대형판넬._끝");
+
+		SetTimer(1,"o_신관스위치.turn_off");
+	}
+*/
+	if($신관_세환_교실전력 == OFF)
+	{		
+		$신관_세환_교실전력 = ON;
+		SendMessage("","본회전","C-Ext03 " + "-90 0");
+		SendMessage("","TurnGlow","on 1");
+		SendMessage("사운드","연주","대형판넬레버.wav");						
+	}
+	else
+		SendMessage("자막","문자출력후대기", GetString("s138"));
+}
+/*
+_시작()
+{
+	SendMessage("사운드","연주멈춤","발전기_끝");
+
+	if($신관_세환_연주루프 == OFF)
+	{
+		SendMessage("사운드","연주","발전기_시작,data/sound/발전기시작.wav");
+		$신관_세환_연주루프 = ON;
+		SetTimer(1,"_가동");
+	}
+}
+
+_끝()
+{
+	SendMessage("사운드","연주멈춤","발전기_시작");
+	SendMessage("사운드","연주멈춤","발전기_루프");
+			
+	$신관_세환_연주루프 = OFF;
+
+	SendMessage("사운드","연주","발전기_끝,data/sound/발전기끝.wav");
+}
+
+_가동()
+{
+	if($신관_세환_연주루프 == ON)
+		SendMessage("사운드","연주3d", GetObjPos("전원차단기") + " loop,발전기_루프,data/sound/발전기루프.wav");
+}
+
+auto_off()
+{
+	if($신관_세환_시간간격유지A != 1 || GetObjValue("Left_Flag") == OFF)
+	{
+		$신관_세환_시간간격유지A--;
+		return;
+	}
+
+	$신관_세환_시간간격유지A--;
+	SendMessage("자막","활성화","");
+	SendMessage("자막","와이드모드","켜기");
+	SendMessage("카메라", "쳐다보기", FindPoint("카메라위치2") + " " + FindPoint("카메라대상2_"));
+
+	SetTimer(3,"오브젝트_대형판넬.switch_down");
+}
+
+switch_down()
+{
+	SendMessage("전원차단기","본회전","C-Ext02 " + "-90 0");
+	SendMessage("사운드","연주","data/sound/대형판넬레버.wav");		
+	SetObjValue("Left_Flag", OFF);
+	SendMessage("","TurnGlow","off 0");
+			
+	$신관_세환_홀조명 = OFF;
+
+	if(GetObjValue("Right_Flag") == OFF)
+		RunScript("전원차단기","오브젝트_대형판넬._끝");
+
+	SendMessage("배경","끄기","hall");
+	SendMessage("배경","끄기","center");
+	RunScript("신관홀조명","o_신관조명.off");
+
+	SetTimer(3,"오브젝트_대형판넬.end");
+}
+
+end()
+{
+	SendMessage("자막","와이드모드","끄기");
+	SendMessage("자막","비활성","");
+	SendMessage("카메라","쳐다보지말기","");	
+}
+*/
+soundon()
+{
+	SendMessage("사운드","연주3d", GetObjPos("전원차단기") + " loop,발전기_루프,data/sound/발전기루프.wav");
+}
+
+soundoff()
+{
+	SendMessage("사운드", "연주멈춤", "발전기_루프");
+}
+
+// 매크로용
+
+switch_up()
+{
+	SendMessage("", "본회전", "C-Ext03 0 0");
+	SendMessage("", "TurnGlow", "off 1");
+}
+
+switch_down()
+{
+	SendMessage("", "본회전", "C-Ext03 -90 0");
+	SendMessage("", "TurnGlow", "on 1");
+	SendMessage("신관배전판", "TurnGlow", "off 2");	
+}

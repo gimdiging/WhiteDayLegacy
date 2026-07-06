@@ -1,0 +1,121 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//						I t e m S c r i p t F i l e 
+//
+//  (C) Sonnori 2000		오브젝트_서무실전원.scp
+//
+//	熱血man: matzzang		last update: 2000.07.22
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "door " + $G_File);
+	SendMessage("", "스크립트설정", "switch " + $G_File + ".switch");
+	
+	SendMessage("", "발광색", "red_lamp 100 0 0");
+	SendMessage("", "발광색", "gr_lamp01 0 100 0");
+
+	SendMessage("", "발광", "red_lamp on");
+	SendMessage("", "발광", "gr_lamp01 off");
+	
+	SetObjValue("Step", 0);
+	SetObjValue("OnOffFlag", OFF);
+ 
+	SendMessage("", "TurnGlow", "on 0");
+
+	if($Mission3_복사기ON == ON)
+	{		
+		SetObjValue("OnOffFlag", ON);
+		SendMessage("", "발광", "red_lamp off");
+		SendMessage("", "발광", "gr_lamp01 on");
+		SendMessage("", "본회전", "a1_11switch -70 0");
+	}
+}
+
+pick()
+{
+	if(GetObjValue("MotionName") == "열기" || GetObjValue("MotionName") == "닫기")
+	{
+		SendMessage("", "캐쉬초기화", "");
+		return "";
+	}
+
+	if(GetObjValue("Step") == 0 || $G_LightFactor <= $standard_light))
+		return "보기";
+
+	return "잡기";
+}
+
+click()
+{
+	if($G_LightFactor < $standard_light)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s4"));	
+		return;
+	}
+
+	switch(GetObjValue("Step"))
+	{
+		case 0 :
+			SendMessage("자막", "문자출력후대기", GetString("s151"));
+			SetObjValue("Step", 1);
+			break;
+
+		case 1 :
+			SendMessage("", "애니메이션", "열기");
+			SetObjValue("Step", 2);
+			break;
+
+		case 2 :
+			SendMessage("", "애니메이션", "닫기");
+			SetObjValue("Step", 1);
+			break;
+	}	
+}
+
+switch.pick()
+{	
+	if(GetObjValue("Step") != 2)
+		return "";
+
+	if($G_LightFactor <= $standard_light)
+		return "보기";
+
+	return "잡기";
+}
+
+switch.click()
+{
+	if($G_LightFactor < $standard_light))
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s4"));	
+		return;
+	}
+
+	$OnOffFlag = GetObjValue("OnOffFlag");
+
+	if($OnOffFlag == OFF)
+	{
+		SendMessage("", "발광", "red_lamp off");
+		SendMessage("", "발광", "gr_lamp01 on");
+		SendMessage("", "본회전", "a1_11switch -70 0");
+		SendMessage("자막", "문자출력후대기", GetString("s152"));
+	}
+	else
+	{
+		SendMessage("", "발광", "red_lamp on");
+		SendMessage("", "발광", "gr_lamp01 off");
+		SendMessage("", "본회전", "a1_11switch 0 0");
+		SendMessage("자막", "문자출력후대기", GetString("s153"));
+	}
+
+	SendMessage("사운드", "연주", "data/sound/벽스위치OFF.wav");
+	SetObjValue("OnOffFlag", $OnOffFlag = ($OnOffFlag == ON ? OFF : ON));
+	$Mission3_복사기ON = $OnOffFlag;
+	RunScript("","_whiteday.FlashBack");
+}

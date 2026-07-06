@@ -1,0 +1,122 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000				오브젝트_큰쓰레기통.scp
+//
+//	熱血man: agneau					last update: 2001.6.5
+//  --------------------------------------------------
+
+Init()
+{
+	if($b_쓰레기통아이템 != 2)
+	{
+	SendMessage("", "스크립트설정", "waste " + $G_File + ".waste");
+	SetObjValue("step", 0);	
+	}
+}
+
+Init아이템()
+{	
+	if($b_쓰레기통아이템 == 0)
+	{
+		SendMessage("", "스크립트설정", "waste " + $G_File);
+		SetObjValue("step", 0);	
+	}
+	if($b_쓰레기통아이템 == 1)
+	{
+		SendMessage("", "스크립트설정", "waste " + $G_File);
+		SetObjValue("step", 2);	
+	}
+	if($b_쓰레기통아이템 == 2)
+	{
+		SetObjValue("step", 4);	
+	}
+}
+
+pick()
+{		
+	switch(GetObjValue("step"))
+	{
+		case 0:
+			return "보기";
+		case 1:
+			return "잡기";
+		case 2:
+			return "보기";
+		case 3:
+			return "잡기";
+		case 4:
+			return "";
+	}
+}
+
+click()
+{	
+	if(GetObjValue("step") == 0)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s178"));
+		SetObjValue("step", 1);
+		return;
+	}
+
+	if(GetObjValue("step") == 1)
+	{
+		$b_쓰레기통아이템 = 1;
+		SendMessage("유저", "획득", "캔커피");
+		TextOut(GetString("it_337"));
+		SetObjValue("step", 2);
+		return;
+	}
+
+	if(GetObjValue("step") == 2)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("it_271"));
+		SetObjValue("step", 3);
+		return;
+	}
+
+	if(GetObjValue("step") == 3)
+	{
+		$b_쓰레기통아이템 = 2;
+		SendMessage("유저", "획득", "양초");
+		SendMessage("자막", "문자출력", "3," +  GetString("it_272"));
+		SetObjValue("step", 4);
+		return;
+	}
+}
+
+waste.pick()
+{
+	switch(GetObjValue("step"))
+	{
+		case 0:
+			return "보기";
+		case 1:
+			return "잡기";
+		case 2:
+			return "";
+	}
+}
+waste.click()
+{	
+	if(GetObjValue("step") == 0)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("it_921"));
+		SetObjValue("step", 1);
+		return;
+	}
+
+	if(GetObjValue("step") == 1)
+	{
+		SendMessage("유저", "획득", "책상열쇠");
+		TextOut(GetString("it_922"));
+		SetObjValue("step", 2);
+		return;
+	}
+}

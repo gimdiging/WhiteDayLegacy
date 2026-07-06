@@ -1,0 +1,94 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000			오브젝트_의자02.scp
+//
+//	熱血man: agneau			last update: 2001.09.26
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "use1 " + $G_File + ".use1");
+	SendMessage("", "스크립트설정", "dummy null");
+	SendMessage("", "픽거리설정", "180 250" );
+	SetObjValue("climb", 0);
+	SetObjValue("break", 0);
+}
+
+Init서무실의자()
+{
+	Init();	
+	SetObjValue("climb", 1);
+	SetObjValue("break", 1);
+}
+
+Init교무실의자올라()
+{
+	Init();
+	SetObjValue("climb", 1);
+	SetObjValue("break", 2);
+}
+
+Init더미()
+{
+	Init();
+	SetObjValue("climb", 1);
+	SendMessage("", "픽거리설정", "150 300");
+}
+
+use1.pick()
+{
+	if(GetObjValue("climb") == 1 || GetObjValue("올라올라?") == "니맘대로")
+		return "사다리오르기";
+	else
+		return "";
+}
+
+use1.click()
+{
+	SendMessage("유저", "오르기", GetObjName() + " 머리");
+	if($현재스테이지 == "본관1" || $현재스테이지 == "본관2" && $본2_영호_교장실모디터보았나 == 2)
+	{
+	$AI_형체있는인간 = OFF;
+	SetTimer(1, "Break");
+	SetTimer(2, "Release");
+	}
+}
+
+Break()
+{
+	SendMessage("사운드", "연주", "도플_쾅.wav"); 
+	SendMessage("", "페이드", "Recursive 1 1 0");
+	SendMessage("", "충돌체크", "off");
+	if(GetObjValue("break") == 1)
+	{
+	$문_서무실 = UNLOCK;
+	RunScript("문_서무실b","문_본관1._열어2");
+	}
+	if(GetObjValue("break") == 2)
+	SetTimer(2, "Camera");
+}
+
+Camera()
+{
+	RunScript("정찰용수위", "캐릭터_수위.Disable");
+	SendMessage("작업용사다리", "위치", "-671.80 104.10 2031.80");
+	SendMessage("배경","bspmode","1");
+	SendMessage("자막", "활성화", ""); 
+	SendMessage("유저", "카메라3인칭뷰", "on");
+	SendMessage("카메라", "쳐다보기", "-831.106384 121.189560 2035.388794" + " " + "-671.80 104.10 2031.80");
+	SetTimer(5, "_whiteday._카메라꺼"); 
+	SetTimer(5, "캐릭터_수위._정지 *obj 정찰용수위"); 
+}
+
+Release()
+{
+	DeleteObject("");
+	$AI_형체있는인간 = ON;
+}

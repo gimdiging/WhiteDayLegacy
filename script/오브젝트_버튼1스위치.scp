@@ -1,0 +1,839 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000		오브젝트_버튼1스위치.scp
+//
+//	熱血man: agneau			last update: 2001.05.03
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "switch " + $G_File);
+	SendMessage("", "TurnGlow", "on 0");
+	SetObjValue("MotionName", "");
+	SetObjValue("상태", OFF);
+	SetObjValue("전구갯수", 1);
+	SetObjValue("바퀴벌레출현", 0);
+	SetObjValue("전등종류", "형광등");
+	SetObjValue("깜박임",0);
+	SetObjValue("trick", 0);
+	SetObjValue("exList", 0);
+	SetObjValue("고장", 0);
+}
+
+_불켜기()
+{
+	if(GetObjValue("상태") == ON)
+		return;
+
+	if(GetObjValue("exList") == 0)
+		SendMessage("", "리스트추가", "" + GetObjName());
+
+	SendMessage("", "TurnGlow", "off 0");
+	SendMessage("", "애니메이션", "켜기");
+	SetObjValue("상태", ON);
+	SendMessage("배경", "켜기", GetObjValue("LightName1"));
+}
+
+_불끄기()
+{
+	if(GetObjValue("상태") == OFF)
+		return;
+
+	if(GetObjValue("exList") == 0 && $신관_세환_은미이벤트 == 0)
+	{
+		SendMessage("", "리스트삭제", "" + GetObjName());
+		if(GetObjName() == $detect_object)
+			$detect_object = "";
+	}
+
+	SendMessage("", "TurnGlow", "on 0");
+	SendMessage("", "애니메이션", "끄기");
+	SetObjValue("상태", OFF);
+	SendMessage("배경", "끄기", GetObjValue("LightName1"));
+	SetObjValue("trick", GetObjValue("trick") + 1);
+	if(GetObjValue("trick") >= 3)
+		$trick_num++;	
+}
+
+_켜()
+{
+	if(GetObjValue("상태") == ON)
+		return;
+
+	if(GetObjValue("exList") == 0)
+		SendMessage("", "리스트추가", "" + GetObjName());
+
+	SendMessage("", "TurnGlow", "off 0");
+	SendMessage("", "애니메이션", "켜기");
+	SetObjValue("상태", ON);
+	SendMessage("배경", "켜기", GetObjValue("LightName1"));		
+}
+
+_꺼()
+{
+	if(GetObjValue("상태") == OFF)
+		return;
+
+	if(GetObjValue("exList") == 0 && $신관_세환_은미이벤트 == 0)
+	{
+		SendMessage("", "리스트삭제", "" + GetObjName());
+		if(GetObjName() == $detect_object)
+			$detect_object = "";
+	}
+
+	SendMessage("", "TurnGlow", "on 0");
+	SendMessage("", "애니메이션", "끄기");
+	SetObjValue("상태", OFF);
+	SendMessage("배경", "끄기", GetObjValue("LightName1"));
+}
+
+Init미술실_1()
+{
+	SetObjValue("LightName1", "A4-14");
+	Init();
+	SetObjValue("exList", 1);
+}
+
+Init미술실()
+{
+	SetObjValue("LightName1", "A4-15");
+	Init();
+	SetObjValue("exList", 1);
+}
+
+Init과학실B_1()
+{
+	SetObjValue("LightName1", "A4-16");
+	Init();
+	SetObjValue("exList", 1);
+}
+
+Init과학실B()
+{
+	SetObjValue("LightName1", "A4-17");
+	Init();
+	SetObjValue("exList", 1);
+}
+
+Initmain2화장실4남()
+{
+	SetObjValue("LightName1", "A4-18");
+	Init();
+	SetObjValue("전등종류", "백열전구");
+	SetObjValue("exList", 1);
+
+	_불켜기();
+}
+
+Initmain2화장실4여()
+{
+	SetObjValue("LightName1", "A4-19");
+	Init();
+	SetObjValue("전등종류", "백열전구");
+}
+
+Init음악실_1()
+{
+	SetObjValue("LightName1", "A3-14");
+	Init();
+}
+
+Init음악실()
+{
+	SetObjValue("LightName1", "A3-15");
+	Init();
+}
+
+Init과학실A_1()
+{
+	SetObjValue("LightName1", "A3-16");
+	Init();
+}
+
+Init과학실A()
+{
+	SetObjValue("LightName1", "A3-17");
+	Init();
+}
+
+Initmain2화장실3남()
+{
+	SetObjValue("LightName1", "A3-18");
+	Init();
+	SetObjValue("전등종류", "백열전구");
+}
+
+Initmain2화장실3여()
+{
+	SetObjValue("LightName1", "A3-19");
+	Init();
+	SetObjValue("전등종류", "백열전구");
+}
+
+InitA2_15()
+{
+	SetObjValue("LightName1", "A2-15");
+	Init();
+	SetObjValue("고장", 1);
+	SetObjValue("exList", 1);
+	SetObjValue("전등종류", "백열전구");
+}
+
+Init교무실C()
+{
+	SetObjValue("LightName1", "A2-16");
+	Init();
+}
+
+Init교직원휴게실()
+{
+	SetObjValue("LightName1", "A2-17");
+	Init();
+}
+
+Init학생부실()
+{
+	SetObjValue("LightName1", "A2-18");
+	Init();
+}
+
+Init상담실2층()
+{
+	SetObjValue("LightName1", "A2-19");
+	Init();
+}
+
+Initmain2화장실2남()
+{
+	SetObjValue("LightName1", "A2-20");
+	Init();
+	SetObjValue("전등종류", "백열전구");
+	SetObjValue("exList", 1);
+
+	_불켜기();
+}
+
+Initmain2화장실2여()
+{
+	SetObjValue("LightName1", "A2-21");
+	Init();
+	SetObjValue("전등종류", "백열전구");
+}
+
+Init상담실()
+{
+	SetObjValue("LightName1", "A1-13");
+	Init();
+}
+
+Init교장실()
+{
+	SetObjValue("LightName1", "A1-14");
+	Init();
+}
+
+Init교무실A()
+{
+	SetObjValue("LightName1", "A1-15");
+	Init();
+}
+
+Init교무실B()
+{
+	SetObjValue("LightName1", "A1-16");
+	Init();
+}
+
+Init숙직실()
+{
+	SetObjValue("LightName1", "A1-17");
+	Init();
+//	SetObjValue("고장", 1);
+	SetObjValue("exList", 1);
+	SetObjValue("전등종류", "백열전구");
+
+}
+
+Init양호실()
+{
+	SetObjValue("LightName1", "A1-18");
+	Init();
+//	SetObjValue("고장", 1);
+	SetObjValue("exList", 1);
+	SetObjValue("전등종류", "백열전구");
+
+}
+
+Initmain2화장실1층남()
+{
+	SetObjValue("LightName1", "A1-19");
+	Init();
+	SetObjValue("전등종류", "백열전구");
+}
+
+Initmain2화장실1층여()
+{
+	SetObjValue("LightName1", "A1-20");
+	Init();
+	SetObjValue("전등종류", "백열전구");
+}
+
+//////////////////////////
+
+Init교실2_1()
+{
+	SetObjValue("LightName1", "A1-10");
+	Init();
+}
+
+Init교실2_2()
+{
+	SetObjValue("LightName1", "A1-9");
+	Init();
+//	SetObjValue("고장", 1);
+//	SetObjValue("exList", 1);
+}
+
+Init교실2_3()
+{
+	SetObjValue("LightName1", "A1-8");
+	Init();
+}
+
+Init교실2_4()
+{
+	SetObjValue("LightName1", "A1-7");
+	Init();
+}
+
+Init교실2_5()
+{
+	SetObjValue("LightName1", "A1-6");
+	Init();
+}
+
+Init교실2_6()
+{
+	SetObjValue("LightName1", "A1-5");
+	Init();
+}
+
+Init교실2_7()
+{
+	SetObjValue("LightName1", "A2-11");
+	Init();
+//	SetObjValue("고장", 1);
+	SetObjValue("exList", 1);
+}
+
+Init교실2_8()
+{
+	SetObjValue("LightName1", "A2-10");
+	Init();
+//	SetObjValue("고장", 1);
+//	SetObjValue("exList", 1);
+}
+
+Init교실2_9()
+{
+	SetObjValue("LightName1", "A2-9");
+	Init();
+}
+
+Init교실2_10()
+{
+	SetObjValue("LightName1", "A2-8");
+	Init();
+}
+
+Init교실2_11()
+{
+	SetObjValue("LightName1", "A2-7");
+	Init();
+}
+
+Init교실2_12()
+{
+	SetObjValue("LightName1", "A2-6");
+	Init();
+}
+
+Init화장실1_1()
+{
+	SetObjValue("LightName1", "A1-4");
+	Init();
+	SetObjValue("exList", 1);
+	SetObjValue("바퀴벌레출현", 1);
+	SetObjValue("바퀴벌레1", "바퀴벌레01");
+	SetObjValue("바퀴벌레2", "바퀴벌레02");
+	SetObjValue("전등종류", "백열전구");
+}
+
+Init화장실1_2()
+{
+	SetObjValue("LightName1", "A1-3");
+	Init();
+	SetObjValue("exList", 1);
+	SetObjValue("바퀴벌레출현", 1);
+	SetObjValue("바퀴벌레1", "바퀴벌레07");
+	SetObjValue("바퀴벌레2", "바퀴벌레08");
+	SetObjValue("전등종류", "백열전구");
+}
+
+Init화장실2_1()
+{
+	SetObjValue("LightName1", "A2-5");
+	Init();
+	SetObjValue("exList", 1);
+	SetObjValue("바퀴벌레출현", 1);
+	SetObjValue("바퀴벌레1", "바퀴벌레05");
+	SetObjValue("바퀴벌레2", "바퀴벌레06");
+	SetObjValue("전등종류", "백열전구");
+}
+
+Init화장실2_2()
+{
+	SetObjValue("LightName1", "A2-4");
+	Init();
+	SetObjValue("exList", 1);
+	SetObjValue("바퀴벌레출현", 1);
+	SetObjValue("바퀴벌레1", "바퀴벌레03");
+	SetObjValue("바퀴벌레2", "바퀴벌레04");
+	SetObjValue("전등종류", "백열전구");
+}
+
+Init가정실습실()
+{
+	SetObjValue("LightName1", "A1-2");
+	Init();
+	SetObjValue("exList", 1);
+}
+
+Init기계실습실()
+{
+	SetObjValue("LightName1", "A1-1");
+	Init();
+}
+
+Init체육창고()
+{
+	SetObjValue("LightName1", "A2-1");
+	Init();
+	SetObjValue("exList", 1);		
+}
+
+Init사진동아리()
+{
+	SetObjValue("LightName1", "A2-2");
+	Init();
+}
+
+Init산악동아리()
+{
+	SetObjValue("LightName1", "A2-3");
+	Init();
+}
+
+Init방송실()
+{
+	SetObjValue("LightName1", "A2-14");
+	Init();
+}
+
+Init서무실()
+{
+	SetObjValue("LightName1", "A1-11");
+	Init();
+}
+
+Init학적부실()
+{
+	SetObjValue("LightName1", "A1-12");
+	Init();
+}
+
+Init조정실()
+{
+	SetObjValue("LightName1", "A2-13");	
+	Init();	
+}
+
+Init녹음실()
+{
+	SetObjValue("LightName1", "A2-22");	
+	Init();	
+}
+
+Init강당_무대대기실_우()
+{
+	SetObjValue("LightName1", "c1-12");
+	Init();
+	SetObjValue("exList", 1);
+	SetObjValue("전등종류", "백열전구");
+}
+
+Init강당_무대대기실_좌()
+{
+	SetObjValue("LightName1", "c1-11");
+	Init();
+	SetObjValue("exList", 1);
+	SetObjValue("전등종류", "백열전구");
+}
+
+Init강당_샤워실남()
+{
+	SetObjValue("LightName1", "c1-10");
+	Init();
+	SetObjValue("exList", 1);
+	SetObjValue("전등종류", "백열전구");
+}
+
+Init강당_탈의실남()
+{
+	SetObjValue("LightName1", "c1-9");
+	Init();
+	SetObjValue("exList", 1);
+	SetObjValue("전등종류", "백열전구");
+}
+
+Init강당_기계제어실()
+{
+	SetObjValue("LightName1", "c1-7");
+	Init();
+	SetObjValue("exList", 1);
+	SetObjValue("전등종류", "백열전구");
+}
+
+Init강당_기계제어실2()
+{
+	SetObjValue("LightName1", "c1-8");
+	Init();
+	SetObjValue("exList", 1);
+	SetObjValue("전등종류", "백열전구");
+}
+
+Init강당_탈의실여()
+{
+	SetObjValue("LightName1", "c1-6");
+	Init();
+	SetObjValue("exList", 1);
+	SetObjValue("전등종류", "백열전구");
+}
+
+Init강당_샤워실여()
+{
+	SetObjValue("LightName1", "c1-5");
+	Init();
+	SetObjValue("exList", 1);
+	SetObjValue("전등종류", "백열전구");
+}
+
+Init강당_창고우()
+{
+	SetObjValue("LightName1", "c1-2");
+	Init();
+	SetObjValue("exList", 1);
+	SetObjValue("전등종류", "백열전구");
+}
+
+Init강당_창고좌()
+{
+	SetObjValue("LightName1", "c1-1");
+	Init();
+	SetObjValue("exList", 1);
+	SetObjValue("전등종류", "백열전구");
+}
+
+Init강당_화장실남()
+{
+//	SetObjValue("LightName1", "c1-3");
+	SetObjValue("LightName1", "C1-3");
+	Init();
+	SetObjValue("exList", 1);
+	SetObjValue("전등종류", "백열전구");
+}
+
+Init강당_화장실여()
+{
+//	SetObjValue("LightName1", "c1-4");
+	SetObjValue("LightName1", "C1-4");
+	Init();
+	SetObjValue("exList", 1);
+	SetObjValue("전등종류", "백열전구");
+}
+
+pick()
+{
+	return "잡기";
+}
+
+click()
+{
+	$상태 = GetObjValue("상태");
+
+	if(GetObjName() == "스위치_3층화장실남" )
+	{
+		$켤까 = $본2스위치_3층화장실남%2;
+		if($켤까 == 0)
+		{
+			$초 = (1 + Random()%5) / 2;
+			SetTimer($초,"오브젝트_버튼1스위치.click *obj 스위치_3층화장실남");
+		}
+		$본2스위치_3층화장실남++;
+	}
+
+	if($정전 == 1)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s79"));
+		return;
+	}
+
+		if(GetObjName() == "스위치_과학부속실")
+		{
+		if($본관불껐냐 == FALSE && $화재진압중 == 1)
+			{
+			SendMessage("자막", "문자출력후대기", GetString("s79"));
+			return;
+			}
+		}
+		
+	if($상태 == OFF)
+	{
+		if(GetObjValue("MotionName") == "켜기")
+			return;
+
+		if(GetObjValue("exList") == 0)
+			SendMessage("", "리스트추가", "" + GetObjName());
+
+		if(GetObjValue("LightName1") == "A1-11")		// 서무실 전원
+		{
+			SendMessage("서무실전원", "발광색", "red_lamp 200 0 0");
+			SendMessage("서무실전원", "발광색", "gr_lamp01 0 150 0");			
+		}	
+
+		if(GetObjValue("LightName1") == "A2-11" || GetObjValue("LightName1") == "A2-22" || GetObjValue("LightName1") == "A1-17" || GetObjValue("LightName1") == "A1-18")
+		{
+			SetTimer(0.06, "_켜다");
+			SetTimer(0.11, "_끄다");
+			SetTimer(0.17, "_켜다");
+			SetTimer(0.22, "_끄다");
+			SetTimer(0.41, "_켜다");
+			SetTimer(0.65, "_끄다");
+			SetTimer(0.80, "_켜다");
+			SetTimer(1.15, "_끄다");
+			SetTimer(1.50, "_켜다");
+		}
+
+		if(GetObjValue("바퀴벌레출현") == 1)		
+			SetTimer(0, "_바퀴벌레출현");		
+
+		SendMessage("", "애니메이션", "켜기");		
+		SendMessage("", "TurnGlow", "off 0");
+		SetObjValue("상태", ON);		
+		
+		if(GetObjValue("고장") == 1)
+		{
+			SendMessage("자막", "문자출력후대기", GetString("s79"));
+			return;
+		}
+
+		SetTimer(0.1, GetObjValue("전등종류") == "형광등" ? "_형광등켜기" : "_전기공급ON");		
+	}
+	else if($상태 == ON)
+	{
+		if(GetObjValue("MotionName") == "끄기")
+			return;
+
+		if(GetObjValue("exList") == 0 && $신관_세환_은미이벤트 == 0)
+		{
+			SendMessage("", "리스트삭제", "" + GetObjName());
+			if(GetObjName() == $detect_object)
+				$detect_object = "";
+		}
+
+		if(GetObjValue("LightName1") == "A1-11")		// 서무실 전원
+		{
+			SendMessage("서무실전원", "발광색", "red_lamp 100 0 0");
+			SendMessage("서무실전원", "발광색", "gr_lamp01 0 100 0");			
+		}	
+
+		if(GetObjValue("LightName1") == "A2-11" || GetObjValue("LightName1") == "A2-22" || GetObjValue("LightName1") == "A1-17" || GetObjValue("LightName1") == "A1-18")
+			RunScript("", "오브젝트_버튼1스위치._끄다");
+
+		SendMessage("", "애니메이션", "끄기");		
+		SendMessage("", "TurnGlow", "on 0");		
+		SetObjValue("상태", OFF);		
+		
+		if(GetObjValue("고장") == 1)
+		{
+			SendMessage("자막", "문자출력후대기", GetString("s79"));
+			return;
+		}		
+
+		if(GetObjValue("전등종류") == "형광등")
+			SendMessage("사운드", "연주멈춤", "형광등켜지는소리");
+
+		SetTimer(0.01, GetObjValue("전등종류") == "형광등" ? "_전기공급OFF" + $세환_형광등중복 : "_전기공급OFF");				
+	}
+}
+
+_전기공급ON()
+{
+	for($i = 1, $ii = GetObjValue("전구갯수"); $i <= $ii; $i++)
+		SendMessage("배경", "켜기", GetObjValue("LightName" + $i));
+}
+
+_전기공급OFF()
+{
+	for($i = 1, $ii = GetObjValue("전구갯수"); $i <= $ii; $i++)
+		SendMessage("배경", "끄기", GetObjValue("LightName" + $i));
+}
+
+_형광등켜기()
+{
+	$세환_형광등중복 = ($세환_형광등중복++) % 3; 
+
+	$ON = "_전기공급ON" + $세환_형광등중복;
+	$OFF = "_전기공급OFF" + $세환_형광등중복;
+
+	SetTimer(0.06, $ON);
+	SetTimer(0.11, $OFF);
+	SetTimer(0.17, $ON);
+	SetTimer(0.22, $OFF);
+	SetTimer(0.41, $ON);
+	SetTimer(0.65, $OFF);
+	SetTimer(0.80, $ON);
+	SetTimer(1.15, $OFF);
+	SetTimer(1.50, $ON);
+	
+	if(GetObjValue("LightName1"))
+		SendMessage("사운드", "연주", "형광등켜지는소리,data/sound/형광등켜지기.wav");
+}
+
+_바퀴벌레출현()
+{	
+	RunScript(GetObjValue("바퀴벌레1"), "e_바퀴_스위치용._벌레출현");
+	RunScript(GetObjValue("바퀴벌레2"), "e_바퀴_바닥용._벌레출현");
+	SetObjValue("바퀴벌레출현", 0);	
+}
+
+_전기공급ON0()
+{
+	if($세환_형광등중복 == 0 && GetObjValue("상태") == ON)
+	{
+		for($i = 1, $ii = GetObjValue("전구갯수"); $i <= $ii; $i++)
+			SendMessage("배경", "켜기", GetObjValue("LightName" + $i));
+	}
+}
+
+_전기공급OFF0()
+{
+	if($세환_형광등중복 == 0)
+	{
+		for($i = 1, $ii = GetObjValue("전구갯수"); $i <= $ii; $i++)
+			SendMessage("배경", "끄기", GetObjValue("LightName" + $i));
+	}
+}
+
+_전기공급ON1()
+{
+	if($세환_형광등중복 == 1 && GetObjValue("상태") == ON)
+	{
+		for($i = 1, $ii = GetObjValue("전구갯수"); $i <= $ii; $i++)
+			SendMessage("배경", "켜기", GetObjValue("LightName" + $i));
+	}
+}
+
+_전기공급OFF1()
+{
+	if($세환_형광등중복 == 1)
+	{
+		for($i = 1, $ii = GetObjValue("전구갯수"); $i <= $ii; $i++)
+			SendMessage("배경", "끄기", GetObjValue("LightName" + $i));
+	}
+}
+
+_전기공급ON2()
+{
+	if($세환_형광등중복 == 2 && GetObjValue("상태") == ON)
+	{
+		for($i = 1, $ii = GetObjValue("전구갯수"); $i <= $ii; $i++)
+			SendMessage("배경", "켜기", GetObjValue("LightName" + $i));
+	}
+}
+
+_전기공급OFF2()
+{
+	if($세환_형광등중복 == 2)
+	{
+		for($i = 1, $ii = GetObjValue("전구갯수"); $i <= $ii; $i++)
+			SendMessage("배경", "끄기", GetObjValue("LightName" + $i));
+	}
+}
+
+_켜다()
+{
+	if($현재스테이지 == "본관1" && GetObjValue("상태") == ON)
+	{
+		if(GetObjValue("LightName1") == "A2-11")
+		{
+			for($i = 1; $i <= 4; $i++)
+				SendMessage("빛_2학년7반" + $i, "켜기", "");
+		}
+
+		if(GetObjValue("LightName1") == "A2-22")
+			SendMessage("빛_녹음실", "켜기", "");
+	}
+
+	if($현재스테이지 == "본관2" && GetObjValue("상태") == ON)
+	{
+		if(GetObjValue("LightName1") == "A1-17")
+		{
+			for($i = 1; $i <= 2; $i++)
+				SendMessage("빛_숙직실" + $i, "켜기", "");
+		}
+
+		if(GetObjValue("LightName1") == "A1-18")
+		{
+			for($i = 1; $i <= 2; $i++)
+				SendMessage("빛_양호실" + $i, "켜기", "");
+		}
+	}
+}
+
+_끄다()
+{
+	if($현재스테이지 == "본관1" && GetObjValue("상태") == ON)
+	{
+		if(GetObjValue("LightName1") == "A2-11")
+		{
+			for($i = 1; $i <= 4; $i++)
+				SendMessage("빛_2학년7반" + $i, "끄기", "");
+		}
+
+		if(GetObjValue("LightName1") == "A2-22")
+			SendMessage("빛_녹음실", "끄기", "");
+	}
+
+	if($현재스테이지 == "본관2" && GetObjValue("상태") == ON)
+	{
+		if(GetObjValue("LightName1") == "A1-17")
+		{
+			for($i = 1; $i <= 2; $i++)
+				SendMessage("빛_숙직실" + $i, "끄기", "");
+		}
+
+		if(GetObjValue("LightName1") == "A1-18")
+		{
+			for($i = 1; $i <= 2; $i++)
+				SendMessage("빛_양호실" + $i, "끄기", "");
+		}
+	}
+}
