@@ -1,0 +1,146 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//						I t e m S c r i p t F i l e 
+//
+//  (C) Sonnori 2000		오브젝트_작업용사다리.scp
+//
+//	熱血man: matzzang		last update: 2000.07.24
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "use1 " + $G_File + ".Ladder잡기");		// 잡기
+	SendMessage("", "스크립트설정", "use2 " + $G_File + ".Ladder오르기1");		// 오르기1
+	SendMessage("", "스크립트설정", "use5 " + $G_File + ".Ladder오르기2");		// 오르기2
+	SendMessage("", "스크립트설정", "use3 " + $G_File + ".Ladder내려오기1");	// 내려오기1
+	SendMessage("", "스크립트설정", "use4 " + $G_File + ".Ladder내려오기2");	// 내려오기2
+	SendMessage("", "스크립트설정", "dummy1 " + "null");
+	SendMessage("", "스크립트설정", "dummy2 " + "null");
+
+	SendMessage("", "픽거리설정", "150 300");
+
+	SetObjValue("Step", 0);
+	SetObjName("작업용사다리");
+}
+
+Ladder잡기.pick()
+{
+	if($old_USER_CAPTUREITEM == FALSE && $old_USER_RISE == OFF)
+	{
+		return GetObjValue("Step") == 0 ? "보기" : "잡기";
+	}
+	return "";
+}
+
+Ladder잡기.click()
+{
+	if(ShowInfo() == FALSE && $old_USER_RISE == OFF && $old_USER_CAPTUREITEM == FALSE)
+	{
+		$old_USER_CAPTUREITEM = TRUE;
+		SendMessage("유저", "캡춰", "작업용사다리 팔");
+		SendMessage("사운드", "연주", "당기는문잠긴것,data/sound/old_사다리들기.wav");
+	}
+}
+
+Ladder오르기1.pick()
+{
+	if(CheckHeight(GetObjPos("유저", "머리"), GetObjPos("")) < 50 || CheckHeight(GetObjPos("유저"), GetObjPos("")) > 50)
+	{
+		SendMessage("", "캐쉬초기화", "");		
+		return "";
+	}
+
+	if($old_USER_CAPTUREITEM == FALSE && $old_USER_RISE == OFF)
+	{
+		return GetObjValue("Step") == 0 ? "보기" : "사다리오르기";
+	}
+	return "";
+}
+
+Ladder오르기1.click()
+{
+	if(ShowInfo() == FALSE && $old_USER_RISE == OFF && $old_USER_CAPTUREITEM == FALSE)
+	{
+		$old_USER_RISE = ON;
+		SetObjValue("Case", 1);
+//		SendMessage("유저", "이동제한", "on");
+		SendMessage("자막", "활성화", "");
+		SendMessage("유저", "오르기", "작업용사다리 머리");
+		SendMessage("타이머", "스크립트설정", "2 0 1 old_오브젝트_유저.Climb이동제한");
+	}
+}
+
+Ladder오르기2.pick()
+{
+	if(CheckHeight(GetObjPos("유저", "머리"), GetObjPos("")) < 50 || CheckHeight(GetObjPos("유저"), GetObjPos("")) > 50)
+	{
+		SendMessage("", "캐쉬초기화", "");		
+		return "";
+	}
+
+	if($old_USER_CAPTUREITEM == FALSE && $old_USER_RISE == OFF)
+	{
+		return GetObjValue("Step") == 0 ? "보기" : "사다리오르기";
+	}
+	return "";
+}
+
+Ladder오르기2.click()
+{
+	if(ShowInfo() == FALSE && $old_USER_RISE == OFF && $old_USER_CAPTUREITEM == FALSE)
+	{
+		$old_USER_RISE = ON;
+		SetObjValue("Case", 2);
+//		SendMessage("유저", "이동제한", "on");
+		SendMessage("자막", "활성화", "");
+		SendMessage("유저", "오르기", "작업용사다리 머리");
+		SendMessage("타이머", "스크립트설정", "2 0 1 old_오브젝트_유저.Climb이동제한");
+	}
+}
+
+Ladder내려오기1.pick()
+{
+	return ($old_USER_RISE == ON && GetObjValue("Case") == 1) ? "뒤로보기" : "";
+}
+
+Ladder내려오기1.click()
+{
+	if($old_USER_RISE == ON && $old_USER_CAPTUREITEM == FALSE && GetObjValue("Case") == 1)
+	{
+		$old_USER_RISE = OFF;
+		SendMessage("유저", "이동제한", "off");
+		SendMessage("유저", "내려오기", "");
+	}
+}
+
+Ladder내려오기2.pick()
+{
+	return ($old_USER_RISE == ON && GetObjValue("Case") == 2) ? "뒤로보기" : "";
+}
+
+Ladder내려오기2.click()
+{
+	if($old_USER_RISE == ON && $old_USER_CAPTUREITEM == FALSE && GetObjValue("Case") == 2)
+	{
+		$old_USER_RISE = OFF;
+		SendMessage("유저", "이동제한", "off");
+		SendMessage("유저", "내려오기", "");
+	}
+}
+
+ShowInfo()
+{
+	$Step = GetObjValue("Step");
+	if($Step == 0)
+	{
+		SendMessage("자막", "문자출력", "2," +  GetString("old_s86"));
+		SetObjValue("Step", $Step + 1);
+		return TRUE;
+	}
+	return FALSE;
+}

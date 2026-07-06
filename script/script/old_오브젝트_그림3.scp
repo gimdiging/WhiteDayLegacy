@@ -1,0 +1,28 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//				C h a r a c t o r S c r i p t F i l e 
+//
+//  (C) Sonnori 2000				오브젝트_그림3.scp
+//
+//	熱血man: matzzang		last update: 2000.07.21
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "info " + $G_File);
+}
+
+pick()
+{
+	return "보기";
+}
+	
+click()
+{
+	SendMessage("자막", "문자출력", "3," +  GetString("old_s53"));
+}

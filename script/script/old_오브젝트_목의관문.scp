@@ -1,0 +1,91 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//						I t e m S c r i p t F i l e 
+//
+//  (C) Sonnori 2000			오브젝트_목의관문.scp
+//
+//	熱血man: matzzang		last update: 2000.07.22
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "use " + $G_File);
+	SetObjValue("Step", 0);
+	SetObjValue("KeyName", "old_목의조각");
+	SetObjValue("Lock", "$old_문_1층서무실옆방화셔터");
+}
+
+Init목의문장()
+{
+	SendMessage("", "반짝", "off");
+	SendMessage("", "끄기", "");
+	SetObjName("목의문장");
+}
+
+pick()
+{
+	$KeyName = GetObjValue("KeyName");
+	$Lock = GetValue(GetObjValue("Lock"));
+	$Step = GetObjValue("Step");
+	
+	if($Lock == LOCK)
+	{
+		if($Step == 0)
+		{
+			return "보기";
+		}
+		else
+		{
+			return $G_UserItem == $KeyName ? "iold_목의조각" : "잡기";
+		}
+	}
+	return "";
+}
+
+click()
+{
+	$KeyName  = GetObjValue("KeyName");
+	$Lock = GetValue(GetObjValue("Lock"));
+	$Step = GetObjValue("Step");
+	
+	if($Lock == LOCK)
+	{
+		if($Step == 0)
+		{
+			if($LUM_STICK <= 128.0)
+			{
+				SendMessage("자막", "문자출력", "2," +  GetString("old_s68"));
+			}
+			else
+			{
+				SendMessage("자막", "문자출력", "2," +  GetString("old_s69"));
+			}
+			SetObjValue("Step", $Step + 1);
+		}
+		else
+		{
+			if($G_UserItem == $KeyName)
+			{
+				if($LUM_STICK <= 128.0)
+				{
+					SendMessage("자막", "문자출력", "2," +  GetString("old_s70"));
+				}
+				else
+				{
+					SetValue(GetObjValue("Lock"), UNLOCK);
+					SendMessage("유저", "폐기", "@old_목의조각");
+					SendMessage("목의문장", "켜기", "");
+				}
+			}
+			else
+			{
+				SendMessage("자막", "문자출력", "2," +  GetString("old_s62"));
+			}
+		}
+	}
+}

@@ -1,0 +1,55 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000		오브젝트_복도가스배출기.scp
+//
+//	熱血man: matzzang		last update: 2000.07.24
+//  --------------------------------------------------
+
+Init()
+{
+}
+
+Init안쪽()
+{
+	Init();
+	SetObjName("복도가스배출기1");
+	SetObjValue("MissionCount", 2);
+	SetObjValue("GasName", "가스1");
+	SetObjValue("GasBoundName", "가스가로막1");
+	LoadObject("WObjGas", GetObjValue("GasName"), "*matrix 1 0 0 0 1 0 0 0 -1 *pos -1367.74 71.1126 -695.381 *aabb -20 -20 -20 20 20 20 *velocity 3");
+}
+
+Init바깥쪽()
+{
+	Init();
+	SetObjName("복도가스배출기2");
+	SetObjValue("GasName", "가스2");
+	SetObjValue("GasBoundName", "가스가로막2");
+	LoadObject("WObjGas", GetObjValue("GasName"), "*matrix 1 0 0 0 1 0 0 0 1 *pos -1338.91 71.7727 -724.893 *aabb -20 -20 -20 20 20 20 *velocity 3");
+}
+
+Mission()
+{
+	SendMessage("복도가스배출기1", "스크립트실행", "old_오브젝트_복도가스배출기.CheckMission");
+	DeleteObject(GetObjValue("GasName"));
+	DeleteObject(GetObjValue("GasBoundName"));
+}
+
+CheckMission()
+{
+	$MissionCount = GetObjValue("MissionCount");
+	SetObjValue("MissionCount", $MissionCount - 1);
+	if($MissionCount == 1)
+	{
+		SendMessage("사운드", "연주멈춤", "가스나오는소리");
+		SendMessage("사운드", "연주", "data/sound/가스밸브닫는소리.wav");
+	}
+	SendMessage("사운드", "연주", "data/sound/old_아이템획득.wav");
+}

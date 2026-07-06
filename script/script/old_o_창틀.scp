@@ -1,0 +1,19 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//				C h a r a c t o r S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					o_Ã¢Æ².scp
+//
+//	æðúìman: matzzang		last update: 2000.07.21
+//  --------------------------------------------------
+
+Init()
+{
+	SetObjName("Ã¢Æ²");
+	SendMessage("Ã¢Æ²", "¹ß±¤", "Recursive off");
+}

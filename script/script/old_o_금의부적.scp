@@ -1,0 +1,30 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					o_금의부적.scp
+//
+//	熱血man: matzzang		last EventMode: 2000.07.22
+//  --------------------------------------------------
+
+Init()
+{
+	SetObjName("금의부적");
+}
+
+Kill금의부적()
+{
+	SendMessage("금의부적", "페이드", "Recursive 1 1 0");	
+	SendMessage("사운드", "연주", "data/sound/old_아이템획득.wav");
+	SendMessage("타이머", "스크립트설정", "1 0 1 old_o_금의부적.Release");
+}
+
+Release()
+{
+	DeleteObject("금의부적");
+}

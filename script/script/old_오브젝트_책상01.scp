@@ -1,0 +1,79 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000				오브젝트_책상01.scp
+//
+//	熱血man: matzzang		last update: 2000.07.17
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "handle " + $G_File);
+
+	SetObjValue("OpenFlag", 0);
+	SetObjValue("MotionName", "");
+	SetObjValue("special", 0);
+	SetObjValue("lock", LOCK);
+	SendMessage("", "애니메이션", "서있기");
+}
+
+Init열린책상()
+{
+	Init();	
+	SetObjValue("lock", UNLOCK);
+}
+
+
+Init아이템책상()
+{
+	Init();
+	SetObjValue("special", 1);
+	SetObjValue("lock", UNLOCK);
+}
+
+pick()
+{
+	return "잡기";
+}
+
+click()
+{
+	if(GetObjValue("lock") == LOCK)
+	{
+		SendMessage("자막", "문자출력", "2," +  GetString("old_s32"));
+		return;
+	}
+
+	if(GetObjValue("special") == 1)
+	{
+	SetObjValue("special", 2);
+	SendMessage("방화셔터열쇠", "켜기", "");
+	}
+
+	$OpenFlag = GetObjValue("OpenFlag");
+
+	if($OpenFlag == 0)
+	{
+		SendMessage("", "애니메이션", "열기");
+		if(GetObjValue("MotionName") != "열기")
+		{
+			return;
+		}
+		SetObjValue("OpenFlag", 1);
+	}
+	else
+	{
+		SendMessage("", "애니메이션", "닫기");
+		if(GetObjValue("MotionName") != "닫기")
+		{
+			return;
+		}
+		SetObjValue("OpenFlag", 0);
+	}
+}

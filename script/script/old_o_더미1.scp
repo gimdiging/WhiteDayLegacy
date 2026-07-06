@@ -1,0 +1,55 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					o_더미1.scp
+//
+//	熱血man: matzzang		last update: 2000.07.24
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "handle " + $G_File);	
+	SendMessage("", "페이드", "Recursive 0 0 0");	
+	SetObjName("통로발판");
+}
+
+pick()
+{
+	if($old_Mission1_철망 == OFF || $old_USER_RISE == OFF)
+	{
+		SendMessage("", "캐쉬초기화", "");		
+		return "";
+	}
+
+	return $old_Mission1_철망 == ON ? "사다리오르기" : "";
+}
+
+click()
+{
+	if($old_Mission1_철망 == ON)
+	{
+		$old_USER_RISE = OFF;
+		SendMessage("유저", "이동제한", "off");
+		SendMessage("배경", "글로우검사", "끄기");
+		SendMessage("유저", "오르기", "통로발판 머리");
+		SendMessage("타이머", "스크립트설정", "5 0 1 old_o_더미1.TurnGlow");
+		SendMessage("타이머", "스크립트설정", "1 0 1 old_o_더미1._오르기");
+		SendMessage("유저", "바닥소리", "old_철바닥");
+	}
+}
+
+TurnGlow()
+{
+	SendMessage("배경", "글로우검사", "켜기");
+}
+
+_오르기()
+{
+	SendMessage("유저", "좋은위치", "-1693.54 93.4554 -853.618");	
+}

@@ -1,0 +1,26 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					이벤트_번개.scp
+//
+//	熱血man: matzzang		last update: 2000.07.17
+//  --------------------------------------------------
+
+Init()
+{
+	DeleteObject("");
+//	SendMessage("타이머", "스크립트설정", "0 0 1 e_그림자.RunEvent *obj 그림자");
+	SendMessage("매크로","Play","old_e_shadow.cut01");
+}
+
+Init준비()
+{
+	DeleteObject("");
+	SendMessage("사운드", "연주", "data/sound/event/본관1_벼락준비.wav");
+}
