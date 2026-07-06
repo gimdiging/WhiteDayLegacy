@@ -1,0 +1,132 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					노리군.scp
+//
+//	熱血man: agneau			last update: 2001.09.09
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "충돌체크", "off");
+	SendMessage("", "스크립트설정", "nori " + $G_File);
+	SendMessage("", "발광색", "Recursive 255 255 255");
+	SendMessage("", "발광", "Recursive on");
+	SendMessage("", "페이드", "Recursive 0 0 0");
+	SendMessage("", "끄기", "");
+
+	SetObjValue("MotionName", "서있기");
+
+	if($b_노리군 == 2)
+		DeleteObject("");
+}
+
+pick()
+{
+	if($수위추적모드 == ON)
+		return "";	
+
+	if(GetObjValue("MotionName") != "흔들기")
+	{
+		SendMessage("", "캐쉬초기화", "");
+		return "";
+	}
+
+	return "잡기";	
+}
+
+click()
+{		
+	SendMessage("사운드", "연주멈춤", "노리군바둥");
+	SendMessage("사운드", "연주", "노리군_머리.wav");
+	SendMessage("", "애니메이션", "*고맙습니다");	
+	SetTimer(1, "노리군.face1 *obj 노리군");
+	SetTimer(6, "노리군.face6 *obj 노리군");
+	SetTimer(8, "GetItem");
+	SetTimer(9.5, "Hide");
+	SetTimer(12, "노리군.face3 *obj 노리군");
+}
+
+appear()
+{	
+	SendMessage("", "켜기", "");
+	SendMessage("", "페이드", "Recursive 2 0 1");
+	SendMessage("", "애니메이션", "기본동작");
+	SendMessage("사운드", "연주", "노리군_등장.wav");
+	SetTimer(1, "노리군.start *obj 노리군");
+}
+
+start()
+{
+	if($b_노리군 == 2)
+	{
+		SetTimer(2, "Hide");
+		SetTimer(6, "GetItem");
+		SendMessage("", "애니메이션", "발견2");
+	}
+	else			
+	{
+		SendMessage("", "애니메이션", "발견1");	
+		SetTimer(3, "노리군.face5 *obj 노리군");
+		SetTimer(7, "노리군.face4 *obj 노리군");
+		SetTimer(10, "노리군.face2 *obj 노리군");
+	}
+}
+
+Hide()
+{
+	if($b_노리군 == 2)
+	SetTimer(2, "Release");
+	$b_노리군 = 2;
+	SendMessage("사운드", "연주", "노리군_도망.wav");
+	SendMessage("", "페이드", "Recursive 2 1 0");
+}
+
+Release()
+{
+	DeleteObject("");
+	DeleteObject("노리군더미");
+	$b_노리군더미 = 1;
+}
+
+GetItem()
+{
+	SendMessage("유저", "획득", "도시락 5");
+	SendMessage("자막", "문자출력", "3," + GetString("s119"));
+}
+
+face1()
+{
+	SendMessage("", "표정바꿔", "고마워");
+}
+
+face2()
+{
+	SendMessage("", "표정바꿔", "눈감기");
+}
+
+face3()
+{
+	SendMessage("", "표정바꿔", "먹구싶어");
+}
+
+face4()
+{
+	SendMessage("", "표정바꿔", "보기우");
+}
+
+face5()
+{
+	SendMessage("", "표정바꿔", "보기좌");
+}
+
+face6()
+{
+	SendMessage("", "표정바꿔", "음흉");
+}

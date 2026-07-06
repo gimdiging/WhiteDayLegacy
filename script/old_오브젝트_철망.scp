@@ -1,0 +1,150 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000				오브젝트_철망.scp
+//
+//	熱血man: matzzang		last update: 2000.07.24
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "handle " + $G_File);	
+	SetObjValue("step", 0);
+}
+
+Init화장실쪽철망()
+{
+	Init();
+	SetObjValue("type", 1);
+	SetObjValue("ObjName", "화장실쪽철망");
+	SetObjName(GetObjValue("ObjName"));
+
+}
+
+Init기계실습실쪽철망()
+{
+	Init();
+	SetObjValue("type", 2);
+	SetObjValue("ObjName", "기계실습실쪽철망");
+	SetObjName(GetObjValue("ObjName"));
+}
+
+pick()
+{
+	$Step = GetObjValue("step");
+
+	if(GetObjValue("type") == 1)
+	{
+		if($Step == 0)
+		{
+			return "보기";
+		}
+		else if($Step == 1)
+		{
+			if($old_USER_RISE == TRUE && $G_UserItem == "old_니퍼")
+			{
+				return "iold_니퍼";
+			}
+			return "잡기";
+		}
+	}
+	else
+	{
+		if($Step == 0)
+		{
+			return "보기";
+		}
+		else if($Step == 1)
+		{
+			if($G_UserItem == "old_니퍼")
+			{
+				return "iold_니퍼";
+			}
+			return "잡기";
+		}
+	}
+	return "";
+}
+
+click()
+{
+	$Step = GetObjValue("step");
+
+	if(GetObjValue("type") == 1)
+	{
+		if($old_USER_RISE == FALSE)
+		{
+			SendMessage("자막", "문자출력", "3," +  GetString("old_s90"));
+		}
+		else
+		{
+			if($Step == 0)
+			{
+				SendMessage("자막", "문자출력", "3," +  GetString("old_s91"));
+				SetObjValue("step", 1);
+			}
+			else if($Step != 2)
+			{
+				if($G_UserItem != "old_니퍼")
+				{
+					SendMessage("자막", "문자출력", "3," +  GetString("old_s92"));
+				}
+				else
+				{
+					KillSound();
+					$old_Mission1_철망 = ON;
+					SendMessage("통로발판", "캐쉬초기화", "");
+					SetObjValue("step", 2);
+				}
+			}
+		}
+	}
+	else
+	{
+		if($Step == 0)
+		{
+			SendMessage("자막", "문자출력", "2," +  GetString("old_s93"));
+			SetObjValue("step", 1);
+		}
+		else
+		{
+			if($G_UserItem != "old_니퍼")
+			{
+				SendMessage("자막", "문자출력", "3," +  GetString("old_s92"));
+			}
+			else if($Step != 2)
+			{
+				KillSound();
+				SetObjValue("step", 2);
+			}
+		}
+	}
+}
+
+KillSound()
+{
+	SendMessage("자막", "활성화", "");
+	SendMessage("자막", "와이드모드", "켜기");
+	SendMessage("사운드", "연주", "data/sound/event/철망자르는니퍼.wav");
+	SendMessage("타이머", "스크립트설정", "5 0 1 old_오브젝트_철망.KillItem *obj " + GetObjValue("ObjName"));
+}
+
+KillItem()
+{
+	SendMessage("자막", "비활성", "");
+	SendMessage("자막", "와이드모드", "끄기");
+	SendMessage(GetObjValue("ObjName"), "페이드", "Recursive 1 1 0");
+	SendMessage("사운드", "연주", "data/sound/old_아이템획득.wav");
+	SendMessage("타이머", "스크립트설정", "1 0 1 old_오브젝트_철망.Release *obj " + GetObjValue("ObjName"));
+}
+
+Release()
+{
+	DeleteObject(GetObjValue("ObjName"));
+}

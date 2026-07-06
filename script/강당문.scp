@@ -1,0 +1,363 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000				강당.scp
+//
+//	熱血man: 마다마다			last update: 2000.07.17
+//  --------------------------------------------------
+
+_Init남자샤워실()
+{
+	_Init();
+	SendMessage("", "스크립트설정", "lock 강당문._샤워실락");
+	SetObjValue("Lock", $체육관_영호_남자샤워실잠김);
+	SetObjValue("한번보기",0);
+	SetObjValue("남녀확인",1);
+}
+
+_Init여자샤워실()
+{
+	_Init();
+	SendMessage("", "스크립트설정", "lock 강당문._샤워실락");
+	SetObjValue("Lock", $체육관_영호_여자샤워실잠김);
+	SetObjValue("한번보기",0);
+	SetObjValue("남녀확인",2);
+}
+
+_Init남자탈의실()
+{
+	_Init();
+	SetObjValue("Lock", $체육관_영호_남자탈의실잠김);
+	SetObjValue("Vis제어", "탈의실남");
+	SendMessage("main", "VIS끄기", GetObjValue("Vis제어"));
+}
+
+_Init남자화장실()
+{
+	_Init();
+	SetObjValue("Vis제어", "남화장실");
+	SendMessage("main", "VIS끄기", GetObjValue("Vis제어"));
+}
+
+_Init화장실여()
+{
+	_Init();
+	SetObjValue("Vis제어", "화장실여");
+	SendMessage("main", "VIS끄기", GetObjValue("Vis제어"));
+}
+
+_Init문P()
+{
+	_Init쌍문();
+	SetObjValue("Lock", $체육관_영호_문P잠김);
+//	SetObjValue("Vis제어", "");
+}
+
+_Init문O()
+{
+	_Init쌍문();
+	SetObjValue("Lock", $체육관_영호_문O잠김);
+//	SetObjValue("Vis제어", "");
+}
+
+
+_Init문Q()
+{
+	_Init쌍문();
+	SetObjValue("Lock", $체육관_영호_문Q잠김);
+//	SetObjValue("Vis제어", "");
+}
+
+_Init여자탈의실()
+{
+	_Init();
+	SetObjValue("Lock", $체육관_영호_여자탈의실잠김);
+
+	SetObjValue("Vis제어", "탈의실여");
+	SendMessage("main", "VIS끄기", GetObjValue("Vis제어"));
+}
+
+//////////////////////////////////////////////// 해야함 //////////
+_Init무대대기실우1()
+{
+// 무대대기실우1
+	_Init잠김();
+	SetObjValue("Vis제어", "무대대기실");
+	SendMessage("main", "VIS끄기", GetObjValue("Vis제어"));
+}
+
+_Init무대대기실우2()
+{
+// 무대대기실우2
+	_Init잠김();
+	SetObjValue("Vis제어", "+무대대기실");
+	SendMessage("main", "VIS끄기", GetObjValue("Vis제어"));
+}
+
+_Init무대대기실좌1()
+{
+// 무대대기실좌1
+	_Init잠김();
+	SetObjValue("Vis제어", "무대대기실좌");
+	SendMessage("main", "VIS끄기", GetObjValue("Vis제어"));
+}
+
+_Init무대대기실좌2()
+{
+// 무대대기실좌2
+	_Init잠김();
+	SetObjValue("Vis제어", "+무대대기실좌");
+	SendMessage("main", "VIS끄기", GetObjValue("Vis제어"));
+}
+
+/////////////////////////////////////////////////////////////////
+_Init()
+{
+	SendMessage("", "스크립트설정", "handleA 강당문._방향1");
+	SendMessage("", "스크립트설정", "handleB 강당문._방향2");
+	SendMessage("", "스크립트설정", "bound0 null");
+	SendMessage("", "값지정", "*openscript 강당문._강제로열기");
+
+	SetObjValue("Vis제어", "");
+	SetObjValue("STATUS", "서있기");
+	SetObjValue("MotionName", "");
+}
+
+_Init잠김()
+{
+	_Init();
+	SetObjValue("Lock", 1);
+}
+
+_Init당기기전용()
+{
+	SendMessage("", "스크립트설정", "handleA 강당문._방향1");
+	SendMessage("", "스크립트설정", "handleB 강당문._방향1");
+	SendMessage("", "스크립트설정", "bound0 null");
+	SendMessage("", "값지정", "*openscript 강당문._강제로열기");
+
+	SetObjValue("STATUS", "서있기");
+	SetObjValue("MotionName", "");
+}
+
+_Init쌍문()
+{
+	SendMessage("", "스크립트설정", "handleA 강당문._방향1");
+	SendMessage("", "스크립트설정", "handleB 강당문._방향2");
+	SendMessage("", "스크립트설정", "handleC 강당문._방향1");
+	SendMessage("", "스크립트설정", "handleD 강당문._방향2");
+	SendMessage("", "스크립트설정", "bound0 null");
+	SendMessage("", "스크립트설정", "bound1 null");
+	SendMessage("", "값지정", "*openscript 강당문._강제로열기");
+
+	SetObjValue("Vis제어", "");
+	SetObjValue("STATUS", "서있기");
+	SetObjValue("MotionName", "");
+}
+
+_Init쌍문잠김()
+{
+	_Init쌍문();
+	SetObjValue("Lock", 1);
+}
+
+_Init쌍문안열림()
+{
+	SendMessage("", "스크립트설정", "handleA 강당문._안열려");
+	SendMessage("", "스크립트설정", "handleB 강당문._안열려");
+	SendMessage("", "스크립트설정", "handleC 강당문._안열려");
+	SendMessage("", "스크립트설정", "handleD 강당문._안열려");
+	SendMessage("", "스크립트설정", "bound0 null");
+	SendMessage("", "스크립트설정", "bound1 null");
+	SendMessage("", "값지정", "*openscript 강당문._강제로열기");
+
+	SetObjValue("STATUS", "서있기");
+	SetObjValue("MotionName", "");
+}
+
+_강제로열기() // 인자로 ARG = Object이름
+{
+	if (GetObjValue("STATUS") == "서있기")
+	{
+		SendMessage("", "위치체크", GetObjPos($ARG));
+
+		if ($ARG == 1)
+		{
+			SetObjValue("STATUS", "열려있기1");
+			SendMessage("", "애니메이션", "열기1");
+		}	else
+		{
+			SetObjValue("STATUS", "열려있기2");
+			SendMessage("", "애니메이션", "열기2");
+		}
+		SetTimer(10, "강당문._닫기");
+	}
+}
+
+_열어()
+{
+	SendMessage("", "애니메이션", "잠금해제");
+	SetObjValue("Lock", 0);
+}
+
+_안열려.pick()
+{
+	return "잡기";
+}
+
+_안열려.click()
+{
+	SendMessage("사운드", "연주", "신관_육중한문안열림,data/sound/신관_육중한문안열림.wav");
+	TextOut(GetString("s207"), 5);
+}
+
+_닫기()
+{
+	SetTimer(2, "_VIS끄기");
+
+	switch(GetObjValue("STATUS"))
+	{
+		case "열려있기1" :
+			SetObjValue("STATUS", "서있기");
+			SendMessage("", "애니메이션", "*닫기1");
+			break;
+		case "열려있기2" :
+			SetObjValue("STATUS", "서있기");
+			SendMessage("", "애니메이션", "*닫기2");
+			break;
+	}
+}
+
+_방향1.pick()
+{
+	if(GetObjValue("MotionName") == "부서져있기" || GetObjValue("MotionName") == "부서져있기2")
+		return "";
+
+	if(GetObjValue("MotionName") == "열기1" || GetObjValue("MotionName") == "열기2" || GetObjValue("MotionName") == "닫기1" || GetObjValue("MotionName") == "닫기2")
+	{
+		SendMessage("", "캐쉬초기화", "");
+		return "";
+	}
+
+	return "잡기";
+}
+
+_방향1.click()
+{
+	if (GetObjValue("STATUS") == "서있기")
+	{
+		if (GetObjValue("Lock") == 1)
+		{
+			SendMessage("사운드", "연주", "신관_육중한문안열림,data/sound/신관_육중한문안열림.wav");
+			TextOut(GetString("s207"), 4);
+			return;
+		}
+
+		if (GetObjValue("Vis제어") != "")
+			SendMessage("main", "VIS켜기", GetObjValue("Vis제어"));
+
+		SetObjValue("STATUS", "열려있기1");
+		SendMessage("", "애니메이션", "열기1");
+	}	else
+		_닫기();
+}
+
+_방향2.pick()
+{
+	if(GetObjValue("MotionName") == "부서져있기" || GetObjValue("MotionName") == "부서져있기2")
+		return "";
+
+	if(GetObjValue("MotionName") == "열기1" || GetObjValue("MotionName") == "열기2" || GetObjValue("MotionName") == "닫기1" || GetObjValue("MotionName") == "닫기2")
+	{
+		SendMessage("", "캐쉬초기화", "");
+		return "";
+	}
+
+	return "잡기";
+}
+
+_방향2.click()
+{
+	if (GetObjValue("STATUS") == "서있기")
+	{
+		if (GetObjValue("Lock") == 1)
+		{
+			SendMessage("사운드", "연주", "신관_육중한문안열림,data/sound/신관_육중한문안열림.wav");
+			TextOut(GetString("s207"), 4);
+			return;
+		}
+
+		if (GetObjValue("Vis제어") != "")
+			SendMessage("main", "VIS켜기", GetObjValue("Vis제어"));
+
+		SetObjValue("STATUS", "열려있기2");
+		SendMessage("", "애니메이션", "열기2");
+	}	else
+		_닫기();
+}
+
+_샤워실락.pick()
+{
+	if(GetObjValue("한번보기") == 0)
+	{
+		return "보기";
+	}
+
+	if($G_UserItem == "남샤워실열쇠" && GetObjValue("남녀확인") == 1 && $체육관_영호_남자샤워실잠김 == LOCK)
+		return "i샤워실남";
+	if($G_UserItem == "여샤워실열쇠" && GetObjValue("남녀확인") == 2 && $체육관_영호_여자샤워실잠김 == LOCK)
+		return "i샤워실여";
+
+
+	return "";
+}
+
+_샤워실락.click()
+{
+	if(GetObjValue("한번보기") == 0)
+	{
+		SetObjValue("한번보기",1);
+		TextOut(GetString("s207"));
+		return ;
+	}
+
+	if($G_UserItem == "남샤워실열쇠" && GetObjValue("남녀확인") == 1 && $체육관_영호_남자샤워실잠김 == LOCK)
+	{
+		$체육관_영호_남자샤워실잠김 = UNLOCK;
+		SetObjValue("Lock", UNLOCK);
+		SendMessage("유저", "폐기", "남샤워실열쇠");
+		SendMessage("사운드", "연주", "data/sound/열쇠로자물쇠열기.wav");
+	}
+	if($G_UserItem == "여샤워실열쇠" && GetObjValue("남녀확인") == 2 && $체육관_영호_여자샤워실잠김 == LOCK)
+	{
+		$체육관_영호_여자샤워실잠김 = UNLOCK;
+		SetObjValue("Lock", UNLOCK);
+		SendMessage("유저", "폐기", "여샤워실열쇠");
+		SendMessage("사운드", "연주", "data/sound/열쇠로자물쇠열기.wav");
+	}
+	
+}
+
+lockon()
+{
+	// 잠긴문
+	SetObjValue("Lock", 0);
+}
+
+lockoff()
+{
+	//열린문
+	SetObjValue("Lock", 1);
+}
+
+_VIS끄기()
+{
+	if (GetObjValue("MotionName") == "서있기")
+		SendMessage("main", "VIS끄기", GetObjValue("Vis제어"));
+}

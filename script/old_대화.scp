@@ -1,0 +1,105 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					T a l k i n g S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					대화.scp
+//
+//	熱血man: matzzang		last update: 2000.07.21
+//  --------------------------------------------------
+
+Init1_1()
+{
+//	SendMessage("타이머", "스크립트설정", "0 0 1 대화#1-1.Talking");
+	SendMessage("매크로", "Play", "old_talk1_1.cut01");
+	DeleteObject("");	// EventArea
+	$old_TalkingStep = 0;
+}
+
+old_talk1_2()
+{
+//	$TalkingStep = 0;
+	SetValue("$old_TalkingStep", $old_TalkingStep <= 2 ? $old_TalkingStep + 1 : 1);
+}
+
+old_talk1_3()
+{
+	$old_TalkingStep = 0;
+}
+
+old_talk1_4()
+{
+//	$TalkingStep = 0;
+	SetValue("$old_TalkingStep", $old_TalkingStep <= 1 ? $old_TalkingStep + 1 : 1);
+}
+
+Init2_1()
+{
+	DeleteObject("");	// EventArea
+	if($old_대화_지현 == 0)
+	{
+//		SendMessage("타이머", "스크립트설정", "0 0 1 대화#2-1.Talking");
+		SendMessage("매크로", "Play", "old_talk2_1.cut01");
+		$old_대화_지현 = 1;
+//		$TalkingStep = 0;
+	}
+}
+
+Init2_2()
+{
+	DeleteObject("");	// EventArea
+	if($old_대화_지현 == 0)
+	{
+//		SendMessage("타이머", "스크립트설정", "0 0 1 대화#2-1.Talking");
+		SendMessage("매크로", "Play", "old_talk2_1.cut01");
+		$old_대화_지현 = 2;
+//		$TalkingStep = 0;
+	}
+}
+
+Init3_1()
+{
+	DeleteObject("");	// EventArea
+	if($old_Mission4_나무 == OFF)
+	{
+//		$TalkingStep = 0;
+//		Talking();
+		SendMessage("매크로", "Play", "old_talk3_1.cut01");
+	}
+}
+
+ShotUp()
+{
+	if($old_GameOver == TRUE)
+		return;
+
+	if($old_Mission4_나무 == OFF)
+	{
+//		SendMessage("사운드", "연주3d", GetObjPos("소영") + " data/sound/voice/" + (GetObjValue("ShotIndex") ? "d04_002.adp" : "d04_003.adp"));
+		if(xz_distance(GetObjPos("유저"), GetObjPos("소영")) < 1000)
+		{
+			SendMessage("자막", "말하는사람", "소영");
+			SendMessage("자막", "다이얼로그출력", "" + (GetObjValue("ShotIndex") ? "old_d04_002" : "old_d04_003"));
+			SetObjValue("ShotIndex", !GetObjValue("ShotIndex"));
+		}
+		else
+			SendMessage("자막", "말하는사람", "");
+		SendMessage("타이머", "스크립트설정", "8 0 1 old_대화.ShotUp *obj 나무윗쪽");
+	}
+}
+
+Init3_2()
+{
+//	$TalkingStep = 0;
+//	Talking();
+	SendMessage("매크로", "Play", "old_talk3_2.cut01");
+}
+
+Init4_1()
+{
+	SendMessage("매크로", "Play", "old_talk4_1.cut01");
+}

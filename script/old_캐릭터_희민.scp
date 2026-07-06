@@ -1,0 +1,25 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//				C h a r a c t o r S c r i p t F i l e 
+//
+//  (C) Sonnori 2000				캐릭터_희민.scp
+//
+//	熱血man: matzzang		last update: 2000.07.21
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "페이드", "jido01 0 0 0");
+	SendMessage("", "페이드", "jido02 0 0 0");
+	SendMessage("", "페이드", "handphon01 0 0 0");
+	SendMessage("", "페이드", "handphon02 0 0 0");
+	SendMessage("", "페이드", "handphon03 0 0 0");
+	SendMessage("", "페이드", "gabang 0 0 0");
+	SendMessage("", "애니메이션", "서있기");
+	SetObjName("희민");
+}

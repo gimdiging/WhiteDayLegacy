@@ -1,0 +1,19 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000				o_환각벽.scp
+//
+//	熱血man: matzzang		last update: 2000.07.24
+//  --------------------------------------------------
+
+Init()
+{
+	SetObjName("환각벽");
+	SendMessage("", "페이드", "Recursive 0 0 0");
+}

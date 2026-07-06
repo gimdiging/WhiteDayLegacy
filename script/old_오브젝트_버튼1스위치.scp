@@ -1,0 +1,216 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000		오브젝트_버튼1스위치.scp
+//
+//	熱血man: matzzang		last update: 2000.07.20
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "switch " + $G_File);
+	SetObjValue("MotionName", "");
+	SetObjValue("TurnOnFlag", OFF);
+	SetObjValue("LightCount", 1);
+	SendMessage("", "애니메이션", "서있기");
+}
+
+Init교실2_1()
+{
+	Init();
+	SetObjValue("LightName1", "A1-10");
+}
+
+Init교실2_2()
+{
+	Init();
+	SetObjValue("LightName1", "A1-9");
+}
+
+Init교실2_3()
+{
+	Init();
+	SetObjValue("LightName1", "A1-8");
+}
+
+Init교실2_4()
+{
+	Init();
+	SetObjValue("LightName1", "A1-7");
+}
+
+Init교실2_5()
+{
+	Init();
+	SetObjValue("LightName1", "A1-6");
+}
+
+Init교실2_6()
+{
+	Init();
+	SetObjValue("LightName1", "A1-5");
+}
+
+Init교실2_7()
+{
+	Init();
+	SetObjValue("LightName1", "A2-11");
+}
+
+Init교실2_8()
+{
+	Init();
+	SetObjValue("LightName1", "A2-10");
+}
+
+Init교실2_9()
+{
+	Init();
+	SetObjValue("LightName1", "A2-9");
+}
+
+Init교실2_10()
+{
+	Init();
+	SetObjValue("LightName1", "A2-8");
+}
+
+Init교실2_11()
+{
+	Init();
+	SetObjValue("LightName1", "A2-7");
+}
+
+Init교실2_12()
+{
+	Init();
+	SetObjValue("LightName1", "A2-6");
+}
+
+Init화장실1_1()
+{
+	Init();
+	SetObjValue("LightName1", "A1-4");
+}
+
+Init화장실1_2()
+{
+	Init();
+	SetObjValue("LightName1", "A1-3");
+}
+
+Init화장실2_1()
+{
+	Init();
+	SetObjValue("LightName1", "A2-5");
+}
+
+Init화장실2_2()
+{
+	Init();
+	SetObjValue("LightName1", "A2-4");
+}
+
+Init가정실습실()
+{
+	Init();
+	SetObjValue("LightName1", "A1-2");
+}
+
+Init기계실습실()
+{
+	Init();
+	SetObjValue("LightName1", "A1-1");
+}
+
+Init체육창고()
+{
+	Init();
+	SetObjValue("LightName1", "A2-1");
+	click();
+}
+
+Init사진동아리()
+{
+	Init();
+	SetObjValue("LightName1", "A2-2");
+}
+
+Init산악동아리()
+{
+	Init();
+	SetObjValue("LightName1", "A2-3");
+}
+
+Init방송실()
+{
+	Init();
+	SetObjValue("LightName1", "A2-14");
+}
+
+Init서무실()
+{
+	Init();
+	SetObjValue("LightName1", "A1-11");
+}
+
+Init학적부실()
+{
+	Init();
+	SetObjValue("LightName1", "A1-12");
+	click();
+}
+
+Init조정실()
+{
+	Init();
+	SetObjValue("LightCount", 2);
+	SetObjValue("LightName1", "A2-12");
+	SetObjValue("LightName2", "A2-13");		// 녹음실, 작동안됨
+}
+
+pick()
+{
+	return "잡기";
+}
+
+click()
+{
+	$TurnOnFlag = GetObjValue("TurnOnFlag");
+	$LightCount = GetObjValue("LightCount");
+	
+	if($TurnOnFlag == OFF)
+	{
+		SendMessage("", "애니메이션", "켜기");
+		if(GetObjValue("MotionName") != "켜기")
+		{
+			return;
+		}
+		for($i = 1; $i <= $LightCount; $i++)
+		{
+			SendMessage("", "TurnGlow", "off 0");
+			SendMessage("배경", "켜기", GetObjValue("LightName" + $i));
+		}
+		SetObjValue("TurnOnFlag", ON);
+	}
+	else
+	{
+		SendMessage("", "애니메이션", "끄기");
+		if(GetObjValue("MotionName") != "끄기")
+		{
+			return;
+		}
+		for($i = 1; $i <= $LightCount; $i++)
+		{
+			SendMessage("", "TurnGlow", "on 0");
+			SendMessage("배경", "끄기", GetObjValue("LightName" + $i));
+		}
+		SetObjValue("TurnOnFlag", OFF);
+	}
+}

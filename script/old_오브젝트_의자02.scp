@@ -1,0 +1,68 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000			오브젝트_의자02.scp
+//
+//	熱血man: matzzang		last update: 2000.07.24
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "use1 " + $G_File + ".use1");
+	SendMessage("", "스크립트설정", "use2 " + $G_File + ".use2");
+	SetObjValue("climb", 0);
+}
+
+Init서무실의자()
+{
+	Init();
+	SetObjValue("climb", 1);
+	SetObjName("서무실의자");
+	SendMessage("", "픽거리설정", "190 190");
+}
+
+use1.pick()
+{
+	if(GetObjValue("climb") == 1)
+		return $old_USER_RISE == OFF ? "사다리오르기" : "";
+}
+
+use1.click()
+{
+	if($old_USER_RISE == OFF)
+	{
+		$old_USER_RISE = ON;
+//		SendMessage("유저", "이동제한", "on");
+		SendMessage("자막", "활성화", "");
+		SendMessage("유저", "오르기", "서무실의자 머리");
+		SendMessage("타이머", "스크립트설정", "1.5 0 1 old_오브젝트_유저.Climb이동제한");
+	}
+}
+
+use2.pick()
+{
+	if(GetObjValue("climb") == 1)
+		return $old_USER_RISE == ON ? "뒤로보기" : "";
+}
+
+use2.click()
+{
+	if($old_USER_RISE == ON)
+	{
+		$old_USER_RISE = OFF;
+		SendMessage("유저", "이동제한", "off");
+		SendMessage("유저", "내려오기", "");
+		SendMessage("타이머", "스크립트설정", "1.5 0 1 old_오브젝트_의자02.movespeed");
+	}
+}
+
+movespeed()
+{				
+	SendMessage("유저", "이동속도", "1");
+}

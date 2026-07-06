@@ -1,0 +1,50 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000				오브젝트_사물함02.scp
+//
+//	熱血man: matzzang		last update: 2000.07.17
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "bound1 " + $G_File);
+	SetObjValue("OpenFlag", 0);
+	SetObjValue("MotionName", "");
+	SendMessage("", "애니메이션", "서있기");
+}
+
+pick()
+{
+	return "잡기";
+}
+
+click()
+{
+	$OpenFlag = GetObjValue("OpenFlag");
+
+	if($OpenFlag == 0)
+	{
+		SendMessage("", "애니메이션", "열기");
+		if(GetObjValue("MotionName") != "열기")
+		{
+			return;
+		}
+		SetObjValue("OpenFlag", 1);
+	}
+	else
+	{
+		SendMessage("", "애니메이션", "닫기");
+		if(GetObjValue("MotionName") != "닫기")
+		{
+			return;
+		}
+		SetObjValue("OpenFlag", 0);
+	}
+}

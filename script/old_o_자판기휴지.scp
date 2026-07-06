@@ -1,0 +1,62 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000			o_자판기휴지.scp
+//
+//	熱血man: matzzang		last update: 2000.07.24
+//  --------------------------------------------------
+
+Init동전투입구()
+{
+	SendMessage("", "스크립트설정", "item " + $G_File + ".item1");
+	SetObjName("동전투입구");
+	SendMessage("", "페이드", "Recursive 0 0 0");
+}
+
+Init휴지()
+{
+	SetObjName("휴지");
+	SendMessage("", "끄기", "");
+}
+
+Init휴지커서용()
+{
+	SendMessage("", "스크립트설정", "item " + $G_File + ".item2");
+	SetObjName("휴지커서용");
+	SendMessage("", "페이드", "Recursive 0 0 0");
+	SendMessage("", "끄기", "");
+}
+
+item1.pick()
+{
+	return $old_동전 == 0 ? "보기" : "잡기";
+}
+
+item1.click()
+{
+	if($old_동전 != 1)
+		return;
+
+	$old_동전 = 2;
+	DeleteObject("동전투입구");
+
+	SendMessage("휴지", "켜기", "");
+	SendMessage("휴지커서용", "켜기", "");
+	SendMessage("사운드", "연주", "data/sound/old_아이템사용.wav");
+}
+
+item2.pick()
+{
+	return "잡기";
+}
+
+item2.click()
+{
+	RunScript("", "_whiteday._QuickSave");
+}

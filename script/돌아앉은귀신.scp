@@ -1,0 +1,466 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  S c r i p t F i l e 
+//
+//  (C) Sonnori 2000						돌아앉은귀신.scp
+//
+//	熱血man: 물순이아빠, gimdiging, oh1min				last update: 2018.02.02
+//  ------------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "item " + $G_File);
+	SetObjValue("step", 0);
+	SendMessage("", "픽거리설정", "200 300");
+	SendMessage("", "반짝", "off");
+	if($음악감상실귀신진행 == 2)
+	{
+	DeleteObject("");
+	DeleteObject("돌아앉은귀신");
+	}
+}
+
+Init태극()
+{
+	SendMessage("", "발광", "Recursive on");
+	if($음악감상실귀신진행 == 2)
+	{
+	DeleteObject("");
+	DeleteObject("돌아선귀신");
+	}
+}
+
+Init음악실길막()
+{
+	if($문_신관음악실 == UNLOCK)
+	DeleteObject("");
+}
+
+pick()
+{
+	if($음악감상실귀신_집지마 == 1)
+	{
+		SendMessage("", "캐쉬초기화", "");		
+		return "";
+	}
+
+	if($태극패 == 0)
+		return "보기";
+
+	if(GetObjValue("step") == 0)
+		return "보기";
+
+		return "잡기";
+}
+
+click()
+{
+	if($태극패 == 0)
+	{
+		SendMessage("자막", "문자출력후대기", GetString("s4"));
+		return;
+	}
+	if(GetObjValue("step") == 0)
+	{
+		SendMessage("사운드", "연주", "거미_데미지.wav");
+		SetObjValue("step", 1);
+		return;
+	}
+	if($음악감상실귀신 < 9 && $음악감상실귀신_집지마 == 0)
+	{
+		$음악감상실귀신_집지마 = 1;
+		SendMessage("돌아앉은귀신클릭", "페이드", "Recursive 1 1 0");
+		SendMessage("돌아앉은귀신", "페이드", "Recursive 2 1 0");
+		SendMessage("돌아선귀신", "페이드", "Recursive 2 1 0");
+		$음악감상실귀신++;
+		SendMessage("사운드", "연주멈춤", "귀신소리");
+		SendMessage("사운드", "연주", "data/sound/macro/귀신놀림.wav");
+		SetObjValue("step", 0);
+		SetTimer(0,"taeguek");
+		if($음악감상실귀신 != 9)
+		SetTimer(10,"randompos");
+		else
+		SetTimer(2,"end");
+	}
+}
+
+taeguek()
+{
+	if($음악감상실귀신 == 9)
+		return;
+
+	SendMessage("유저","아이템장비","취소");
+	SendMessage("유저","폐기","태극패");
+	SetTimer(0.1, "돌아앉은귀신.check");
+	SendMessage("태극빛a", "끄기", "");
+	SendMessage("태극빛b", "끄기", "");
+	SendMessage("태극빛c", "끄기", "");
+	SendMessage("태극빛d", "끄기", "");
+	switch(Random()%4)
+	{
+		case 0: 
+		{
+			SendMessage("돌아선귀신클릭", "위치", "1500 0 1535");
+			SendMessage("태극빛a", "켜기", "");
+			break;
+		}
+		case 1: 
+		{
+			SendMessage("돌아선귀신클릭", "위치", "1500 0 1315");
+			SendMessage("태극빛b", "켜기", "");
+			break;
+		}
+		case 2: 
+		{
+			SendMessage("돌아선귀신클릭", "위치", "1700 -40 1315");
+			SendMessage("태극빛c", "켜기", "");
+			break;
+		}
+		case 3: 
+		{
+			SendMessage("돌아선귀신클릭", "위치", "1700 -40 1535");
+			SendMessage("태극빛d", "켜기", "");
+			break;
+		}
+	}
+}
+
+check()
+{
+	if(xz_distance(GetObjPos("유저"), GetObjPos("돌아선귀신클릭")) < 100 && $음악감상실귀신진행 == 1)
+	{
+	SendMessage("유저","아이템장비","태극패");
+	SendMessage("유저","획득","태극패");
+	SendMessage("돌아선귀신클릭", "위치", "0.0 0.0 0.0");
+	SendMessage("태극빛a", "끄기", "");
+	SendMessage("태극빛b", "끄기", "");
+	SendMessage("태극빛c", "끄기", "");
+	SendMessage("태극빛d", "끄기", "");
+	return;
+	}
+	SetTimer(0.1, "돌아앉은귀신.check");
+}
+
+start()
+{
+	LoadObject("WObjDyLight", "태극빛a", "*pos 1600 -10 1535 *diffuse ffffff *intensity 500");
+	LoadObject("WObjDyLight", "태극빛b", "*pos 1600 -10 1315 *diffuse ffffff *intensity 500");
+	LoadObject("WObjDyLight", "태극빛c", "*pos 1700 -40 1315 *diffuse ffffff *intensity 500");
+	LoadObject("WObjDyLight", "태극빛d", "*pos 1700 -40 1535 *diffuse ffffff *intensity 500");
+	$음악감상실귀신진행 = 1;
+
+	SetTimer(5,"randompos");
+	SendMessage("배경", "끄기", "b1-4");
+	SendMessage("유저","아이템장비취소","");
+	SendMessage("유저", "아이템장비", "태극패");
+	$문_신관음악실 = LOCK;
+	SendMessage("사운드", "연주", "loop,bgm,data/sound/bgm/미궁/미궁04.wav");
+}
+
+end()
+{
+	SendMessage("유저","아이템장비취소","");
+	$음악감상실귀신진행 = 2;
+	SendMessage("배경", "켜기", "b1-4");
+	DeleteObject("돌아앉은귀신클릭");
+	DeleteObject("돌아선귀신클릭");
+	DeleteObject("돌아앉은귀신");
+	DeleteObject("돌아선귀신");
+	$문_신관음악실  = UNLOCK;
+	SendMessage("사운드", "연주멈춤", "bgm");
+	SendMessage("사운드", "연주", "귀신비명.wav");
+	SendMessage("사운드", "연주", "귀신지나가기.wav");
+	DeleteObject("태극빛a");
+	DeleteObject("태극빛b");
+	DeleteObject("태극빛c");
+	DeleteObject("태극빛d");
+	DeleteObject("수의관문a");
+	DeleteObject("수의관문b");
+	DeleteObject("수의관문c");
+	DeleteObject("수의관문d");
+	RunScript("정찰용수위", "캐릭터_수위._정지");
+}
+
+randompos()
+{
+	SendMessage("배경", "끄기", "b1-4");
+	SendMessage("돌아선귀신", "발광", "Recursive off");
+	SendMessage("돌아앉은귀신", "발광", "Recursive off");
+	SendMessage("돌아앉은귀신클릭", "페이드", "Recursive 1 0 1");
+	SendMessage("돌아앉은귀신", "페이드", "Recursive 2 0 1");
+	SendMessage("돌아선귀신", "페이드", "Recursive 2 0 1");
+	SendMessage("돌아앉은귀신","애니메이션","%sc45_cut06-b_소영.mtn");
+	SendMessage("돌아선귀신","애니메이션","%sc45_cut06-b_소영.mtn");
+	SendMessage("돌아앉은귀신","회전","90");
+	SendMessage("돌아선귀신","회전","90");
+	$음악감상실귀신_집지마 = 0;
+	$음악감상실귀신비교++;
+	if($음악감상실귀신비교 == 1 || $음악감상실귀신비교 == 5 || $음악감상실귀신비교 == 9)
+	{
+	SetTimer(20,"damage"+$음악감상실귀신비교);
+	SendMessage("사운드", "연주", "귀신소리,sence_53귀신.wav");
+	}
+	else if($음악감상실귀신비교 == 2 || $음악감상실귀신비교 == 6)
+	{
+	SetTimer(15,"damage"+$음악감상실귀신비교);
+	SendMessage("사운드", "연주", "귀신소리,귀신울음소리.wav");
+	}
+	else if($음악감상실귀신비교 == 3 || $음악감상실귀신비교 == 7)
+	{
+	SetTimer(10,"damage"+$음악감상실귀신비교);
+	SendMessage("사운드", "연주", "귀신소리,목이벤트.wav");
+	}
+	else if($음악감상실귀신비교 == 4 || $음악감상실귀신비교 == 8)
+	{
+	SetTimer(5,"damage"+$음악감상실귀신비교);
+	SendMessage("사운드", "연주", "귀신소리,나무괴물고통.wav");
+	}
+	switch(Random()%9)
+	{
+		case 0: 
+		{
+			SendMessage("돌아앉은귀신클릭", "위치", "1711.41 -34.97 1506.95");
+			SendMessage("돌아앉은귀신", "위치", "1711.41 -34.97 1506.95");
+			break;
+		}
+		case 1: 
+		{
+			SendMessage("돌아앉은귀신클릭", "위치", "1546.13 -3.65 1512.26");
+			SendMessage("돌아앉은귀신", "위치", "1546.13 -3.65 1512.26");
+			break;
+		}
+		case 2: 
+		{
+			SendMessage("돌아앉은귀신클릭", "위치", "1671.70 -28.72 1506.72");
+			SendMessage("돌아앉은귀신", "위치", "1671.70 -28.72 1506.72");
+			break;
+		}
+		case 3: 
+		{
+			SendMessage("돌아앉은귀신클릭", "위치", "1672.28 -28.72 1372.91");
+			SendMessage("돌아앉은귀신", "위치", "1672.28 -28.72 1372.91");
+			break;
+		}
+		case 4: 
+		{
+			SendMessage("돌아앉은귀신클릭", "위치", "1583.93 -9.99 1373.21");
+			SendMessage("돌아앉은귀신", "위치", "1583.93 -9.99 1373.21");
+			break;
+		}
+		case 5: 
+		{
+			SendMessage("돌아앉은귀신클릭", "위치", "1628.88 -19.80 1371.92");
+			SendMessage("돌아앉은귀신", "위치", "1628.88 -19.80 1371.92");
+			break;
+		}
+		case 6: 
+		{
+			SendMessage("돌아앉은귀신클릭", "위치", "1584.37 -9.99 1512.01");
+			SendMessage("돌아앉은귀신", "위치", "1584.37 -9.99 1512.01");
+			break;
+		}
+		case 7: 
+		{
+			SendMessage("돌아앉은귀신클릭", "위치", "1629.32 -19.80 1510.72");
+			SendMessage("돌아앉은귀신", "위치", "1629.32 -19.80 1510.72");
+			break;
+		}
+		case 8: 
+		{
+			SendMessage("돌아앉은귀신클릭", "위치", "1711.99 -34.97 1373.13");
+			SendMessage("돌아앉은귀신", "위치", "1711.99 -34.97 1373.13");
+			break;
+		}
+	}
+	switch(Random()%9)
+	{
+		case 0: 
+		{
+			SendMessage("돌아선귀신", "위치", "1711.41 -34.97 1506.95");
+			break;
+		}
+		case 1: 
+		{
+			SendMessage("돌아선귀신", "위치", "1546.13 -3.65 1512.26");
+			break;
+		}
+		case 2: 
+		{
+			SendMessage("돌아선귀신", "위치", "1671.70 -28.72 1506.72");
+			break;
+		}
+		case 3: 
+		{
+			SendMessage("돌아선귀신", "위치", "1672.28 -28.72 1372.91");
+			break;
+		}
+		case 4: 
+		{
+			SendMessage("돌아선귀신", "위치", "1583.93 -9.99 1373.21");
+			break;
+		}
+		case 5: 
+		{
+			SendMessage("돌아선귀신", "위치", "1628.88 -19.80 1371.92");
+			break;
+		}
+		case 6: 
+		{
+			SendMessage("돌아선귀신", "위치", "1584.37 -9.99 1512.01");
+			break;
+		}
+		case 7: 
+		{
+			SendMessage("돌아선귀신", "위치", "1629.32 -19.80 1510.72");
+			break;
+		}
+		case 8: 
+		{
+			SendMessage("돌아선귀신", "위치", "1711.99 -34.97 1373.13");
+			break;
+		}
+	}
+}
+
+damage0()
+{
+	$음악감상실귀신실패++;
+	if($음악감상실귀신실패 == 3 || $음악감상실귀신실패 == 4)
+	{
+	SendMessage("유저", "heal", "-100");
+	}
+	if($음악감상실귀신실패 == 5)
+	{
+	SendMessage("유저","아이템장비","취소");
+	RunScript("", "오브젝트_유저._유저.dead");
+	SetTimer(20,"randompos");
+	}
+	else
+	SetTimer(10,"randompos");
+
+	SetTimer(0,"taeguek");
+	SendMessage("돌아선귀신", "발광", "Recursive on");
+	SendMessage("돌아앉은귀신", "발광", "Recursive on");
+	SendMessage("돌아앉은귀신","애니메이션","%sc46_cut06_소영.mtn");
+	SendMessage("돌아선귀신","애니메이션","%sc46_cut06_소영.mtn");
+	$음악감상실귀신++;
+	$음악감상실귀신_집지마 = 1;
+	SendMessage("카메라", "카메라떨림", "40 30 2");
+	SendMessage("카메라", "카메라떨림", "30 25 3");
+	SendMessage("카메라", "카메라떨림", "20 20 3");
+	SendMessage("카메라", "공격", "-100 30 10 75 200 5");
+	LoadObject("WObjPanel", "", "*diffuse ff0000 *delay 1 *type 1");
+	RunScript("","_whiteday.FlashBack");
+	SendMessage("허드", "더하기BPM", "130");
+	if($음악감상실귀신 == 9)
+	SetTimer(5,"end");
+}
+
+damage1()
+{
+	if($음악감상실귀신진행 == 2)
+		return;
+	
+	if($음악감상실귀신비교 == 1 && $음악감상실귀신 == 0)
+	SetTimer(0,"damage0");
+}
+damage2()
+{
+	if($음악감상실귀신진행 == 2)
+		return;
+	
+	if($음악감상실귀신비교 == 2 && $음악감상실귀신 == 1)
+	SetTimer(0,"damage0");
+}
+damage3()
+{
+	if($음악감상실귀신진행 == 2)
+		return;
+	
+	if($음악감상실귀신비교 == 3 && $음악감상실귀신 == 2)
+	SetTimer(0,"damage0");
+}
+damage4()
+{
+	if($음악감상실귀신진행 == 2)
+		return;
+	
+	if($음악감상실귀신비교 == 4 && $음악감상실귀신 == 3)
+	SetTimer(0,"damage0");
+}
+damage5()
+{
+	if($음악감상실귀신진행 == 2)
+		return;
+	
+	if($음악감상실귀신비교 == 5 && $음악감상실귀신 == 4)
+	SetTimer(0,"damage0");
+}
+damage6()
+{
+	if($음악감상실귀신진행 == 2)
+		return;
+	
+	if($음악감상실귀신비교 == 6 && $음악감상실귀신 == 5)
+	SetTimer(0,"damage0");
+}
+damage7()
+{
+	if($음악감상실귀신진행 == 2)
+		return;
+	
+	if($음악감상실귀신비교 == 7 && $음악감상실귀신 == 6)
+	SetTimer(0,"damage0");
+}
+damage8()
+{
+	if($음악감상실귀신진행 == 2)
+		return;
+	
+	if($음악감상실귀신비교 == 8 && $음악감상실귀신 == 7)
+	SetTimer(0,"damage0");
+}
+damage9()
+{
+	if($음악감상실귀신진행 == 2)
+		return;
+	
+	if($음악감상실귀신비교 == 9 && $음악감상실귀신 == 8)
+	SetTimer(0,"damage0");
+}
+
+Event0()
+{
+	if($b_음악실거미 == 0 || $음악감상실귀신진행 == 2)
+		return;
+
+	DeleteObject(""); //EventArea
+	SendMessage("자막", "활성화", "");
+	LoadObject("WObjNPC", "돌아앉은귀신1","*scale 1.00 *pet 성아캔01.pet  *block 0 *group -1 *optimize *pos 1792 -36 1522  *rot 0.00 90.00 0.00 *FlagShow 1 *Show 1");
+	SendMessage("돌아앉은귀신1", "발광", "Recursive on");
+	SendMessage("배경", "끄기", "b1-4");
+	SendMessage("돌아앉은귀신1", "쳐다보기", "유저");
+	SendMessage("유저", "쳐다보기", "돌아앉은귀신1");
+	SendMessage("사운드", "연주", "data/sound/나영웃음.wav");
+	SetTimer(5, "돌아앉은귀신.start");
+	SendMessage("타이머", "스크립트설정", "3 0 1 돌아앉은귀신.Event1");
+}
+
+Event1()
+{
+	SendMessage("돌아앉은귀신1", "페이드", "Recursive 1 1 0");
+	SendMessage("타이머", "스크립트설정", "1 0 1 돌아앉은귀신.Event2");
+}
+
+Event2()
+{
+	SendMessage("유저", "쳐다보지말기", "");
+	DeleteObject("돌아앉은귀신1");
+	SendMessage("자막", "비활성", "");
+}
+
+//		SendMessage("", "페이드", "Recursive 1 1 0");	//소멸
+//		SendMessage("", "페이드", "Recursive 1 0 1");	//등장

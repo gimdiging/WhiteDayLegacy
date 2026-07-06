@@ -1,0 +1,179 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//				C h a r a c t o r S c r i p t F i l e 
+//
+//  (C) Sonnori 2000		오브젝트_체육부금고.scp
+//
+//	熱血man: matzzang		last update: 2000.07.21
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "left " + $G_File + ".left");
+	SendMessage("", "스크립트설정", "right " + $G_File + ".right");
+	SendMessage("", "스크립트설정", "handle " + $G_File + ".handle");
+	
+	SendMessage("", "스크립트설정", "dummy1 null");
+	SendMessage("", "스크립트설정", "dummy2 null");
+	SendMessage("", "스크립트설정", "dummy3 null");
+	SendMessage("", "스크립트설정", "dummy4 null");
+	SendMessage("", "스크립트설정", "dummy5 null");
+
+	SetObjValue("RotateValue", 0);
+	SetObjValue("RotateDial", 0);
+	SetObjValue("Step", 0);
+	SetObjValue("OpenFlag", FALSE);
+	SendMessage("", "애니메이션", "서있기");
+}
+
+left.pick()
+{
+	return GetObjValue("Step") < 4 ? "왼쪽회전" : "";
+}
+
+left.click()
+{
+	if(GetObjValue("Step") == 4)
+	{
+		return;
+	}
+	
+	SetObjValue("RotateValue", GetObjValue("RotateValue") - 1);
+	SetObjValue("RotateDial", GetObjValue("RotateDial") - 1);
+	SendMessage("사운드", "연주", "data/sound/event/금고_돌리기.wav");
+
+	$Step = GetObjValue("Step");
+	if($Step == 0 || $Step == 2)
+	{
+		SetObjValue("Step", 0);
+		SetObjValue("RotateValue", 0);
+	}
+	
+	CheckLock();
+}
+
+right.pick()
+{
+	return GetObjValue("Step") < 4 ? "오른쪽회전" : "";
+}
+
+right.click()
+{
+	if(GetObjValue("Step") == 4)
+	{
+		return;
+	}
+
+	SetObjValue("RotateValue", GetObjValue("RotateValue") + 1);
+	SetObjValue("RotateDial", GetObjValue("RotateDial") + 1);
+	SendMessage("사운드", "연주", "data/sound/event/금고_돌리기.wav");
+
+	$Step = GetObjValue("Step");
+	if($Step == 1 || $Step == 3)
+	{
+		SetObjValue("Step", 0);
+		SetObjValue("RotateValue", 0);
+	}
+
+	CheckLock();
+}
+
+CheckLock()
+{
+	$Step = GetObjValue("Step");
+	$RotateValue = GetObjValue("RotateValue");
+	$RotateDial = GetObjValue("RotateDial");
+	
+	
+	switch($Step)
+	{
+		case 0:
+		{
+			if($RotateValue == $old_Mission2_야구공max)
+			{
+				SetObjValue("Step", $Step++);
+				SetObjValue("RotateValue", 0);
+			}
+			else if($RotateValue > $old_Mission2_야구공max)
+			{
+				SetObjValue("Step", 0);
+				SetObjValue("RotateValue", 0);
+			}
+			break;
+		}
+		case 1:
+		{
+			if($RotateValue == -$old_Mission2_배구공max)
+			{
+				SetObjValue("Step", $Step++);
+				SetObjValue("RotateValue", 0);
+			}
+			else if($RotateValue < -$old_Mission2_배구공max)
+			{
+				SetObjValue("Step", 0);
+				SetObjValue("RotateValue", 0);
+			}
+			break;
+		}
+		case 2:
+		{
+			if($RotateValue == $old_Mission2_축구공max)
+			{
+				SetObjValue("RotateValue", 0);
+				SetObjValue("Step", $Step++);
+			}
+			else if($RotateValue > $old_Mission2_축구공max)
+			{
+				SetObjValue("Step", 0);
+				SetObjValue("RotateValue", 0);
+			}
+			break;
+		}
+		case 3:
+		{
+			if($RotateValue == -$old_Mission2_농구공max)
+			{
+				SetObjValue("Step", $Step++);
+				SetObjValue("RotateValue", 0);
+				SendMessage("사운드", "연주", "data/sound/event/금고_맞음.wav");
+			}
+			else if($RotateValue < -$old_Mission2_농구공max)
+			{
+				SetObjValue("Step", 0);
+				SetObjValue("RotateValue", 0);
+			}
+		
+			break;
+		}
+	}
+	
+	SendMessage("", "본회전", "number " + ($RotateDial * -36) + " 2");
+}
+
+handle.pick()
+{
+	return GetObjValue("OpenFlag") != TRUE ? "잡기" : "";
+}
+
+handle.click()
+{
+	$Step = GetObjValue("Step");
+	
+	if($Step == 4)
+	{
+		if(GetObjValue("OpenFlag") == FALSE)
+		{
+			SendMessage("", "애니메이션", "열기");
+			SetObjValue("OpenFlag", TRUE);
+		}
+	}
+	else
+	{
+		SendMessage("자막", "문자출력", "2," +  GetString("old_s94"));
+	}
+}

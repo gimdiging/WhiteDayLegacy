@@ -1,0 +1,63 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//						I t e m S c r i p t F i l e 
+//
+//  (C) Sonnori 2000				o_사진03.scp
+//
+//	熱血man: matzzang		last update: 2000.07.22
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "반짝", "off");
+}
+
+Init사장님사진()
+{
+	SendMessage("", "스크립트설정", "item " + $G_File);
+	SetObjName("사장님사진");
+	SetObjValue("Step", 0);
+}
+
+pick()
+{
+	return GetObjValue("Step") == 0 ? "보기" : "잡기"; 
+}
+
+click()
+{
+	$Step = GetObjValue("Step");
+	
+	switch($Step)
+	{
+		case 0:
+		{
+			SendMessage("자막", "문자출력", "2," +  GetString("old_s34"));
+			break;
+		}
+		case 1:
+		{
+			GetItem();
+			break;
+		}
+	}
+	
+	SetObjValue("Step", $Step + 1);
+}
+
+GetItem()
+{
+	SendMessage("사장님사진", "페이드", "Recursive 1 1 0");
+	SendMessage("다이어리", "획득", "old_패스맨");
+	SendMessage("타이머", "스크립트설정", "1 0 1 old_o_사진03.Release");
+}
+
+Release()
+{
+	DeleteObject("사장님사진");
+}
