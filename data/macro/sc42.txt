@@ -1,0 +1,140 @@
+SceneName="C:\whiteday\data\macro\sc42.txt"
+BspName="C:\whiteday\wangEDdata\map\\new.bsp"
+StartCut="cut01"
+CutNum=3
+
+
+CutName="cut01"
+TrackNum=7
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=5.800	[ 
+SendMessage("매크로", "Play", "sc42.cut02");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1418.28 170.27 862.08 Dest=1511.04 133.36 856.29 Fov=45.40 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1473.20 134.20 871.70 Rot=0.00 45.00 0.00 Speed=1.00 Motion="%Sc42_cut01_소영.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1458.80 131.60 848.70 Rot=0.00 125.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="d12b_019"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=0.100	[ Sync=1 Disable=0 Tag="d12b_019" Name="소영"  ]
+
+	TrackName="d12b_020"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=3.333	[ Sync=1 Disable=0 Tag="d12b_020" Name="소영"  ]
+
+
+CutName="cut02"
+TrackNum=7
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("문_생물실b","발광색","Recursive 100 100 100");
+SendMessage("문_생물실b","발광","Recursive on");
+ ]
+	Event=6.967	[ 
+SendMessage("문_생물실b","발광","Recursive off");
+SendMessage("매크로", "Play", "sc42.cut03");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=4
+	Event=0.000	[ Sync=1 Pos=1472.80 148.70 842.10 Dest=1555.70 103.30 809.50 Fov=45.40 Bank=0.00 Eff=1  ]
+	Event=2.250	[ Sync=1 Pos=1109.40 197.50 844.40 Dest=1141.80 126.10 906.50 Fov=45.40 Bank=0.00 Eff=1  ]
+	Event=3.520	[ Sync=1 Pos=403.90 106.00 855.30 Dest=469.30 150.60 794.30 Fov=45.40 Bank=0.00 Eff=1  ]
+	Event=4.760	[ Sync=1 Pos=835.10 118.14 889.40 Dest=840.18 146.63 804.17 Fov=45.40 Bank=0.00 Eff=1  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=4
+	Event=0.000	[ Sync=1 Pos=1473.20 134.20 871.70 Rot=0.00 45.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+	Event=2.173	[ Sync=1 Pos=1107.30 134.20 839.00 Rot=0.00 0.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+	Event=3.436	[ Sync=1 Pos=385.90 138.80 857.00 Rot=0.00 0.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+	Event=4.682	[ Sync=1 Pos=850.00 134.20 889.30 Rot=0.00 0.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1458.83 131.63 848.73 Rot=0.00 125.00 0.00 Speed=1.00 Motion="서있기" Action="애니메이션" Loop=0  ]
+
+	TrackName="d12b_021"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Disable=0 Tag="d12b_021" Name="소영"  ]
+
+	TrackName="d12b_022"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=2.250	[ Sync=1 Disable=0 Tag="d12b_022" Name="소영"  ]
+
+
+CutName="cut03"
+TrackNum=7
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=6.700	[ 
+RunScript("","_whiteday._매크로끝");
+$대화상태 = OFF;
+$대화단계 = 0;
+SendMessage("소영", "좋은위치", "" + FindPoint("소영노란문앞"));
+SendMessage("소영", "회전", "-90");
+RunScript("소영", "캐릭터_소영._소영.먼저가기3");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1493.66 152.00 861.86 Dest=1399.23 148.75 860.16 Fov=45.40 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1466.40 134.20 865.70 Rot=0.00 87.00 0.00 Speed=1.00 Motion="%Sc42_cut03_소영.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1445.26 131.63 853.69 Rot=0.00 109.00 0.00 Speed=1.00 Motion="서있기" Action="애니메이션" Loop=0  ]
+
+	TrackName="d12b_023"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Disable=0 Tag="d12b_023" Name="소영"  ]
+
+	TrackName="d12b_024"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=3.000	[ Sync=1 Disable=0 Tag="d12b_024" Name="소영"  ]

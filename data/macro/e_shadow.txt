@@ -1,0 +1,176 @@
+SceneName="C:\whiteday\data\macro\e_shadow.txt"
+BspName="C:\whiteday\wangEDdata\map\\main1.bsp"
+StartCut="cut01"
+CutNum=5
+
+
+CutName="cut01"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=3
+	Event=0.000	[ 
+	if(TakeObjValue("그림자", "LightCount") == 0)
+	{
+		SendMessage("자막", "활성화", "");
+		SendMessage("자막", "와이드모드", "켜기"); 
+		SendMessage("사운드", "연주", "data/sound/event/본관귀신/귀신bgm.wav");
+		SendMessage("카메라", "쳐다보기", "" + FindCamera("귀신이벤트"));
+	}
+//	SendMessage("타이머", "스크립트설정", "2 0 1 e_그림자.RunEvent *obj 그림자");
+ ]
+	Event=2.000	[ 
+	if(TakeObjValue("그림자", "LightCount") == 0)
+		SendMessage("카메라", "카메라이동", FindCamera("귀신이벤트a") + " 7");
+//	SendMessage("타이머", "스크립트설정", "8.5 0 1 e_그림자.RunEvent *obj 그림자");
+ ]
+	Event=10.500	[ 
+	if(TakeObjValue("그림자", "LightCount") == 0)
+	{
+//		SendMessage("카메라", "FOV변환", "75 40 0.2");
+		SendMessage("사운드", "연주멈춤", "나영울음소리");
+		SendMessage("사운드", "연주멈춤", "나영울음루프");
+		SendMessage("오디오", "연주멈춤", "");
+		SendMessage("사운드", "연주", "data/sound/event/본관귀신/놀람.wav");
+	}
+
+	SendMessage("매크로","Play","e_shadow.cut02");
+ ]
+
+
+CutName="cut02"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=6
+	Event=0.000	[ 
+	SendMessage("사운드", "연주", "data/sound/event/본관1_벼락강타.wav");
+//	SendMessage("타이머", "스크립트설정", "0.07 0 1 e_그림자.RunEvent *obj 그림자");
+ ]
+	Event=0.070	[ 
+	RunScript("", "e_그림자.ShowAllObject");
+//	SendMessage("타이머", "스크립트설정", "0 0 1 e_그림자.RunEvent *obj 그림자");
+
+	SendMessage("나영", "발광하기", "255 255 255 0 0 0 0.26");
+	SendMessage("배경", "천둥", "0.26");
+
+	SendMessage("그림자", "페이드", "Recursive 0.26 1 0");
+//	SendMessage("타이머", "스크립트설정", "0.26 0 1 e_그림자.RunEvent *obj 그림자");
+ ]
+	Event=0.330	[ 
+	RunScript("", "e_그림자.ShowAllObject");
+//	SendMessage("타이머", "스크립트설정", "0 0 1 e_그림자.RunEvent *obj 그림자");
+
+	SendMessage("나영", "발광하기", "255 255 255 0 0 0 3");
+	SendMessage("배경", "천둥", "3.0");
+
+	SendMessage("그림자", "페이드", "Recursive 3 1 0");
+//	SendMessage("타이머", "스크립트설정", "3 0 1 e_그림자.RunEvent *obj 그림자");
+//	SendMessage("타이머", "스크립트설정", "6 0 1 e_그림자.RunEvent *obj 그림자");
+ ]
+	Event=3.330	[ 
+	if(TakeObjValue("그림자", "LightCount") < 5)
+	SendMessage("나영", "발광", "Recursive off");
+//	SendMessage("타이머", "스크립트설정", "1 0 1 e_그림자.RunEvent *obj 그림자");
+	if(TakeObjValue("그림자", "LightCount") > 1 && TakeObjValue("그림자", "LightCount") < 5)
+		SendMessage("매크로","Play","e_shadow.cut03");
+ ]
+	Event=4.330	[ 
+	if(TakeObjValue("그림자", "LightCount") <= 1)
+		SendMessage("매크로","Play","e_shadow.cut04");
+ ]
+	Event=6.330	[ 
+	if(TakeObjValue("그림자", "LightCount") == 5)
+		SendMessage("매크로","Play","e_shadow.cut05");
+ ]
+
+
+CutName="cut03"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+//	SetObjValue("Step", 0);
+	ChangeObjValue("그림자", "LightCount", TakeObjValue("그림자", "LightCount") + 1);
+
+	if(TakeObjValue("그림자", "LightCount") == 5 && Version() == "Demo")
+	{
+		SetTimer(0,"e_그림자.EndLogo1");
+		SetTimer(3, "e_그림자.EndSound");
+		SetTimer(5,"e_그림자.EndLogo2");
+		SetTimer(12, "e_그림자.Fade");
+		SetTimer(17,"e_그림자.gameover");
+		return;
+	}
+
+//	SendMessage("타이머", "스크립트설정", "2.5 0 1 e_그림자.RunEvent *obj 그림자");
+
+	if(TakeObjValue("그림자", "LightCount") == 5)
+	{
+		SendMessage("나영", "페이드", "Recursive 1 1 0");
+		SetTimer(1, "e_그림자.Delete나영 *obj 나영");
+	}
+ ]
+	Event=2.500	[ 
+	if(Version() != "Demo" || (TakeObjValue("그림자", "LightCount") < 5 && Version() == "Demo"))
+		SendMessage("매크로","Play","e_shadow.cut02");
+ ]
+
+
+CutName="cut04"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+	if(TakeObjValue("그림자", "LightCount") == 0)
+	{
+		SendMessage("그림자", "텍스쳐변경", "shadow2");
+		SendMessage("나영", "애니메이션", "떨어지기");
+//		SendMessage("카메라", "FOV변환", "40 75 0.5");
+//		SetObjValue("Step", 2);
+		ChangeObjValue("그림자", "LightCount", 1);
+	}
+	else if(TakeObjValue("그림자", "LightCount") == 1)
+	{
+		SendMessage("나영", "회전", "-165");
+		SendMessage("나영", "애니메이션", "기어달리기");
+//		SendMessage("카메라", "카메라쳐다보기", GetObjPos("나영") + " 5");
+//		SendMessage("카메라", "타겟오브젝트로", "나영");
+		SendMessage("사운드", "연주", "data/sound/event/본관귀신/기어올때.wav");
+//		SetObjValue("Step", 0);
+		ChangeObjValue("그림자", "LightCount", 2);
+	}
+//	SendMessage("타이머", "스크립트설정", "1.5 0 1 e_그림자.RunEvent *obj 그림자");
+ ]
+	Event=1.500	[ 
+	SendMessage("매크로","Play","e_shadow.cut02");
+ ]
+
+
+CutName="cut05"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=0.000	[ 
+	SendMessage("사운드", "연주", "data/sound/event/본관1_벼락준비.wav");
+	SendMessage("나영", "발광", "Recursive off");
+
+	SendMessage("카메라", "쳐다보지말기", "");
+	SendMessage("자막", "와이드모드", "끄기");
+	SendMessage("자막", "비활성", "");
+	if($본관1_세환_교실앞대화 == FALSE)
+	{
+		if(TakeObjValue("정찰용수위", "단계") == 0)
+			RunScript("정찰용수위", "캐릭터_수위._리셋");
+		else
+			RunScript("정찰용수위", "캐릭터_수위._정지");
+	}
+ ]

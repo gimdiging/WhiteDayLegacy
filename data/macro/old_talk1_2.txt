@@ -1,0 +1,77 @@
+SceneName="C:\whiteday\data\macro\old_talk1_2.txt"
+BspName="C:\whiteday\wangEDdata\map\\old_main1.bsp"
+StartCut="cut01"
+CutNum=5
+
+
+CutName="cut01"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=0.000	[ 
+//$TalkIndex = GetObjValue("TalkIndex");
+SendMessage("자막", "활성화", "");
+//SendMessage("자막", "SetFunction", "대화#1-2.Talking");
+//SendMessage("자막", "SetObject", "성아");
+SendMessage("자막", "말하는사람", "성아");
+SendMessage("매크로", "Play", "cut01_" + $old_TalkingStep);
+ ]
+
+
+CutName="cut01_1"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d02_001");
+ ]
+	Event=2.000	[ 
+SendMessage("매크로","Play","cut02");
+ ]
+
+
+CutName="cut01_2"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d02_002");
+ ]
+	Event=1.000	[ 
+SendMessage("매크로","Play","cut02");
+ ]
+
+
+CutName="cut01_3"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d02_003");
+ ]
+	Event=2.000	[ 
+SendMessage("매크로","Play","cut02");
+ ]
+
+
+CutName="cut02"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=0.000	[ 
+SendMessage("자막", "비활성", "");
+//SendMessage("자막", "SetFunction", "");
+//SendMessage("자막", "SetObject", "");
+SendMessage("자막", "말하는사람", "");
+//SetObjValue("TalkIndex", $TalkIndex <= 1 ? $TalkIndex + 1 : 0);
+ ]

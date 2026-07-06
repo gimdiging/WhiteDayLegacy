@@ -1,0 +1,87 @@
+SceneName="C:\whiteday\data\macro\light_explode.txt"
+BspName="C:\whiteday\wangEDdata\map\\main2.bsp"
+StartCut="cut01"
+CutNum=1
+
+
+CutName="cut01"
+TrackNum=3
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=6
+	Event=0.000	[ 
+SendMessage("유저", "카메라3인칭뷰", "on");	
+SendMessage("자막", "활성화", "");
+SendMessage("자막", "와이드모드", "켜기");
+RunScript("정찰용수위", "캐릭터_수위.Disable");
+RunScript("교실거미", "천정귀신.classspider_forcehide");
+$신관_세환_열쇠이벤트 = TRUE;
+LoadObject("WObjDyLight", "전등폭파1light", "*pos " + FindPoint("신관전등폭파1") + " *diffuse ffffff *intensity 700");
+LoadObject("WObjDyLight", "전등폭파2light", "*pos " + FindPoint("신관전등폭파2") + " *diffuse ffffff *intensity 300");
+LoadObject("WObjParticle", "스파크01", "");
+LoadObject("WObjParticle", "스파크02", "");
+LoadObject("WObjParticle", "스파크03", "");
+LoadObject("WObjParticle", "스파크04", "");
+LoadObject("WObjParticle", "스파크05", "");
+LoadObject("WObjParticle", "스파크06", "");
+LoadObject("WObjParticle", "스파크07", "");
+LoadObject("WObjParticle", "스파크08", "");
+SendMessage("전등폭파1light", "켜기", "");
+SendMessage("전등폭파2light", "켜기", "");
+ ]
+	Event=0.550	[ 
+SendMessage("스파크01" , "파티클생성", "*origin pos " + FindPoint("ex_01") + " *deltascale 30 30 " + GetWDBParticle("particle2.wdb", "스파크03", "파티클내용") );
+SendMessage("스파크02" , "파티클생성", "*origin pos " + FindPoint("ex_02") + " *deltascale 30 30 " + GetWDBParticle("particle2.wdb", "스파크03", "파티클내용") );
+SendMessage("스파크03" , "파티클생성", "*origin pos " + FindPoint("ex_03") + " *deltascale 30 30 " + GetWDBParticle("particle2.wdb", "스파크03", "파티클내용") );
+SendMessage("스파크04" , "파티클생성", "*origin pos " + FindPoint("ex_04") + " *deltascale 30 30 " + GetWDBParticle("particle2.wdb", "스파크03", "파티클내용") );
+SendMessage("스파크05" , "파티클생성", "*origin pos " + FindPoint("ex_01") + " *deltascale 30 30" + GetWDBParticle("particle2.wdb", "스파크04", "파티클내용") );
+SendMessage("스파크06" , "파티클생성", "*origin pos " + FindPoint("ex_02") + " *deltascale 30 30 " + GetWDBParticle("particle2.wdb", "스파크04", "파티클내용") );
+SendMessage("스파크07" , "파티클생성", "*origin pos " + FindPoint("ex_03") + " *deltascale 30 30 " + GetWDBParticle("particle2.wdb", "스파크04", "파티클내용") );
+SendMessage("스파크08" , "파티클생성", "*origin pos " + FindPoint("ex_04") + " *deltascale 30 30 " + GetWDBParticle("particle2.wdb", "스파크04", "파티클내용") );
+ ]
+	Event=0.990	[ 
+SetTimer(0, "o_신관스위치.flicker");
+ ]
+	Event=4.250	[ 
+SetTimer(0, "o_신관스위치.particle");
+SendMessage("main", "게임속도", "0.2");
+ ]
+	Event=5.657	[ 
+SendMessage("main", "게임속도", "" + GetRegistry("Option\CustomGameSpeed"));
+SendMessage("열쇠10", "애니메이션", "*떨어져있기");
+ ]
+	Event=7.975	[ 
+SendMessage("유저", "카메라3인칭뷰", "off");	
+SendMessage("카메라", "쳐다보지말기", "");
+SendMessage("카메라", "fov", "-75");
+SendMessage("자막", "와이드모드", "끄기");
+SendMessage("자막", "비활성", "");
+RunScript("정찰용수위", "캐릭터_수위._정지");
+DeleteObject("전등폭파1light");
+DeleteObject("전등폭파2light");
+DeleteObject("스파크01");
+DeleteObject("스파크02");
+DeleteObject("스파크03");
+DeleteObject("스파크04"); 
+DeleteObject("스파크05");
+DeleteObject("스파크06");
+DeleteObject("스파크07");
+DeleteObject("스파크08");
+//RunScript("", "e_핸드폰메시지._중앙홀전등");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=6
+	Event=0.000	[ Sync=1 Pos=1891.30 165.90 1030.80 Dest=1958.10 187.10 959.40 Fov=60.00 Bank=0.00 Eff=1  ]
+	Event=4.450	[ Sync=1 Pos=1864.23 177.52 979.24 Dest=1953.54 166.07 940.17 Fov=60.00 Bank=0.00  ]
+	Event=4.920	[ Sync=1 Pos=1864.91 115.75 979.24 Dest=1953.43 104.30 938.49 Fov=60.00 Bank=0.00 Eff=1  ]
+	Event=4.964	[ Sync=1 Pos=1762.71 122.47 1051.64 Dest=1856.03 115.09 1016.47 Fov=70.00 Bank=0.00 Eff=1  ]
+	Event=5.657	[ Sync=1 Pos=1866.79 62.64 951.70 Dest=1926.32 -17.09 941.71 Fov=40.00 Bank=0.00  ]
+	Event=7.975	[ Sync=1 Pos=1866.79 62.64 951.70 Dest=1926.32 -17.09 941.71 Fov=40.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=1
+	Event=0.000	[ Path="event/점멸등.wav" Name=""  ]

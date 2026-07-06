@@ -1,0 +1,80 @@
+SceneName="C:\whiteday\data\macro\hittedboy.txt"
+BspName="C:\whiteday\wangEDdata\map\\main1.bsp"
+StartCut="cut01"
+CutNum=1
+
+
+CutName="cut01"
+TrackNum=5
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=7
+	Event=0.000	[ 
+	SendMessage("때리는놈", "켜기", "");
+	SendMessage("맞는놈", "켜기", "");
+//	SendMessage("때리는놈", "회전", "90");
+//	SendMessage("맞는놈", "회전", "90");
+
+	SendMessage("1층방화셔터", "애니메이션", "열기1");
+
+	SendMessage("자막", "활성화", "");
+//	SendMessage("타이머", "스크립트설정", "0 0 1 오브젝트_유저.e학생구타이벤트1");
+//	SendMessage("타이머", "스크립트설정", "2 0 1 오브젝트_유저.e학생구타이벤트2");
+//	SendMessage("타이머", "스크립트설정", "4 0 1 오브젝트_유저.e학생구타이벤트3");
+//	SendMessage("타이머", "스크립트설정", "8 0 1 오브젝트_유저.e학생구타이벤트4");
+//	SendMessage("타이머", "스크립트설정", "19 0 1 오브젝트_유저.e학생구타이벤트5");
+//	SendMessage("타이머", "스크립트설정", "18 0 1 오브젝트_유저.e학생구타이벤트6");
+//	SendMessage("타이머", "스크립트설정", "5 0 1 오브젝트_유저.e학생구타이벤트7");
+	SendMessage("자막", "와이드모드", "켜기");
+ ]
+	Event=2.000	[ 
+	SendMessage("유저", "쳐다보기", "1층방화셔터앞의자");
+ ]
+	Event=4.000	[ 
+	RunScript("뚤린창살", "오브젝트_뚤린창살.FadeIn");
+	SendMessage("사운드", "연주", "data/sound/event/구타씬.wav");
+//	SendMessage("때리는놈", "애니메이션", "때리기");
+//	SendMessage("맞는놈", "애니메이션", "맞기");
+//	SendMessage("매크로","Play","hittedboy.cut01");
+ ]
+	Event=5.000	[ 
+	if(TakeObjValue("1층방화셔터앞의자", "state") == "stand")
+		SendMessage("1층방화셔터앞의자", "애니메이션", "넘어지기");
+ ]
+	Event=8.000	[ 
+	SendMessage("유저", "쳐다보지말기", "");
+	SendMessage("카메라", "fov", "18");
+ ]
+	Event=18.000	[ 
+	DeleteObject("때리는놈");
+	DeleteObject("맞는놈");
+ ]
+	Event=19.000	[ 
+	SendMessage("1층방화셔터", "애니메이션", "닫기1");
+
+	RunScript("뚤린창살", "오브젝트_뚤린창살.FadeOut");
+	SendMessage("카메라", "fov", "75");
+	SendMessage("자막", "와이드모드", "끄기");
+	SendMessage("카메라", "쳐다보지말기", "");
+	SendMessage("자막", "비활성", "");	
+	SetTimer(0,"e_핸드폰메시지._본관1수위구타이벤트");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=0
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="맞는놈"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=4.000	[ Sync=1 Pos=-1797.32 10.22 -290.28 Rot=0.00 79.00 0.00 Speed=1.00 Motion="맞기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="때리는놈"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=4.000	[ Sync=1 Pos=-1832.96 3.58 -309.99 Rot=0.00 90.00 0.00 Speed=1.00 Motion="때리기" Action="워프+애니메이션" Loop=0  ]

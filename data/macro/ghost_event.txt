@@ -1,0 +1,60 @@
+SceneName="D:\whiteday\data\macro\ghost_event.txt"
+BspName="D:\whiteday\tool\WangEDdata\map\\new.bsp"
+StartCut="cut01"
+CutNum=1
+
+
+CutName="cut01"
+TrackNum=4
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=6
+	Event=0.000	[ 
+SendMessage("도플갱어", "Stop", "");
+SendMessage("도플갱어", "페이드", "Recursive 0 1 1");
+SendMessage("도플갱어", "NOCLIP", "on");
+SendMessage("사운드", "연주", "도플_죽음.wav");
+$신관_세환_무용실이벤트 = 2;
+SendMessage("자막", "와이드모드", "켜기");
+SendMessage("자막", "활성화", "");
+ ]
+	Event=3.690	[ 
+SendMessage("도플갱어", "페이드", "Recursive 1 1 0");
+ ]
+	Event=4.190	[ 
+SetTimer(0, "o_무용실거울._깨져라");
+SendMessage("main", "게임속도", "0.2");
+ ]
+	Event=4.680	[ 
+SendMessage("main", "게임속도", "" + GetRegistry("Option\CustomGameSpeed"));
+ ]
+	Event=4.990	[ 
+SendMessage("도플갱어", "애니메이션", "정지");
+SendMessage("도플갱어", "위치", "0 0 0");
+ ]
+	Event=7.000	[ 
+SendMessage("자막", "와이드모드", "끄기");
+SendMessage("자막", "비활성", "");
+SendMessage("카메라", "쳐다보지말기", "");
+SendMessage("카메라", "fov", "-75");
+SetTimer(0, "o_무용실거울.end_event");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=4
+	Event=0.000	[ Sync=1 Pos=2228.80 30.40 1410.00 Dest=2325.30 8.09 1423.79 Fov=49.90 Bank=0.00 Eff=1  ]
+	Event=3.000	[ Sync=1 Pos=2228.80 30.40 1410.00 Dest=2325.30 8.09 1423.79 Fov=49.90 Bank=0.00  ]
+	Event=3.590	[ Sync=1 Pos=2145.40 20.80 1431.80 Dest=2243.70 5.22 1422.13 Fov=49.90 Bank=0.00 Eff=1  ]
+	Event=3.690	[ Sync=1 Pos=2017.80 -5.90 1483.20 Dest=2101.30 17.30 1433.50 Fov=49.90 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="도플갱어"
+	TrackType="PUPPET"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=2263.80 -13.60 1416.90 Rot=0.00 -90.00 0.00 Speed=1.00 Motion="죽기" Action="애니메이션" Loop=0  ]
+	Event=3.690	[ Sync=1 Pos=2192.82 -13.60 1416.00 Rot=0.00 -90.00 0.00 Speed=1.00 Motion="죽기1" Action="워프+애니메이션" Loop=0  ]

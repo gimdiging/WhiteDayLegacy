@@ -1,0 +1,42 @@
+SceneName="D:\whiteday\data\macro\sc02-1.txt"
+BspName="D:\whiteday\wangeddata\map\\main1.bsp"
+StartCut="cut01"
+CutNum=1
+
+
+CutName="cut01"
+TrackNum=2
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=3
+	Event=0.000	[ 
+RunScript("문_1층여자화장실","문_본관1._열려있어2");
+RunScript("문_1층남자화장실","문_본관1._열려있어");
+LoadObject("WObjDyLight", "화장실쪽light", "*pos "+ FindPoint("화장실쪽light") + " *diffuse 777777");
+ ]
+	Event=13.000	[ 
+SendMessage("화장실쪽light", "켜기", "");
+ ]
+	Event=21.000	[ 
+SendMessage("유저", "위치", "" + GetObjPos("희민"));
+RunScript("","_whiteday._매크로끝");
+DeleteObject("화장실쪽light");
+SetTimer(0,"e_핸드폰메시지._본관1성아이벤트");
+if($게임모드 != 0 && $게임모드 != 4)
+SendMessage("허드", "가스게이지켜", "300");
+$문_본관화장실4F남 = LOCK;
+RunScript("문_1층남자화장실","문_본관1._닫쳐있어");
+SetTimer(0,"태울종이.ghost");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=7
+	Event=0.000	[ Sync=1 Pos=-1217.53 53.27 -301.98 Dest=-1134.47 29.47 -352.33 Fov=65.00 Bank=0.00  ]
+	Event=5.000	[ Sync=1 Pos=-1217.53 53.27 -301.98 Dest=-1233.12 60.02 -400.53 Fov=50.00 Bank=0.00  ]
+	Event=7.000	[ Sync=1 Pos=-1327.17 47.37 -298.33 Dest=-1327.20 61.98 -400.30 Fov=55.00 Bank=0.00  ]
+	Event=12.000	[ Sync=1 Pos=-1642.69 40.48 -297.55 Dest=-1640.03 51.42 -450.39 Fov=30.00 Bank=0.00  ]
+	Event=16.000	[ Sync=1 Pos=-1774.25 2.11 -587.97 Dest=-1759.03 18.86 -685.38 Fov=35.00 Bank=0.00  ]
+	Event=18.000	[ Sync=1 Pos=-1779.75 5.64 -692.47 Dest=-1756.95 42.33 -782.66 Fov=35.00 Bank=0.00  ]
+	Event=21.000	[ Sync=1 Pos=-1779.75 5.64 -692.47 Dest=-1756.95 42.33 -782.66 Fov=30.00 Bank=0.00  ]

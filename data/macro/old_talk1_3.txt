@@ -1,0 +1,162 @@
+SceneName="C:\whiteday\data\macro\old_talk1_3.txt"
+BspName="C:\whiteday\wangEDdata\map\\old_main1.bsp"
+StartCut="cut01"
+CutNum=10
+
+
+CutName="cut01"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=3
+	Event=0.000	[ 
+SendMessage("자막", "활성화", "");
+SendMessage("자막", "와이드모드", "켜기");
+//SendMessage("자막", "SetObject", "성아");
+//SendMessage("자막", "SetFunction", "대화#1-3.Talking");
+SendMessage("자막", "말하는사람", "성아");
+SendMessage("성아", "쳐다보기", "유저");
+SendMessage("자막", "다이얼로그출력", "old_d02_004");
+ ]
+	Event=2.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d02_005");
+ ]
+	Event=7.000	[ 
+SendMessage("매크로", "Play", "cut02");
+ ]
+
+
+CutName="cut02"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=0.000	[ 
+SendMessage("자막", "자막선택", GetString("old_s3"));
+ ]
+
+
+CutName="cut02_1"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=3
+	Event=0.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d02_006");
+ ]
+	Event=5.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d02_007");
+ ]
+	Event=10.000	[ 
+SendMessage("매크로","Play","cut03");
+ ]
+
+
+CutName="cut03"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=0.000	[ 
+SendMessage("자막", "자막선택", GetString("old_s4"));
+ ]
+
+
+CutName="cut03_1"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+//$TalkingStep++;
+SendMessage("자막", "다이얼로그출력", "old_d02_008");
+ ]
+	Event=5.000	[ 
+SendMessage("매크로","Play","cut05");
+ ]
+
+
+CutName="cut03_2"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+//$TalkingStep++;
+SendMessage("자막", "다이얼로그출력", "old_d02_009");
+ ]
+	Event=3.000	[ 
+SendMessage("매크로","Play","cut05");
+ ]
+
+
+CutName="cut03_3"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("자막", "문자출력", "1.5," +  GetString("old_s1"));
+SendMessage("성아", "표정바꿔", "책망m");
+//SendMessage("타이머", "스크립트설정", "3 0 1 대화#1-3.Talking");
+ ]
+	Event=3.000	[ 
+SendMessage("매크로","Play","cut04");
+ ]
+
+
+CutName="cut04"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d02_010");
+//$TalkingStep++;
+ ]
+	Event=3.000	[ 
+SendMessage("매크로","Play","cut06");
+ ]
+
+
+CutName="cut05"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d02_011");
+ ]
+	Event=4.000	[ 
+SendMessage("매크로","Play","cut06");
+ ]
+
+
+CutName="cut06"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=0.000	[ 
+SendMessage("유저", "획득", "@old_중앙통로열쇠");
+SendMessage("사운드", "연주", "data/sound/old_아이템획득.wav");
+SendMessage("성아", "애니메이션", "쉬기");
+SendMessage("성아", "표정바꿔", "보통m");
+SendMessage("성아", "쳐다보지말기", "");
+SendMessage("자막", "비활성", "");
+SendMessage("자막", "와이드모드", "끄기");
+//SendMessage("자막", "SetObject", "");
+//SendMessage("자막", "SetFunction", "");
+SendMessage("자막", "말하는사람", "");
+$old_대화_성아 = "old_talk1_4";
+ ]

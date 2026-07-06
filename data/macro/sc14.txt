@@ -1,0 +1,593 @@
+SceneName="C:\whiteday\data\macro\sc14.txt"
+BspName="C:\whiteday\wangEDdata\map\\main2.bsp"
+StartCut="cut01"
+CutNum=15
+
+
+CutName="cut01"
+TrackNum=6
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=3
+	Event=0.000	[ 
+RunScript("","_whiteday._매크로시작");
+RunScript("문_중앙통로5","문_본관1._닫쳐있어");
+RunScript("문_2층중앙통로","문_본관1._열려있어");
+RunScript("본관거미", "천정귀신.mbspider_forcehide");
+ ]
+	Event=1.000	[ 
+RunScript("문_2층중앙통로","문_본관1._닫어");
+ ]
+	Event=4.450	[ 
+SendMessage("매크로","Play","sc14.cut02");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=173.00 201.90 2022.00 Dest=97.50 167.20 1966.40 Fov=45.00 Bank=0.00  ]
+	Event=4.450	[ Sync=1 Pos=158.76 201.85 2041.36 Dest=83.24 167.21 1985.72 Fov=45.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="성아"
+	TrackType="PUPPET"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=-21.30 134.00 2015.70 Rot=0.00 40.00 0.00 Speed=1.00 Motion="%sc14_cut02_성아.MTN" Action="애니메이션" Loop=0  ]
+	Event=1.000	[ Sync=1 Pos=-21.30 134.00 2015.70 Rot=0.00 40.00 0.00 Speed=1.00 Motion="%sc14_cut02_성아.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=74.90 131.90 1909.80 Rot=0.00 0.00 0.00 Speed=1.00 Motion="%sc14_cut01_희민.MTN" Action="애니메이션" Loop=0  ]
+
+	TrackName="d11a_3_001"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=1.575	[ Sync=1 Disable=0 Tag="d11a_3_001" Name="성아"  ]
+
+
+CutName="cut02"
+TrackNum=7
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=6.800	[ 
+SendMessage("자막","자막선택", GetString("s275"));
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=58.50 151.30 1907.50 Dest=1.73 153.86 1989.78 Fov=68.20 Bank=0.00  ]
+	Event=6.800	[ Sync=1 Pos=58.71 152.48 1907.90 Dest=2.54 133.96 1988.54 Fov=68.20 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="성아"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=23.24 132.30 1977.93 Rot=0.00 24.00 0.00 Speed=1.00 Motion="%sc14_cut02_성아.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=74.88 131.86 1909.84 Rot=0.00 0.00 0.00 Speed=1.00 Motion="서있기" Action="애니메이션" Loop=0  ]
+
+	TrackName="d11a_3_002"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=0.850	[ Sync=1 Disable=0 Tag="d11a_3_002" Name="성아"  ]
+
+	TrackName="d11a_3_003"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=4.500	[ Sync=1 Disable=0 Tag="d11a_3_003" Name="성아"  ]
+
+
+CutName="cut03"
+TrackNum=8
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=8.671	[ 
+SendMessage("성아", "쳐다보기", "희민");
+ ]
+	Event=9.329	[ 
+SendMessage("자막","자막선택", GetString("s276"));
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=5
+	Event=0.000	[ Sync=1 Pos=58.71 152.48 1907.90 Dest=2.54 133.96 1988.54 Fov=68.20 Bank=0.00  ]
+	Event=2.857	[ Sync=1 Pos=58.71 152.48 1907.90 Dest=2.54 133.96 1988.54 Fov=68.20 Bank=0.00  ]
+	Event=3.300	[ Sync=1 Pos=60.42 152.48 1904.38 Dest=4.26 133.96 1985.02 Fov=68.20 Bank=0.00 Eff=1  ]
+	Event=6.700	[ Sync=1 Pos=60.42 152.48 1904.38 Dest=4.26 133.96 1985.02 Fov=68.20 Bank=0.00  ]
+	Event=7.943	[ Sync=1 Pos=58.71 152.48 1907.90 Dest=2.54 133.96 1988.54 Fov=68.20 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="성아"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=47.10 133.50 1924.00 Rot=0.00 21.00 0.00 Speed=1.00 Motion="%sc14_cut02_(1),(2)공통.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=0
+
+	TrackName="d11a_3_004"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Disable=0 Tag="d11a_3_004" Name="성아"  ]
+
+	TrackName="d11a_3_005"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=3.000	[ Sync=1 Disable=0 Tag="d11a_3_005" Name="성아"  ]
+
+	TrackName="d11a_3_006"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=7.557	[ Sync=1 Disable=0 Tag="d11a_3_006" Name="성아"  ]
+
+
+CutName="cut04"
+TrackNum=6
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("성아", "쳐다보지말기", "희민");
+ ]
+	Event=6.975	[ 
+SendMessage("매크로","Play","sc14.cut06");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=4
+	Event=0.000	[ Sync=1 Pos=58.71 152.48 1907.90 Dest=2.54 133.96 1988.54 Fov=68.20 Bank=0.00  ]
+	Event=0.330	[ Sync=1 Pos=58.71 152.48 1907.90 Dest=41.06 134.13 2004.61 Fov=68.20 Bank=0.00  ]
+	Event=0.630	[ Sync=1 Pos=58.71 152.48 1907.90 Dest=-21.47 134.34 1964.84 Fov=68.20 Bank=0.00  ]
+	Event=0.930	[ Sync=1 Pos=58.50 151.32 1907.54 Dest=2.20 137.85 1989.08 Fov=68.20 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="성아"
+	TrackType="PUPPET"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=47.10 131.90 1924.00 Rot=0.00 19.00 0.00 Speed=1.00 Motion="%sc14_cut02_1a_1frame_성아.MTN" Action="워프+애니메이션" Loop=0  ]
+	Event=2.975	[ Sync=1 Pos=47.10 131.90 1924.00 Rot=0.00 19.00 0.00 Speed=1.00 Motion="%sc14_cut02_1a_성아.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=74.90 131.90 1909.80 Rot=0.00 0.00 0.00 Speed=1.00 Motion="서있기" Action="애니메이션" Loop=0  ]
+
+	TrackName="d11a_3_007"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=4.000	[ Sync=1 Disable=0 Tag="d11a_3_007" Name="성아"  ]
+
+
+CutName="cut05"
+TrackNum=6
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+$성아_호감도-=1;
+SendMessage("성아", "쳐다보지말기", "희민");
+ ]
+	Event=7.967	[ 
+SendMessage("매크로","Play","sc14.cut06");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=58.71 152.48 1907.90 Dest=2.54 133.96 1988.54 Fov=68.20 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="성아"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=47.10 131.90 1924.00 Rot=0.00 35.00 0.00 Speed=1.00 Motion="%sc14_cut02_1b_성아.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=74.90 131.90 1909.80 Rot=0.00 0.00 0.00 Speed=1.00 Motion="서있기" Action="애니메이션" Loop=0  ]
+
+	TrackName="d11a_3_008"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=3.000	[ Sync=1 Disable=0 Tag="d11a_3_008" Name="성아"  ]
+
+
+CutName="cut06"
+TrackNum=8
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=5.733	[ 
+SendMessage("성아","텍스쳐변경","책망r");
+SendMessage("성아","표정바꿔","책망r");
+ ]
+	Event=13.500	[ 
+SendMessage("자막","자막선택", GetString("s277"));
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=58.50 151.32 1907.54 Dest=2.20 137.85 1989.08 Fov=68.20 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="성아"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=48.20 131.90 1922.80 Rot=0.00 37.00 0.00 Speed=1.00 Motion="%sc14_cut03_성아.MTN" Action="애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=88.79 131.90 1919.96 Rot=0.00 146.00 0.00 Speed=1.00 Motion="서있기" Action="애니메이션" Loop=0  ]
+
+	TrackName="d11a_3_009"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Disable=0 Tag="d11a_3_009" Name="성아"  ]
+
+	TrackName="d11a_3_010"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=3.767	[ Sync=1 Disable=0 Tag="d11a_3_010" Name="성아"  ]
+
+	TrackName="d11a_3_011"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=9.467	[ Sync=1 Disable=0 Tag="d11a_3_011" Name="성아"  ]
+
+
+CutName="cut06_a"
+TrackNum=6
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=3
+	Event=0.000	[ 
+$성아_호감도+=1;
+ ]
+	Event=2.000	[ 
+SendMessage("성아", "쳐다보기", "문_중앙통로5");
+ ]
+	Event=6.567	[ 
+SendMessage("매크로","Play","sc14.cut11");
+SendMessage("성아", "쳐다보지말기", "문_중앙통로5");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=58.50 151.32 1907.54 Dest=2.20 137.85 1989.08 Fov=68.20 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="성아"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=47.46 131.90 1921.30 Rot=0.00 37.00 0.00 Speed=1.00 Motion="%sc14_cut03_1frame_성아.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=88.79 131.90 1919.96 Rot=0.00 146.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="d11a_3_012"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=1.000	[ Sync=1 Disable=0 Tag="d11a_3_012" Name="성아"  ]
+
+
+CutName="cut07"
+TrackNum=7
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+$성아_호감도-=1;
+ ]
+	Event=10.967	[ 
+SendMessage("매크로","Play","sc14.cut08");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=3
+	Event=0.000	[ Sync=1 Pos=58.50 151.32 1907.54 Dest=2.20 137.85 1989.08 Fov=68.20 Bank=0.00  ]
+	Event=1.000	[ Sync=1 Pos=57.87 151.32 1906.96 Dest=1.57 137.85 1988.50 Fov=68.20 Bank=0.00  ]
+	Event=5.933	[ Sync=1 Pos=63.25 151.72 1898.79 Dest=-3.02 135.89 1971.98 Fov=68.20 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="성아"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=47.25 131.90 1921.23 Rot=0.00 41.00 0.00 Speed=1.00 Motion="%sc14_cut03_2a_성아.MTN" Action="애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=74.90 131.90 1909.80 Rot=0.00 0.00 0.00 Speed=1.00 Motion="서있기" Action="애니메이션" Loop=0  ]
+
+	TrackName="d11a_3_013"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Disable=0 Tag="d11a_3_013" Name="성아"  ]
+
+	TrackName="d11a_3_014"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=5.000	[ Sync=1 Disable=0 Tag="d11a_3_014" Name="성아"  ]
+
+
+CutName="cut08"
+TrackNum=7
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=7.967	[ 
+SendMessage("매크로","Play","sc14.cut12");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=149.92 144.46 1943.41 Dest=53.79 136.39 1917.09 Fov=68.20 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="성아"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=46.62 134.50 1937.03 Rot=0.00 -170.00 0.00 Speed=1.00 Motion="%sc14_cut03_2b_성아.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=74.90 131.90 1909.80 Rot=0.00 214.00 0.00 Speed=1.00 Motion="%sc14_cut03_2b_희민.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="d11a_3_015"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Disable=0 Tag="d11a_3_015" Name="성아"  ]
+
+	TrackName="d11a_3_016"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=3.500	[ Sync=1 Disable=0 Tag="d11a_3_016" Name="성아"  ]
+
+
+CutName="cut09"
+TrackNum=5
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=4.433	[ 
+SendMessage("매크로","Play","sc14.cut10");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=-34.65 145.85 2029.00 Dest=-125.55 168.27 2057.37 Fov=68.20 Bank=0.00  ]
+	Event=4.767	[ Sync=1 Pos=-33.12 145.85 2034.59 Dest=-124.03 168.27 2062.95 Fov=68.20 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="성아"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-51.60 134.50 2039.50 Rot=0.00 246.00 0.00 Speed=1.00 Motion="%sc14_cut03_1c_성아.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=74.90 131.90 1909.80 Rot=0.00 0.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+
+CutName="cut10"
+TrackNum=5
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=4
+	Event=2.000	[ 
+RunScript("문_2층중앙통로","문_본관1._열어");
+ ]
+	Event=4.233	[ 
+RunScript("문_2층중앙통로","문_본관1._닫어");
+ ]
+	Event=5.967	[ 
+RunScript("", "_whiteday.FadeOut");
+ ]
+	Event=6.980	[ 
+RunScript("","_whiteday._매크로끝");
+SendMessage("성아", "애니메이션", "정지");
+SendMessage("성아", "위치", "0 0 0");
+RunScript("정찰용수위","캐릭터_수위._정지");
+RunScript("", "_whiteday.FadeIn");
+RunScript("본관거미", "천정귀신.mbspider_appear");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=74.48 158.44 1937.38 Dest=74.80 150.04 1900.01 Fov=68.20 Bank=0.00  ]
+	Event=6.980	[ Sync=1 Pos=74.50 161.08 1938.53 Dest=74.80 152.68 1901.13 Fov=45.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="성아"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-51.60 134.50 2039.50 Rot=0.00 270.00 0.00 Speed=1.00 Motion="%sc14_cut03_1c_성아.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=74.90 131.90 1909.80 Rot=0.00 180.00 0.00 Speed=1.00 Motion="%sc14_cut03_2b_희민.MTN" Action="워프+애니메이션" Loop=0  ]
+
+
+CutName="cut11"
+TrackNum=7
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=16.033	[ 
+SendMessage("매크로","Play","sc14.cut09");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=3
+	Event=0.000	[ Sync=1 Pos=154.40 145.10 1922.40 Dest=54.90 140.40 1913.10 Fov=68.20 Bank=0.00 Eff=1  ]
+	Event=9.967	[ Sync=1 Pos=36.27 148.30 1949.67 Dest=86.19 149.60 1871.23 Fov=68.20 Bank=0.00  ]
+	Event=16.033	[ Sync=1 Pos=-56.29 154.08 2052.98 Dest=-18.24 140.00 1961.57 Fov=68.20 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="성아"
+	TrackType="PUPPET"
+ 	EventNum=3
+	Event=0.000	[ Sync=1 Pos=47.10 134.50 1925.20 Rot=0.00 -30.00 0.00 Speed=1.00 Motion="%sc14_cut03_2b_성아.MTN" Action="워프+애니메이션" Loop=0  ]
+	Event=9.967	[ Sync=1 Pos=47.10 134.50 1925.20 Rot=0.00 223.00 0.00 Speed=1.00 Motion="천천히걷기" Action="워프+애니메이션" Loop=0  ]
+	Event=16.900	[ Sync=1 Pos=-49.80 134.50 2031.70 Rot=0.00 211.00 0.00 Speed=1.00 Motion="서있기" Action="애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=74.90 131.90 1909.80 Rot=0.00 214.00 0.00 Speed=1.00 Motion="%sc14_cut03_2b_희민.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="d11a_3_015"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=0.540	[ Sync=1 Disable=0 Tag="d11a_3_015" Name="성아"  ]
+
+	TrackName="d11a_3_016"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=4.020	[ Sync=1 Disable=0 Tag="d11a_3_016" Name="성아"  ]
+
+
+CutName="cut12"
+TrackNum=5
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=1.000	[ 
+SendMessage("성아","표정바꿔","책망r");
+ ]
+	Event=6.000	[ 
+SendMessage("매크로","Play","sc14.cut09");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=36.27 148.30 1949.67 Dest=86.19 149.60 1871.23 Fov=68.20 Bank=0.00  ]
+	Event=6.000	[ Sync=1 Pos=-56.29 154.08 2052.98 Dest=-18.24 140.00 1961.57 Fov=68.20 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="성아"
+	TrackType="PUPPET"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=47.10 134.50 1925.20 Rot=0.00 223.00 0.00 Speed=1.00 Motion="천천히걷기" Action="워프+애니메이션" Loop=0  ]
+	Event=7.000	[ Sync=1 Pos=-49.80 134.50 2031.70 Rot=0.00 211.00 0.00 Speed=1.00 Motion="서있기" Action="애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=0
+
+
+CutName="cut02_1"
+TrackNum=3
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=0.000	[ 
+$성아_호감도 -= 2;
+SendMessage("매크로","Play","cut03");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=0
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+
+CutName="cut02_2"
+TrackNum=3
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=0.000	[ 
+$성아_호감도 -= 1;
+SendMessage("매크로","Play","cut03");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=0
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0

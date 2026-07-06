@@ -1,0 +1,84 @@
+SceneName="C:\whiteday\data\macro\gym_door.txt"
+BspName="C:\whiteday\wangEDdata\map\\gym.bsp"
+StartCut="cut01"
+CutNum=2
+
+
+CutName="cut01"
+TrackNum=4
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=3
+	Event=0.243	[ 
+SendMessage("사운드", "연주", "data/sound/열쇠로자물쇠열기.wav");
+ ]
+	Event=0.986	[ 
+RunScript("문P","강당문._방향2.click");
+ ]
+	Event=3.014	[ 
+RunScript("","_whiteday._매크로끝");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=37.14 25.79 -1036.61 Dest=128.14 20.19 -1165.02 Fov=60.00 Bank=0.00  ]
+	Event=3.014	[ Sync=1 Pos=99.55 21.95 -1124.67 Dest=190.55 16.36 -1253.08 Fov=60.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.086	[ Sync=1 Pos=-58.00 5.50 -686.70 Rot=0.00 -180.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+
+CutName="cut00"
+TrackNum=3
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=6
+	Event=0.000	[ 
+RunScript("","_whiteday._매크로시작");
+ ]
+	Event=1.020	[ 
+SendMessage("보일러실기계", "본회전", "Box11 -30 0");
+SendMessage("사운드", "연주", "data/sound/보일러_스위치.wav");
+ ]
+	Event=1.960	[ 
+SendMessage("보일러실기계", "본회전", "Box08 -30 0");
+SendMessage("사운드", "연주", "data/sound/보일러_스위치.wav");
+ ]
+	Event=2.960	[ 
+SendMessage("보일러실기계", "본회전", "Box09 -30 0");
+SendMessage("사운드", "연주", "data/sound/보일러_스위치.wav");
+ ]
+	Event=3.980	[ 
+SendMessage("보일러실기계", "본회전", "Box10 -30 0");
+SendMessage("사운드", "연주", "data/sound/보일러_스위치.wav");
+ ]
+	Event=4.980	[ 
+$체육관_영호_문P잠김 = UNLOCK;
+RunScript("문P", "강당문.lockon");
+
+$체육관_영호_문Q잠김 = UNLOCK;
+RunScript("열려라", "강당문.lockon");
+
+//$체육관_영호_여자탈의실잠김 = UNLOCK;
+//RunScript("여자탈의실문", "강당문.lockon");
+
+SendMessage("매크로","Play","cut01");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-54.30 19.50 -686.10 Dest=-84.40 11.60 -591.00 Fov=60.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0

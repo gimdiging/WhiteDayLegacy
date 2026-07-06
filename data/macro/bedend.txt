@@ -1,0 +1,197 @@
+SceneName="C:\whiteday\data\macro\bedend.txt"
+BspName="C:\whiteday\wangEDdata\map\\goodbye.bsp"
+StartCut="cut01"
+CutNum=6
+
+
+CutName="cut01"
+TrackNum=4
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+$자막이미지 = "chap_e_sy_d.bmp";
+RunScript("", "_whiteday._엔딩X파일자막");
+SendMessage("자막", "활성화", "");
+SendMessage("자막", "와이드모드", "켜기");
+ ]
+	Event=11.000	[ 
+SendMessage("매크로", "Play", "bedend.cut02");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=-871.37 791.31 494.79 Dest=-871.39 693.41 480.18 Fov=45.00 Bank=0.00  ]
+	Event=11.000	[ Sync=1 Pos=-871.37 429.92 484.01 Dest=-871.39 332.02 469.39 Fov=45.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=1
+	Event=0.000	[ Path="macro/배드엔딩bgm.adp" Name=""  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-893.67 156.10 384.70 Rot=0.00 -90.00 0.00 Speed=1.00 Motion="%bad_cut01_희민.MTN" Action="애니메이션" Loop=0  ]
+
+
+CutName="cut02"
+TrackNum=4
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=16.647	[ 
+SendMessage("매크로", "Play", "bedend.cut03");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=-828.19 162.04 276.34 Dest=-884.64 145.21 357.15 Fov=45.00 Bank=0.00  ]
+	Event=16.647	[ Sync=1 Pos=-914.27 152.37 316.27 Dest=-893.93 145.25 370.15 Fov=60.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=1
+	Event=6.500	[ Path="macro/절름수위bgm.adp" Name=""  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-893.70 156.10 384.70 Rot=0.00 -90.00 0.00 Speed=1.00 Motion="%bad_cut01_희민.MTN" Action="워프+애니메이션" Loop=0  ]
+
+
+CutName="cut03"
+TrackNum=3
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=0.000	[ 
+SendMessage("사운드", "연주", "빵01.wav");
+ ]
+	Event=5.025	[ 
+SendMessage("매크로", "Play", "bedend.cut04");
+SendMessage("희민", "발광색", "Recursive 38 122 217");
+SendMessage("희민", "발광", "Recursive on");
+SendMessage("사운드", "연주", "빠직.wav");
+ ]
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=-776.50 135.90 336.80 Dest=-741.00 215.60 385.70 Fov=135.00 Bank=0.00  ]
+	Event=5.025	[ Sync=1 Pos=-770.66 145.46 335.42 Dest=-739.90 225.16 393.38 Fov=135.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+
+CutName="cut04"
+TrackNum=4
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=3.000	[ 
+SendMessage("사운드", "연주", "귀신놀림.wav");
+ ]
+	Event=4.800	[ 
+LoadObject("WObjParticle", "방전", "");
+SendMessage("방전", "파티클생성", "*origin pos " + "-892.10 155.20 384.70" + " " + GetWDBParticle("particle2.wdb", "아크방전02-1", "파티클내용") );
+SendMessage("방전", "파티클생성", "*origin pos " + "-892.10 155.20 384.70" + " " + GetWDBParticle("particle2.wdb", "아크방전02-2", "파티클내용") );
+SendMessage("매크로", "Play", "bedend.cut05");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=-914.27 152.37 316.27 Dest=-893.93 145.25 370.15 Fov=60.00 Bank=0.00  ]
+	Event=4.800	[ Sync=1 Pos=-828.19 162.04 276.34 Dest=-884.64 145.21 357.15 Fov=45.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-892.10 155.20 384.70 Rot=0.00 98.00 0.00 Speed=1.00 Motion="%bad_cut01_희민.MTN" Action="워프+애니메이션" Loop=0  ]
+
+
+CutName="cut05"
+TrackNum=4
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("나영","발광색","Recursive 0 0 0");
+SendMessage("나영","발광","Recursive on");
+SendMessage("희민", "회전", "270");
+SendMessage("희민", "발광색", "Recursive 90 131 181");
+SendMessage("희민", "발광", "Recursive on");
+SendMessage("희민","페이드", "Recursive 2 0 1");
+ ]
+	Event=4.000	[ 
+SendMessage("사운드", "연주", "gameover.wav");
+ ]
+	Event=7.025	[ 
+LoadObject("WObjParticle", "방전", "");
+SendMessage("방전", "파티클생성", "*origin pos " + "-892.10 155.20 384.70" + " " + GetWDBParticle("particle2.wdb", "아크방전02-1", "파티클내용") );
+SendMessage("방전", "파티클생성", "*origin pos " + "-892.10 155.20 384.70" + " " + GetWDBParticle("particle2.wdb", "아크방전02-2", "파티클내용") );
+SendMessage("매크로", "Play", "bedend.cut06");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=-417.40 506.50 393.70 Dest=-418.70 500.00 493.10 Fov=45.00 Bank=0.00  ]
+	Event=7.025	[ Sync=1 Pos=-418.69 505.32 415.11 Dest=-419.99 498.82 514.51 Fov=35.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="나영"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-421.80 474.50 532.50 Rot=0.00 0.00 0.00 Speed=1.00 Motion="서있기" Action="회전+애니메이션" Loop=0  ]
+
+
+CutName="cut06"
+TrackNum=4
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=5.583	[ 
+	SendMessage("사운드", "연주", "빵01.wav");
+	LoadObject("WObjParticle", "방전", "");
+	SendMessage("방전", "파티클생성", "*origin pos " + "-892.10 155.20 384.70" + " " + GetWDBParticle("particle2.wdb", "아크방전02-1", "파티클내용") );
+	SendMessage("방전", "파티클생성", "*origin pos " + "-892.10 155.20 384.70" + " " + GetWDBParticle("particle2.wdb", "아크방전02-2", "파티클내용") );
+	SendMessage("희민","끄기", "");
+	RunScript("", "_whiteday.FadeOut");
+ ]
+	Event=6.583	[ 
+	RunScript("", "_whiteday._매크로끝");
+	RunScript("", "_staffroll._엔딩_1");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=-871.37 429.92 484.01 Dest=-871.39 332.02 469.39 Fov=45.00 Bank=0.00  ]
+	Event=6.583	[ Sync=1 Pos=-871.37 791.31 494.79 Dest=-871.39 693.41 480.18 Fov=45.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-892.10 155.20 384.70 Rot=0.00 98.00 0.00 Speed=1.00 Motion="%bad_cut01_희민.MTN" Action="워프+애니메이션" Loop=0  ]

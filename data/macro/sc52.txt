@@ -1,0 +1,799 @@
+SceneName="C:\whiteday\data\macro\sc52.txt"
+BspName="C:\whiteday\wangEDdata\map\\new.bsp"
+StartCut="cut01"
+CutNum=16
+
+
+CutName="cut01"
+TrackNum=6
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+//SendMessage("main","게임속도","1");
+RunScript("", "_whiteday._매크로시작");
+RunScript("문_K2","문_신관._닫쳐있어");
+SendMessage("소영","쳐다보지말기","");
+RunScript("2층중앙홀진입문","문_신관._닫쳐있어");
+SendMessage("소영","발광색","Recursive 40 40 40");
+SendMessage("소영","발광","Recursive on");
+SendMessage("희민","발광색","Recursive 40 40 40");
+SendMessage("희민","발광","Recursive on");
+SendMessage("매크로용손수위","발광색","Recursive 40 40 40");
+SendMessage("매크로용손수위","발광","Recursive on");
+if(TakeObjValue("정찰용수위", "angry") == 1 && $게임모드 != 0 && $게임모드 != 4)
+RunScript("매크로용손수위", "캐릭터_수위.AngryBat");
+//debug
+//SendMessage("배경","켜기","hall");
+ ]
+	Event=4.783	[ 
+SendMessage("매크로", "Play", "sc52.cut02");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=664.47 156.93 858.00 Dest=431.11 138.95 859.19 Fov=45.00 Bank=0.00  ]
+	Event=4.783	[ Sync=1 Pos=664.50 156.90 840.10 Dest=431.10 138.90 859.20 Fov=45.00 Bank=0.00 Eff=1  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=529.50 134.70 868.80 Rot=0.00 94.00 0.00 Speed=1.00 Motion="%Sc52_cut01_소영.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=677.40 134.20 844.00 Rot=0.00 -95.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="d15b_001"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=2.000	[ Sync=1 Disable=0 Tag="d15b_001" Name="소영"  ]
+
+
+CutName="cut02"
+TrackNum=7
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=6
+	Event=0.000	[ 
+SendMessage("main","게임속도","0.5");
+ ]
+	Event=0.407	[ 
+SendMessage("main", "게임속도", "" + GetRegistry("Option\CustomGameSpeed"));
+ ]
+	Event=2.000	[ 
+SendMessage("사운드","연주","loop,52분위기06,분위기06.adp");
+ ]
+	Event=2.160	[ 
+SendMessage("main","게임속도","0.5");
+ ]
+	Event=2.810	[ 
+SendMessage("main", "게임속도", "" + GetRegistry("Option\CustomGameSpeed"));
+ ]
+	Event=6.225	[ 
+SendMessage("매크로", "Play", "sc52.cut03");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=676.45 153.86 826.42 Dest=642.91 148.40 920.47 Fov=45.00 Bank=0.00  ]
+	Event=6.225	[ Sync=1 Pos=676.45 153.86 826.42 Dest=642.91 148.40 920.47 Fov=45.00 Bank=0.00 Eff=1  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=653.70 134.10 860.90 Rot=0.00 77.00 0.00 Speed=1.00 Motion="%Sc52_cut02_소영.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=677.40 131.70 844.00 Rot=0.00 -126.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="d15b_002"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=0.800	[ Sync=1 Disable=0 Tag="d15b_002" Name="소영"  ]
+
+	TrackName="d15b_003"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=3.675	[ Sync=1 Disable=0 Tag="d15b_003" Name="소영"  ]
+
+
+CutName="cut03"
+TrackNum=8
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=9.038	[ 
+SendMessage("매크로", "Play", "sc52.cut04");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=663.71 152.62 876.72 Dest=654.70 152.67 818.43 Fov=45.00 Bank=0.00  ]
+	Event=9.038	[ Sync=1 Pos=663.71 152.62 876.72 Dest=654.70 152.67 818.43 Fov=45.00 Bank=0.00 Eff=1  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=653.70 134.30 860.90 Rot=0.00 80.00 0.00 Speed=1.00 Motion="%Sc52_cut03_소영.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=672.20 131.50 825.00 Rot=0.00 -155.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="d15b_004"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=0.460	[ Sync=1 Disable=0 Tag="d15b_004" Name="소영"  ]
+
+	TrackName="d15b_004a"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=1.988	[ Sync=1 Disable=0 Tag="d15b_004a" Name="소영"  ]
+
+	TrackName="d15b_005"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=5.338	[ Sync=1 Disable=0 Tag="d15b_005" Name="소영"  ]
+
+
+CutName="cut04"
+TrackNum=8
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=3
+	Event=3.700	[ 
+SendMessage("main","게임속도","0.3");
+ ]
+	Event=4.000	[ 
+SendMessage("main", "게임속도", "" + GetRegistry("Option\CustomGameSpeed"));
+ ]
+	Event=13.840	[ 
+SendMessage("매크로", "Play", "sc52.cut05");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=4
+	Event=0.000	[ Sync=1 Pos=669.80 153.00 817.90 Dest=659.00 146.50 894.20 Fov=45.00 Bank=0.00 Eff=1  ]
+	Event=3.700	[ Sync=1 Pos=669.80 153.00 817.90 Dest=659.00 146.50 894.20 Fov=45.00 Bank=0.00 Eff=1  ]
+	Event=4.000	[ Sync=1 Pos=692.60 155.70 824.32 Dest=637.03 145.00 857.79 Fov=45.00 Bank=0.00 Eff=1  ]
+	Event=13.840	[ Sync=1 Pos=669.85 152.96 817.93 Dest=659.02 146.51 894.17 Fov=45.00 Bank=0.00 Eff=1  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=653.70 134.30 860.90 Rot=0.00 15.00 0.00 Speed=1.00 Motion="%Sc52_cut04_소영.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=672.40 131.70 825.00 Rot=0.00 -155.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="d15b_006"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=1.000	[ Sync=1 Disable=0 Tag="d15b_006" Name="소영"  ]
+
+	TrackName="d15b_007"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=4.000	[ Sync=1 Disable=0 Tag="d15b_007" Name="소영"  ]
+
+	TrackName="d15b_009"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=8.600	[ Sync=1 Disable=0 Tag="d15b_009" Name="소영"  ]
+
+
+CutName="cut05"
+TrackNum=5
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("희민","쳐다보지말기","");
+ ]
+	Event=0.325	[ 
+SendMessage("자막", "자막선택", GetString("s309"));
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=722.81 193.55 826.88 Dest=666.70 151.59 842.42 Fov=45.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=660.90 134.10 874.00 Rot=0.00 19.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=672.60 131.50 825.90 Rot=0.00 195.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+
+CutName="cut05-(1)"
+TrackNum=9
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=5
+	Event=0.000	[ 
+SendMessage("소영","쳐다보지말기","");
+SendMessage("성아","페이드","Recursive 0 0 0");
+ ]
+	Event=2.700	[ 
+SendMessage("희민","쳐다보기","성아");
+SendMessage("희민","텍스쳐변경","보통r");
+SendMessage("희민","표정바꿔","보통r");
+ ]
+	Event=4.280	[ 
+SendMessage("희민","텍스쳐변경","보통");
+SendMessage("희민","표정바꿔","보통");
+ ]
+	Event=8.940	[ 
+ ]
+	Event=10.975	[ 
+SendMessage("희민","쳐다보지말기",""):
+SendMessage("매크로", "Play", "sc52.cut05-(1)_1");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=735.60 160.36 844.18 Dest=662.59 152.82 844.96 Fov=45.00 Bank=0.00  ]
+	Event=10.975	[ Sync=1 Pos=892.70 160.40 850.50 Dest=819.60 152.80 851.30 Fov=45.00 Bank=0.00 Eff=1  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=623.40 134.70 860.70 Rot=0.00 90.00 0.00 Speed=1.00 Motion="%Sc52_cut05_축쳐진걷기소영.MTN" Action="워프+애니메이션" Loop=1  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=679.30 134.20 833.90 Rot=0.00 90.00 0.00 Speed=0.70 Motion="천천히걷기" Action="워프+애니메이션" Loop=1  ]
+	Event=2.900	[ Sync=1 Pos=726.38 134.20 833.90 Rot=0.00 162.00 0.00 Speed=1.00 Motion="서있기" Action="애니메이션" Loop=0  ]
+
+	TrackName="d15b_010"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=0.400	[ Sync=1 Disable=0 Tag="d15b_010" Name="소영"  ]
+
+	TrackName="d15b_011"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=4.175	[ Sync=1 Disable=0 Tag="d15b_011" Name="소영"  ]
+
+	TrackName="d15b_012"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=7.760	[ Sync=1 Disable=0 Tag="d15b_012" Name="소영"  ]
+
+	TrackName="성아"
+	TrackType="PUPPET"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=722.07 134.41 879.20 Rot=0.00 0.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+	Event=3.300	[ Sync=1 Pos=732.61 134.41 879.20 Rot=0.00 90.00 0.00 Speed=0.80 Motion="천천히걷기" Action="워프+애니메이션" Loop=0  ]
+
+
+CutName="cut05-(1)_1"
+TrackNum=6
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=9.975	[ 
+SendMessage("매크로", "Play", "sc52.cut06");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=637.73 151.37 846.73 Dest=597.81 155.79 938.32 Fov=45.00 Bank=0.00  ]
+	Event=9.975	[ Sync=1 Pos=624.64 151.37 848.05 Dest=584.72 155.79 939.64 Fov=45.00 Bank=0.00 Eff=1  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=623.40 134.70 860.70 Rot=0.00 90.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=679.30 134.20 833.90 Rot=0.00 90.00 0.00 Speed=1.00 Motion="%Sc52_cut05-(1)-1_희민.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="d15b_013"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=1.850	[ Sync=1 Disable=0 Tag="d15b_013" Name="소영"  ]
+
+
+CutName="cut05-(2)"
+TrackNum=9
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=3
+	Event=8.729	[ 
+SendMessage("main","게임속도","0.3");
+ ]
+	Event=9.000	[ 
+SendMessage("main", "게임속도", "" + GetRegistry("Option\CustomGameSpeed"));
+ ]
+	Event=20.967	[ 
+SendMessage("매크로", "Play", "sc52.cut06");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=4
+	Event=0.000	[ Sync=1 Pos=893.30 152.40 850.50 Dest=819.70 152.80 851.30 Fov=45.00 Bank=0.00 Eff=1  ]
+	Event=8.729	[ Sync=1 Pos=893.30 152.40 850.50 Dest=819.70 152.80 851.30 Fov=45.00 Bank=0.00 Eff=1  ]
+	Event=9.000	[ Sync=1 Pos=870.17 152.36 878.33 Dest=823.22 152.82 857.77 Fov=45.00 Bank=0.00  ]
+	Event=20.967	[ Sync=1 Pos=884.75 152.36 868.21 Dest=823.22 152.82 857.77 Fov=45.00 Bank=0.00 Eff=1  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=623.40 134.70 860.70 Rot=0.00 90.00 0.00 Speed=1.00 Motion="%Sc52_cut05_축쳐진걷기소영.MTN" Action="워프+이동" Loop=0  ]
+	Event=9.000	[ Sync=1 Pos=847.90 134.70 864.00 Rot=0.00 90.00 0.00 Speed=1.00 Motion="%Sc52_cut05-(2)_소영.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=679.30 134.20 833.90 Rot=0.00 90.00 0.00 Speed=1.00 Motion="%Sc52_cut05-(1)_희민.MTN" Action="워프+애니메이션" Loop=0  ]
+	Event=9.000	[ Sync=1 Pos=772.50 134.20 840.20 Rot=0.00 105.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="d15b_014"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Disable=0 Tag="d15b_014" Name="소영"  ]
+
+	TrackName="d15b_015"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=4.200	[ Sync=1 Disable=0 Tag="d15b_015" Name="소영"  ]
+
+	TrackName="d15b_016"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=9.400	[ Sync=1 Disable=0 Tag="d15b_016" Name="소영"  ]
+
+	TrackName="d15b_017"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=15.600	[ Sync=1 Disable=0 Tag="d15b_017" Name="소영"  ]
+
+
+CutName="cut06"
+TrackNum=8
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=11.633	[ 
+SendMessage("매크로", "Play", "sc52.cut07");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=807.21 155.50 826.30 Dest=880.58 143.07 893.11 Fov=45.00 Bank=0.00  ]
+	Event=11.633	[ Sync=1 Pos=807.21 155.50 826.30 Dest=880.58 143.07 893.11 Fov=45.00 Bank=0.00 Eff=1  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=855.70 134.70 861.20 Rot=0.00 -20.00 0.00 Speed=1.00 Motion="%Sc52_cut06_소영.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=815.00 132.40 840.20 Rot=0.00 122.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="d15b_018"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=0.433	[ Sync=1 Disable=0 Tag="d15b_018" Name="소영"  ]
+
+	TrackName="d15b_019"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=2.800	[ Sync=1 Disable=0 Tag="d15b_019" Name="소영"  ]
+
+	TrackName="d15b_020"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=7.467	[ Sync=1 Disable=0 Tag="d15b_020" Name="소영"  ]
+
+
+CutName="cut07"
+TrackNum=8
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("청카드키", "페이드", "Recursive 0 1 1");
+ ]
+	Event=7.333	[ 
+SendMessage("매크로", "Play", "sc52.cut08");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=4
+	Event=0.000	[ Sync=1 Pos=862.63 155.49 875.13 Dest=822.86 140.08 840.52 Fov=45.00 Bank=0.00  ]
+	Event=3.850	[ Sync=1 Pos=862.63 155.49 875.13 Dest=822.86 140.08 840.52 Fov=45.00 Bank=0.00 Eff=1  ]
+	Event=3.933	[ Sync=1 Pos=808.72 153.23 822.84 Dest=852.76 150.76 865.85 Fov=45.00 Bank=0.00  ]
+	Event=7.333	[ Sync=1 Pos=808.72 153.23 822.84 Dest=852.76 150.76 865.85 Fov=45.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=855.70 134.20 861.20 Rot=0.00 -72.00 0.00 Speed=1.00 Motion="%Sc52_cut07_소영.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=815.40 131.20 840.20 Rot=0.00 317.00 0.00 Speed=1.00 Motion="%Sc52_cut07_희민.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="d15b_021"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Disable=0 Tag="d15b_021" Name="소영"  ]
+
+	TrackName="d15b_022"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=3.933	[ Sync=1 Disable=0 Tag="d15b_022" Name="소영"  ]
+
+	TrackName="청카드키"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=820.50 130.70 837.50 Rot=0.00 -47.00 0.00 Speed=1.00 Motion="머찐세환오빠" Action="워프+애니메이션" Loop=0  ]
+
+
+CutName="cut08"
+TrackNum=6
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=4
+	Event=0.000	[ 
+if( $신관_세환_열쇠이벤트 )
+{
+	SendMessage("희민","발광","Recursive off");
+	SendMessage("소영","발광","Recursive off");
+	SendMessage("매크로용손수위","발광","Recursive off");
+
+}
+SendMessage("렌턴_매크로용손수위","켜기","");
+ ]
+	Event=3.000	[ 
+RunScript("문_K2","문_신관._열어2");
+ ]
+	Event=5.000	[ 
+SendMessage("사운드","연주멈춤","52분위기06");
+ ]
+	Event=8.314	[ 
+SendMessage("매크로", "Play", "sc52.cut09");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=5
+	Event=0.000	[ Sync=1 Pos=1382.63 148.72 837.46 Dest=1483.54 148.37 855.06 Fov=45.00 Bank=0.00  ]
+	Event=6.000	[ Sync=1 Pos=1410.60 149.70 849.11 Dest=1482.70 151.40 851.68 Fov=45.00 Bank=0.00 Eff=1  ]
+	Event=6.086	[ Sync=1 Pos=1410.60 149.70 849.11 Dest=1482.70 151.40 851.68 Fov=45.00 Bank=0.00  ]
+	Event=7.433	[ Sync=1 Pos=1410.60 149.70 849.11 Dest=1482.70 151.40 851.68 Fov=45.00 Bank=0.00  ]
+	Event=8.314	[ Sync=1 Pos=1591.60 149.00 846.80 Dest=1690.80 161.60 848.50 Fov=45.00 Bank=0.00 Eff=1  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=3
+	Event=5.000	[ Path="macro/빵01.wav" Name=""  ]
+	Event=5.000	[ Path="macro/소영놀람01.wav" Name=""  ]
+	Event=7.933	[ Path="enemy/수위_웃음1.wav" Name=""  ]
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1432.90 135.40 827.70 Rot=0.00 106.00 0.00 Speed=1.00 Motion="%sc52_cut08_소영.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1416.00 134.20 862.10 Rot=0.00 93.00 0.00 Speed=1.00 Motion="%sc52_cut08_희민.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="매크로용손수위"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1620.20 130.40 848.10 Rot=0.00 90.00 0.00 Speed=1.00 Motion="%sc52_cut08_수위.MTN" Action="워프+애니메이션" Loop=0  ]
+
+
+CutName="cut09"
+TrackNum=6
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=2.167	[ 
+SendMessage("매크로", "Play", "sc52.cut10");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=1481.78 149.03 855.99 Dest=1690.83 161.60 848.46 Fov=45.00 Bank=0.00  ]
+	Event=2.167	[ Sync=1 Pos=1481.78 149.03 855.99 Dest=1690.83 161.60 848.46 Fov=45.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=2
+	Event=0.000	[ Path="macro/빵01.wav" Name=""  ]
+	Event=1.167	[ Path="enemy/수위_스윙2.wav" Name=""  ]
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1517.10 134.70 844.00 Rot=0.00 253.00 0.00 Speed=1.00 Motion="%sc52_cut09_소영.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1517.80 134.20 866.20 Rot=0.00 292.00 0.00 Speed=1.00 Motion="%sc52_cut09_희민.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="매크로용손수위"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1627.00 130.40 853.80 Rot=0.00 270.00 0.00 Speed=1.00 Motion="%sc52_cut09_수위.MTN" Action="워프+애니메이션" Loop=0  ]
+
+
+CutName="cut10"
+TrackNum=6
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.433	[ 
+SendMessage("카메라","카메라떨림","10 8 1");
+ ]
+	Event=2.000	[ 
+SendMessage("매크로", "Play", "sc52.cut11");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=6
+	Event=0.000	[ Sync=1 Pos=1529.26 155.34 872.07 Dest=1545.44 124.00 935.02 Fov=45.00 Bank=0.00  ]
+	Event=1.000	[ Sync=1 Pos=1539.34 121.38 909.03 Dest=1558.88 105.37 1000.02 Fov=45.00 Bank=0.00  ]
+	Event=1.240	[ Sync=1 Pos=1540.99 122.17 924.96 Dest=1560.53 105.37 1015.95 Fov=45.00 Bank=0.00  ]
+	Event=1.465	[ Sync=1 Pos=1542.83 121.38 931.09 Dest=1561.35 105.37 1022.08 Fov=45.00 Bank=0.00  ]
+	Event=1.750	[ Sync=1 Pos=1544.16 122.17 937.22 Dest=1562.18 105.37 1028.21 Fov=45.00 Bank=0.00  ]
+	Event=2.000	[ Sync=1 Pos=1546.13 121.38 944.57 Dest=1564.65 105.37 1035.56 Fov=45.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=2
+	Event=0.633	[ Path="macro/빵02.wav" Name=""  ]
+	Event=0.633	[ Path="macro/sence_15수위떨어짐.wav" Name=""  ]
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1563.90 134.70 730.30 Rot=0.00 253.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1428.70 134.20 880.00 Rot=0.00 292.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="매크로용손수위"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1552.10 130.40 783.00 Rot=0.00 9.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+
+CutName="cut11"
+TrackNum=6
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=5.920	[ 
+SendMessage("매크로", "Play", "cut12");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=4
+	Event=0.000	[ Sync=1 Pos=1546.13 121.38 944.57 Dest=1564.65 105.37 1035.56 Fov=45.00 Bank=0.00  ]
+	Event=1.000	[ Sync=1 Pos=1540.56 152.17 944.57 Dest=1564.65 105.37 1035.56 Fov=45.00 Bank=0.00  ]
+	Event=2.000	[ Sync=1 Pos=1540.56 152.17 944.57 Dest=1575.58 147.21 860.46 Fov=45.00 Bank=0.00  ]
+	Event=6.240	[ Sync=1 Pos=1540.56 152.17 944.57 Dest=1611.17 147.21 869.65 Fov=45.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=9
+	Event=0.350	[ Path="macro/움직임3.wav" Name=""  ]
+	Event=1.000	[ Path="macro/소영비명02.wav" Name=""  ]
+	Event=1.480	[ Path="enemy/수위_호루라기.wav" Name=""  ]
+	Event=2.000	[ Path="macro/빵02.wav" Name=""  ]
+	Event=3.690	[ Path="enemy/수위_호루라기.wav" Name=""  ]
+	Event=4.000	[ Path="macro/빵02.wav" Name=""  ]
+	Event=5.700	[ Path="enemy/수위_웃음1.wav" Name=""  ]
+	Event=5.920	[ Path="macro/소영비명01.wav" Name=""  ]
+	Event=5.920	[ Path="macro/빵02.wav" Name=""  ]
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=3
+	Event=0.000	[ Sync=1 Pos=1532.90 134.70 762.50 Rot=0.00 28.00 0.00 Speed=1.00 Motion="달리기" Action="워프+이동" Loop=0  ]
+	Event=2.000	[ Sync=1 Pos=1685.06 134.70 635.35 Rot=0.00 96.00 0.00 Speed=1.00 Motion="달리기" Action="이동" Loop=0  ]
+	Event=6.240	[ Sync=1 Pos=1873.83 134.70 524.35 Rot=0.00 34.00 0.00 Speed=1.00 Motion="서있기" Action="애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1428.70 134.20 880.00 Rot=0.00 292.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="매크로용손수위"
+	TrackType="PUPPET"
+ 	EventNum=3
+	Event=0.000	[ Sync=1 Pos=1539.80 131.40 859.60 Rot=0.00 9.00 0.00 Speed=1.00 Motion="달리기" Action="워프+이동" Loop=0  ]
+	Event=2.986	[ Sync=1 Pos=1526.70 131.40 744.80 Rot=0.00 9.00 0.00 Speed=1.00 Motion="달리기" Action="이동" Loop=0  ]
+	Event=5.460	[ Sync=1 Pos=1861.80 133.60 632.00 Rot=0.00 93.00 0.00 Speed=1.00 Motion="달리기" Action="이동" Loop=0  ]
+
+
+CutName="cut12"
+TrackNum=6
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=3
+	Event=0.000	[ 
+RunScript("강당으로가는문","문_신관._열어2");
+ ]
+	Event=2.486	[ 
+RunScript("강당으로가는문","문_신관._닫어2");
+ ]
+	Event=3.090	[ 
+SendMessage("매크로", "Play", "cut13");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=1764.30 158.84 764.32 Dest=1813.47 157.47 677.26 Fov=45.00 Bank=0.00  ]
+	Event=3.090	[ Sync=1 Pos=1714.10 155.80 769.10 Dest=1773.90 155.10 689.00 Fov=45.00 Bank=0.00 Eff=1  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=3
+	Event=0.340	[ Path="enemy/수위_호루라기.wav" Name=""  ]
+	Event=1.500	[ Path="macro/빵02.wav" Name=""  ]
+	Event=2.000	[ Path="enemy/수위_음(놓쳤다제길).wav" Name=""  ]
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1893.70 134.70 492.50 Rot=0.00 0.00 0.00 Speed=1.00 Motion="%sc52_cut12_소영.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1428.70 134.20 880.00 Rot=0.00 292.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="매크로용손수위"
+	TrackType="PUPPET"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=1767.90 134.90 644.40 Rot=0.00 83.00 0.00 Speed=1.00 Motion="%sc52_cut13_수위.MTN" Action="워프+애니메이션" Loop=0  ]
+	Event=3.090	[ Sync=1 Pos=1880.08 134.90 627.72 Rot=0.00 -3.00 0.00 Speed=1.00 Motion="서있기" Action="애니메이션" Loop=1  ]
+
+
+CutName="cut13"
+TrackNum=6
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=2.000	[ 
+SendMessage("희민","발광","Recursive off");
+SendMessage("소영","발광","Recursive off");
+SendMessage("매크로용손수위","발광","Recursive off");
+SendMessage("소영","애니메이션","정지");
+SendMessage("소영","위치","0 0 0");
+SendMessage("성아","애니메이션","정지");
+SendMessage("성아","위치","0 0 0");
+SendMessage("성아","페이드","Recursive 0 1 1");
+SendMessage("렌턴_매크로용손수위","끄기","");
+SendMessage("매크로용손수위","애니메이션","정지");
+SendMessage("매크로용손수위","위치","0 0 0");
+SendMessage("청카드키", "페이드", "Recursive 0 0 0");
+SendMessage("청카드키","애니메이션","서있기");
+RunScript("", "_whiteday._매크로끝");
+RunScript("정찰용수위","캐릭터_수위._홀위치지정");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=1840.80 151.57 636.76 Dest=1931.49 140.60 587.22 Fov=45.00 Bank=0.00  ]
+	Event=2.000	[ Sync=1 Pos=1840.80 151.57 636.76 Dest=1931.49 140.60 587.22 Fov=45.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=2
+	Event=0.000	[ Path="enemy/수위_음(누구냐).wav" Name=""  ]
+	Event=0.000	[ Path="macro/빵03.wav" Name=""  ]
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1898.00 134.70 386.80 Rot=0.00 0.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1548.10 134.20 928.10 Rot=0.00 34.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="매크로용손수위"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1866.20 130.10 626.20 Rot=0.00 64.00 0.00 Speed=1.00 Motion="%sc52_cut14_수위.MTN" Action="워프+애니메이션" Loop=0  ]

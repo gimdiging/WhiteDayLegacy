@@ -1,0 +1,171 @@
+SceneName="C:\whiteday\data\macro\sc03-1.txt"
+BspName="C:\whiteday\wangEDdata\map\\main1.bsp"
+StartCut="cut01"
+CutNum=4
+
+
+CutName="cut01"
+TrackNum=5
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=4
+	Event=0.000	[ 
+RunScript("", "_whiteday._매크로시작");
+SendMessage("매크로용이수위","NOCLIP","off");
+SendMessage("희민","NOCLIP","off");
+SendMessage("렌턴_매크로용이수위","켜기","");
+ ]
+	Event=1.000	[ 
+SendMessage("사운드","연주","절름_수위,절름수위.wav");
+ ]
+	Event=4.113	[ 
+//SendMessage("렌턴_매크로용이수위","켜기","");
+ ]
+	Event=5.013	[ 
+SendMessage("매크로","Play","cut02");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=6
+	Event=0.000	[ Sync=1 Pos=-1750.00 25.90 843.57 Dest=-1750.80 24.60 1014.10 Fov=45.00 Bank=0.00  ]
+	Event=2.775	[ Sync=1 Pos=-1749.35 25.90 855.41 Dest=-1750.80 24.60 1014.10 Fov=45.00 Bank=0.00  ]
+	Event=2.963	[ Sync=1 Pos=-1749.10 25.90 954.60 Dest=-1749.90 24.60 1054.60 Fov=45.00 Bank=0.00  ]
+	Event=3.313	[ Sync=1 Pos=-1749.10 25.90 954.60 Dest=-1749.90 24.60 1054.60 Fov=45.00 Bank=0.00 Eff=1  ]
+	Event=3.475	[ Sync=1 Pos=-1747.34 21.66 373.91 Dest=-1746.84 21.84 271.99 Fov=90.00 Bank=0.00  ]
+	Event=4.000	[ Sync=1 Pos=-1749.14 22.31 155.46 Dest=-1748.59 22.82 53.14 Fov=45.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=1
+	Event=2.775	[ Path="effect/camera_close.wav" Name=""  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.033	[ Sync=1 Pos=-1746.76 3.90 935.31 Rot=0.00 -180.00 0.00 Speed=1.00 Motion="%Sc04_cut00-1_희민.MTN" Action="애니메이션" Loop=0  ]
+
+	TrackName="매크로용이수위"
+	TrackType="PUPPET"
+ 	EventNum=2
+	Event=2.175	[ Sync=1 Pos=-1748.70 2.50 107.90 Rot=0.00 -180.00 0.00 Speed=1.00 Motion="호루라기불기" Action="워프+애니메이션" Loop=0  ]
+	Event=3.575	[ Sync=1 Pos=-1748.70 2.50 107.90 Rot=0.00 -180.00 0.00 Speed=1.00 Motion="호루라기불기" Action="워프+애니메이션" Loop=0  ]
+
+
+CutName="cut02"
+TrackNum=5
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=3
+	Event=1.475	[ 
+//SendMessage("main","게임속도","0.1");
+ ]
+	Event=1.738	[ 
+//SendMessage("main","게임속도","1");
+ ]
+	Event=3.000	[ 
+SendMessage("매크로","Play","cut03");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=3
+	Event=0.000	[ Sync=1 Pos=-1749.72 18.60 1271.41 Dest=-1754.20 17.30 1141.10 Fov=45.00 Bank=0.00  ]
+	Event=1.738	[ Sync=1 Pos=-1751.53 18.60 1191.83 Dest=-1754.17 17.30 1141.14 Fov=45.00 Bank=0.00  ]
+	Event=3.000	[ Sync=1 Pos=-1747.85 18.60 975.00 Dest=-1750.49 17.30 924.31 Fov=45.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=1
+	Event=2.923	[ Path="macro/절름수위bgm.wav" Name=""  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-1746.80 3.90 935.30 Rot=0.00 -180.00 0.00 Speed=1.00 Motion="%Sc04_cut00-3_희민.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="성아"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-1748.70 5.60 700.50 Rot=0.00 -180.00 0.00 Speed=1.60 Motion="달리기" Action="워프+애니메이션" Loop=1  ]
+
+	TrackName="매크로용이수위"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-1748.70 5.60 121.50 Rot=0.00 -180.00 0.00 Speed=1.60 Motion="달리기" Action="워프+애니메이션" Loop=1  ]
+
+
+CutName="cut03"
+TrackNum=5
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=2.588	[ 
+SendMessage("매크로","Play","cut04");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=3
+	Event=0.000	[ Sync=1 Pos=-1745.49 53.54 831.64 Dest=-1740.80 52.98 931.53 Fov=75.00 Bank=0.00  ]
+	Event=2.588	[ Sync=1 Pos=-1741.49 12.41 915.13 Dest=-1737.30 18.85 1014.91 Fov=75.00 Bank=0.00  ]
+	Event=4.090	[ Sync=1 Pos=-1760.70 17.10 1323.00 Dest=-1710.35 15.80 1364.56 Fov=75.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-1758.60 3.90 1146.60 Rot=0.00 -180.00 0.00 Speed=1.00 Motion="%Sc04_cut00-4_희민.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="성아"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-1743.23 5.60 1000.14 Rot=0.00 -180.00 0.00 Speed=1.00 Motion="달리기" Action="애니메이션" Loop=0  ]
+
+	TrackName="매크로용이수위"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-1743.23 5.60 804.14 Rot=0.00 -180.00 0.00 Speed=1.00 Motion="달리기" Action="애니메이션" Loop=0  ]
+
+
+CutName="cut04"
+TrackNum=5
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=3.900	[ 
+SendMessage("매크로","Play","sc04.cut01");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=-1721.20 17.10 1362.70 Dest=-1645.10 15.80 1362.70 Fov=45.00 Bank=0.00  ]
+	Event=2.933	[ Sync=1 Pos=-1383.80 17.10 1362.70 Dest=-1307.60 15.80 1362.70 Fov=45.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=1
+	Event=0.992	[ Path="effect/호흡.wav" Name=""  ]
+
+	TrackName="성아"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=0.0 0.0 0.0 Rot=0.00 0.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-1675.70 3.90 1369.10 Rot=0.00 -270.00 0.00 Speed=1.00 Motion="%Sc04_cut00-5_희민.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="매크로용이수위"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-1753.37 5.60 1360.68 Rot=0.00 -270.00 0.00 Speed=1.00 Motion="걷기" Action="워프+애니메이션" Loop=1  ]

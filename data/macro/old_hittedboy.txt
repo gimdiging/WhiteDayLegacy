@@ -1,0 +1,55 @@
+SceneName="C:\whiteday\data\macro\old_hittedboy.txt"
+BspName="C:\whiteday\wangEDdata\map\\old_main1.bsp"
+StartCut="cut01"
+CutNum=1
+
+
+CutName="cut01"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=7
+	Event=0.000	[ 
+	SendMessage("1층방화셔터", "애니메이션", "열기2");
+
+	SendMessage("사운드", "연주", "data/sound/event/old_구타씬.wav");
+
+	SendMessage("때리는놈", "애니메이션", "때리기");
+	SendMessage("맞는놈", "애니메이션", "맞기");
+
+	SendMessage("자막", "활성화", "");
+//	SendMessage("타이머", "스크립트설정", "0 0 1 오브젝트_유저.e학생구타이벤트1");
+//	SendMessage("타이머", "스크립트설정", "2 0 1 오브젝트_유저.e학생구타이벤트2");
+//	SendMessage("타이머", "스크립트설정", "4 0 1 오브젝트_유저.e학생구타이벤트3");
+//	SendMessage("타이머", "스크립트설정", "8 0 1 오브젝트_유저.e학생구타이벤트4");
+//	SendMessage("타이머", "스크립트설정", "35 0 1 오브젝트_유저.e학생구타이벤트5");
+//	SendMessage("타이머", "스크립트설정", "32 0 1 오브젝트_유저.e학생구타이벤트6");
+//	SendMessage("타이머", "스크립트설정", "12.9333 0 1 오브젝트_유저.e학생구타이벤트7");
+	SendMessage("자막", "와이드모드", "켜기");
+ ]
+	Event=2.000	[ 
+	SendMessage("유저", "쳐다보기", "1층방화셔터앞의자");
+ ]
+	Event=4.000	[ 
+	SendMessage("뚤린창살", "스크립트실행", "old_오브젝트_뚤린창살.FadeIn");
+ ]
+	Event=8.000	[ 
+	SendMessage("유저", "쳐다보지말기", "");
+	SendMessage("카메라", "fov", "18");
+ ]
+	Event=12.9333	[ 
+	SendMessage("1층방화셔터앞의자", "애니메이션", "넘어지기");
+ ]
+	Event=32.000	[ 
+	DeleteObject("때리는놈");
+	DeleteObject("맞는놈");
+ ]
+	Event=35.000	[ 
+	SendMessage("1층방화셔터", "애니메이션", "닫기2");
+
+	SendMessage("뚤린창살", "스크립트실행", "old_오브젝트_뚤린창살.FadeOut");
+	SendMessage("카메라", "fov", "60");
+	SendMessage("자막", "비활성", "");
+	SendMessage("자막", "와이드모드", "끄기");
+ ]

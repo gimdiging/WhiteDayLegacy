@@ -1,0 +1,85 @@
+SceneName="C:\whiteday\data\macro\sc20.txt"
+BspName="C:\whiteday\wangEDdata\map\\new.bsp"
+StartCut="cut01"
+CutNum=2
+
+
+CutName="cut01"
+TrackNum=5
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=3
+	Event=0.000	[ 
+RunScript("","_whiteday._매크로시작");
+SendMessage("은미", "발광", "Recursive on");
+SendMessage("은미", "발광색", "Recursive  50 50 50");
+SendMessage("매크로용손수위", "발광", "Recursive on");
+SendMessage("매크로용손수위", "발광색", "Recursive 50 50 50");
+if(TakeObjValue("정찰용수위", "angry") == 1 && $게임모드 != 0 && $게임모드 != 4)
+RunScript("매크로용손수위", "캐릭터_수위.AngryBat");
+SendMessage("매크로용이수위", "발광", "Recursive on");
+SendMessage("매크로용이수위", "발광색", "Recursive 50 50 50");
+
+SendMessage("은미","페이드","Box03 0 0 0");
+ ]
+	Event=0.375	[ 
+RunScript("매크로용칼", "e_칼.throw_knife");
+ ]
+	Event=1.330	[ 
+SendMessage("매크로", "Play", "sc20.cut02");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=1942.80 153.60 526.45 Dest=1942.75 144.12 621.39 Fov=57.00 Bank=0.00  ]
+	Event=0.975	[ Sync=1 Pos=1954.80 153.60 526.46 Dest=1954.75 144.12 621.40 Fov=57.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=1
+	Event=0.544	[ Path="macro/sence_20칼.wav" Name=""  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1948.70 132.16 517.13 Rot=0.00 0.00 0.00 Speed=1.00 Motion="서있기" Action="애니메이션" Loop=0  ]
+
+	TrackName="은미"
+	TrackType="PUPPET"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=1945.70 136.20 1256.50 Rot=0.00 0.00 0.00 Speed=1.00 Motion="던지기공격" Action="워프+애니메이션" Loop=0  ]
+	Event=0.975	[ Sync=1 Pos=1945.70 136.20 1256.50 Rot=0.00 0.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+
+CutName="cut02"
+TrackNum=4
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=1.800	[ 
+SendMessage("희민","텍스쳐변경","보통r");
+SendMessage("희민","표정바꿔","보통r");
+ ]
+	Event=2.640	[ 
+SendMessage("희민","텍스쳐변경","보통");
+SendMessage("희민","표정바꿔","보통");
+SendMessage("매크로", "Play", "sc21.cut01");
+SendMessage("매크로용칼", "발광", "Recursive off");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1953.17 140.37 551.05 Dest=1941.08 149.66 452.22 Fov=57.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1934.15 132.16 496.73 Rot=0.00 63.00 0.00 Speed=1.00 Motion="%sc20_cut02_희민.MTN" Action="애니메이션" Loop=0  ]

@@ -1,0 +1,323 @@
+SceneName="C:\whiteday\data\macro\old_e_macro.txt"
+BspName="C:\whiteday\wangEDdata\map\\old_main1.bsp"
+StartCut="cut00"
+CutNum=10
+
+CutName="cut00"
+TrackNum=2
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("자막", "활성화", ""); 
+SendMessage("자막", "와이드모드", "켜기"); 
+RunScript("","_whiteday.FadeOut");
+SendMessage("배경", "켜기", "sense_1");
+SendMessage("배경", "켜기", "sense_2");
+SendMessage("배경", "켜기", "sense_3");
+SendMessage("복도천정등1", "발광색", "Recursive 255 255 255");
+SendMessage("복도천정등2", "발광색", "Recursive 255 255 255");
+SendMessage("복도천정등3", "발광색", "Recursive 255 255 255");
+SendMessage("복도천정등1", "발광", "Recursive on");
+SendMessage("복도천정등2", "발광", "Recursive on");
+SendMessage("복도천정등3", "발광", "Recursive on");
+SendMessage("성아macro", "표정바꿔", "보통m");
+SendMessage("지현macro", "표정바꿔", "보통m");
+SendMessage("소영macro", "표정바꿔", "보통m");
+SendMessage("수의관문", "켜기", "");
+SendMessage("수의관문커서용", "켜기", "");
+SendMessage("화의관문", "켜기", "");
+SendMessage("화의관문커서용", "켜기", "");
+SendMessage("금의관문", "켜기", "");
+SendMessage("금의관문커서용", "켜기", "");
+ ]
+	Event=5.000	[ 
+SendMessage("자막", "비활성", ""); 
+SendMessage("자막", "와이드모드", "끄기"); 
+RunScript("","_whiteday.FadeIn");
+SendMessage("유저", "앉아", "");
+SendMessage("유저", "위치", "-1014 152 -714"); 
+SendMessage("문_본관21층", "발광", "Recursive on");
+SendMessage("문_본관21층", "애니메이션", "서있기");
+ChangeObjValue("문_본관21층", "OpenFlag", "0");
+ ]
+
+CutName="cut01"
+TrackNum=2
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("자막", "활성화", ""); 
+SendMessage("자막", "와이드모드", "켜기"); 
+SendMessage("유저", "쳐다보기", "성아macro");
+SendMessage("성아macro", "켜기", "");
+ ]
+	Event=85.000	[ 
+SendMessage("유저", "쳐다보지말기", "");
+DeleteObject("성아macro");
+SendMessage("매크로", "Play", "old_e_macro.cut02");
+ ]
+	TrackName="성아macro"
+	TrackType="PUPPET"
+ 	EventNum=13
+	Event=5.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+	Event=10.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="걷기1" Action="워프+애니메이션" Loop=0  ]
+	Event=15.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="걷기2" Action="워프+애니메이션" Loop=0  ]
+	Event=20.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="달리기1" Action="워프+애니메이션" Loop=0  ]
+	Event=25.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="달리기2" Action="워프+애니메이션" Loop=0  ]
+	Event=30.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="뒤로걷기" Action="워프+애니메이션" Loop=0  ]
+	Event=35.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="쉬기" Action="워프+애니메이션" Loop=0  ]
+	Event=50.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="귀막고놀라기" Action="워프+애니메이션" Loop=0  ]
+	Event=55.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="놀라기2" Action="워프+애니메이션" Loop=0  ]
+	Event=60.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="귀막고달리기" Action="워프+애니메이션" Loop=0  ]
+	Event=65.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="귀막고쪼그리기" Action="워프+애니메이션" Loop=0  ]
+	Event=70.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="귀여운척" Action="워프+애니메이션" Loop=0  ]
+	Event=75.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="두리번거리기" Action="워프+애니메이션" Loop=0  ]
+
+CutName="cut02"
+TrackNum=2
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("유저", "쳐다보기", "지현macro");
+SendMessage("지현macro", "켜기", "");
+ ]
+	Event=60.000	[ 
+SendMessage("유저", "쳐다보지말기", "");
+DeleteObject("지현macro");
+SendMessage("매크로", "Play", "old_e_macro.cut03");
+ ]
+	TrackName="지현macro"
+	TrackType="PUPPET"
+ 	EventNum=10
+	Event=5.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+	Event=10.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="걷기1" Action="워프+애니메이션" Loop=0  ]
+	Event=15.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="걷기2" Action="워프+애니메이션" Loop=0  ]
+	Event=20.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="달리기1" Action="워프+애니메이션" Loop=0  ]
+	Event=25.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="달리기2" Action="워프+애니메이션" Loop=0  ]
+	Event=30.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="뒤로걷기" Action="워프+애니메이션" Loop=0  ]
+	Event=35.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="쉬기" Action="워프+애니메이션" Loop=0  ]
+	Event=40.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="상체내밀기" Action="워프+애니메이션" Loop=0  ]
+	Event=45.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="손흔들며달리기" Action="워프+애니메이션" Loop=0  ]
+	Event=50.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="책상뒤지기" Action="워프+애니메이션" Loop=0  ]
+
+CutName="cut03"
+TrackNum=2
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("유저", "쳐다보기", "소영macro");
+SendMessage("소영macro", "켜기", "");
+ ]
+	Event=70.000	[ 
+SendMessage("유저", "쳐다보지말기", "");
+DeleteObject("소영macro");
+SendMessage("자막", "비활성", ""); 
+SendMessage("자막", "와이드모드", "끄기"); 
+SendMessage("수의조각", "켜기", "");
+SendMessage("수의조각커서용", "켜기", "");
+ ]
+	TrackName="소영macro"
+	TrackType="PUPPET"
+ 	EventNum=11
+	Event=0.000	[ Sync=1 Pos=-686 133 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+	Event=5.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="걷기1" Action="워프+애니메이션" Loop=0  ]
+	Event=10.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="걷기2" Action="워프+애니메이션" Loop=0  ]
+	Event=15.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="달리기1" Action="워프+애니메이션" Loop=0  ]
+	Event=20.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="달리기2" Action="워프+애니메이션" Loop=0  ]
+	Event=25.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="뒤로걷기" Action="워프+애니메이션" Loop=0  ]
+	Event=30.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="쉬기" Action="워프+애니메이션" Loop=0  ]
+	Event=45.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="나무에묶임" Action="워프+애니메이션" Loop=0  ]
+	Event=50.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="싫어" Action="워프+애니메이션" Loop=0  ]
+	Event=55.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="삐딱하게서있기" Action="워프+애니메이션" Loop=0  ]
+	Event=60.000	[ Sync=1 Pos=-686 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="힘들어하기" Action="워프+애니메이션" Loop=0  ]
+
+CutName="cut04"
+TrackNum=2
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("자막", "활성화", ""); 
+SendMessage("자막", "와이드모드", "켜기"); 
+SendMessage("유저", "쳐다보기", "나영macro");
+SendMessage("나영macro", "켜기", "");
+ ]
+	Event=55.000	[ 
+SendMessage("유저", "쳐다보지말기", "");
+DeleteObject("나영macro");
+SendMessage("매크로", "Play", "old_e_macro.cut05");
+ ]
+	TrackName="나영macro"
+	TrackType="PUPPET"
+ 	EventNum=9
+	Event=5.000	[ Sync=1 Pos=-378 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+	Event=10.000	[ Sync=1 Pos=-378 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="전진" Action="워프+애니메이션" Loop=0  ]
+	Event=15.000	[ Sync=1 Pos=-378 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="헤드뱅" Action="워프+애니메이션" Loop=0  ]
+	Event=20.000	[ Sync=1 Pos=-378 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="천천히걷기" Action="워프+애니메이션" Loop=0  ]
+	Event=25.000	[ Sync=1 Pos=-378 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="빨리걷기" Action="워프+애니메이션" Loop=0  ]
+	Event=30.000	[ Sync=1 Pos=-378 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="목메달고있기" Action="워프+애니메이션" Loop=0  ]
+	Event=35.000	[ Sync=1 Pos=-378 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="떨어지기" Action="워프+애니메이션" Loop=0  ]
+	Event=40.000	[ Sync=1 Pos=-378 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="떨어져있기" Action="워프+애니메이션" Loop=0  ]
+	Event=45.000	[ Sync=1 Pos=-378 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="기어달리기" Action="워프+애니메이션" Loop=0  ]
+
+CutName="cut05"
+TrackNum=2
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("유저", "쳐다보기", "고양이macro");
+SendMessage("고양이macro", "켜기", "");
+ ]
+	Event=40.000	[ 
+SendMessage("유저", "쳐다보지말기", "");
+DeleteObject("고양이macro");
+SendMessage("매크로", "Play", "old_e_macro.cut06");
+ ]
+	TrackName="고양이macro"
+	TrackType="PUPPET"
+ 	EventNum=7
+	Event=5.000	[ Sync=1 Pos=-378 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+	Event=10.000	[ Sync=1 Pos=-378 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="걷기" Action="워프+애니메이션" Loop=0  ]
+	Event=15.000	[ Sync=1 Pos=-378 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="달리기" Action="워프+애니메이션" Loop=0  ]
+	Event=20.000	[ Sync=1 Pos=-378 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="경계" Action="워프+애니메이션" Loop=0  ]
+	Event=25.000	[ Sync=1 Pos=-378 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="공격" Action="워프+애니메이션" Loop=0  ]
+	Event=30.000	[ Sync=1 Pos=-378 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="갇혀서있기" Action="워프+애니메이션" Loop=0  ]
+	Event=35.000	[ Sync=1 Pos=-378 132 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="날아공격" Action="워프+애니메이션" Loop=0  ]
+
+CutName="cut06"
+TrackNum=2
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("유저", "쳐다보기", "희민macro");
+SendMessage("희민macro", "켜기", "");
+ ]
+	Event=60.000	[ 
+SendMessage("유저", "쳐다보지말기", "");
+DeleteObject("희민macro");
+SendMessage("자막", "비활성", ""); 
+SendMessage("자막", "와이드모드", "끄기"); 
+SendMessage("화의조각", "켜기", "");
+SendMessage("화의조각커서용", "켜기", "");
+ ]
+	TrackName="희민macro"
+	TrackType="PUPPET"
+ 	EventNum=10
+	Event=5.000	[ Sync=1 Pos=-378 159 -344 Rot=0.00 270.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+	Event=10.000	[ Sync=1 Pos=-378 159 -344 Rot=0.00 270.00 0.00 Speed=1.00 Motion="전진" Action="워프+애니메이션" Loop=0  ]
+	Event=15.000	[ Sync=1 Pos=-378 159 -344 Rot=0.00 270.00 0.00 Speed=1.00 Motion="후진" Action="워프+애니메이션" Loop=0  ]
+	Event=20.000	[ Sync=1 Pos=-378 159 -344 Rot=0.00 270.00 0.00 Speed=1.00 Motion="좌측이동" Action="워프+애니메이션" Loop=0  ]
+	Event=25.000	[ Sync=1 Pos=-378 159 -344 Rot=0.00 270.00 0.00 Speed=1.00 Motion="우측이동" Action="워프+애니메이션" Loop=0  ]
+	Event=30.000	[ Sync=1 Pos=-378 159 -344 Rot=0.00 270.00 0.00 Speed=1.00 Motion="달리기" Action="워프+애니메이션" Loop=0  ]
+	Event=35.000	[ Sync=1 Pos=-378 159 -344 Rot=0.00 270.00 0.00 Speed=1.00 Motion="앉기" Action="워프+애니메이션" Loop=0  ]
+	Event=40.000	[ Sync=1 Pos=-378 159 -344 Rot=0.00 270.00 0.00 Speed=1.00 Motion="도움말" Action="워프+애니메이션" Loop=0  ]
+	Event=45.000	[ Sync=1 Pos=-378 159 -344 Rot=0.00 270.00 0.00 Speed=1.00 Motion="핸드폰" Action="워프+애니메이션" Loop=0  ]
+	Event=50.000	[ Sync=1 Pos=-378 159 -344 Rot=0.00 270.00 0.00 Speed=1.00 Motion="조작하기" Action="워프+애니메이션" Loop=0  ]
+
+CutName="cut07"
+TrackNum=2
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("자막", "활성화", ""); 
+SendMessage("자막", "와이드모드", "켜기"); 
+SendMessage("유저", "쳐다보기", "달수macro");
+SendMessage("달수macro", "켜기", "");
+ ]
+	Event=60.000	[ 
+SendMessage("유저", "쳐다보지말기", "");
+DeleteObject("달수macro");
+SendMessage("매크로", "Play", "old_e_macro.cut08");
+ ]
+	TrackName="달수macro"
+	TrackType="PUPPET"
+ 	EventNum=10
+	Event=5.000	[ Sync=1 Pos=-68 131 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+	Event=10.000	[ Sync=1 Pos=-68 131 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="걷기" Action="워프+애니메이션" Loop=0  ]
+	Event=15.000	[ Sync=1 Pos=-68 131 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="절름걷기" Action="워프+애니메이션" Loop=0  ]
+	Event=20.000	[ Sync=1 Pos=-68 131 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="달리기" Action="워프+애니메이션" Loop=0  ]
+	Event=25.000	[ Sync=1 Pos=-68 131 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="절름달리기" Action="워프+애니메이션" Loop=0  ]
+	Event=30.000	[ Sync=1 Pos=-68 131 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="공격1" Action="워프+애니메이션" Loop=0  ]
+	Event=35.000	[ Sync=1 Pos=-68 131 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="공격2" Action="워프+애니메이션" Loop=0  ]
+	Event=40.000	[ Sync=1 Pos=-68 131 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="문열기" Action="워프+애니메이션" Loop=0  ]
+	Event=45.000	[ Sync=1 Pos=-68 131 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="호루라기불기" Action="워프+애니메이션" Loop=0  ]
+	Event=50.000	[ Sync=1 Pos=-68 131 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="피토하며죽기" Action="워프+애니메이션" Loop=0  ]
+
+CutName="cut08"
+TrackNum=2
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("유저", "쳐다보기", "봉구macro");
+SendMessage("봉구macro", "켜기", "");
+ ]
+	Event=60.000	[ 
+SendMessage("유저", "쳐다보지말기", "");
+DeleteObject("봉구macro");
+SendMessage("매크로", "Play", "old_e_macro.cut09");
+ ]
+	TrackName="봉구macro"
+	TrackType="PUPPET"
+ 	EventNum=10
+	Event=5.000	[ Sync=1 Pos=-68 131 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+	Event=10.000	[ Sync=1 Pos=-68 131 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="걷기" Action="워프+애니메이션" Loop=0  ]
+	Event=15.000	[ Sync=1 Pos=-68 131 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="절름걷기" Action="워프+애니메이션" Loop=0  ]
+	Event=20.000	[ Sync=1 Pos=-68 131 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="달리기" Action="워프+애니메이션" Loop=0  ]
+	Event=25.000	[ Sync=1 Pos=-68 131 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="절름달리기" Action="워프+애니메이션" Loop=0  ]
+	Event=30.000	[ Sync=1 Pos=-68 131 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="공격1" Action="워프+애니메이션" Loop=0  ]
+	Event=35.000	[ Sync=1 Pos=-68 131 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="공격2" Action="워프+애니메이션" Loop=0  ]
+	Event=40.000	[ Sync=1 Pos=-68 131 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="문열기" Action="워프+애니메이션" Loop=0  ]
+	Event=45.000	[ Sync=1 Pos=-68 131 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="호루라기불기" Action="워프+애니메이션" Loop=0  ]
+	Event=50.000	[ Sync=1 Pos=-68 131 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="피토하며죽기" Action="워프+애니메이션" Loop=0  ]
+
+CutName="cut09"
+TrackNum=4
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("유저", "쳐다보기", "은미macro");
+SendMessage("은미macro", "켜기", "");
+ ]
+	Event=75.000	[ 
+SendMessage("유저", "쳐다보지말기", "");
+DeleteObject("은미macro");
+SendMessage("자막", "비활성", ""); 
+SendMessage("자막", "와이드모드", "끄기"); 
+SendMessage("금의조각", "켜기", "");
+SendMessage("금의조각커서용", "켜기", "");
+ ]
+	TrackName="은미macro"
+	TrackType="PUPPET"
+ 	EventNum=13
+	Event=5.000	[ Sync=1 Pos=-68 133 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+	Event=10.000	[ Sync=1 Pos=-68 133 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="걷기" Action="워프+애니메이션" Loop=0  ]
+	Event=15.000	[ Sync=1 Pos=-68 133 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="달리기" Action="워프+애니메이션" Loop=0  ]
+	Event=20.000	[ Sync=1 Pos=-68 133 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="공격1" Action="워프+애니메이션" Loop=0  ]
+	Event=25.000	[ Sync=1 Pos=-68 133 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="공격2" Action="워프+애니메이션" Loop=0  ]
+	Event=30.000	[ Sync=1 Pos=-68 133 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="웃기1" Action="워프+애니메이션" Loop=0  ]
+	Event=35.000	[ Sync=1 Pos=-68 133 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="소리치기" Action="워프+애니메이션" Loop=0  ]
+	Event=40.000	[ Sync=1 Pos=-68 133 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="떠들기" Action="워프+애니메이션" Loop=0  ]
+	Event=45.000	[ Sync=1 Pos=-68 133 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="공포의회상씬" Action="워프+애니메이션" Loop=0  ]
+	Event=50.000	[ Sync=1 Pos=-68 133 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="길게소리치기" Action="워프+애니메이션" Loop=0  ]
+	Event=55.000	[ Sync=1 Pos=-68 133 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="슬슬서있기" Action="워프+애니메이션" Loop=0  ]
+	Event=60.000	[ Sync=1 Pos=-68 133 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="슬슬걷기" Action="워프+애니메이션" Loop=0  ]
+	Event=65.000	[ Sync=1 Pos=-68 133 -370 Rot=0.00 270.00 0.00 Speed=1.00 Motion="슬슬공격" Action="워프+애니메이션" Loop=0  ]

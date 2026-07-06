@@ -1,0 +1,340 @@
+SceneName="C:\whiteday\data\macro\sc23.txt"
+BspName="C:\whiteday\wangEDdata\map\\new.bsp"
+StartCut="cut01"
+CutNum=8
+
+
+CutName="cut01"
+TrackNum=7
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=1.660	[ 
+SendMessage("매크로", "Play", "sc23.cut02");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1969.49 148.01 1256.40 Dest=2069.35 143.34 1258.56 Fov=45.60 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="은미"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1945.68 136.02 1256.50 Rot=0.00 90.00 0.00 Speed=1.00 Motion="서있기" Action="애니메이션" Loop=0  ]
+
+	TrackName="매크로용손수위"
+	TrackType="PUPPET"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=2318.30 131.40 1238.70 Rot=0.00 270.00 0.00 Speed=1.00 Motion="달리기" Action="워프+애니메이션" Loop=1  ]
+	Event=1.660	[ Sync=1 Pos=2318.30 131.40 1238.70 Rot=0.00 270.00 0.00 Speed=1.00 Motion="서있기" Action="애니메이션" Loop=0  ]
+
+	TrackName="매크로용이수위"
+	TrackType="PUPPET"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=2388.50 131.60 1271.42 Rot=0.00 -90.00 0.00 Speed=1.00 Motion="달리기" Action="워프+애니메이션" Loop=0  ]
+	Event=1.660	[ Sync=1 Pos=2388.50 131.60 1271.40 Rot=0.00 -90.00 0.00 Speed=1.00 Motion="서있기" Action="애니메이션" Loop=0  ]
+
+	TrackName="d15_006"
+	TrackType="AUDIO"
+ 	EventNum=0
+
+
+CutName="cut02"
+TrackNum=8
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=7.967	[ 
+SendMessage("매크로", "Play", "sc23.cut03");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=5
+	Event=0.000	[ Sync=1 Pos=2082.64 131.04 1260.68 Dest=1982.97 138.32 1257.17 Fov=20.80 Bank=0.00  ]
+	Event=4.400	[ Sync=1 Pos=2046.76 133.66 1259.42 Dest=1947.09 140.94 1255.91 Fov=20.80 Bank=0.00  ]
+	Event=4.740	[ Sync=1 Pos=1966.70 139.50 1256.60 Dest=1867.03 146.78 1253.09 Fov=40.00 Bank=0.00  ]
+	Event=6.980	[ Sync=1 Pos=2289.60 135.70 1256.00 Dest=2189.90 143.00 1252.50 Fov=100.00 Bank=0.00  ]
+	Event=8.433	[ Sync=1 Pos=2301.60 134.80 1256.40 Dest=2201.90 142.10 1252.90 Fov=100.00 Bank=0.00 Eff=1  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=1
+	Event=7.967	[ Path="macro/sence_20수위죽음.adp" Name=""  ]
+
+	TrackName="은미"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1945.70 136.00 1256.20 Rot=0.00 90.00 0.00 Speed=1.00 Motion="%sc23_cut02_은미.MTN" Action="애니메이션" Loop=0  ]
+
+	TrackName="d15_006"
+	TrackType="AUDIO"
+ 	EventNum=0
+
+	TrackName="d15_007"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Disable=0 Tag="d15_007" Name="은미"  ]
+
+	TrackName="매크로용손수위"
+	TrackType="PUPPET"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=2184.50 131.40 1246.90 Rot=0.00 249.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+	Event=7.233	[ Sync=1 Pos=2184.50 131.40 1246.90 Rot=0.00 249.00 0.00 Speed=1.00 Motion="스프레이맞기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="매크로용이수위"
+	TrackType="PUPPET"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=2180.30 131.60 1271.90 Rot=0.00 -95.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+	Event=6.767	[ Sync=1 Pos=2180.30 131.60 1271.90 Rot=0.00 -95.00 0.00 Speed=1.00 Motion="스프레이맞기" Action="워프+애니메이션" Loop=0  ]
+
+
+CutName="cut03"
+TrackNum=6
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=4
+	Event=0.000	[ 
+RunScript("유리_12","캐릭터_은미.macro_break");
+SendMessage("카메라","카메라떨림","10 5 5");
+ ]
+	Event=0.567	[ 
+RunScript("유리_13","캐릭터_은미.macro_break");
+ ]
+	Event=1.100	[ 
+RunScript("유리_14","캐릭터_은미.macro_break");
+ ]
+	Event=8.967	[ 
+SendMessage("매크로", "Play", "sc23.cut04");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=6
+	Event=0.000	[ Sync=1 Pos=1969.49 148.01 1256.40 Dest=2069.35 143.34 1258.56 Fov=45.60 Bank=0.00  ]
+	Event=0.300	[ Sync=1 Pos=1969.58 142.41 1265.99 Dest=2069.35 143.34 1258.56 Fov=45.60 Bank=0.00  ]
+	Event=0.800	[ Sync=1 Pos=1969.54 150.61 1254.80 Dest=2069.35 143.34 1258.56 Fov=45.60 Bank=0.00  ]
+	Event=1.100	[ Sync=1 Pos=1969.50 148.00 1256.40 Dest=2069.40 143.30 1258.60 Fov=45.60 Bank=0.00 Eff=1  ]
+	Event=2.000	[ Sync=1 Pos=2140.75 165.82 1216.98 Dest=2215.15 137.46 1277.47 Fov=45.60 Bank=0.00  ]
+	Event=8.967	[ Sync=1 Pos=2073.03 208.21 1124.63 Dest=2122.16 167.79 1201.78 Fov=45.60 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="은미"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1945.68 136.02 1256.50 Rot=0.00 90.00 0.00 Speed=1.00 Motion="서있기" Action="애니메이션" Loop=0  ]
+
+	TrackName="매크로용손수위"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=2184.50 131.40 1246.90 Rot=0.00 249.00 0.00 Speed=1.00 Motion="%sc23_cut03_손수위.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="매크로용이수위"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=2209.30 131.60 1267.40 Rot=0.00 -90.00 0.00 Speed=1.00 Motion="%sc23_cut03_이수위.MTN" Action="워프+애니메이션" Loop=0  ]
+
+
+CutName="cut04"
+TrackNum=5
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=6.575	[ 
+RunScript("", "_whiteday.FadeOut");
+ ]
+	Event=7.475	[ 
+SendMessage("매크로", "Play", "sc23.cut05");
+RunScript("", "_whiteday.FadeIn");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1949.32 149.38 1188.51 Dest=1948.92 143.81 1288.36 Fov=45.30 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="은미"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1945.70 133.69 1256.50 Rot=0.00 90.00 0.00 Speed=1.00 Motion="%sc23_cut04_은미.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="d15_008"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=2.533	[ Sync=1 Disable=0 Tag="d15_008" Name="은미"  ]
+
+
+CutName="cut05"
+TrackNum=5
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=4.400	[ 
+RunScript("", "_whiteday.FadeOut");
+ ]
+	Event=5.367	[ 
+SendMessage("매크로", "Play", "sc23.cut06");
+RunScript("", "_whiteday.FadeIn");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1823.40 201.10 1140.40 Dest=1879.40 170.50 1217.40 Fov=53.00 Bank=0.00 Eff=1  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="은미"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1945.70 139.17 1256.50 Rot=0.00 270.00 0.00 Speed=1.00 Motion="%sc23_cut05_은미.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="d15_009"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Disable=0 Tag="d15_009" Name="은미"  ]
+
+
+CutName="cut06"
+TrackNum=5
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=4.325	[ 
+RunScript("", "_whiteday.FadeOut");
+ ]
+	Event=5.400	[ 
+SendMessage("매크로", "Play", "sc23.cut07");
+RunScript("", "_whiteday.FadeIn");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1591.10 156.25 888.00 Dest=1587.87 152.52 987.88 Fov=45.30 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="은미"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1591.14 136.80 983.56 Rot=0.00 0.00 0.00 Speed=1.00 Motion="%sc23_cut06_은미.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="d15_010"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=0.467	[ Sync=1 Disable=0 Tag="d15_010" Name="은미"  ]
+
+
+CutName="cut07"
+TrackNum=6
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=4.333	[ 
+RunScript("", "_whiteday.FadeOut");
+ ]
+	Event=5.433	[ 
+SendMessage("은미","발광","Recursive off");
+SendMessage("매크로", "Play", "sc23.cut08");
+RunScript("", "_whiteday.FadeIn");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1934.00 302.33 859.02 Dest=1853.13 256.95 821.60 Fov=31.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="은미"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1601.55 137.40 752.97 Rot=0.00 8.00 0.00 Speed=1.00 Motion="%sc23_cut07_은미.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="d15_011"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=0.900	[ Sync=1 Disable=0 Tag="d15_011" Name="은미"  ]
+
+	TrackName="d15_012a"
+	TrackType="AUDIO"
+ 	EventNum=0
+
+
+CutName="cut08"
+TrackNum=7
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=10.233	[ 
+SendMessage("매크로용손수위","발광","Recursive off");
+if(TakeObjValue("정찰용수위", "angry") == 1 && $게임모드 != 0 && $게임모드 != 4)
+RunScript("매크로용손수위", "캐릭터_수위.AngryBat");
+SendMessage("매크로용이수위","발광","Recursive off");
+
+RunScript("","_whiteday._매크로끝");
+SendMessage("은미", "Stop", "");
+SendMessage("은미","페이드","Box03 0 1 1");
+//RunScript("은미", "캐릭터_은미._은미.첨부터");
+RunScript("","캐릭터_은미.start_event");
+SendMessage("오디오","연주","@신관_bgm.adp");
+SetTimer(0,"e_핸드폰메시지._신관은미대결");
+ ]
+	Event=10.333	[ 
+SendMessage("유저", "회전", "90");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1725.48 147.50 639.21 Dest=1625.78 140.80 637.71 Fov=75.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="은미"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1588.24 137.10 716.03 Rot=0.00 -5.00 0.00 Speed=1.00 Motion="%sc23_cut08_은미.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="d15_011"
+	TrackType="AUDIO"
+ 	EventNum=0
+
+	TrackName="d15_012a"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=4.529	[ Sync=1 Disable=0 Tag="d15_012a" Name="은미"  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=1728.70 132.20 639.10 Rot=0.00 -90.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]

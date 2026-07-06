@@ -1,0 +1,171 @@
+SceneName="C:\whiteday\data\macro\sc24.txt"
+BspName=""
+StartCut="cut01"
+CutNum=3
+
+
+CutName="cut01"
+TrackNum=5
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=3
+	Event=0.000	[ 
+RunScript("","_whiteday.QFadeIn");
+RunScript("","_whiteday._매크로시작");
+SendMessage("은미","페이드","Box03 0 0 0");
+SendMessage("크아악테잎", "페이드", "Recursive 0 1 1");
+SendMessage("크아악테잎", "애니메이션", "떨어지기");
+ ]
+	Event=7.000	[ 
+SendMessage("오디오","연주멈춤",""); 
+SendMessage("오디오","연주","신관_bgm.adp");
+ ]
+	Event=8.930	[ 
+SendMessage("매크로", "Play", "sc24.cut02");
+SendMessage("크아악테잎", "페이드", "Recursive 0 0 0");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=2378.05 400.87 659.02 Dest=2296.17 378.17 711.76 Fov=85.00 Bank=0.00  ]
+	Event=9.033	[ Sync=1 Pos=2370.12 393.74 664.13 Dest=2288.25 371.04 716.87 Fov=85.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=1
+	Event=0.400	[ Path="macro/sence_24은미비명.adp" Name=""  ]
+
+	TrackName="은미"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=2337.70 390.20 684.80 Rot=0.00 90.00 0.00 Speed=1.00 Motion="%sc23_cut09_은미.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="d15_012b"
+	TrackType="AUDIO"
+ 	EventNum=0
+
+
+CutName="cut02"
+TrackNum=5
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=7
+	Event=0.000	[ 
+SendMessage("은미","표정바꿔","죽음");
+SendMessage("은미","텍스쳐변경","죽음");
+SendMessage("은미","NOCLIP","on"); 
+SendMessage("떨어지는테잎", "페이드", "Recursive 0 1 1");
+SendMessage("크아악테잎", "페이드", "Recursive 0 0 0");
+ ]
+	Event=3.007	[ 
+RunScript("","_whiteday.QFadeOut");
+ ]
+	Event=3.127	[ 
+RunScript("","_whiteday.QFadeIn");
+ ]
+	Event=3.340	[ 
+RunScript("","_whiteday.QFadeOut");
+ ]
+	Event=3.453	[ 
+RunScript("","_whiteday.QFadeIn");
+ ]
+	Event=3.548	[ 
+RunScript("","_whiteday.QFadeOut");
+SendMessage("떨어지는테잎", "페이드", "Recursive 0 0 0");
+ ]
+	Event=6.967	[ 
+SendMessage("크아악테잎", "페이드", "Recursive 0 0 0");
+SendMessage("사운드","연주멈춤","화재경보음");
+SendMessage("매크로","Play","cut03");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=3
+	Event=0.000	[ Sync=1 Pos=2184.70 46.20 709.70 Dest=2207.60 143.60 709.00 Fov=100.00 Bank=0.00 Eff=1  ]
+	Event=3.453	[ Sync=1 Pos=2184.70 46.20 709.70 Dest=2207.60 143.60 709.00 Fov=100.00 Bank=0.00  ]
+	Event=3.548	[ Sync=1 Pos=2184.70 47.39 709.70 Dest=2207.60 144.79 709.00 Fov=100.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=1
+	Event=3.007	[ Path="macro/sence_24은미떨어짐.wav" Name=""  ]
+
+	TrackName="은미"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=2256.70 78.20 708.70 Rot=0.00 270.00 0.00 Speed=1.00 Motion="%sc23_cut10_은미.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="떨어지는테잎"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=2253.60 379.10 745.60 Rot=0.00 0.00 0.00 Speed=1.00 Motion="떨어지기" Action="워프+애니메이션" Loop=0  ]
+
+
+CutName="cut03"
+TrackNum=7
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=4
+	Event=2.000	[ 
+RunScript("", "_whiteday.FadeIn");
+ ]
+	Event=31.033	[ 
+SendMessage("떨어진테잎", "페이드", "Recursive 0 1 1");
+SendMessage("은미","입김","off");
+ ]
+	Event=42.867	[ 
+RunScript("", "_whiteday.FadeOut");
+ ]
+	Event=44.900	[ 
+SendMessage("은미","입김","off");
+$문_L2 = UNLOCK;
+SendMessage("구름다리막기", "충돌체크", "on");
+SendMessage("은미추락막기", "충돌체크", "on");
+if($진행루트 == 0)
+{
+	SendMessage("매크로", "Play", "sc26.cut01");
+}
+else {
+	RunScript("","_whiteday.FadeIn");
+	RunScript("", "_whiteday._매크로끝");	
+	SetTimer(0,"item._자판기열쇠");
+}
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=4
+	Event=2.000	[ Sync=1 Pos=2181.32 -20.80 714.30 Dest=2176.32 -20.90 611.65 Fov=10.00 Bank=0.00  ]
+	Event=15.000	[ Sync=1 Pos=2186.71 -19.94 732.98 Dest=2181.71 -20.04 630.28 Fov=40.00 Bank=0.00  ]
+	Event=38.600	[ Sync=1 Pos=2189.29 -16.04 758.94 Dest=2184.29 -16.14 656.24 Fov=40.00 Bank=0.00  ]
+	Event=45.900	[ Sync=1 Pos=2189.80 -16.04 763.86 Dest=2184.80 -16.14 661.16 Fov=40.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="은미"
+	TrackType="PUPPET"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=2202.70 6.20 706.80 Rot=0.00 86.00 0.00 Speed=1.00 Motion="%sc24_cut01_은미_mirror.MTN" Action="워프+애니메이션" Loop=0  ]
+	Event=2.000	[ Sync=1 Pos=2202.70 6.20 706.80 Rot=0.00 86.00 0.00 Speed=1.00 Motion="%sc24_cut01_은미_mirror.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="d15_013"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=11.467	[ Sync=1 Disable=0 Tag="d15_013" Name="은미"  ]
+
+	TrackName="떨어진테잎"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=31.033	[ Sync=1 Pos=2168.72 11.10 752.34 Rot=0.00 -124.00 0.00 Speed=1.00 Motion="오빠달려" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=2061.00 3.30 870.20 Rot=0.00 50.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]

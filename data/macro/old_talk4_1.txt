@@ -1,0 +1,38 @@
+SceneName="C:\whiteday\data\macro\old_talk4_1.txt"
+BspName="C:\whiteday\wangEDdata\map\\old_main1.bsp"
+StartCut="cut01"
+CutNum=1
+
+
+CutName="cut01"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=5
+	Event=0.000	[ 
+SendMessage("자막", "활성화", "");
+SendMessage("자막", "와이드모드", "켜기");
+SendMessage("자막", "말하는사람", "은미");
+SendMessage("은미", "발광", "Recursive on");
+SendMessage("은미", "발광색", "Recursive 104 96 23");
+ ]
+	Event=1.000	[ 
+SendMessage("본관2연결문3", "애니메이션", "열기1");
+SendMessage("본관2연결문4", "애니메이션", "열기2");
+SendMessage("유저", "쳐다보기", "은미");
+ ]
+	Event=2.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d05_001");
+ ]
+	Event=6.000	[ 
+SendMessage("본관2연결문3", "애니메이션", "닫기1");
+SendMessage("본관2연결문4", "애니메이션", "닫기2");
+ ]
+	Event=9.000	[ 
+SendMessage("유저", "쳐다보지말기", "");
+SendMessage("자막", "비활성", "");
+SendMessage("자막", "와이드모드", "끄기");
+SendMessage("자막", "말하는사람", "");
+DeleteObject("은미");
+ ]

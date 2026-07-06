@@ -1,0 +1,131 @@
+SceneName="D:\whiteday\data\macro\sc06.txt"
+BspName="D:\whiteday\wangeddata\map\\main1.bsp"
+StartCut="cut01"
+CutNum=3
+
+
+CutName="cut01"
+TrackNum=6
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+//RunScript("","_whiteday._매크로시작");
+SendMessage("배경","bspmode","5");
+SendMessage("소영","발광색","Recursive 50 50 50");
+SendMessage("소영","발광","Recursive on");
+ ]
+	Event=2.330	[ 
+SendMessage("매크로", "Play", "cut02");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=-1882.30 170.20 1177.60 Dest=-1989.10 135.70 1196.90 Fov=75.00 Bank=0.00  ]
+	Event=2.330	[ Sync=1 Pos=-1870.93 167.78 1213.72 Dest=-1989.10 124.50 1223.03 Fov=75.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-1941.80 130.90 1208.20 Rot=-4.00 239.00 -4.00 Speed=1.00 Motion="%Sc06_cut01_소영.MTN" Action="워프+애니메이션" Loop=1  ]
+
+	TrackName="나무윗쪽"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-1970.00 97.40 1211.50 Rot=0.00 -90.00 0.00 Speed=1.00 Motion="숨쉬기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="d05_008b"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Disable=0 Tag="d05_008b" Name="소영"  ]
+
+
+CutName="cut02"
+TrackNum=7
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=4.020	[ 
+SendMessage("매크로", "Play", "cut03");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-1914.67 158.61 1194.46 Dest=-2026.54 151.70 1249.55 Fov=75.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-1942.00 131.30 1208.90 Rot=-4.00 239.00 -4.00 Speed=1.00 Motion="%Sc06_cut02_소영.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="d05_008a"
+	TrackType="AUDIO"
+ 	EventNum=0
+
+	TrackName="나무윗쪽"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-1970.00 97.40 1211.50 Rot=0.00 -90.00 0.00 Speed=1.00 Motion="숨쉬기" Action="워프+애니메이션" Loop=1  ]
+
+	TrackName="d05_008c"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Disable=0 Tag="d05_008c" Name="소영"  ]
+
+
+CutName="cut03"
+TrackNum=6
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=2.010	[ 
+SendMessage("배경","bspmode","0");
+RunScript("","_whiteday._매크로끝");
+$문_본관화장실2F남 = LOCK;
+$문_본관화장실4F남 = LOCK;
+RunScript("문_1층남자화장실","문_본관1._닫쳐있어");
+RunScript("문_2층남자화장실","문_본관1._닫쳐있어");
+$문_교실2_8뒤 = UNLOCK;
+SetTimer(0, "o_고양이출몰장._흔들리기");
+SetTimer(0, "e_2d귀신._미혼모귀신");
+if($게임모드 != 0 && $게임모드 != 4)
+SendMessage("허드", "가스게이지켜", "600");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=-1928.20 156.30 1194.40 Dest=-1982.40 171.00 1277.10 Fov=75.00 Bank=0.00  ]
+	Event=2.010	[ Sync=1 Pos=-1922.50 157.55 1199.78 Dest=-2010.49 165.60 1246.62 Fov=75.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-1942.00 131.30 1208.90 Rot=-4.00 239.00 -4.00 Speed=1.00 Motion="%Sc06_cut03_소영.MTN" Action="워프+애니메이션" Loop=1  ]
+
+	TrackName="나무윗쪽"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-1970.00 97.40 1211.50 Rot=0.00 -90.00 0.00 Speed=1.00 Motion="숨쉬기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-1731.40 133.00 1284.20 Rot=0.00 103.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]

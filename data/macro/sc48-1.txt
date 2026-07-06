@@ -1,0 +1,137 @@
+SceneName="C:\whiteday\data\macro\sc48-1.txt"
+BspName="C:\whiteday\wangEDdata\map\\new.bsp"
+StartCut="cut01"
+CutNum=3
+
+
+CutName="cut01"
+TrackNum=6
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=5
+	Event=0.010	[ 
+RunScript("","_whiteday.FadeOut");
+SendMessage("자막", "활성화", ""); 
+ ]
+	Event=1.100	[ 
+RunScript("","_whiteday._매크로시작");
+SendMessage("희민","쳐다보지말기","");
+SendMessage("소영","쳐다보지말기","");
+SendMessage("소영","NOCLIP","off");
+RunScript("스위치_역사관1","o_신관스위치._켜");
+RunScript("스위치_역사관2","o_신관스위치._켜");
+RunScript("","_whiteday.FadeIn");
+ ]
+	Event=3.433	[ 
+SendMessage("소영","쳐다보기","성아");
+ ]
+	Event=4.533	[ 
+SendMessage("희민","쳐다보기","성아");
+ ]
+	Event=5.333	[ 
+SendMessage("성아","페이드","Recursive 0 0 0");
+SendMessage("매크로", "Play", "cut02");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=1
+	Event=1.100	[ Sync=1 Pos=873.56 36.42 1012.97 Dest=791.96 16.93 958.56 Fov=60.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=1.100	[ Sync=1 Pos=817.43 3.10 959.91 Rot=0.00 -94.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=1  ]
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=2
+	Event=1.100	[ Sync=1 Pos=705.80 5.80 961.80 Rot=0.00 94.00 0.00 Speed=1.00 Motion="천천히걷기" Action="워프+애니메이션" Loop=1  ]
+	Event=4.533	[ Sync=1 Pos=774.00 5.80 961.80 Rot=0.00 94.00 0.00 Speed=1.00 Motion="서있기" Action="애니메이션" Loop=1  ]
+
+	TrackName="성아"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=803.70 25.30 1091.60 Rot=0.00 114.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+
+CutName="cut02"
+TrackNum=6
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=4
+	Event=0.000	[ 
+SendMessage("희민","쳐다보지말기","");
+SendMessage("소영","쳐다보지말기","");
+ ]
+	Event=3.590	[ 
+RunScript("","_whiteday.FadeOut");
+ ]
+	Event=4.600	[ 
+RunScript("","_whiteday.FadeIn");
+ ]
+	Event=4.730	[ 
+SendMessage("성아","애니메이션","정지");
+SendMessage("성아","위치","0 0 0");
+SendMessage("성아","페이드","Recursive 0 1 1");
+SendMessage("소영","쳐다보지말기","");
+SendMessage("소영","NOCLIP","on");
+SendMessage("희민","NOCLIP","on");
+RunScript("","_whiteday._매크로끝");
+RunScript("소영", "캐릭터_소영._소영.제자리");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=815.91 26.08 956.96 Dest=727.90 25.61 998.35 Fov=60.00 Bank=0.00  ]
+	Event=2.840	[ Sync=1 Pos=815.91 26.08 956.96 Dest=888.33 25.61 1003.26 Fov=60.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=817.90 3.10 951.70 Rot=0.00 -180.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=774.00 5.80 961.80 Rot=0.00 94.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+	Event=4.600	[ Sync=1 Pos=1117.91 5.80 1087.04 Rot=0.00 66.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="성아"
+	TrackType="PUPPET"
+ 	EventNum=0
+
+
+CutName="cut03"
+TrackNum=5
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=0
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=0
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=0
+
+	TrackName="소영"
+	TrackType="PUPPET"
+ 	EventNum=0

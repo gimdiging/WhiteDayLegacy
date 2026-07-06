@@ -1,0 +1,217 @@
+#header
+bspfile = d:\whiteday\data\last.wep
+basedir = d:\whiteday
+
+#_001
+"tracklist"
+{
+자막	"TYPE WObjCaption"
+}
+
+"자막"
+{
+00:00	SendMessage("오디오BGM", "SetVolume", "0.8 5.3");
+00:00	SendMessage("오디오폰", "SetVolume", "0.9");
+00:00	SendMessage("오디오폰", "연주", "data/sound/voice/d19bb_001.adp");
+00:00   SendMessage("자막", "오버레이바탕검정", "켜기");
+00:00   SendMessage("유저", "위치", "-629 16 64");
+00:00   SendMessage("유저", "회전", "90");
+01:40   TextOut(GetString("d22_001"),8);
+02:90   TextOut(GetString("d22_002"),8);
+04:90   TextOut(GetString("d22_003"),8);
+08:20   TextOut(GetString("d22_004"),8);
+13:35   TextOut(GetString("d22_005"),8);
+15:00   TextOut(GetString("d22_006"),8);
+17:10   TextOut(GetString("d22_007"),8);
+21:45   TextOut(GetString("d22_008"),8);
+24:70   TextOut(GetString("d22_009"),8);
+26:50   TextOut(GetString("d22_010"),8);
+28:70   TextOut(GetString("d22_011"),2);
+30:00	SendMessage("오디오BGM", "SetVolume", "1.0 5.2");
+30:70   SendMessage("자막", "오버레이바탕검정", "끄기");
+}
+
+#_002
+"tracklist"
+{
+자막	"TYPE WObjCaption"
+}
+
+"자막"
+{
+00:00	SendMessage("오디오BGM", "SetVolume", "0.8 7.7");
+00:00	SendMessage("오디오폰", "연주", "data/sound/voice/d19bb_002.adp");
+00:00   SendMessage("자막", "오버레이바탕검정", "켜기");
+00:00   SendMessage("유저", "위치", "-629 16 64");
+00:00   SendMessage("유저", "회전", "90");
+02:00   TextOut(GetString("d23_001"),3);
+05:50   TextOut(GetString("d23_002"),3);
+08:60   TextOut(GetString("d23_003"),3);
+13:00   TextOut(GetString("d23_004"),4);
+18:70   TextOut(GetString("d23_005"),2);
+21:20   TextOut(GetString("d23_006"),3);
+25:10   TextOut(GetString("d23_007"),3);
+28:60   TextOut(GetString("d23_008"),4);
+30:00	SendMessage("오디오BGM", "SetVolume", "1.0 2.5");
+32:84	SendMessage("오디오BGM", "SetVolume", "0.8 2.5");
+33:40   TextOut(GetString("d23_009"),4);
+37:40   SendMessage("자막", "오버레이바탕검정", "끄기");
+40:03	SendMessage("오디오BGM", "SetVolume", "1.0 3.2");
+}
+
+#_003
+"tracklist"
+{
+자막	"TYPE WObjCaption"
+}
+
+"자막"
+{
+00:00	SendMessage("오디오BGM", "SetVolume", "0.8 3.1");
+01:00	SendMessage("오디오폰", "연주", "data/sound/voice/d19bb_003.adp");
+00:00   SendMessage("자막", "오버레이바탕검정", "켜기");
+00:00   SendMessage("유저", "위치", "36 17 660");
+00:00   SendMessage("유저", "회전", "360");
+01:00   TextOut(GetString("d24_001"),4);
+03:10   TextOut(GetString("d24_002"),3);
+06:60   TextOut(GetString("d24_003"),4);
+10:30   TextOut(GetString("d24_004"),10);
+17:29	SendMessage("오디오BGM", "SetVolume", "1.0 8.5");
+19:20   TextOut(GetString("d24_005"),5);
+24:20   SendMessage("자막", "오버레이바탕검정", "끄기");
+}
+
+#_004
+"tracklist"
+{
+자막	"TYPE WObjCaption"
+}
+
+"자막"
+{
+00:00	SendMessage("오디오BGM", "SetVolume", "0.8 2.7");
+02:70	SendMessage("오디오폰", "연주", "data/sound/voice/d19bb_004.adp");
+00:00   SendMessage("자막", "오버레이바탕검정", "켜기");
+00:00   SendMessage("유저", "위치", "663 17 63");
+00:00   SendMessage("유저", "회전", "270");
+02:90   TextOut(GetString("d25_001"),2);
+04:90   TextOut(GetString("d25_002"),2);
+08:10   TextOut(GetString("d25_003"),3);
+09:69	SendMessage("오디오BGM", "SetVolume", "1.0 1.1");
+10:78	SendMessage("오디오BGM", "SetVolume", "0.8 2.0");
+18:40	SendMessage("오디오BGM", "SetVolume", "1.0 0.7");
+18:70   TextOut(GetString("d25_004"),3);
+19:19	SendMessage("오디오BGM", "SetVolume", "0.8 1.9");
+23:60   TextOut(GetString("d25_005"),7);
+23:93	SendMessage("오디오BGM", "SetVolume", "1.0 3.2");
+27:10	SendMessage("오디오BGM", "SetVolume", "0.8 3.4");
+35:10   TextOut(GetString("d25_006"),3);
+37:55	SendMessage("오디오BGM", "SetVolume", "1.0 4.3");
+39:45   TextOut(GetString("d25_007"),3);
+42:45   SendMessage("자막", "오버레이바탕검정", "끄기");
+}
+
+#_005
+"tracklist"
+{
+자막	"TYPE WObjCaption"
+}
+
+"자막"
+{
+00:00	SendMessage("오디오BGM", "SetVolume", "0.8 2.3");
+01:27	SendMessage("오디오폰", "연주", "data/sound/voice/d19bb_005.adp");
+00:00   SendMessage("자막", "오버레이바탕검정", "켜기");
+00:00   SendMessage("유저", "위치", "663 17 63");
+00:00   SendMessage("유저", "회전", "270");
+01:87   TextOut(GetString("d26_001"),4);
+05:76	SendMessage("오디오BGM", "SetVolume", "1.0 1.7");
+06:75   TextOut(GetString("d26_002"),3);
+07:42	SendMessage("오디오BGM", "SetVolume", "0.8 2.1");
+09:58	SendMessage("오디오BGM", "SetVolume", "1.0 2.8");
+11:12   TextOut(GetString("d26_003"),3);
+12:37	SendMessage("오디오BGM", "SetVolume", "0.8 2.5");
+15:12   TextOut(GetString("d26_004"),5);
+15:85	SendMessage("오디오BGM", "SetVolume", "1.0 8.6");
+19:67   TextOut(GetString("d26_005"),14);
+24:29	SendMessage("오디오BGM", "SetVolume", "0.8 26.6");
+37:17   TextOut(GetString("d26_006"),5);
+43:52   TextOut(GetString("d26_007"),2);
+46:22   TextOut(GetString("d26_008"),2);
+50:27   TextOut(GetString("d26_009"),5);
+50:32	SendMessage("오디오BGM", "SetVolume", "1.0 5.2");
+55:52   SendMessage("자막", "오버레이바탕검정", "끄기");
+}
+
+#_006
+"tracklist"
+{
+자막	"TYPE WObjCaption"
+}
+
+"자막"
+{
+00:00	SendMessage("오디오BGM", "SetVolume", "0.8 3.3");
+02:45	SendMessage("오디오폰", "연주", "data/sound/voice/d19bb_006.adp");
+00:00   SendMessage("자막", "오버레이바탕검정", "켜기");
+00:00   SendMessage("유저", "위치", "663 17 63");
+00:00   SendMessage("유저", "회전", "270");
+02:45   TextOut(GetString("d27_001"),3);
+06:05   TextOut(GetString("d27_002"),3);
+09:59	SendMessage("오디오BGM", "SetVolume", "1.0 2.3");
+10:95   TextOut(GetString("d27_003"),6);
+11:82	SendMessage("오디오BGM", "SetVolume", "0.8 4.0");
+18:32   TextOut(GetString("d27_004"),4);
+22:45	SendMessage("오디오BGM", "SetVolume", "1.0 6.6");
+22:75   TextOut(GetString("d27_005"),9);
+31:75   SendMessage("자막", "오버레이바탕검정", "끄기");
+}
+
+#_007
+"tracklist"
+{
+자막	"TYPE WObjCaption"
+}
+
+"자막"
+{
+00:00	SendMessage("오디오BGM", "SetVolume", "0.8 3.3");
+01:60	SendMessage("오디오폰", "연주", "data/sound/voice/d19bb_007.adp");
+00:00   SendMessage("자막", "오버레이바탕검정", "켜기");
+00:00   SendMessage("유저", "위치", "1 17 -631");
+00:00   SendMessage("유저", "회전", "180");
+01:75   TextOut(GetString("d28_001"),3.5);
+08:86	SendMessage("오디오BGM", "SetVolume", "1.0 2.2");
+05:95   TextOut(GetString("d28_002"),2);
+09:30   TextOut(GetString("d28_003"),3.5);
+11:02	SendMessage("오디오BGM", "SetVolume", "0.8 3.7");
+14:22   TextOut(GetString("d28_004"),3.5);
+18:86   TextOut(GetString("d28_005"),3);
+21:60	SendMessage("오디오BGM", "SetVolume", "1.0 4.9");
+21:86   SendMessage("자막", "오버레이바탕검정", "끄기");
+}
+
+#_008
+"tracklist"
+{
+자막	"TYPE WObjCaption"
+}
+
+"자막"
+{
+00:87	SendMessage("오디오폰", "연주", "data/sound/voice/d19bb_008.adp");
+00:00   SendMessage("자막", "오버레이바탕검정", "켜기");
+00:00   SendMessage("유저", "위치", "1 17 -631");
+00:00   SendMessage("유저", "회전", "180");
+00:92   TextOut(GetString("d29_001"),2);
+03:09	SendMessage("오디오BGM", "SetVolume", "0.8 2.3");
+03:37   TextOut(GetString("d29_002"),3);
+05:33	SendMessage("오디오BGM", "SetVolume", "1.0 1.5");
+06:84	SendMessage("오디오BGM", "SetVolume", "0.8 2.2");
+07:76   TextOut(GetString("d29_003"),2);
+10:37   TextOut(GetString("d29_004"),4);
+14:91   TextOut(GetString("d29_005"),2);
+17:44	SendMessage("오디오BGM", "SetVolume", "1.0 2.9");
+18:82   TextOut(GetString("d29_006"),3);
+21:82   SendMessage("자막", "오버레이바탕검정", "끄기");
+}

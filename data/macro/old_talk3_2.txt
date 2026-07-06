@@ -1,0 +1,175 @@
+SceneName="C:\whiteday\data\macro\old_talk3_2.txt"
+BspName="C:\whiteday\wangEDdata\map\\old_main1.bsp"
+StartCut="cut01"
+CutNum=10
+
+
+CutName="cut01"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=3
+	Event=0.000	[ 
+SendMessage("자막", "활성화", "");
+//SendMessage("자막", "SetFunction", "대화#3-2.Talking");
+//SendMessage("자막", "SetObject", "소영");
+SendMessage("자막", "말하는사람", "소영");
+SendMessage("소영", "쳐다보기", "유저");
+SendMessage("소영", "애니메이션", "쉬기");
+SendMessage("자막", "와이드모드", "켜기");
+SendMessage("유저", "쳐다보기", "소영");
+//SendMessage("타이머", "스크립트설정", "1 0 1 대화#3-2.Talking");
+ ]
+	Event=1.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d04_004");
+ ]
+	Event=8.000	[ 
+SendMessage("유저", "쳐다보지말기", "");
+SendMessage("매크로", "Play", "cut02");
+ ]
+
+
+CutName="cut02"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=0.000	[ 
+SendMessage("자막", "자막선택", GetString("old_s9"));
+ ]
+
+
+CutName="cut02_1"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d04_005");
+ ]
+	Event=5.000	[ 
+SendMessage("매크로","Play","cut03");
+ ]
+
+
+CutName="cut02_2"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d04_006");
+ ]
+	Event=3.000	[ 
+SendMessage("매크로","Play","cut03");
+ ]
+
+
+CutName="cut02_3"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d04_007");
+ ]
+	Event=3.000	[ 
+SendMessage("매크로","Play","cut03");
+ ]
+
+
+CutName="cut03"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=0.000	[ 
+SendMessage("자막", "자막선택", GetString("old_s10"));
+ ]
+
+
+CutName="cut03_1"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d04_008");
+ ]
+	Event=3.000	[ 
+SendMessage("매크로","Play","cut04");
+ ]
+
+
+CutName="cut03_2"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d04_009");
+ ]
+	Event=3.000	[ 
+SendMessage("매크로","Play","cut04");
+ ]
+
+
+CutName="cut03_3"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d04_010");
+ ]
+	Event=4.000	[ 
+SendMessage("매크로","Play","cut04");
+ ]
+
+
+CutName="cut04"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=4
+	Event=0.000	[ 
+//SendMessage("자막", "비활성", "");
+//SendMessage("자막", "SetFunction", "");
+//SendMessage("자막", "SetObject", "");
+SendMessage("소영", "쳐다보지말기", "");
+//SendMessage("자막", "와이드모드", "끄기");
+
+//SendMessage("자막", "문자출력", "50,Show Time~~~");
+//SendMessage("소영", "페이드", "Recursive 1 1 0");
+
+//SendMessage("소영2", "페이드", "Recursive 1 0 1");
+//SendMessage("소영2", "애니메이션", "ShowTime");
+ ]
+	Event=1.000	[ 
+SendMessage("소영", "빨리돌기포인트", "" + FindPoint("old_소영위치2"));
+ ]
+	Event=1.200	[ 
+SendMessage("소영", "애니메이션", "달리기1");
+ ]
+	Event=4.000	[ 
+SendMessage("자막", "비활성", "");
+//SendMessage("자막", "SetFunction", "");
+//SendMessage("자막", "SetObject", "");
+SendMessage("자막", "말하는사람", "");
+SendMessage("자막", "와이드모드", "끄기");
+DeleteObject("소영");
+SendMessage("토의조각", "켜기", "");
+SendMessage("토의조각커서용", "켜기", "");
+SendMessage("소영이의목걸이", "켜기", "");
+SendMessage("소영이의목걸이커서용", "켜기", "");
+ ]

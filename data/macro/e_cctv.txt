@@ -1,0 +1,102 @@
+SceneName="C:\whiteday\data\macro\e_cctv.txt"
+BspName="C:\whiteday\wangEDdata\map\\main2.bsp"
+StartCut="cut01"
+CutNum=4
+
+
+CutName="cut01"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=3
+	Event=0.000	[ 
+	SendMessage("자막", "활성화", ""); 
+	SendMessage("유저", "카메라3인칭뷰", "on");
+	SendMessage("타이머", "스크립트설정", "0 0 1 " + "오브젝트_버튼1스위치._불켜기" + " *obj 스위치_교무실Ab");
+	SendMessage("카메라","fov", "-20");
+	SendMessage("cctv","켜기","cctv," + GetString("s438"));
+	SendMessage("카메라", "쳐다보기", FindPoint("카메라위치1") + " " + FindPoint("카메라대상1"));
+	RunScript("정찰용수위", "캐릭터_수위.Disable");
+			
+	if($본2_영호_교장실모디터보았나 == 0)
+	{
+		if(TakeObjValue("교장실모니터", "열쇠보기한번") == 0)
+		{
+			SendMessage("수위책장위에놓기","켜기","");
+			SetTimer(1, "o_교장실모니터._움직여라수위");
+			SetTimer(12, "o_교장실모니터._열쇠보여라");
+		}
+		$본2_영호_교장실모디터보았나 = 1;
+	}
+ ]
+	Event=10.000	[ 
+	if(TakeObjValue("교장실모니터", "열쇠보기한번") == 1)
+	{
+		SetTimer(0,"캐릭터_수위._정지 *obj 정찰용수위");
+		SetTimer(0, "o_교장실모니터._카메라꺼 *obj 교장실모니터");
+	}
+ ]
+	Event=18.000	[ 
+	if(TakeObjValue("교장실모니터", "열쇠보기한번") == 0)
+	{
+		SetTimer(0,"캐릭터_수위._정지 *obj 정찰용수위");
+		SetTimer(0, "o_교장실모니터._카메라꺼 *obj 교장실모니터");
+	}
+ ]
+
+
+CutName="cut02"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+	SendMessage("자막", "활성화", ""); 
+	SendMessage("유저", "카메라3인칭뷰", "on");
+	SendMessage("타이머", "스크립트설정", "0 0 1 " + "오브젝트_버튼1스위치._불켜기" + " *obj 스위치_미술실b");
+	SendMessage("카메라","fov", "-100");
+	SendMessage("cctv","켜기","cctv," + GetString("s439"));
+	SendMessage("카메라", "쳐다보기", FindPoint("카메라위치2") + " " + FindPoint("카메라대상2"));
+ ]
+	Event=10.000	[ 
+	SetTimer(0, "o_교장실모니터._카메라꺼 *obj 교장실모니터");
+ ]
+
+
+CutName="cut03"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+	SendMessage("자막", "활성화", ""); 
+	SendMessage("유저", "카메라3인칭뷰", "on");
+	SendMessage("카메라","fov", "-80");
+	SendMessage("cctv","켜기","cctv," + GetString("s440"));
+	SendMessage("카메라", "쳐다보기", FindPoint("카메라위치3") + " " + FindPoint("카메라대상3"));
+ ]
+	Event=10.000	[ 
+	SetTimer(0, "o_교장실모니터._카메라꺼 *obj 교장실모니터");
+ ]
+
+
+CutName="cut04"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+	SendMessage("자막", "활성화", ""); 
+	SendMessage("유저", "카메라3인칭뷰", "on");
+	SendMessage("타이머", "스크립트설정", "0 0 1 " + "오브젝트_버튼1스위치._불켜기" + " *obj 스위치_과학실Ab");
+	SendMessage("카메라","fov", "-120");
+	SendMessage("cctv","켜기","cctv," + GetString("s441"));
+	SendMessage("카메라", "쳐다보기", FindPoint("카메라위치4") + " " + FindPoint("카메라대상4"));
+ ]
+	Event=10.000	[ 
+	SetTimer(0, "o_교장실모니터._카메라꺼 *obj 교장실모니터");
+ ]

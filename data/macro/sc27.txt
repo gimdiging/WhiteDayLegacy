@@ -1,0 +1,349 @@
+SceneName="C:\whiteday\data\macro\sc27.txt"
+BspName="C:\whiteday\wangEDdata\map\\gym.bsp"
+StartCut="cut01"
+CutNum=6
+
+
+CutName="cut01"
+TrackNum=5
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=8
+	Event=0.000	[ 
+RunScript("","_whiteday._매크로시작");
+//$체육관_영호_남자탈의실잠김 = UNLOCK;
+//RunScript("남자탈의실문","강당문.lockon");
+SendMessage("은미", "페이드", "Box03 0 0 0");
+SendMessage("떨어지는조명1","중력","off");
+SendMessage("떨어지는조명2","중력","off");
+ ]
+	Event=1.282	[ 
+SendMessage("카메라","카메라떨림","50 10 3");
+SendMessage("사운드","연주","폭발01.adp");
+SendMessage("사운드","연주","loop,27불소리,체육관불.wav");
+SendMessage("열려라", "애니메이션", "부서지기");
+RunScript("","e_화의진._동문불");
+ ]
+	Event=2.318	[ 
+//SendMessage("배경","끄기","back");
+SendMessage("배경","끄기","key");
+ ]
+	Event=3.200	[ 
+SendMessage("떨어지는조명1","중력","on");
+ ]
+	Event=4.827	[ 
+SendMessage("카메라","카메라떨림","50 10 1");
+ ]
+	Event=4.918	[ 
+SendMessage("떨어지는조명2","중력","on");
+ ]
+	Event=6.255	[ 
+SendMessage("카메라","카메라떨림","50 10 1");
+ ]
+	Event=7.467	[ 
+SendMessage("매크로","Play","cut02");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=7
+	Event=0.000	[ Sync=1 Pos=212.35 14.10 -1244.39 Dest=307.03 2.50 -1243.29 Fov=60.00 Bank=0.00  ]
+	Event=1.018	[ Sync=1 Pos=212.40 14.10 -1244.40 Dest=263.40 9.40 -1317.10 Fov=60.00 Bank=0.00  ]
+	Event=1.845	[ Sync=1 Pos=212.40 14.10 -1244.40 Dest=263.40 9.40 -1317.10 Fov=60.00 Bank=0.00  ]
+	Event=2.082	[ Sync=1 Pos=212.40 14.10 -1244.40 Dest=298.40 12.90 -1243.30 Fov=60.00 Bank=0.00  ]
+	Event=5.000	[ Sync=1 Pos=212.40 14.10 -1244.40 Dest=298.40 12.90 -1243.30 Fov=60.00 Bank=0.00  ]
+	Event=5.233	[ Sync=1 Pos=212.40 14.10 -1244.40 Dest=291.57 10.80 -1297.75 Fov=60.00 Bank=0.00  ]
+	Event=6.533	[ Sync=1 Pos=212.40 14.10 -1244.40 Dest=271.95 10.80 -1327.96 Fov=60.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=1
+	Event=1.427	[ Path="macro/sence_27조명.wav" Name=""  ]
+
+	TrackName="떨어지는조명2"
+	TrackType="PUPPET"
+ 	EventNum=2
+	Event=2.467	[ Sync=1 Pos=223.80 368.00 -1610.40 Rot=0.00 0.00 0.00 Speed=1.00 Motion="액션" Action="애니메이션" Loop=0  ]
+	Event=6.191	[ Sync=1 Pos=223.80 -3.97 -1601.80 Rot=5.00 0.00 0.00 Speed=1.00 Motion="액션끝" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="떨어지는조명1"
+	TrackType="PUPPET"
+ 	EventNum=2
+	Event=2.900	[ Sync=1 Pos=558.80 367.40 -1610.30 Rot=0.00 0.00 0.00 Speed=1.00 Motion="액션" Action="애니메이션" Loop=0  ]
+	Event=6.255	[ Sync=1 Pos=558.80 -3.84 -1606.33 Rot=0.00 0.00 0.00 Speed=1.00 Motion="액션끝" Action="워프+애니메이션" Loop=0  ]
+
+
+CutName="cut02"
+TrackNum=5
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("마지막휘발유","페이드","Recursive 0 1 1");
+SendMessage("카메라","카메라떨림","3 3 1");
+ ]
+	Event=4.933	[ 
+SendMessage("마지막휘발유","페이드","Recursive 0 0 0");
+SendMessage("매크로","Play","cut02-1");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=4
+	Event=0.000	[ Sync=1 Pos=528.96 19.49 -671.24 Dest=559.18 42.69 -578.79 Fov=20.00 Bank=0.00  ]
+	Event=0.633	[ Sync=1 Pos=525.45 17.25 -669.43 Dest=559.18 42.69 -578.79 Fov=20.00 Bank=0.00  ]
+	Event=2.033	[ Sync=1 Pos=517.26 17.10 -710.17 Dest=546.46 13.48 -614.60 Fov=60.00 Bank=0.00  ]
+	Event=5.667	[ Sync=1 Pos=492.80 20.20 -790.40 Dest=522.00 16.60 -694.80 Fov=60.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=2
+	Event=1.567	[ Path="bgm/은미전/은미기합.wav" Name=""  ]
+	Event=1.850	[ Path="event/화이벤트/석유01.wav" Name=""  ]
+
+	TrackName="은미"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=537.30 7.40 -648.20 Rot=0.00 -18.00 0.00 Speed=1.00 Motion="%sc27_cut02_은미.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="마지막휘발유"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.033	[ Sync=1 Pos=532.00 -6.90 -658.80 Rot=0.00 -14.00 0.00 Speed=1.00 Motion="뿌지직" Action="워프+애니메이션" Loop=0  ]
+
+
+CutName="cut03"
+TrackNum=5
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=7
+	Event=0.000	[ 
+SendMessage("은미","페이드","Box03 0 0 0");
+ ]
+	Event=2.350	[ 
+SendMessage("사운드","연주","폭발02.adp");
+ ]
+	Event=3.325	[ 
+LoadObject("WObjFireLine", "불선2", "*startpos " + FindPoint("sc27_1_start") + " *endpos " + FindPoint("sc27_2_end") + " *sprsizex 32.0f *sprsizey 32.0f *sizex 64.0f *sizey 64.0f *firetype 0 *progresstime 1.0f" );
+ ]
+	Event=4.300	[ 
+LoadObject("WObjFireLine", "불선1", "*startpos " + FindPoint("sc27_1_start") + " *endpos " + FindPoint("sc27_1_end") + " *sprsizex 32.0f *sprsizey 32.0f *sizex 64.0f *sizey 64.0f *firetype 0 *progresstime 1.0f" );
+ ]
+	Event=5.925	[ 
+//SendMessage("북문", "애니메이션", "부서지기");
+RunScript("","e_화의진._북문불");
+SendMessage("사운드","연주멈춤","가스_루프");
+ ]
+	Event=7.125	[ 
+SendMessage("불선1","끄기","");
+SendMessage("불선2","끄기","");
+RunScript("", "e_화의진._바닥에불지르기");
+ ]
+	Event=8.000	[ 
+DeleteObject("불선1");
+DeleteObject("불선2");
+SendMessage("매크로","Play","cut05");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=3
+	Event=0.000	[ Sync=1 Pos=487.12 19.55 -785.04 Dest=526.45 26.68 -693.15 Fov=60.00 Bank=0.00  ]
+	Event=2.500	[ Sync=1 Pos=473.84 19.55 -836.65 Dest=513.19 26.68 -751.36 Fov=60.00 Bank=0.00  ]
+	Event=8.000	[ Sync=1 Pos=471.48 19.55 -850.95 Dest=496.97 26.68 -748.33 Fov=60.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=1
+	Event=3.325	[ Path="macro/붙어라불.wav" Name=""  ]
+
+	TrackName="은미"
+	TrackType="PUPPET"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=504.50 7.40 -755.00 Rot=0.00 -40.00 0.00 Speed=0.40 Motion="다친후걷기" Action="워프+이동" Loop=1  ]
+	Event=2.500	[ Sync=1 Pos=489.90 7.40 -802.30 Rot=0.00 -28.00 0.00 Speed=1.00 Motion="%sc21_cut01_은미.MTN" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="d17_002"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=2.500	[ Sync=1 Disable=0 Tag="d17_002" Name="은미"  ]
+
+
+CutName="cut05"
+TrackNum=6
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=13
+	Event=0.000	[ 
+SendMessage("증기1" , "파티클생성", "*origin pos " + FindPoint("sc27_증기01") + " " + GetWDBParticle("particle2.wdb", "연기02", "파티클내용") );
+ ]
+	Event=0.058	[ 
+SendMessage("카메라", "카메라이동", FindCamera("성01") + " 1.2");
+ ]
+	Event=0.520	[ 
+SendMessage("증기2" , "파티클생성", "*origin pos " + FindPoint("sc27_증기02") + " " + GetWDBParticle("particle2.wdb", "연기04", "파티클내용") );
+SendMessage("증기5" , "파티클생성", "*origin pos " + FindPoint("sc27_증기05") + " " + GetWDBParticle("particle2.wdb", "연기03", "파티클내용") );
+SendMessage("증기6" , "파티클생성", "*origin pos " + FindPoint("sc27_증기06") + " " + GetWDBParticle("particle2.wdb", "연기03", "파티클내용") );
+ ]
+	Event=0.800	[ 
+SendMessage("카메라", "카메라이동", FindCamera("성02") + " 1.2");
+ ]
+	Event=1.320	[ 
+SendMessage("증기3" , "파티클생성", "*origin pos " + FindPoint("sc27_증기03") + " " + GetWDBParticle("particle2.wdb", "연기04", "파티클내용") );
+ ]
+	Event=1.600	[ 
+SendMessage("카메라", "카메라이동", FindCamera("성03") + " 1.2");
+ ]
+	Event=2.060	[ 
+SendMessage("증기4" , "파티클생성", "*origin pos " + FindPoint("sc27_증기04") + " " + GetWDBParticle("particle2.wdb", "연기02", "파티클내용") );
+ ]
+	Event=2.400	[ 
+SendMessage("카메라", "카메라이동", FindCamera("성04") + " 1.2");
+ ]
+	Event=3.200	[ 
+SendMessage("카메라", "카메라이동", FindCamera("성05") + " 1.2");
+ ]
+	Event=4.000	[ 
+SendMessage("카메라", "카메라이동", FindCamera("성06") + " 1.2");
+ ]
+	Event=4.800	[ 
+SendMessage("카메라", "카메라이동", FindCamera("성07") + " 1.2");
+ ]
+	Event=5.633	[ 
+SendMessage("카메라", "카메라이동", FindCamera("성08") + " 1.2");
+ ]
+	Event=6.700	[ 
+SendMessage("매크로","Play","cut06");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=473.92 2.18 -843.18 Dest=489.63 23.10 -800.90 Fov=35.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="은미"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=490.36 7.40 -801.99 Rot=0.00 -50.00 0.00 Speed=1.00 Motion="%라스트뱅뱅.MTN" Action="애니메이션" Loop=0  ]
+
+	TrackName="d17_003"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=1.367	[ Sync=1 Disable=0 Tag="d17_003" Name="은미"  ]
+
+	TrackName="d17_004"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=5.200	[ Sync=1 Disable=0 Tag="d17_004" Name="은미"  ]
+
+
+CutName="cut06"
+TrackNum=8
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=3
+	Event=0.000	[ 
+SendMessage("마지막휘발유", "페이드", "Recursive 0 1 1");
+SendMessage("휘발유통", "페이드", "Recursive 0 0 0");
+SendMessage("은미","NOCLIP","on");
+SendMessage("마지막휘발유", "NOCLIP", "on");
+SendMessage("사운드","연주","loop,폭주_보일러,폭주보일러.wav");
+SendMessage("사운드", "연주멈춤", "27불소리");
+ ]
+	Event=4.629	[ 
+SendMessage("오디오","연주","@강당_bgm01.wav");
+ ]
+	Event=5.533	[ 
+SendMessage("사운드","연주멈춤","폭주_보일러");
+RunScript("","_whiteday._매크로끝");
+SendMessage("마지막휘발유", "페이드", "Recursive 0 0 0");
+SendMessage("마지막휘발유","위치","0 0 0");
+SendMessage("은미","페이드","Box03 0 1 1");
+RunScript("", "_whiteday.FadeIn"); 
+SendMessage("은미","NOCLIP","off");
+RunScript("", "e_화의진._시작");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=4
+	Event=0.000	[ Sync=1 Pos=0.80 45.90 -960.80 Dest=-4.20 44.90 -1060.70 Fov=60.00 Bank=0.00  ]
+	Event=1.967	[ Sync=1 Pos=0.80 21.90 -960.60 Dest=-4.20 20.90 -1060.50 Fov=60.00 Bank=0.00 Eff=1  ]
+	Event=2.200	[ Sync=1 Pos=-59.79 47.73 -1043.11 Dest=33.86 20.39 -1010.71 Fov=60.00 Bank=0.00  ]
+	Event=4.633	[ Sync=1 Pos=-27.00 38.20 -1031.80 Dest=66.70 10.80 -999.40 Fov=60.00 Bank=0.00 Eff=1  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=1
+	Event=1.967	[ Path="event/화이벤트/폭주.wav" Name=""  ]
+
+	TrackName="은미"
+	TrackType="PUPPET"
+ 	EventNum=0
+
+	TrackName="짱꼴라게이지"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=14.50 20.60 -1001.70 Rot=0.00 0.00 0.00 Speed=1.00 Motion="흔들리기" Action="애니메이션" Loop=1  ]
+
+	TrackName="짱꼴라보일러"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-45.90 -22.00 -1101.40 Rot=0.00 0.00 0.00 Speed=1.00 Motion="작동" Action="애니메이션" Loop=1  ]
+
+	TrackName="d17_005"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=2.533	[ Sync=1 Disable=0 Tag="d17_005" Name="은미"  ]
+
+	TrackName="희민"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=311.00 5.50 -1244.20 Rot=0.00 147.00 0.00 Speed=1.00 Motion="서있기" Action="워프+애니메이션" Loop=0  ]
+
+
+CutName="cut02-1"
+TrackNum=6
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("은미","페이드","Box03 0 1 1");
+ ]
+	Event=5.000	[ 
+SendMessage("매크로","Play","cut03");
+ ]
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=2
+	Event=0.000	[ Sync=1 Pos=513.60 19.82 -653.73 Dest=583.36 25.43 -640.88 Fov=60.00 Bank=0.00  ]
+	Event=5.000	[ Sync=1 Pos=480.56 19.82 -724.32 Dest=550.32 25.43 -711.47 Fov=60.00 Bank=0.00  ]
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="은미"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=537.30 7.40 -648.20 Rot=0.00 -25.00 0.00 Speed=0.50 Motion="다친후걷기" Action="워프+애니메이션" Loop=1  ]
+
+	TrackName="마지막휘발유"
+	TrackType="PUPPET"
+ 	EventNum=0
+
+	TrackName="d17_001"
+	TrackType="AUDIO"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Disable=0 Tag="d17_001" Name="은미"  ]

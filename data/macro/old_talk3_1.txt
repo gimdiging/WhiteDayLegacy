@@ -1,0 +1,64 @@
+SceneName="C:\whiteday\data\macro\old_talk3_1.txt"
+BspName="C:\whiteday\wangEDdata\map\\old_main1.bsp"
+StartCut="cut01"
+CutNum=3
+
+
+CutName="cut01"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=4
+	Event=0.000	[ 
+SendMessage("자막", "활성화", "");
+SendMessage("자막", "와이드모드", "켜기");
+//SendMessage("자막", "SetObject", "소영");
+//SendMessage("자막", "SetFunction", "대화#3-1.Talking");
+SendMessage("자막", "말하는사람", "소영");
+SendMessage("유저", "쳐다보기", "소영");
+//SendMessage("타이머", "스크립트설정", "1 0 1 대화#3-1.Talking");
+ ]
+	Event=1.000	[ 
+SendMessage("유저", "쳐다보지말기", "");
+SendMessage("자막", "다이얼로그출력", "old_d04_001");
+SendMessage("나무윗쪽", "애니메이션", "공격");
+ ]
+	Event=6.000	[ 
+SendMessage("자막", "문자출력", "2," +  GetString("old_s7"));
+ ]
+	Event=8.000	[ 
+SendMessage("매크로", "Play", "cut02");
+ ]
+
+
+CutName="cut02"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=0.000	[ 
+SendMessage("자막", "자막선택", GetString("old_s8"));
+ ]
+
+
+CutName="cut02_1"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d04_003");
+ ]
+	Event=4.000	[ 
+SendMessage("소영", "표정바꿔", "고통m");
+SendMessage("자막", "비활성", "");
+SendMessage("자막", "와이드모드", "끄기");
+//SendMessage("자막", "SetObject", "");
+//SendMessage("자막", "SetFunction", "");
+SendMessage("자막", "말하는사람", "");
+$old_Mission4_대화 = ON;
+SendMessage("타이머", "스크립트설정", "2 0 1 old_대화.ShotUp *obj 나무윗쪽");
+ ]

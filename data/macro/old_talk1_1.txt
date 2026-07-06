@@ -1,0 +1,207 @@
+SceneName="C:\whiteday\data\macro\old_talk1_1.txt"
+BspName="C:\whiteday\wangEDdata\map\\old_main1.bsp"
+StartCut="cut01"
+CutNum=10
+
+
+CutName="cut01"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=8
+	Event=0.000	[ 
+SendMessage("자막", "활성화", "");
+SendMessage("자막", "와이드모드", "켜기");
+//SendMessage("자막", "SetObject", "성아");
+//SendMessage("자막", "SetFunction", "대화#1-1.Talking");
+SendMessage("자막", "말하는사람", "성아");
+SendMessage("유저", "쳐다보기", "성아");
+//SendMessage("타이머", "스크립트설정", "5 0 1 대화#1-1.Talking");
+ ]
+	Event=5.000	[ 
+SendMessage("유저", "쳐다보지말기", "");
+SendMessage("성아", "쳐다보기", "유저");
+//SendMessage("타이머", "스크립트설정", "1 0 1 대화#1-1.Talking");
+ ]
+	Event=6.000	[ 
+SendMessage("성아", "애니메이션", "놀라기2");
+SendMessage("자막", "다이얼로그출력", "old_d01_001");
+ ]
+	Event=7.000	[ 
+//SendMessage("성아", "이동", FindPoint("성아위치1") + " 걷기2");
+SendMessage("성아", "빨리돌기포인트", "" + FindPoint("old_성아위치1"));
+//SendMessage("타이머", "스크립트설정", "1 0 1 대화#1-1.Talking");
+ ]
+	Event=7.200	[ 
+SendMessage("성아", "애니메이션", "걷기2");
+ ]
+	Event=8.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d01_002");
+ ]
+	Event=11.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d01_003");
+SendMessage("성아", "애니메이션", "서있기");
+ ]
+	Event=14.000	[ 
+SendMessage("매크로", "Play", "cut02");
+ ]
+
+
+CutName="cut02"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=0.000	[ 
+SendMessage("성아", "애니메이션", "쉬기");
+SendMessage("자막", "자막선택", GetString("old_s0"));
+ ]
+
+
+CutName="cut02_1"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d01_004");
+ ]
+	Event=4.000	[ 
+SendMessage("매크로","Play","cut03");
+ ]
+
+
+CutName="cut02_2"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d01_005");
+ ]
+	Event=3.000	[ 
+SendMessage("매크로","Play","cut03");
+ ]
+
+
+CutName="cut02_3"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("자막", "문자출력", "3," +  GetString("old_s1"));
+SendMessage("성아", "표정바꿔", "책망m");
+//SendMessage("타이머", "스크립트설정", "8 0 1 대화#1-1.Talking");
+ ]
+	Event=8.000	[ 
+SendMessage("매크로","Play","cut03");
+ ]
+
+
+CutName="cut03"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d01_006");
+ ]
+	Event=4.000	[ 
+SendMessage("매크로","Play","cut04");
+ ]
+
+
+CutName="cut04"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
+	Event=0.000	[ 
+SendMessage("자막", "자막선택", GetString("old_s2"));
+ ]
+
+
+CutName="cut04_1"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d01_007");
+ ]
+	Event=3.000	[ 
+SendMessage("매크로","Play","cut05");
+ ]
+
+
+CutName="cut04_2"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d01_008");
+ ]
+	Event=2.000	[ 
+SendMessage("매크로","Play","cut05");
+ ]
+
+
+CutName="cut05"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=9
+	Event=0.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d01_009");
+ ]
+	Event=5.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d01_010");
+ ]
+	Event=9.000	[ 
+SendMessage("자막", "다이얼로그출력", "old_d01_011");
+SendMessage("오디오", "연주", "data/sound/bgm/old_미궁01.wav");
+ ]
+	Event=14.000	[ 
+SendMessage("성아", "쳐다보지말기", "");
+SendMessage("배전판", "스크립트실행", "old_e_배전판.EventMode");
+SendMessage("성아", "애니메이션", "귀막고놀라기");
+SendMessage("자막", "다이얼로그출력", "old_d01_012");
+ ]
+	Event=15.000	[ 
+//SendMessage("성아", "이동", FindPoint("성아위치2") + " 귀막고달리기 *script 대화#1-1.SitDown");
+SendMessage("성아", "빨리돌기포인트", "" + FindPoint("old_성아위치1_2"));
+//SendMessage("타이머", "스크립트설정", "2 0 1 대화#1-1.Talking");
+ ]
+	Event=15.300	[ 
+SendMessage("성아", "애니메이션", "귀막고달리기");
+ ]
+	Event=17.000	[ 
+//SendMessage("타이머", "스크립트설정", "5 0 1 대화#1-1.Talking");
+ ]
+	Event=18.000	[ 
+SendMessage("성아", "회전", "0");
+SendMessage("성아", "애니메이션", "귀막고달리기");
+ ]
+	Event=22.000	[ 
+SendMessage("자막", "비활성", "");
+SendMessage("자막", "와이드모드", "끄기");
+//SendMessage("자막", "SetObject", "");
+//SendMessage("자막", "SetFunction", "");
+SendMessage("자막", "말하는사람", "");
+SendMessage("성아", "애니메이션", "귀막고쪼그리기");
+SendMessage("성아", "회전", "90");
+SendMessage("성아", "위치", "" + FindPoint("old_성아위치2"));
+$old_대화_성아 = "old_talk1_2";
+ ]
