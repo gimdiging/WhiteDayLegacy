@@ -5,25 +5,14 @@
 //   |    /|    //
 //   |___//|___//  h i t e D a y  S c r i p t F i l e 
 //
-//  (C) Sonnori 2000						old_main11.scp
+//  (C) Sonnori 2000						_main11.scp
 //
-//	æðúìman: agneau			last update: 2001.04.27
+//	æðúìman: matzzang		last update: 2000.07.24
 //  --------------------------------------------------
-
-Enter()
-{
-	LoadWed("data/old_main11.wep", 1);
-}
 
 Create()
 {
-	Enter();
-
-	SetTimer(0, "old_main11.Create_init");
-}
-
-Create_init()
-{
+	LoadWed("data/old_main11.wep", 1);
 }
 
 Destroy()
@@ -34,3 +23,8 @@ Destroy()
 //	RunScript("", "_whiteday.DestroyStage");
 //	SetTimer(1,"old_main11.Create");
 //	Load Script
+
+// Notepad, Ctrl + H
+// old_ to (none)
+// init to Init
+// alignbox to AlignBox

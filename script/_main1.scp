@@ -142,18 +142,18 @@ ScriptMain()
 
 	if(GetRegistry("Option\OldVersion") == "1")
 	{
-	RunScript("", "_whiteday.LoadMainGameObject");
+		RunScript("", "_whiteday.LoadMainGameObject");
 
-	SendMessage("유저", "캡춰", "카메라 머리");	
-	SendMessage("카메라", "fov", "-" + $FOV);
-	SendMessage("타이머", "켜기", "");
-	SendMessage("main", "게임시작", "시작");
+		SendMessage("유저", "캡춰", "카메라 머리");	
+		SendMessage("카메라", "fov", "-" + $FOV);
+		SendMessage("타이머", "켜기", "");
+		SendMessage("main", "게임시작", "시작");
 	
-	$현재스테이지 = "old_본관1";
-	RunScript("", "_whiteday.StartBanner");
+		$현재스테이지 = "old_본관1";
+		RunScript("", "_whiteday.StartBanner");
 
-	SetTimer(0.001, "old_main1.ScriptMain");
-	return;
+		SetTimer(0.001, "old_main1.ScriptMain");
+		return;
 	}
 
 	Enter();
