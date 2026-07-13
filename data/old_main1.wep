@@ -17085,7 +17085,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "obj/old_오브젝트_목의관문.pet"
+	*Filename "Obj/old_오브젝트_목의관문.pet"
 	*Script "*init old_오브젝트_토의관문.Init커서용"
 	*Pos -1127.09 12.71 1978.49
 	*Rot 90.0 90.0 0.0
@@ -17173,7 +17173,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "obj/old_o_자판기휴지.pet"
+	*Filename "Obj/old_o_자판기휴지.pet"
 	*Script "*init old_o_자판기휴지.Init휴지"
 	*Pos -1803.65 3 -632.1
 	*Rot 0.00 90.00 25.00
@@ -17848,7 +17848,7 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Name  "수의관문커서용"
-	*Filename "obj/old_오브젝트_목의관문.pet"
+	*Filename "Obj/old_오브젝트_목의관문.pet"
 	*Script "*init old_오브젝트_수의관문.Init커서용"
 	*Pos 115 150 -330
 	*Rot 0.0 -90.0 90.0
@@ -17892,7 +17892,7 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Name  "화의관문커서용"
-	*Filename "obj/old_오브젝트_목의관문.pet"
+	*Filename "Obj/old_오브젝트_목의관문.pet"
 	*Script "*init old_오브젝트_화의관문.Init커서용"
 	*Pos 115 150 -370
 	*Rot 0.0 -90.0 90.0
@@ -17936,7 +17936,7 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Name  "금의관문커서용"
-	*Filename "obj/old_오브젝트_목의관문.pet"
+	*Filename "Obj/old_오브젝트_목의관문.pet"
 	*Script "*init old_오브젝트_금의관문.Init커서용"
 	*Pos 115 150 -410
 	*Rot 0.0 -90.0 90.0
@@ -18017,7 +18017,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "obj/old_오브젝트_그림11.pet"
+	*Filename "Obj/old_오브젝트_그림11.pet"
 	*Pos -1786.00 165.10 214.90
 	*Rot 0.0 90.0 -14.0
 	*Scale 2.00
@@ -18030,7 +18030,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "obj/old_오브젝트_그림12.pet"
+	*Filename "Obj/old_오브젝트_그림12.pet"
 	*Pos -1785.30 167.00 534.60
 	*Rot 0.0 90.0 -14.0
 	*Scale 2.00
@@ -18043,7 +18043,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "obj/old_오브젝트_그림13.pet"
+	*Filename "Obj/old_오브젝트_그림13.pet"
 	*Pos -1786.30 167.30 1494.40
 	*Rot 0.0 90.0 -14.0
 	*Scale 2.00
@@ -18056,7 +18056,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "obj/old_오브젝트_그림14.pet"
+	*Filename "Obj/old_오브젝트_그림14.pet"
 	*Pos -1710.19 165.95 1174.73
 	*Rot 0.0 -90.0 12.0
 	*Scale 2.00
@@ -18069,7 +18069,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "obj/old_오브젝트_그림15.pet"
+	*Filename "Obj/old_오브젝트_그림15.pet"
 	*Pos -1785.30 166.90 855.10
 	*Rot 0.0 90.0 -14.0
 	*Scale 2.00
@@ -18082,7 +18082,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "obj/old_오브젝트_그림16.pet"
+	*Filename "Obj/old_오브젝트_그림16.pet"
 	*Pos -1709.70 166.00 534.70
 	*Rot 0.0 -90.0 8.0
 	*Scale 2.00
@@ -18095,7 +18095,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "obj/old_오브젝트_그림17.pet"
+	*Filename "Obj/old_오브젝트_그림17.pet"
 	*Pos -1710.10 166.00 215.80
 	*Rot 0.0 -90.0 8.0
 	*Scale 2.00
@@ -18108,7 +18108,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "obj/old_오브젝트_그림18.pet"
+	*Filename "Obj/old_오브젝트_그림18.pet"
 	*Pos -1710.20 165.90 854.70
 	*Rot 0.0 -90.0 8.0
 	*Scale 2.00
@@ -18121,7 +18121,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "obj/old_오브젝트_그림19.pet"
+	*Filename "Obj/old_오브젝트_그림19.pet"
 	*Pos -1709.60 166.10 1494.70
 	*Rot 0.0 -90.0 8.0
 	*Scale 2.00
@@ -18134,7 +18134,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "obj/old_오브젝트_그림20.pet"
+	*Filename "Obj/old_오브젝트_그림20.pet"
 	*Pos -1785.30 166.90 1174.90
 	*Rot 0.0 90.0 -14.0
 	*Scale 2.00
