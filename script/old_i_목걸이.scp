@@ -22,7 +22,7 @@ Init()
 
 Init커서용()
 {
-	SendMessage("", "스크립트설정", "center " + $G_File);
+	SendMessage("", "스크립트설정", "item " + $G_File);
 	SetObjValue("Step", 0);
 	SetObjName("소영이의목걸이커서용");
 	SendMessage("", "페이드", "Recursive 0 0 0");
