@@ -298,7 +298,7 @@
 
 *NumVisGroup 0
 
-*NumElement 1383
+*NumElement 1384
 
 *Element 0
 {
@@ -17751,7 +17751,7 @@
 	*Class "WObjStaticBody"
 	*Filename "Item/old_아이템_금의문장.pet"
 	*Script "*lighting 0"
-	*Pos -68 107 -370
+	*Pos -67.25 107.36 -372.95
 	*Rot 0.0 270.0 0.0
 	*Scale 1.00
 	*FlagShow 1
@@ -17765,7 +17765,7 @@
 	*Class "WObjStaticBody"
 	*Filename "Item/old_아이템_목의문장.pet"
 	*Script "*init old_아이템_금의문장.Init커서용"
-	*Pos -68 107 -370
+	*Pos -67.25 107.36 -372.95
 	*Rot 0.0 270.0 0.0
 	*Scale 1.00
 	*FlagShow 1
@@ -17779,7 +17779,7 @@
 	*Class "WObjStaticBody"
 	*Filename "Item/old_아이템_화의문장.pet"
 	*Script "*lighting 0"
-	*Pos -378 107 -370
+	*Pos -358.58 107.51 -372.66
 	*Rot 0.0 270.0 0.0
 	*Scale 1.00
 	*FlagShow 1
@@ -17793,7 +17793,7 @@
 	*Class "WObjStaticBody"
 	*Filename "Item/old_아이템_목의문장.pet"
 	*Script "*init old_아이템_화의문장.Init커서용"
-	*Pos -378 107 -370
+	*Pos -358.58 107.51 -372.66
 	*Rot 0.0 270.0 0.0
 	*Scale 1.00
 	*FlagShow 1
@@ -17807,7 +17807,7 @@
 	*Class "WObjStaticBody"
 	*Filename "Item/old_아이템_수의문장.pet"
 	*Script "*lighting 0"
-	*Pos -686 107 -370
+	*Pos -684.28 107.51 -371.65
 	*Rot 0.0 270.0 0.0
 	*Scale 1.00
 	*FlagShow 1
@@ -17821,7 +17821,7 @@
 	*Class "WObjStaticBody"
 	*Filename "Item/old_아이템_목의문장.pet"
 	*Script "*init old_아이템_수의문장.Init커서용"
-	*Pos -686 107 -370
+	*Pos -684.28 107.51 -371.65
 	*Rot 0.0 270.0 0.0
 	*Scale 1.00
 	*FlagShow 1
@@ -18148,8 +18148,21 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Filename "event/old_e_2d귀신.pet"
-	*Pos -890 0 1473
-	*Rot 90.0 0.0 0.0
+	*Pos -805.33 0.79 1591.03
+	*Rot 90.0 -90.0 0.0
+	*Scale 1.00
+	*FlagShow 1
+	*VisGroup -1
+	*BlockWay 0
+}
+
+*Element 1383
+{
+	*Type  "PUPPET"
+	*Class "WObjStaticBody"
+	*Filename "Obj/old_오브젝트_열림-철재서류장.pet"
+	*Pos -805.33 -24.79 1591.03
+	*Rot 0.0 -90.0 0.0
 	*Scale 1.00
 	*FlagShow 1
 	*VisGroup -1
