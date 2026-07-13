@@ -2,7 +2,7 @@
 #This is auto generated project file which is made by WangED. Don't edit this file.
 
 
-*NumPuppet 292
+*NumPuppet 291
    0 : "Obj/old_o_가스스토어안킨것.pet"
    1 : "Obj/old_o_가스호수관-꺽.pet"
    2 : "Obj/old_o_가스호수관-직.pet"
@@ -285,16 +285,15 @@
  279 : "char/old_캐릭터_수위2.pet"
  280 : "char/old_캐릭터_희민.pet"
  281 : "event/old_e_2d귀신.pet"
- 282 : "Item/old_아이템_선물봉투.pet"
- 283 : "Item/old_아이템_금의문장.pet"
- 284 : "Item/old_아이템_화의문장.pet"
- 285 : "Item/old_아이템_수의문장.pet"
- 286 : "Obj/old_오브젝트_금의관문.pet"
- 287 : "Obj/old_오브젝트_화의관문.pet"
- 288 : "Obj/old_오브젝트_수의관문.pet"
- 289 : "Obj/old_o_자판기휴지.pet"
- 290 : "char/old_캐릭터_수위12.pet"
- 291 : "char/old_캐릭터_희민1.pet"
+ 282 : "Item/old_아이템_금의문장.pet"
+ 283 : "Item/old_아이템_화의문장.pet"
+ 284 : "Item/old_아이템_수의문장.pet"
+ 285 : "Obj/old_오브젝트_금의관문.pet"
+ 286 : "Obj/old_오브젝트_화의관문.pet"
+ 287 : "Obj/old_오브젝트_수의관문.pet"
+ 288 : "Obj/old_o_자판기휴지.pet"
+ 289 : "char/old_캐릭터_수위12.pet"
+ 290 : "char/old_캐릭터_희민1.pet"
 
 
 *NumVisGroup 0
@@ -17072,11 +17071,11 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "item/old_아이템_선물봉투.pet"
+	*Filename "Item/old_아이템_쪽지01.pet"
 	*Script "*init old_i_목걸이.Init커서용"
-	*Pos -1084.57 104.23 1973.16
-	*Rot 270.0 46.0 0.0
-	*Scale 1.00
+	*Pos -1085.57 104.23 1974.16
+	*Rot 180.0 46.0 0.0
+	*Scale 0.50
 	*FlagShow 1
 	*VisGroup -1
 	*BlockWay 0
@@ -17160,7 +17159,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "item/old_아이템_쪽지01.pet"
+	*Filename "Item/old_아이템_쪽지01.pet"
 	*Script "*init old_o_자판기휴지.Init동전투입구"
 	*Pos -1803.55 25.18 -641.5
 	*Rot 0.0 0.0 90.0
@@ -17188,7 +17187,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "item/old_아이템_쪽지01.pet"
+	*Filename "Item/old_아이템_쪽지01.pet"
 	*Script "*init old_o_자판기휴지.Init휴지커서용"
 	*Pos -1803.65 5 -632.1
 	*Rot 0.00 90.00 25.00
