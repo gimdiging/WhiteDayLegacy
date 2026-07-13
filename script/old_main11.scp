@@ -23,8 +23,3 @@ Destroy()
 //	RunScript("", "_whiteday.DestroyStage");
 //	SetTimer(1,"old_main11.Create");
 //	Load Script
-
-// Notepad, Ctrl + H
-// old_ to (none)
-// init to Init
-// alignbox to AlignBox
