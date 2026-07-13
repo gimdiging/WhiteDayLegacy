@@ -63,5 +63,6 @@ handle.click()
 		SendMessage("", "애니메이션", "열기");
 		SetObjValue("OpenFlag", OPEN);
 		SendMessage("사운드", "연주", "data/sound/캐비넷_열기.wav");
+		SendMessage("종이귀신", "페이드", "Recursive 0 0 1");
 	}
 }
