@@ -38,12 +38,15 @@ ScriptMain()
 		SendMessage("허드", "켜기", "허드");
 		SendMessage("main", "게임시작", "시작");
 	}*/
-//	SendMessage("타이머", "켜기", "");
+	SendMessage("타이머", "켜기", "");
+//	LoadObject("WObjWallPaper", "Logo.Loading", "*image data/misc/wallpaper/로딩.jpg");
 	LoadObject("WObjWallPaper", "Logo.Loading", "*image data/misc/image/old_로딩.jpg");
+//	LoadObject("WObjWallPaper", "Logo.FadeOut", "*image data/misc/wallpaper/페이드아웃.jpg");
 	LoadObject("WObjWallPaper", "Logo.FadeOut", "*image data/misc/image/페이드아웃.jpg");
 
 	SendMessage("Logo.Loading", "켜기", "");
 	SendMessage("Logo.Loading", "값지정", "알파 1");
+//	SendMessage("타이머", "스크립트설정", "1 0 1 _main1.Loading");
 	SendMessage("타이머", "스크립트설정", "1 0 1 old_main1.Loading");
 }
 
@@ -57,29 +60,36 @@ Loading()
 	SendMessage("Logo.FadeOut", "켜기", "");
 	SendMessage("Logo.FadeOut", "값지정", "델타 4");
 	SendMessage("Logo.Loading", "값지정", "델타 -4");
+//	SendMessage("타이머", "스크립트설정", "10 0 1 _main1.Event01");
 	SendMessage("타이머", "스크립트설정", "10 0 1 old_main1.Event01");
 }
 
 Event01()
 {
 //	LoadObject("WObjPlayer", "유저", "*clickScript 오브젝트_유저.Process");
+	LoadObject("WObjPlayer", "유저", "*ai 오브젝트_유저._유저 *gravity");
 	SendMessage("자막", "활성화", "");
 	SendMessage("자막", "와이드모드", "켜기");
 	DeleteObject("Logo.Loading");
 
+//	SendMessage("사운드", "연주", "loop,data/sound/bgm/본관1_바람소리.wav");
 	SendMessage("사운드", "연주", "loop,data/sound/bgm/old_본관1_바람소리.wav");
+//	SendMessage("사운드", "연주", "data/sound/event/강금이벤트.wav");
 	SendMessage("사운드", "연주", "data/sound/event/old_강금이벤트.wav");
+//	SendMessage("타이머", "스크립트설정", "5 0 1 _main1.Event02");
 	SendMessage("타이머", "스크립트설정", "5 0 1 old_main1.Event02");
 }
 
 Event02()
 {
-//	SendMessage("유저", "획득", "다이어리");		// 필수 아이템
-//	SendMessage("유저", "획득", "가방");
-//	SendMessage("유저", "획득", "핸드폰");
+	SendMessage("유저", "획득", "다이어리");		// 필수 아이템
+	SendMessage("유저", "획득", "가방");
+	SendMessage("유저", "획득", "핸드폰");
 //	SendMessage("유저", "획득", "콜렉트");
 
-	SendMessage("유저", "획득", "@old_선물봉투");	// 추가 아이템
+//	SendMessage("유저", "획득", "White Day Gift");	// 추가 아이템
+	SendMessage("유저", "획득", "@old_선물봉투");
+//	SendMessage("유저", "획득", "So-young's Diary");
 	SendMessage("유저", "획득", "@old_소영다이어리");
 
 //	SendMessage("유저", "획득", "미궁조각1");		// 재미 아이템
@@ -91,6 +101,7 @@ Event02()
 //	SendMessage("유저", "획득", "미궁조각7");
 //	SendMessage("유저", "획득", "미궁조각8");
 
+//	SendMessage("타이머", "스크립트설정", "5 0 1 _main1.Event03");
 	SendMessage("타이머", "스크립트설정", "5 0 1 old_main1.Event03");
 }
 
@@ -99,41 +110,43 @@ Event03()
 //	SendMessage("main", "게임시작", "시작");
 
 	SendMessage("유저", "위치", "-2010.0 -10.0 -490.0");
+//	SendMessage("유저", "회전", "6");
 	SendMessage("유저", "회전", "270");
 	SendMessage("유저", "캡춰", "카메라 머리");
 
 	SendMessage("Logo.FadeOut", "값지정", "델타 -3");
+//	SendMessage("타이머", "스크립트설정", "3 0 1 _main1.Event04");
 	SendMessage("타이머", "스크립트설정", "3 0 1 old_main1.Event04");
 }
 
 Event04()
 {
 	DeleteObject("Logo.FadeOut");
+//	SendMessage("타이머", "스크립트설정", "3 0 1 _main1.Event05");
 	SendMessage("타이머", "스크립트설정", "3 0 1 old_main1.Event05");
 }
 
 Event05()
 {
-//	SendMessage("자막", "와이드모드", "끄기");
+	SendMessage("자막", "와이드모드", "끄기");
+//	SendMessage("타이머", "스크립트설정", "0.5 0 1 _main1.StartGame");
 	SendMessage("타이머", "스크립트설정", "0.5 0 1 old_main1.StartGame");
 }
 
 StartGame()
 {
 	SendMessage("자막", "비활성", "");
-	SendMessage("자막", "와이드모드", "끄기");
-
-	SendMessage("유저", "획득", "허드");
-	SendMessage("유저", "획득", "다이어리");
-	SendMessage("유저", "획득", "가방");
-	SendMessage("유저", "획득", "지도");
-	SendMessage("유저", "획득", "핸드폰");
-	SendMessage("유저", "획득", "포즈");
-	SendMessage("유저", "바닥소리", "old_나무바닥");
 
 //	SendMessage("허드", "켜기", "허드");
+	SendMessage("유저", "획득", "허드");
+	SendMessage("유저", "획득", "지도");
+	SendMessage("유저", "획득", "포즈");
 
 //	LoadObject("WObjParticle", "*pos -1200 117 -694 *filename data/misc/fire.bmp *type elespk *size 10 -10 10 -10 *dir -1 0 0", "");
+
+	SendMessage("유저", "바닥소리", "old_나무바닥");
+	SendMessage("유저", "캡춰", "카메라 머리");	
+	SendMessage("카메라", "fov", "-" + $FOV);
 
 	SendMessage("배경", "텍스처교체", "iron_00 iron_03.bmp");
 	SendMessage("배경", "텍스처교체", "iron_03 iron_01.bmp");
