@@ -625,36 +625,36 @@ Init문2계단1()
 {
 	SetObjValue("Type", 1);
 	Init();
+	SetObjValue("Lock", "$문_1층계단");
 	SetObjValue("exList", 1);
 	SetObjValue("exceptDoor", 1);
-	SetObjValue("Lock", "$문_1층계단");
 }
 
 Init문2계단2()
 {
 	SetObjValue("Type", 1);
 	Init();
+	SetObjValue("Lock", "$문_2층계단");
 	SetObjValue("exList", 1);
 	SetObjValue("exceptDoor", 1);
-	SetObjValue("Lock", "$문_2층계단");
 }
 
 Init문2계단3()
 {
 	SetObjValue("Type", 1);
 	Init();
+	SetObjValue("Lock", "$문_3층계단");
 	SetObjValue("exList", 1);
 	SetObjValue("exceptDoor", 1);
-	SetObjValue("Lock", "$문_3층계단");
 }
 
 Init문2계단4()
 {
 	SetObjValue("Type", 1);
 	Init();
+	SetObjValue("Lock", "$문_4층계단");
 	SetObjValue("exList", 1);	
-	SetObjValue("exceptDoor", 1);
-	SetObjValue("Lock", "$문_4층계단");	
+	SetObjValue("exceptDoor", 1);	
 }
 
 Init본관2_통로문()
