@@ -16,7 +16,7 @@ Init()
 {
 	SendMessage("", "스크립트설정", "handleA " + $G_File + ".type1");
 	SendMessage("", "스크립트설정", "handleB " + $G_File + ".type2");
-	SendMessage("", "스크립트설정", "dummy null");
+	SendMessage("", "스크립트설정", "dummy " + "null");
 	
 	SetObjValue("MotionName", "");
 	SetObjValue("OpenFlag", 0);
@@ -49,11 +49,11 @@ type1.click()
 	$OpenFlag	= GetObjValue("OpenFlag");
 	$LockValue  = GetValue(GetObjValue("Lock"));
 	
-	if($G_UserItem == GetObjValue("KeyName") && $LockValue == LOCK)
+	if($G_UserItem == GetObjValue("KeyName") && GetValue(GetObjValue("Lock")) == LOCK)
 	{
 		SendMessage("자막", "문자출력", "2," +  GetString("old_s31"));
-		SendMessage("사운드", "연주", "잠긴소리01,data/sound/열쇠로나무문열기.wav");
 		SetValue(GetObjValue("Lock"), UNLOCK);
+		SendMessage("사운드", "연주", "잠긴소리01,data/sound/열쇠로나무문열기.wav");
 		return;
 	}
 
@@ -105,11 +105,11 @@ type2.click()
 	$OpenFlag	= GetObjValue("OpenFlag");
 	$LockValue  = GetValue(GetObjValue("Lock"));
 	
-	if($G_UserItem == GetObjValue("KeyName") && $LockValue == LOCK)
+	if($G_UserItem == GetObjValue("KeyName") && GetValue(GetObjValue("Lock")) == LOCK)
 	{
 		SendMessage("자막", "문자출력", "2," +  GetString("old_s31"));
-		SendMessage("사운드", "연주", "잠긴소리01,data/sound/열쇠로나무문열기.wav");
 		SetValue(GetObjValue("Lock"), UNLOCK);
+		SendMessage("사운드", "연주", "잠긴소리01,data/sound/열쇠로나무문열기.wav");
 		return;
 	}
 
