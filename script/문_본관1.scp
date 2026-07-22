@@ -1379,15 +1379,15 @@ handle1.pick()
 		if(GetObjValue("Lock") == "$문_1층계단" && $문_1층계단 == LOCK && $G_UserItem == "방화셔터열쇠")
 		return "i방화셔터열쇠";
 
-	if(GetObjValue("MotionName") == "열기" || GetObjValue("MotionName") == "열기1" || GetObjValue("MotionName") == "열기2" || GetObjValue("MotionName") == "열기1" || GetObjValue("MotionName") == "닫기" || GetObjValue("MotionName") == "닫기1" || GetObjValue("MotionName") == "닫기2" || GetObjValue("MotionName") == "흔들기")
-	{
-		SendMessage("", "캐쉬초기화", "");		
-		return "";
-	}
-
 	if(GetObjValue("Lock") == "$문_중앙통로" && GetObjValue("MotionName") == "자물쇠열기")
 	{
 		SendMessage("", "캐쉬초기화", "");
+		return "";
+	}
+
+	if(GetObjValue("MotionName") == "열기" || GetObjValue("MotionName") == "열기1" || GetObjValue("MotionName") == "열기2" || GetObjValue("MotionName") == "열기1" || GetObjValue("MotionName") == "닫기" || GetObjValue("MotionName") == "닫기1" || GetObjValue("MotionName") == "닫기2" || GetObjValue("MotionName") == "흔들기")
+	{
+		SendMessage("", "캐쉬초기화", "");		
 		return "";
 	}
 
