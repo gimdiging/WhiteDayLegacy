@@ -1,0 +1,126 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					O b j e c t S c r i p t F i l e 
+//
+//  (C) Sonnori 2000				문_조정실.scp
+//
+//	熱血man: akekakek		last update: 2000.08.22
+//  --------------------------------------------------
+
+Init()
+{
+	SendMessage("", "스크립트설정", "handleA " + $G_File + ".type1");
+	SendMessage("", "스크립트설정", "handleB " + $G_File + ".type2");
+	SendMessage("", "스크립트설정", "dummy " + "null");
+	
+	SetObjValue("OpenFlag", CLOSE);
+	SetObjValue("LockFlag", UNLOCK);
+	SetObjValue("MotionName", "");
+	SendMessage("", "애니메이션", "서있기");
+}
+
+type1.pick()
+{
+	return "잡기";
+}
+
+type1.click()
+{
+	$OpenFlag = GetObjValue("OpenFlag");
+	$LockFlag = GetObjValue("LockFlag");
+	
+
+	if($LockFlag == LOCK)
+	{
+		SendMessage("사운드", "연주", "중앙통로문잠긴소리,data\sound\돌리는문잠긴것.wav");
+		SendMessage("자막", "문자출력", "2,It's locked");
+	}
+	else
+	{
+		switch($OpenFlag)
+		{
+			case 0:
+			{
+				SendMessage("", "애니메이션", "열기1");
+				if(GetObjValue("MotionName") == "열기1")
+				{
+					SetObjValue("OpenFlag", $OpenFlag = 1);
+				}
+				return;
+			}
+			case 1:
+			{
+				SendMessage("", "애니메이션", "닫기1");
+				if(GetObjValue("MotionName") == "닫기1")
+				{
+					SetObjValue("OpenFlag", $OpenFlag = 0);
+				}
+				return;
+			}
+			case 2:
+			{
+				SendMessage("", "애니메이션", "닫기2");
+				if(GetObjValue("MotionName") == "닫기2")
+				{
+					SetObjValue("OpenFlag", $OpenFlag = 0);
+				}
+				return;
+			}
+		}
+	} 
+}
+
+type2.pick()
+{
+	return "잡기";
+}
+
+type2.click()
+{
+	$OpenFlag = GetObjValue("OpenFlag");
+	$LockFlag = GetObjValue("LockFlag");
+	
+	if($LockFlag == LOCK)
+	{
+		SendMessage("사운드", "연주", "중앙통로문잠긴소리,data\sound\돌리는문잠긴것.wav");
+		SendMessage("자막", "문자출력", "2,It's locked");
+	}
+	else
+	{
+		switch($OpenFlag)
+		{
+			case 0:
+			{
+				SendMessage("", "애니메이션", "열기2");
+				if(GetObjValue("MotionName") == "열기2")
+				{
+					SetObjValue("OpenFlag", $OpenFlag = 2);
+				}
+				return;
+			}
+			case 1:
+			{
+				SendMessage("", "애니메이션", "닫기1");
+				if(GetObjValue("MotionName") == "닫기1")
+				{
+					SetObjValue("OpenFlag", $OpenFlag = 0);
+				}
+				return;
+			}
+			case 2:
+			{
+				SendMessage("", "애니메이션", "닫기2");
+				if(GetObjValue("MotionName") == "닫기2")
+				{
+					SetObjValue("OpenFlag", $OpenFlag = 0);
+				}
+				return;
+			}
+		}
+	} 
+}
