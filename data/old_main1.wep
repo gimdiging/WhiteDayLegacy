@@ -11616,7 +11616,6 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Filename "Obj/old_문_조정실.pet"
-	*Script "*init old_문_양호실.Init"
 	*Pos -994.91 139.27 1494.97
 	*Rot 0.0 180.0 0.0
 	*Scale 1.00
@@ -11630,7 +11629,6 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Filename "Obj/old_문_방송실.pet"
-	*Script "*init old_문_교장실.Init"
 	*Pos -1039.33 138.92 1620.26
 	*Rot 0.0 -90.0 0.0
 	*Scale 1.00
@@ -13032,7 +13030,6 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Filename "Obj/old_문_녹음실.pet"
-	*Script "*init old_문_양호실.Init"
 	*Pos -904.80 139.42 1362.04
 	*Rot 0.0 90.0 0.0
 	*Scale 1.00
