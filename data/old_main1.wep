@@ -12938,7 +12938,7 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Filename "Obj/old_문_강당통로01.pet"
-	*Script "*init old_문_중앙통로04.Init문_본관21층"
+	*Script "*init 문_본관21층"
 	*Pos -783.89 104.02 -369.80
 	*Rot 0.0 90.0 0.0
 	*Scale 1.00
@@ -13043,7 +13043,6 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Filename "Obj/old_문_강당통로01.pet"
-	*Script "*init old_문_중앙통로04.Init"
 	*Pos 64.43 103.91 -369.90
 	*Rot 0.0 90.0 0.0
 	*Scale 1.00
