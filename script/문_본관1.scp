@@ -1370,13 +1370,13 @@ lockbox.click()
 
 handle1.pick()
 {
-		if(GetObjValue("Lock") == "$문_1층방화셔터" && $문_1층방화셔터 == LOCK && $G_UserItem == "방화셔터열쇠")
+	if(GetObjValue("Lock") == "$문_1층방화셔터" && GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == "방화셔터열쇠")
 		return "i방화셔터열쇠";
 
-		if(GetObjValue("Lock") == "$문_2층방송실옆방화셔터" && $문_2층방송실옆방화셔터 == LOCK && $G_UserItem == "방화셔터열쇠")
+	if(GetObjValue("Lock") == "$문_2층방송실옆방화셔터" && GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == "방화셔터열쇠")
 		return "i방화셔터열쇠";
 
-		if(GetObjValue("Lock") == "$문_1층계단" && $문_1층계단 == LOCK && $G_UserItem == "방화셔터열쇠")
+	if(GetObjValue("Lock") == "$문_1층계단" && GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == "방화셔터열쇠")
 		return "i방화셔터열쇠";
 
 	if(GetObjValue("Lock") == "$문_중앙통로" && GetObjValue("MotionName") == "자물쇠열기")
@@ -1411,76 +1411,52 @@ handle1.click()
 	switch(GetObjValue("Lock"))
 	{
 		case "$문_1층방화셔터":
-			if($문_1층방화셔터 == LOCK)
+			if(GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == "방화셔터열쇠")
 			{
-			if($G_UserItem == "방화셔터열쇠")
-			{
-			$문_1층방화셔터 = UNLOCK;
-			SendMessage("사운드", "연주", "data/sound/열쇠로나무문열기.wav");
-			$방화셔터Unlock++;
-			if($방화셔터Unlock == 8)
-			{
-			SendMessage("유저", "폐기", "@" + $G_UserItem);
-			SendMessage("자막", "문자출력후대기", GetString("s120"));
-			}
-			else
-			SendMessage("자막", "문자출력후대기", GetString("s126"));
-			}
-			else
-			{
-			SendMessage("자막", "문자출력후대기", GetString("s16"));
-			SendMessage("사운드", "연주", "잠긴소리02,data/sound/돌리는문잠긴것.wav");
-			}
-			return;
+				SetValue(GetObjValue("Lock"), UNLOCK);
+				SendMessage("사운드", "연주", "data/sound/열쇠로나무문열기.wav");
+				$방화셔터Unlock++;
+				if($방화셔터Unlock == 8)
+				{
+					SendMessage("유저", "폐기", "@" + $G_UserItem);
+					SendMessage("자막", "문자출력후대기", GetString("s120"));
+				}
+				else
+					SendMessage("자막", "문자출력후대기", GetString("s126"));
+				return;
 			}
 			break;
 
 		case "$문_2층방송실옆방화셔터":
-			if($문_2층방송실옆방화셔터 == LOCK)
+			if(GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == "방화셔터열쇠")
 			{
-			if($G_UserItem == "방화셔터열쇠")
-			{
-			$문_2층방송실옆방화셔터 = UNLOCK;
-			SendMessage("사운드", "연주", "data/sound/열쇠로나무문열기.wav");
-			$방화셔터Unlock++;
-			if($방화셔터Unlock == 8)
-			{
-			SendMessage("유저", "폐기", "@" + $G_UserItem);
-			SendMessage("자막", "문자출력후대기", GetString("s120"));
-			}
-			else
-			SendMessage("자막", "문자출력후대기", GetString("s126"));
-			}
-			else
-			{
-			SendMessage("자막", "문자출력후대기", GetString("s16"));
-			SendMessage("사운드", "연주", "잠긴소리02,data/sound/돌리는문잠긴것.wav");
-			}
-			return;
+				SetValue(GetObjValue("Lock"), UNLOCK);
+				SendMessage("사운드", "연주", "data/sound/열쇠로나무문열기.wav");
+				$방화셔터Unlock++;
+				if($방화셔터Unlock == 8)
+				{
+					SendMessage("유저", "폐기", "@" + $G_UserItem);
+					SendMessage("자막", "문자출력후대기", GetString("s120"));
+				}
+				else
+					SendMessage("자막", "문자출력후대기", GetString("s126"));
+				return;
 			}
 			break;
 
 		case "$문_1층계단":
-			if($문_1층계단 == LOCK)
+			if(GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == "방화셔터열쇠")
 			{
-			if($G_UserItem == "방화셔터열쇠")
-			{
-			$문_1층계단 = UNLOCK;
-			SendMessage("사운드", "연주", "data/sound/열쇠로나무문열기.wav");
-			$방화셔터Unlock++;
-			if($방화셔터Unlock == 8)
-			{
-			SendMessage("유저", "폐기", "@" + $G_UserItem);
-			SendMessage("자막", "문자출력후대기", GetString("s120"));
-			}
-			else
-			SendMessage("자막", "문자출력후대기", GetString("s126"));
-			}
-			else
-			{
-			SendMessage("자막", "문자출력후대기", GetString("s16"));
-			SendMessage("사운드", "연주", "잠긴소리02,data/sound/돌리는문잠긴것.wav");
-			}
+				SetValue(GetObjValue("Lock"), UNLOCK);
+				SendMessage("사운드", "연주", "data/sound/열쇠로나무문열기.wav");
+				$방화셔터Unlock++;
+				if($방화셔터Unlock == 8)
+				{
+					SendMessage("유저", "폐기", "@" + $G_UserItem);
+					SendMessage("자막", "문자출력후대기", GetString("s120"));
+				}
+				else
+					SendMessage("자막", "문자출력후대기", GetString("s126"));
 			return;
 			}
 			break;
@@ -1702,19 +1678,19 @@ handle1.click()
 
 handle2.pick()
 {
-		if(GetObjValue("Lock") == "$문_1층서무실옆방화셔터" && $문_1층서무실옆방화셔터 == LOCK && $G_UserItem == "방화셔터열쇠" && $G_금의진해결 == TRUE)
+	if(GetObjValue("Lock") == "$문_1층서무실옆방화셔터" && GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == "방화셔터열쇠" && $G_금의진해결 == TRUE)
 		return "i방화셔터열쇠";
 
-		if(GetObjValue("Lock") == "$문_2층방화셔터" && $문_2층방화셔터 == LOCK && $G_UserItem == "방화셔터열쇠")
+	if(GetObjValue("Lock") == "$문_2층방화셔터" && GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == "방화셔터열쇠")
 		return "i방화셔터열쇠";
 
-		if(GetObjValue("Lock") == "$문_2층계단" && $문_2층계단 == LOCK && $G_UserItem == "방화셔터열쇠")
+	if(GetObjValue("Lock") == "$문_2층계단" && GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == "방화셔터열쇠")
 		return "i방화셔터열쇠";
 
-		if(GetObjValue("Lock") == "$문_3층계단" && $문_3층계단 == LOCK && $G_UserItem == "방화셔터열쇠")
+	if(GetObjValue("Lock") == "$문_3층계단" && GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == "방화셔터열쇠")
 		return "i방화셔터열쇠";
 
-		if(GetObjValue("Lock") == "$문_4층계단" && $문_4층계단 == LOCK && $G_UserItem == "방화셔터열쇠")
+	if(GetObjValue("Lock") == "$문_4층계단" && GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == "방화셔터열쇠")
 		return "i방화셔터열쇠";
 
 	if(GetObjValue("MotionName") == "열기" || GetObjValue("MotionName") == "열기1" || GetObjValue("MotionName") == "열기2" || GetObjValue("MotionName") == "열기1" || GetObjValue("MotionName") == "닫기" || GetObjValue("MotionName") == "닫기1" || GetObjValue("MotionName") == "닫기2")
@@ -1737,127 +1713,87 @@ handle2.click()
 	switch(GetObjValue("Lock"))
 	{
 		case "$문_1층서무실옆방화셔터":
-			if($문_1층서무실옆방화셔터 == LOCK && $G_금의진해결 == TRUE)
+			if(GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == "방화셔터열쇠" && $G_금의진해결 == TRUE)
 			{
-			if($G_UserItem == "방화셔터열쇠")
-			{
-			$문_1층서무실옆방화셔터 = UNLOCK;
-			SendMessage("사운드", "연주", "data/sound/열쇠로나무문열기.wav");
-			$방화셔터Unlock++;
-			if($방화셔터Unlock == 8)
-			{
-			SendMessage("유저", "폐기", "@" + $G_UserItem);
-			SendMessage("자막", "문자출력후대기", GetString("s120"));
-			}
-			else
-			SendMessage("자막", "문자출력후대기", GetString("s126"));
-			}
-			else
-			{
-			SendMessage("자막", "문자출력후대기", GetString("s16"));
-			SendMessage("사운드", "연주", "잠긴소리02,data/sound/돌리는문잠긴것.wav");
-			}
-			return;
+				SetValue(GetObjValue("Lock"), UNLOCK);
+				SendMessage("사운드", "연주", "data/sound/열쇠로나무문열기.wav");
+				$방화셔터Unlock++;
+				if($방화셔터Unlock == 8)
+				{
+					SendMessage("유저", "폐기", "@" + $G_UserItem);
+					SendMessage("자막", "문자출력후대기", GetString("s120"));
+				}
+				else
+					SendMessage("자막", "문자출력후대기", GetString("s126"));
+				return;
 			}
 			break;
 
 		case "$문_2층방화셔터":
-			if($문_2층방화셔터 == LOCK)
+			if(GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == "방화셔터열쇠")
 			{
-			if($G_UserItem == "방화셔터열쇠")
-			{
-			$문_2층방화셔터 = UNLOCK;
-			SendMessage("사운드", "연주", "data/sound/열쇠로나무문열기.wav");
-			$방화셔터Unlock++;
-			if($방화셔터Unlock == 8)
-			{
-			SendMessage("유저", "폐기", "@" + $G_UserItem);
-			SendMessage("자막", "문자출력후대기", GetString("s120"));
-			}
-			else
-			SendMessage("자막", "문자출력후대기", GetString("s126"));
-			}
-			else
-			{
-			SendMessage("자막", "문자출력후대기", GetString("s16"));
-			SendMessage("사운드", "연주", "잠긴소리02,data/sound/돌리는문잠긴것.wav");
-			}
+				SetValue(GetObjValue("Lock"), UNLOCK);
+				SendMessage("사운드", "연주", "data/sound/열쇠로나무문열기.wav");
+				$방화셔터Unlock++;
+				if($방화셔터Unlock == 8)
+				{
+					SendMessage("유저", "폐기", "@" + $G_UserItem);
+					SendMessage("자막", "문자출력후대기", GetString("s120"));
+				}
+				else
+					SendMessage("자막", "문자출력후대기", GetString("s126"));
 			return;
 			}
 			break;
 
 		case "$문_2층계단":
-			if($문_2층계단 == LOCK)
+			if(GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == "방화셔터열쇠")
 			{
-			if($G_UserItem == "방화셔터열쇠")
-			{
-			$문_2층계단 = UNLOCK;
-			SendMessage("사운드", "연주", "data/sound/열쇠로나무문열기.wav");
-			$방화셔터Unlock++;
-			if($방화셔터Unlock == 8)
-			{
-			SendMessage("유저", "폐기", "@" + $G_UserItem);
-			SendMessage("자막", "문자출력후대기", GetString("s120"));
-			}
-			else
-			SendMessage("자막", "문자출력후대기", GetString("s126"));
-			}
-			else
-			{
-			SendMessage("자막", "문자출력후대기", GetString("s16"));
-			SendMessage("사운드", "연주", "잠긴소리02,data/sound/돌리는문잠긴것.wav");
-			}
-			return;
+				SetValue(GetObjValue("Lock"), UNLOCK);
+				SendMessage("사운드", "연주", "data/sound/열쇠로나무문열기.wav");
+				$방화셔터Unlock++;
+				if($방화셔터Unlock == 8)
+				{
+					SendMessage("유저", "폐기", "@" + $G_UserItem);
+					SendMessage("자막", "문자출력후대기", GetString("s120"));
+				}
+				else
+					SendMessage("자막", "문자출력후대기", GetString("s126"));
+				return;
 			}
 			break;
 
 		case "$문_3층계단":
-			if($문_3층계단 == LOCK)
+			if(GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == "방화셔터열쇠")
 			{
-			if($G_UserItem == "방화셔터열쇠")
-			{
-			$문_3층계단 = UNLOCK;
-			SendMessage("사운드", "연주", "data/sound/열쇠로나무문열기.wav");
-			$방화셔터Unlock++;
-			if($방화셔터Unlock == 8)
-			{
-			SendMessage("유저", "폐기", "@" + $G_UserItem);
-			SendMessage("자막", "문자출력후대기", GetString("s120"));
-			}
-			else
-			SendMessage("자막", "문자출력후대기", GetString("s126"));
-			}
-			else
-			{
-			SendMessage("자막", "문자출력후대기", GetString("s16"));
-			SendMessage("사운드", "연주", "잠긴소리02,data/sound/돌리는문잠긴것.wav");
-			}
-			return;
+				SetValue(GetObjValue("Lock"), UNLOCK);
+				SendMessage("사운드", "연주", "data/sound/열쇠로나무문열기.wav");
+				$방화셔터Unlock++;
+				if($방화셔터Unlock == 8)
+				{
+					SendMessage("유저", "폐기", "@" + $G_UserItem);
+					SendMessage("자막", "문자출력후대기", GetString("s120"));
+				}
+				else
+					SendMessage("자막", "문자출력후대기", GetString("s126"));
+				return;
 			}
 			break;
 
 		case "$문_4층계단":
-			if($문_4층계단 == LOCK)
+			if(GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == "방화셔터열쇠")
 			{
-			if($G_UserItem == "방화셔터열쇠")
-			{
-			$문_4층계단 = UNLOCK;
-			SendMessage("사운드", "연주", "data/sound/열쇠로나무문열기.wav");
-			$방화셔터Unlock++;
-			if($방화셔터Unlock == 8)
-			{
-			SendMessage("유저", "폐기", "@" + $G_UserItem);
-			SendMessage("자막", "문자출력후대기", GetString("s120"));
-			}
-			else
-			SendMessage("자막", "문자출력후대기", GetString("s126"));
-			}
-			else
-			{
-			SendMessage("자막", "문자출력후대기", GetString("s16"));
-			SendMessage("사운드", "연주", "잠긴소리02,data/sound/돌리는문잠긴것.wav");
-			}
-			return;
+				SetValue(GetObjValue("Lock"), UNLOCK);
+				SendMessage("사운드", "연주", "data/sound/열쇠로나무문열기.wav");
+				$방화셔터Unlock++;
+				if($방화셔터Unlock == 8)
+				{
+					SendMessage("유저", "폐기", "@" + $G_UserItem);
+					SendMessage("자막", "문자출력후대기", GetString("s120"));
+				}
+				else
+					SendMessage("자막", "문자출력후대기", GetString("s126"));
+				return;
 			}
 			break;
 
