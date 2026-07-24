@@ -16060,7 +16060,6 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Filename "event/old_e_나무줄기.pet"
-	*Script "*init old_e_나무윗쪽줄기.Init"
 	*Pos -1961.25 160.83 1212.00
 	*Rot -15.0 257.0 0.0
 	*Scale 1.00
