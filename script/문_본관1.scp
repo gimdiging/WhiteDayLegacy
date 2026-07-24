@@ -1457,7 +1457,7 @@ handle1.click()
 				}
 				else
 					SendMessage("자막", "문자출력후대기", GetString("s126"));
-			return;
+				return;
 			}
 			break;
 
@@ -1742,7 +1742,7 @@ handle2.click()
 				}
 				else
 					SendMessage("자막", "문자출력후대기", GetString("s126"));
-			return;
+				return;
 			}
 			break;
 
