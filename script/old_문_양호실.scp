@@ -7,22 +7,29 @@
 //				
 //					O b j e c t S c r i p t F i l e 
 //
-//  (C) Sonnori 2000				문_학적부실.scp
+//  (C) Sonnori 2000				문_양호실.scp
 //
-//	熱血man: matzzang		last update: 2000.07.17
+//	熱血man: akekakek		last update: 2000.08.22
 //  --------------------------------------------------
-
+// 숙직실문을 창우씨가 양호실문으로 잘못명명하여.
 Init()
 {
 	SendMessage("", "스크립트설정", "handleA " + $G_File + ".type1");
 	SendMessage("", "스크립트설정", "handleB " + $G_File + ".type2");
 	SendMessage("", "스크립트설정", "dummy " + "null");
 	
-	SetObjValue("OpenFlag", OPEN);
-	SetObjValue("LockFlag", LOCK);
 	SetObjValue("MotionName", "");
-	
-	SendMessage("", "애니메이션", "열기1");
+	SetObjValue("OpenFlag", 0);
+	SetObjValue("Lock", "$문_이유없이열린문");
+	SendMessage("", "애니메이션", "서있기");
+}
+
+Init숙직실()
+{
+	Init();
+//	SetObjName("1층방화셔터");
+	SetObjValue("Lock", "$문_숙직실");
+	$문_숙직실 = UNLOCK;
 }
 
 type1.pick()
@@ -32,15 +39,10 @@ type1.pick()
 
 type1.click()
 {
-	$OpenFlag = GetObjValue("OpenFlag");
-	$LockFlag = GetObjValue("LockFlag");
+	$OpenFlag	= GetObjValue("OpenFlag");
+	$LockValue  = GetValue(GetObjValue("Lock"));
 	
-	if($LockFlag == LOCK)
-	{
-		SendMessage("사운드", "연주", "잠긴소리01,data\sound\돌리는문잠긴것_나무.wav");
-		SendMessage("자막", "문자출력", "2," +  GetString("old_s32"));
-	}
-	else
+	if($LockValue == UNLOCK)
 	{
 		switch($OpenFlag)
 		{
@@ -72,7 +74,10 @@ type1.click()
 				return;
 			}
 		}
-	} 
+	}
+	
+	SendMessage("사운드", "연주", "잠긴소리01,data/sound/돌리는문잠긴것.wav");
+	SendMessage("자막", "문자출력", "2,잠겨있다");
 }
 
 type2.pick()
@@ -82,15 +87,10 @@ type2.pick()
 
 type2.click()
 {
-	$OpenFlag = GetObjValue("OpenFlag");
-	$LockFlag = GetObjValue("LockFlag");
+	$OpenFlag	= GetObjValue("OpenFlag");
+	$LockValue  = GetValue(GetObjValue("Lock"));
 	
-	if($LockFlag == LOCK)
-	{
-		SendMessage("사운드", "연주", "잠긴소리01,data\sound\돌리는문잠긴것_나무.wav");
-		SendMessage("자막", "문자출력", "2," +  GetString("old_s32"));
-	}
-	else
+	if($LockValue == UNLOCK)
 	{
 		switch($OpenFlag)
 		{
@@ -122,5 +122,9 @@ type2.click()
 				return;
 			}
 		}
-	} 
+	}
+
+	SendMessage("사운드", "연주", "잠긴소리01,data/sound/돌리는문잠긴것.wav");
+	SendMessage("자막", "문자출력", "2,잠겨있다");
 }
+

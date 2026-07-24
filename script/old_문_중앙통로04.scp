@@ -7,9 +7,9 @@
 //				
 //					O b j e c t S c r i p t F i l e 
 //
-//  (C) Sonnori 2000				문_학적부실.scp
+//  (C) Sonnori 2000				문_중앙통로04.scp
 //
-//	熱血man: matzzang		last update: 2000.07.17
+//	熱血man: akekakek		last update: 2000.08.22
 //  --------------------------------------------------
 
 Init()
@@ -18,11 +18,15 @@ Init()
 	SendMessage("", "스크립트설정", "handleB " + $G_File + ".type2");
 	SendMessage("", "스크립트설정", "dummy " + "null");
 	
-	SetObjValue("OpenFlag", OPEN);
-	SetObjValue("LockFlag", LOCK);
+	SetObjValue("OpenFlag", CLOSE);
+	SetObjValue("LockFlag", UNLOCK);
 	SetObjValue("MotionName", "");
-	
-	SendMessage("", "애니메이션", "열기1");
+	SendMessage("", "애니메이션", "서있기");
+}
+
+Init문_본관21층()
+{
+	Init();
 }
 
 type1.pick()
@@ -35,10 +39,11 @@ type1.click()
 	$OpenFlag = GetObjValue("OpenFlag");
 	$LockFlag = GetObjValue("LockFlag");
 	
+
 	if($LockFlag == LOCK)
 	{
-		SendMessage("사운드", "연주", "잠긴소리01,data\sound\돌리는문잠긴것_나무.wav");
-		SendMessage("자막", "문자출력", "2," +  GetString("old_s32"));
+		SendMessage("사운드", "연주", "중앙통로문잠긴소리,data\sound\돌리는문잠긴것.wav");
+		SendMessage("자막", "문자출력", "2,It's locked");
 	}
 	else
 	{
@@ -87,8 +92,8 @@ type2.click()
 	
 	if($LockFlag == LOCK)
 	{
-		SendMessage("사운드", "연주", "잠긴소리01,data\sound\돌리는문잠긴것_나무.wav");
-		SendMessage("자막", "문자출력", "2," +  GetString("old_s32"));
+		SendMessage("사운드", "연주", "중앙통로문잠긴소리,data\sound\돌리는문잠긴것.wav");
+		SendMessage("자막", "문자출력", "2,It's locked");
 	}
 	else
 	{
