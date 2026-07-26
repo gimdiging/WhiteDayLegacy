@@ -1411,7 +1411,7 @@ handle1.click()
 	switch(GetObjValue("Lock"))
 	{
 		case "$문_1층방화셔터":
-			if(GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == "방화셔터열쇠")
+			if($LockValue == LOCK && $G_UserItem == "방화셔터열쇠")
 			{
 				SetValue(GetObjValue("Lock"), UNLOCK);
 				SendMessage("사운드", "연주", "data/sound/열쇠로나무문열기.wav");
@@ -1428,7 +1428,7 @@ handle1.click()
 			break;
 
 		case "$문_2층방송실옆방화셔터":
-			if(GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == "방화셔터열쇠")
+			if($LockValue == LOCK && $G_UserItem == "방화셔터열쇠")
 			{
 				SetValue(GetObjValue("Lock"), UNLOCK);
 				SendMessage("사운드", "연주", "data/sound/열쇠로나무문열기.wav");
@@ -1445,7 +1445,7 @@ handle1.click()
 			break;
 
 		case "$문_1층계단":
-			if(GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == "방화셔터열쇠")
+			if($LockValue == LOCK && $G_UserItem == "방화셔터열쇠")
 			{
 				SetValue(GetObjValue("Lock"), UNLOCK);
 				SendMessage("사운드", "연주", "data/sound/열쇠로나무문열기.wav");
@@ -1713,7 +1713,7 @@ handle2.click()
 	switch(GetObjValue("Lock"))
 	{
 		case "$문_1층서무실옆방화셔터":
-			if(GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == "방화셔터열쇠" && $G_금의진해결 == TRUE)
+			if($LockValue == LOCK && $G_UserItem == "방화셔터열쇠" && $G_금의진해결 == TRUE)
 			{
 				SetValue(GetObjValue("Lock"), UNLOCK);
 				SendMessage("사운드", "연주", "data/sound/열쇠로나무문열기.wav");
@@ -1730,7 +1730,7 @@ handle2.click()
 			break;
 
 		case "$문_2층방화셔터":
-			if(GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == "방화셔터열쇠")
+			if($LockValue == LOCK && $G_UserItem == "방화셔터열쇠")
 			{
 				SetValue(GetObjValue("Lock"), UNLOCK);
 				SendMessage("사운드", "연주", "data/sound/열쇠로나무문열기.wav");
@@ -1747,7 +1747,7 @@ handle2.click()
 			break;
 
 		case "$문_2층계단":
-			if(GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == "방화셔터열쇠")
+			if($LockValue == LOCK && $G_UserItem == "방화셔터열쇠")
 			{
 				SetValue(GetObjValue("Lock"), UNLOCK);
 				SendMessage("사운드", "연주", "data/sound/열쇠로나무문열기.wav");
@@ -1764,7 +1764,7 @@ handle2.click()
 			break;
 
 		case "$문_3층계단":
-			if(GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == "방화셔터열쇠")
+			if($LockValue == LOCK && $G_UserItem == "방화셔터열쇠")
 			{
 				SetValue(GetObjValue("Lock"), UNLOCK);
 				SendMessage("사운드", "연주", "data/sound/열쇠로나무문열기.wav");
@@ -1781,7 +1781,7 @@ handle2.click()
 			break;
 
 		case "$문_4층계단":
-			if(GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == "방화셔터열쇠")
+			if($LockValue == LOCK && $G_UserItem == "방화셔터열쇠")
 			{
 				SetValue(GetObjValue("Lock"), UNLOCK);
 				SendMessage("사운드", "연주", "data/sound/열쇠로나무문열기.wav");
