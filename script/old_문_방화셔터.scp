@@ -41,7 +41,7 @@ Init1√˛º≠π´Ω«ø∑πÊ»≠º≈≈Õ()
 
 type1.pick()
 {
-	return ($G_UserItem == GetObjValue("KeyName") && GetValue(GetObjValue("Lock")) == LOCK) ? "iold_πÊ»≠º≈≈Õø≠ºË" : "¿‚±‚";
+	return (GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == GetObjValue("KeyName")) ? "iold_πÊ»≠º≈≈Õø≠ºË" : "¿‚±‚";
 }
 
 type1.click()
@@ -97,7 +97,7 @@ type1.click()
 
 type2.pick()
 {
-	return ($G_UserItem == GetObjValue("KeyName") && GetValue(GetObjValue("Lock")) == LOCK) ? "iold_πÊ»≠º≈≈Õø≠ºË" : "¿‚±‚";
+	return (GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == GetObjValue("KeyName")) ? "iold_πÊ»≠º≈≈Õø≠ºË" : "¿‚±‚";
 }
 
 type2.click()
