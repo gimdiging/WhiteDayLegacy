@@ -20,7 +20,7 @@ Init()
 	
 	SetObjValue("MotionName", "");
 	SetObjValue("OpenFlag", 0);
-	SetObjValue("Lock", "$문_이유없이열린문");
+	SetObjValue("Lock", "$old_문_이유없이열린문");
 	SendMessage("", "애니메이션", "서있기");
 }
 
