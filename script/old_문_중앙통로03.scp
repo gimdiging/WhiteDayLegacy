@@ -16,11 +16,11 @@ Init()
 {
 	SendMessage("", "스크립트설정", "handleA " + $G_File + ".type1");
 	SendMessage("", "스크립트설정", "handleB " + $G_File + ".type2");
-	SendMessage("", "스크립트설정", "dummy null");
+	SendMessage("", "스크립트설정", "dummy " + "null");
 	
 	SetObjValue("OpenFlag", CLOSE);
-	SetObjValue("Lock", "$old_문_본관2연결문");
 //	SetObjValue("LockFlag", LOCK);
+	SetObjValue("Lock", "$old_문_이유없이잠긴문");
 	SetObjValue("MotionName", "");
 	SendMessage("", "애니메이션", "서있기");
 }
@@ -28,11 +28,13 @@ Init()
 Init본관2연결문1()
 {
 	Init();
+	SetObjValue("Lock", "$old_문_본관2연결문");
 }
 
 Init본관2연결문2()
 {
 	Init();
+	SetObjValue("Lock", "$old_문_본관2연결문");
 }
 
 Init본관2연결문3()
