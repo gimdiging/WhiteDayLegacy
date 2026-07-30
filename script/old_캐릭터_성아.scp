@@ -34,8 +34,7 @@ click()
 	if($old_대화_성아)
 	{
 //		SendMessage("성아", "스크립트실행", $대화_성아 + ".Init");
+		SendMessage("성아", "스크립트실행", $old_대화_성아 + ".Init");
 //		SendMessage("성아", "스크립트실행", $대화_성아 + ".Talking");
-		RunScript("", "old_대화." + $old_대화_성아);
-		SendMessage("매크로", "Play", $old_대화_성아 + ".cut01");
 	}
 }

@@ -1,0 +1,114 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					T a l k i n g S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					대화#1-3.scp
+//
+//	熱血man: matzzang		last update: 2000.07.21
+//  --------------------------------------------------
+
+Init()
+{
+//	$TalkingStep = 0;
+	$old_TalkingStep = 0;
+	SendMessage("매크로", "Play", "old_talk1_3.cut01");
+}
+
+Talking()
+{
+	switch($TalkingStep)
+	{
+		case 0:
+		{
+			SendMessage("자막", "활성화", "");
+			SendMessage("자막", "와이드모드", "켜기");
+			SendMessage("자막", "SetObject", "성아");
+			SendMessage("자막", "SetFunction", "대화#1-3.Talking");
+			SendMessage("성아", "바라보기", "유저");
+			SendMessage("자막", "다이얼로그출력", "d02_004");
+			break;
+		}
+		case 1:
+		{
+			SendMessage("자막", "다이얼로그출력", "d02_005");
+			break;
+		}
+		case 2:
+		{
+			SendMessage("자막", "선택", "I did.\nIt was your scream, I think...");
+			break;
+		}
+		case 3:
+		{
+			SendMessage("자막", "다이얼로그출력", "d02_006");
+			break;
+		}
+		case 4:
+		{
+			SendMessage("자막", "다이얼로그출력", "d02_007");
+			break;
+		}
+		case 5:
+		{
+			SendMessage("자막", "선택", "Okay, I'll be with you.\nBut I have to go.\nShut up...");
+			break;
+		}
+		case 6:
+		{
+			switch($USER_SELECT)
+			{
+				case 0:
+				{
+					$TalkingStep++;
+					SendMessage("자막", "다이얼로그출력", "d02_008");
+					break;
+				}
+				case 1:
+				{
+					$TalkingStep++;
+					SendMessage("자막", "다이얼로그출력", "d02_009");
+					break;
+				}
+				case 2:
+				{
+					SendMessage("자막", "문자출력", "1.5,......");
+					SendMessage("성아", "표정바꿔", "책망");
+					SendMessage("타이머", "스크립트설정", "3 0 1 대화#1-3.Talking");
+					break;
+				}
+			}
+			break;
+		}
+		case 7:
+		{
+			SendMessage("자막", "다이얼로그출력", "d02_010");
+			$TalkingStep++;
+			break;
+		}
+		case 8:
+		{
+			SendMessage("자막", "다이얼로그출력", "d02_011");
+			break;
+		}
+		case 9:
+		{
+			SendMessage("유저", "획득", "Key of the Main Hallway");
+			SendMessage("성아", "애니메이션", "쉬기");
+			SendMessage("성아", "표정바꿔", "보통");
+			SendMessage("성아", "쳐다보지말기", "");
+			SendMessage("자막", "비활성", "");
+			SendMessage("자막", "와이드모드", "끄기");
+			SendMessage("자막", "SetObject", "");
+			SendMessage("자막", "SetFunction", "");
+			$대화_성아 = "대화#1-4";
+			break;
+		}
+	}
+	
+	$TalkingStep++;
+}

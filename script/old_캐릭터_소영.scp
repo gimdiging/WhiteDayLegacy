@@ -30,6 +30,6 @@ click()
 	if($old_Mission4_나무 == TRUE)
 	{
 //		SendMessage("소영", "스크립트실행", "대화#3-2.Init");
-		RunScript("", "old_대화.Init3_2");
+		SendMessage("소영", "스크립트실행", "old_대화3-2.Init");
 	}
 }

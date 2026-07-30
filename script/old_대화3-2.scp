@@ -1,0 +1,114 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					T a l k i n g S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					대화#3-2.scp
+//
+//	熱血man: matzzang		last update: 2000.07.21
+//  --------------------------------------------------
+
+Init()
+{
+//	$TalkingStep = 0;
+//	Talking();
+	SendMessage("매크로", "Play", "old_talk3_2.cut01");
+}
+
+Talking()
+{
+	switch($TalkingStep)
+	{
+		case 0:
+		{
+			SendMessage("자막", "활성화", "");
+			SendMessage("자막", "SetFunction", "대화#3-2.Talking");
+			SendMessage("자막", "SetObject", "소영");
+			SendMessage("소영", "바라보기", "유저");
+			SendMessage("소영", "애니메이션", "쉬기");
+			SendMessage("자막", "와이드모드", "켜기");
+			SendMessage("타이머", "스크립트설정", "1 0 1 대화#3-2.Talking");
+			break;
+		}
+		case 1:
+		{
+			SendMessage("자막", "다이얼로그출력", "d04_004");
+			break;
+		}
+		case 2:
+		{
+			SendMessage("자막", "선택", "내 이름은 이희민. 기억나니? 지난 번에..\n괜찮아?\n여기서 뭐하고 있었니?");
+			break;
+		}
+		case 3:
+		{
+			switch($USER_SELECT)
+			{
+				case 0:
+				{
+					SendMessage("자막", "다이얼로그출력", "d04_005");
+					break;
+				}
+				case 1:
+				{
+					SendMessage("자막", "다이얼로그출력", "d04_006");
+					break;
+				}
+				case 2:
+				{
+					SendMessage("자막", "다이얼로그출력", "d04_007");
+					break;
+				}
+			}
+			break;
+		}	
+		case 4:
+		{
+			SendMessage("자막", "선택", "무슨일인지 모르지만 내가 도와줄께\n......\n오늘 학교 분위기가 이상해");
+			break;
+		}
+		case 5:
+		{
+			switch($USER_SELECT)
+			{
+				case 0:
+				{
+					SendMessage("자막", "다이얼로그출력", "d04_008");
+					break;
+				}
+				case 1:
+				{
+					SendMessage("자막", "다이얼로그출력", "d04_009");
+					break;
+				}
+				case 2:
+				{
+					SendMessage("자막", "다이얼로그출력", "d04_010");
+					break;
+				}
+			}
+			break;
+		}
+		case 6:
+		{
+			SendMessage("자막", "비활성", "");
+			SendMessage("자막", "SetFunction", "");
+			SendMessage("자막", "SetObject", "");
+			SendMessage("성아", "쳐다보지말기", "");
+			SendMessage("자막", "와이드모드", "끄기");
+			
+			SendMessage("자막", "문자출력", "50,Show Time~~~");
+			SendMessage("소영", "페이드", "Recursive 1 1 0");
+			
+			SendMessage("소영2", "페이드", "Recursive 1 0 1");
+			SendMessage("소영2", "애니메이션", "ShowTime");
+			break;
+		}
+	}
+
+	$TalkingStep++;
+}

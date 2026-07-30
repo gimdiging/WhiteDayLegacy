@@ -277,7 +277,7 @@ EventMode()
 		SendMessage("유저", "쳐다보기", "전자금고");
 		SendMessage("배경", "끄기", "fri");
 
-		$old_대화_성아 = "old_talk1_3";
+		$old_대화_성아 = "old_대화1-3";
 		SendMessage("성아", "위치", "" + FindPoint("old_성아위치3"));
 		SendMessage("성아", "회전", "6");
 		SendMessage("성아", "애니메이션", "두리번거리기");

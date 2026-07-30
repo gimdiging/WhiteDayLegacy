@@ -1,0 +1,176 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					T a l k i n g S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					대화#1-1.scp
+//
+//	熱血man: matzzang		last update: 2000.07.21
+//  --------------------------------------------------
+
+Init()
+{
+//	SendMessage("타이머", "스크립트설정", "0 0 1 대화#1-1.Talking");
+	SendMessage("매크로", "Play", "old_talk1_1.cut01");
+	DeleteObject("");	// EventArea
+//	$TalkingStep = 0;
+	$old_TalkingStep = 0;
+}
+
+Talking()
+{
+	switch($TalkingStep)
+	{
+		case 0:
+		{
+			SendMessage("자막", "활성화", "");
+			SendMessage("자막", "와이드모드", "켜기");
+			SendMessage("자막", "SetObject", "성아");
+			SendMessage("자막", "SetFunction", "대화#1-1.Talking");
+			SendMessage("유저", "바라보기", "성아");
+			SendMessage("타이머", "스크립트설정", "5 0 1 대화#1-1.Talking");
+			break;
+		}
+		case 1:
+		{
+			SendMessage("유저", "쳐다보지말기", "");
+			SendMessage("성아", "바라보기", "유저");
+			SendMessage("타이머", "스크립트설정", "1 0 1 대화#1-1.Talking");
+			break;
+		}
+		case 2:
+		{
+			SendMessage("성아", "애니메이션", "놀라기2");
+			SendMessage("자막", "다이얼로그출력", "d01_001");
+			break;
+		}
+		case 3:
+		{
+			SendMessage("성아", "이동", FindPoint("성아위치1") + " 걷기2");
+			SendMessage("타이머", "스크립트설정", "1 0 1 대화#1-1.Talking");
+			break;
+		}
+		case 4:
+		{
+			SendMessage("자막", "다이얼로그출력", "d01_002");
+			break;
+		}
+		case 5:
+		{
+			SendMessage("자막", "다이얼로그출력", "d01_003");
+			break;
+		}
+		case 6:
+		{
+			SendMessage("성아", "애니메이션", "쉬기");
+			SendMessage("자막", "선택", "Who are you?\nI gotta meet someone here...\nIt's none of your business.");
+			break;
+		}
+		case 7:
+		{
+			switch($USER_SELECT)
+			{
+				case 0:
+				{
+					SendMessage("자막", "다이얼로그출력", "d01_004");
+					break;
+				}
+				case 1:
+				{
+					SendMessage("자막", "다이얼로그출력", "d01_005");
+					break;
+				}
+				case 2:
+				{
+					SendMessage("자막", "문자출력", "3, ......");
+					SendMessage("성아", "표정바꿔", "책망");
+					SendMessage("타이머", "스크립트설정", "8 0 1 대화#1-1.Talking");
+					break;
+				}
+			}
+			break;
+		}
+		case 8:
+		{
+			SendMessage("자막", "다이얼로그출력", "d01_006");
+			break;
+		}
+		case 9:
+		{
+			SendMessage("자막", "선택", "So, what are YOU doing here?\nWhere is the classroom 2-8?");
+			break;
+		}
+		case 10:
+		{
+			switch($USER_SELECT)
+			{
+				case 0:
+				{
+					SendMessage("자막", "다이얼로그출력", "d01_007");
+					break;
+				}
+				case 1:
+				{
+					SendMessage("자막", "다이얼로그출력", "d01_008");
+					break;
+				}
+			}
+			break;
+		}
+		case 11:
+		{
+			SendMessage("자막", "다이얼로그출력", "d01_009");
+			break;
+		}
+		case 12:
+		{
+			SendMessage("자막", "다이얼로그출력", "d01_010");
+			break;
+		}
+		case 13:
+		{
+			SendMessage("자막", "다이얼로그출력", "d01_011");
+			SendMessage("오디오", "연주", "data/sound/bgm/미궁01.adp");
+			break;
+		}
+		case 14:
+		{
+			SendMessage("성아", "쳐다보지말기", "");
+			SendMessage("배전판", "스크립트실행", "e_배전판.EventMode");
+			SendMessage("성아", "애니메이션", "귀막고놀라기");
+			SendMessage("자막", "다이얼로그출력", "d01_012");
+			break;
+		}
+		case 15:
+		{
+			SendMessage("성아", "이동", FindPoint("성아위치2") + " 귀막고달리기 *script 대화#1-1.SitDown");
+			SendMessage("타이머", "스크립트설정", "2 0 1 대화#1-1.Talking");
+			break;
+		}
+		case 16:
+		{
+			SendMessage("타이머", "스크립트설정", "5 0 1 대화#1-1.Talking");
+			break;
+		}
+		case 17:
+		{
+			SendMessage("자막", "비활성", "");
+			SendMessage("자막", "와이드모드", "끄기");
+			SendMessage("자막", "SetObject", "");
+			SendMessage("자막", "SetFunction", "");
+			break;
+		}
+	}
+	
+	$TalkingStep++;
+}
+
+SitDown()
+{
+	SendMessage("성아", "애니메이션", "귀막고쪼그리기");
+	$대화_성아 = "대화#1-2";
+}

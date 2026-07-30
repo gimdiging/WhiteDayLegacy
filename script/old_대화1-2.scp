@@ -1,0 +1,62 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					T a l k i n g S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					대화#1-2.scp
+//
+//	熱血man: matzzang		last update: 2000.07.21
+//  --------------------------------------------------
+
+Init()
+{
+//	$TalkingStep = 0;
+	SetValue("$old_TalkingStep", $old_TalkingStep <= 2 ? $old_TalkingStep + 1 : 1);
+	SendMessage("매크로", "Play", "old_talk1_2.cut01");
+}
+
+Talking()
+{
+	$TalkIndex = GetObjValue("TalkIndex");
+	
+	if($TalkingStep == 0)
+	{
+		SendMessage("자막", "활성화", "");
+		SendMessage("자막", "SetFunction", "대화#1-2.Talking");
+		SendMessage("자막", "SetObject", "성아");
+
+		switch($TalkIndex)
+		{
+			case 0:
+			{
+				SendMessage("자막", "다이얼로그출력", "d02_001");
+				break;
+			}
+			case 1:
+			{
+				SendMessage("자막", "다이얼로그출력", "d02_002");
+				break;
+			}
+			case 2:
+			{
+				SendMessage("자막", "다이얼로그출력", "d02_003");
+				break;
+			}
+		}
+		$TalkingStep = 1;
+	}
+	else
+	{
+		SendMessage("자막", "비활성", "");
+		SendMessage("자막", "SetFunction", "");
+		SendMessage("자막", "SetObject", "");
+		$TalkingStep = 0;
+		return;
+	}
+	
+	SetObjValue("TalkIndex", $TalkIndex <= 1 ? $TalkIndex + 1 : 0);
+}
