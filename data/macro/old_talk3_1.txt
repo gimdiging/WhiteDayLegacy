@@ -60,5 +60,5 @@ SendMessage("자막", "와이드모드", "끄기");
 //SendMessage("자막", "SetFunction", "");
 SendMessage("자막", "말하는사람", "");
 $old_Mission4_대화 = ON;
-SendMessage("타이머", "스크립트설정", "2 0 1 old_대화.ShotUp *obj 나무윗쪽");
+SendMessage("타이머", "스크립트설정", "2 0 1 old_대화3-1.ShotUp *obj 나무윗쪽");
  ]

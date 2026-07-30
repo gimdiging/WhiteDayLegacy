@@ -203,5 +203,5 @@ SendMessage("자막", "말하는사람", "");
 SendMessage("성아", "애니메이션", "귀막고쪼그리기");
 SendMessage("성아", "회전", "90");
 SendMessage("성아", "위치", "" + FindPoint("old_성아위치2"));
-$old_대화_성아 = "old_talk1_2";
+$old_대화_성아 = "old_대화1-2";
  ]

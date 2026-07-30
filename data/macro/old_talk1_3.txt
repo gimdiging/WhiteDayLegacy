@@ -158,5 +158,5 @@ SendMessage("자막", "와이드모드", "끄기");
 //SendMessage("자막", "SetObject", "");
 //SendMessage("자막", "SetFunction", "");
 SendMessage("자막", "말하는사람", "");
-$old_대화_성아 = "old_talk1_4";
+$old_대화_성아 = "old_대화1-4";
  ]
