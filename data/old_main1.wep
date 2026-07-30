@@ -16385,7 +16385,7 @@
 {
 	*Type  "AREA"
 	*Class "WEventArea"
-	*Name  "*script old_대화.Init1_1"
+	*Name  "*script old_대화1-1.Init"
 	*MinMax -1210.54 -24.26 -359.33	-1201.30 40.30 -281.47
 }
 
@@ -16565,7 +16565,7 @@
 {
 	*Type  "AREA"
 	*Class "WEventArea"
-	*Name  "*script old_대화.Init2_1"
+	*Name  "*script old_대화2-1.Init1"
 	*MinMax -939.55 -23.40 1573.50	-924.10 26.27 1618.40
 }
 
@@ -16621,7 +16621,7 @@
 {
 	*Type  "AREA"
 	*Class "WEventArea"
-	*Name  "*script old_대화.Init2_2"
+	*Name  "*script old_대화2-1.Init2"
 	*MinMax -939.95 -23.34 1526.63	-924.13 25.98 1572.89
 }
 
@@ -17146,7 +17146,7 @@
 {
 	*Type  "AREA"
 	*Class "WEventArea"
-	*Name  "*script old_대화.Init3_1"
+	*Name  "*script old_대화3-1.Init"
 	*MinMax -1833.77 90.77 1246.55	-1794.84 200.01 1324.58
 }
 
