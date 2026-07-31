@@ -23,7 +23,7 @@ Init()
 Init목의문장()
 {
 	SendMessage("", "반짝", "off");
-	SendMessage("", "끄기", "");
+	SendMessage("", "페이드", "Recursive 0 0 0");
 	SetObjName("목의문장");
 }
 
@@ -78,8 +78,9 @@ click()
 				else
 				{
 					SetValue(GetObjValue("Lock"), UNLOCK);
+//					SendMessage("", "페이드", "Recursive 1 1 0");
 					SendMessage("유저", "폐기", "@old_목의조각");
-					SendMessage("목의문장", "켜기", "");
+					SendMessage("목의문장", "페이드", "Recursive 0 1 1");
 				}
 			}
 			else
