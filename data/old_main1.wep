@@ -17745,7 +17745,6 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Filename "Item/old_아이템_금의문장.pet"
-	*Script "*lighting 0"
 	*Pos -67.25 107.36 -372.95
 	*Rot 0.0 270.0 0.0
 	*Scale 1.00
@@ -17773,7 +17772,6 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Filename "Item/old_아이템_화의문장.pet"
-	*Script "*lighting 0"
 	*Pos -358.58 107.51 -372.66
 	*Rot 0.0 270.0 0.0
 	*Scale 1.00
@@ -17801,7 +17799,6 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Filename "Item/old_아이템_수의문장.pet"
-	*Script "*lighting 0"
 	*Pos -684.28 107.51 -371.65
 	*Rot 0.0 270.0 0.0
 	*Scale 1.00
