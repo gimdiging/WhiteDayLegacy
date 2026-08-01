@@ -16,6 +16,7 @@ Init()
 {
 	SendMessage("", "끄기", "");
 	SendMessage("", "발광", "Recursive on");
+	SetObjName("금의관문");
 }
 
 Init커서용()
@@ -26,12 +27,14 @@ Init커서용()
 	SendMessage("", "끄기", "");
 	SendMessage("", "픽거리설정", "50 50");
 	SendMessage("", "페이드", "Recursive 0 0 0");
+	SetObjName("금의관문커서용");
 }
 
 Init금의문장()
 {
-	SendMessage("", "끄기", "");
+	SendMessage("", "페이드", "Recursive 0 0 0");
 	SendMessage("", "발광", "Recursive on");
+	SetObjName("금의문장");
 }
 
 pick()
@@ -60,7 +63,7 @@ click()
 		if($G_UserItem == $KeyName)
 		{
 			SendMessage("유저", "폐기", "@old_금의조각");
-			SendMessage("금의문장", "켜기", "");
+			SendMessage("금의문장", "페이드", "Recursive 0 1 1");
 			DeleteObject("금의관문커서용");
 			$old_e_매크로++;
 		}
