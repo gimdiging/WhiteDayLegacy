@@ -14,17 +14,17 @@
 
 Init()
 {
-	SendMessage("", "스크립트설정", "use " + $G_File);
-	SetObjValue("Step", 0);
-	SetObjValue("KeyName", "old_금의조각");
 	SendMessage("", "끄기", "");
 	SendMessage("", "발광", "Recursive on");
-	SendMessage("", "픽거리설정", "50 50");
 }
 
 Init커서용()
 {
-	Init();
+	SendMessage("", "스크립트설정", "use " + $G_File);
+	SetObjValue("Step", 0);
+	SetObjValue("KeyName", "old_금의조각");
+	SendMessage("", "끄기", "");
+	SendMessage("", "픽거리설정", "50 50");
 	SendMessage("", "페이드", "Recursive 0 0 0");
 }
 
