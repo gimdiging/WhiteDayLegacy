@@ -23,8 +23,8 @@ Init()
 Init커서용()
 {
 	SendMessage("", "스크립트설정", "item " + $G_File);
-	SetObjValue("Step", 0);
 	SetObjName("토의조각커서용");
+	SetObjValue("Step", 0);
 	SendMessage("", "페이드", "Recursive 0 0 0");
 	SendMessage("", "끄기", "");
 }
@@ -54,7 +54,7 @@ click()
 	}
 	else if($Step == 1)
 	{
-		GetItem();
+		SendMessage("타이머", "스크립트설정", "0 0 1 old_아이템_토의문장.GetItem");
 	}
 	SetObjValue("Step", $Step + 1);
 }
