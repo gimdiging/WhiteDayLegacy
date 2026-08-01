@@ -30,7 +30,6 @@ Init커서용()
 
 Init수의문장()
 {
-	SendMessage("", "반짝", "off");
 	SendMessage("", "끄기", "");
 	SendMessage("", "발광", "Recursive on");
 }
@@ -62,7 +61,7 @@ click()
 		{
 			SendMessage("유저", "폐기", "@old_수의조각");
 			SendMessage("수의문장", "켜기", "");
-			DeleteObject("수의관문pick");
+			DeleteObject("수의관문커서용");
 			$old_e_매크로++;
 		}
 		else
