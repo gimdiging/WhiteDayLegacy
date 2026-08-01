@@ -17825,7 +17825,6 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Name  "수의관문"
 	*Filename "Obj/old_오브젝트_수의관문.pet"
 	*Pos 115 150 -330
 	*Rot 0.0 -90.0 90.0
@@ -17839,7 +17838,6 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Name  "수의관문커서용"
 	*Filename "Obj/old_오브젝트_목의관문.pet"
 	*Script "*init old_오브젝트_수의관문.Init커서용"
 	*Pos 115 150 -330
@@ -17854,7 +17852,6 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Name  "수의문장"
 	*Filename "Item/old_아이템_수의문장.pet"
 	*Script "*init old_오브젝트_수의관문.Init수의문장"
 	*Pos 113 150 -330
@@ -17869,7 +17866,6 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Name  "화의관문"
 	*Filename "Obj/old_오브젝트_화의관문.pet"
 	*Pos 115 150 -370
 	*Rot 0.0 -90.0 90.0
@@ -17883,7 +17879,6 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Name  "화의관문커서용"
 	*Filename "Obj/old_오브젝트_목의관문.pet"
 	*Script "*init old_오브젝트_화의관문.Init커서용"
 	*Pos 115 150 -370
@@ -17898,7 +17893,6 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Name  "화의문장"
 	*Filename "Item/old_아이템_화의문장.pet"
 	*Script "*init old_오브젝트_화의관문.Init화의문장"
 	*Pos 113 150 -370
@@ -17913,7 +17907,6 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Name  "금의관문"
 	*Filename "Obj/old_오브젝트_금의관문.pet"
 	*Pos 115 150 -410
 	*Rot 0.0 -90.0 90.0
@@ -17927,7 +17920,6 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Name  "금의관문커서용"
 	*Filename "Obj/old_오브젝트_목의관문.pet"
 	*Script "*init old_오브젝트_금의관문.Init커서용"
 	*Pos 115 150 -410
@@ -17942,7 +17934,6 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Name  "금의문장"
 	*Filename "Item/old_아이템_금의문장.pet"
 	*Script "*init old_오브젝트_금의관문.Init금의문장"
 	*Pos 113 150 -410
