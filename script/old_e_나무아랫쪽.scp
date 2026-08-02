@@ -21,7 +21,7 @@ Init()
 //		SendMessage("", "스크립트설정", "egg" + $i + " " + $WorkingFile + ".egg" + $i);
 		SendMessage("", "스크립트설정", "egg" + $i + " " + $G_File + ".egg" + $i);
 		SetObjValue("EggDead" + $i , FALSE);
-		SendMessage("", "픽거리설정", "500 500");
+		SendMessage("", "픽거리설정", "150 300");
 	}
 //	SetObjValue("DeadCount", 4);
 	SetObjValue("DeadCount", 9);
@@ -311,17 +311,18 @@ DeadCheck()
 		SendMessage("자막", "활성화", "");
 		SendMessage("자막", "와이드모드", "켜기");	
 
+		SendMessage("배경", "끄기", "tree_down");
+		SendMessage("배경", "끄기", "tree_up");
+
 //		SendMessage("유저", "위치바라보기", "" + FindPoint("아랫나무"));
 		SendMessage("유저", "위치쳐다보기", "" + FindPoint("old_아랫나무"));
 
 		SendMessage("나무아랫쪽", "애니메이션", "죽기");
 		SendMessage("나무윗쪽", "애니메이션", "죽어있기");
-		SendMessage("배경", "끄기", "tree_down");
-		SendMessage("배경", "끄기", "tree_up");
 		DeleteObject("나무윗쪽줄기");
 
 		for($i = 1; $i <= 9; $i++)
-		SendMessage("모기" + $i, "페이드", "Recursive 2 1 0");
+			SendMessage("모기" + $i, "페이드", "Recursive 3 1 0");
 
 //		SendMessage("소영", "위치", "" + FindPoint("소영위치1"));
 		SendMessage("소영", "위치", "" + FindPoint("old_소영위치1"));
