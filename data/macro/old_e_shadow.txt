@@ -28,7 +28,7 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=6
 	Event=0.000	[ 
-	SendMessage("사운드", "연주", "data/sound/event/본관1_벼락강타.wav");
+	SendMessage("사운드", "연주", "data/sound/event/old_본관1_벼락강타.wav");
 //	SendMessage("타이머", "스크립트설정", "0.07 0 1 e_그림자.RunEvent *obj 그림자");
  ]
 	Event=0.070	[ 
@@ -141,7 +141,7 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=1
 	Event=0.000	[ 
-	SendMessage("사운드", "연주", "data/sound/event/본관1_벼락준비.wav");
+	SendMessage("사운드", "연주", "data/sound/event/old_본관1_벼락준비.wav");
 	SendMessage("나영", "발광", "Recursive off");
 	SendMessage("창틀", "발광", "Recursive off");
 	SendMessage("자막", "비활성", "");
