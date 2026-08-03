@@ -104,7 +104,7 @@ e학생구타이벤트7()
 Event양동이()
 {
 	DeleteObject("");	// delete event area
-	SendMessage("사운드", "연주", "data/sound/양동이구르는소리.wav");
+	SendMessage("사운드", "연주", "data/sound/old_양동이구르는소리.wav");
 }
 
 _나무바닥()

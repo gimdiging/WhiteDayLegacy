@@ -131,7 +131,7 @@ KillSound()
 {
 	SendMessage("자막", "활성화", "");
 	SendMessage("자막", "와이드모드", "켜기");
-	SendMessage("사운드", "연주", "data/sound/event/철망자르는니퍼.wav");
+	SendMessage("사운드", "연주", "data/sound/event/old_철망자르는니퍼.wav");
 	SendMessage("타이머", "스크립트설정", "5 0 1 old_오브젝트_철망.KillItem *obj " + GetObjValue("ObjName"));
 }
 

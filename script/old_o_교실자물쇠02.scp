@@ -181,7 +181,7 @@ click()
 		}
 		else
 		{
-			SendMessage("사운드", "연주", "자물쇠흔드는소리,data\sound\자물쇠흔드는소리.wav");
+			SendMessage("사운드", "연주", "자물쇠흔드는소리,data\sound\old_자물쇠흔드는소리.wav");
 			SendMessage("자막", "문자출력", "2," +  GetString("old_s32"));
 		}
 	}

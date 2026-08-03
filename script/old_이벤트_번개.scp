@@ -22,5 +22,5 @@ Init()
 Init준비()
 {
 	DeleteObject("");
-	SendMessage("사운드", "연주", "data/sound/event/본관1_벼락준비.wav");
+	SendMessage("사운드", "연주", "data/sound/event/old_본관1_벼락준비.wav");
 }

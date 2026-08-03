@@ -380,7 +380,7 @@ Event모기3()
 
 //	SendMessage("타이머", "스크립트설정", "0 0 1 e_나무아랫쪽.e모기3 *obj 나무아랫쪽");
 	SendMessage("타이머", "스크립트설정", "0 0 1 old_e_나무아랫쪽.e모기3 *obj 나무아랫쪽");
-	SendMessage("사운드", "연주3d", GetObjPos("나무아랫쪽") + " loop,모기소리,data/sound/event/모기앵앵.wav");
+	SendMessage("사운드", "연주3d", GetObjPos("나무아랫쪽") + " loop,모기소리,data/sound/event/old_모기앵앵.wav");
 }
 
 e모기1()
