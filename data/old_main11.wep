@@ -16359,7 +16359,7 @@
 {
 	*Type  "AREA"
 	*Class "WEventArea"
-	*Name  "*script old_대화#1-1.init"
+	*Name  "*script old_대화#1-1.Init"
 	*MinMax -1210.54 -24.26 -359.33	-1201.30 40.30 -281.47
 }
 
@@ -16367,7 +16367,7 @@
 {
 	*Type  "POINT"
 	*Class ""
-	*Name  "old_성아위치1"
+	*Name  "성아위치1"
 	*Pos -1163.16 0.00 -307.77
 }
 
@@ -16388,7 +16388,7 @@
 {
 	*Type  "POINT"
 	*Class ""
-	*Name  "old_성아위치2"
+	*Name  "성아위치2"
 	*Pos -801.92 26.21 -717.58
 }
 
@@ -16396,7 +16396,7 @@
 {
 	*Type  "POINT"
 	*Class ""
-	*Name  "old_성아위치3"
+	*Name  "성아위치3"
 	*Pos -1313.40 31.76 -286.18
 }
 
@@ -16539,7 +16539,7 @@
 {
 	*Type  "AREA"
 	*Class "WEventArea"
-	*Name  "*script old_대화#2-1.init1"
+	*Name  "*script old_대화#2-1.Init1"
 	*MinMax -939.55 -23.40 1573.50	-924.10 26.27 1618.40
 }
 
@@ -16547,7 +16547,7 @@
 {
 	*Type  "POINT"
 	*Class ""
-	*Name  "old_지현퇴장위치"
+	*Name  "지현퇴장위치"
 	*Pos -1024.86 0.00 1573.50
 }
 
@@ -16594,7 +16594,7 @@
 {
 	*Type  "AREA"
 	*Class "WEventArea"
-	*Name  "*script old_대화#2-1.init2"
+	*Name  "*script old_대화#2-1.Init2"
 	*MinMax -939.95 -23.34 1526.63	-924.13 25.98 1572.89
 }
 
@@ -16602,7 +16602,7 @@
 {
 	*Type  "POINT"
 	*Class ""
-	*Name  "old_지현퇴장위치1"
+	*Name  "지현퇴장위치1"
 	*Pos -963.70 0.00 1612.57
 }
 
@@ -16610,7 +16610,7 @@
 {
 	*Type  "POINT"
 	*Class ""
-	*Name  "old_지현퇴장위치2"
+	*Name  "지현퇴장위치2"
 	*Pos -962.14 0.00 1529.42
 }
 
@@ -16632,7 +16632,7 @@
 {
 	*Type  "AREA"
 	*Class "WEventArea"
-	*Name  "*script old_이벤트_번개.init"
+	*Name  "*script old_이벤트_번개.Init"
 	*MinMax -955.02 103.19 -372.78	-926.33 196.69 -284.43
 }
 
@@ -16666,7 +16666,7 @@
 {
 	*Type  "AREA"
 	*Class "WEventArea"
-	*Name  "*script old_이벤트_번개.init준비"
+	*Name  "*script old_이벤트_번개.Init준비"
 	*MinMax -1199.92 104.19 -359.35	-1189.61 189.08 -281.85
 }
 
@@ -16674,7 +16674,7 @@
 {
 	*Type  "POINT"
 	*Class ""
-	*Name  "old_나영그림자위치"
+	*Name  "나영그림자위치"
 	*Pos -803.10 153.09 -611.00
 }
 
@@ -16682,7 +16682,7 @@
 {
 	*Type  "POINT"
 	*Class ""
-	*Name  "old_나영이동위치"
+	*Name  "나영이동위치"
 	*Pos -927.61 121.20 -400.31
 }
 
@@ -16698,7 +16698,7 @@
 {
 	*Type  "POINT"
 	*Class ""
-	*Name  "old_나무쳐다보기"
+	*Name  "나무쳐다보기"
 	*Pos -1805.65 185.04 1227.73
 }
 
@@ -16836,7 +16836,7 @@
 {
 	*Type  "POINT"
 	*Class ""
-	*Name  "old_아랫나무"
+	*Name  "아랫나무"
 	*Pos -1940.31 61.16 1210.31
 }
 
@@ -16844,7 +16844,7 @@
 {
 	*Type  "POINT"
 	*Class ""
-	*Name  "old_소영위치1"
+	*Name  "소영위치1"
 	*Pos -1917.58 104.85 1182.04
 }
 
@@ -16852,7 +16852,7 @@
 {
 	*Type  "POINT"
 	*Class ""
-	*Name  "old_소영위치2"
+	*Name  "소영위치2"
 	*Pos -1782.40 133.24 1307.64
 }
 
