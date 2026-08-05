@@ -65,14 +65,14 @@ Talking()
 		case 3:
 		{
 //			SendMessage("자막", "문자출력", "2,한소영이 보인다");
-			SendMessage("자막", "문자출력", "2," +  GetString("old_s107"));
+			SendMessage("자막", "문자출력", "2," +  GetString("old_s7"));
 			SendMessage("타이머", "스크립트설정", "2 0 1 old_대화3-1.Talking");
 			break;
 		}	
 		case 4:
 		{
 //			SendMessage("자막", "선택", "내가 도와 줄께!\n너 거기서 뭐해?");
-			SendMessage("자막", "선택", GetString("old_s108"));
+			SendMessage("자막", "선택", GetString("old_s107"));
 			SendMessage("자막", "실행함수", "old_대화3-1.Talking");
 			break;
 		}
@@ -98,7 +98,8 @@ Talking()
 			break;
 		}	
 	}
-	$TalkingStep++;
+//	$TalkingStep++;
+	$old_TalkingStep++;
 }
 
 ShotUp()
