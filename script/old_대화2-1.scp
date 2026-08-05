@@ -19,10 +19,15 @@ Init1()
 	if($old_대화_지현 == 0)
 	{
 //		SendMessage("타이머", "스크립트설정", "0 0 1 대화#2-1.Talking");
-		SendMessage("매크로", "Play", "old_talk2_1.cut01");
+		if($old_LegacyEvents == ON)
+			SendMessage("타이머", "스크립트설정", "0 0 1 old_대화2-1.Talking");
+		else
+			SendMessage("매크로", "Play", "old_talk2_1.cut01");
 //		$대화_지현 = 1;
 		$old_대화_지현 = 1;
 //		$TalkingStep = 0;
+		if($old_LegacyEvents == ON)
+			$old_TalkingStep = 0;
 	}
 }
 
@@ -33,62 +38,84 @@ Init2()
 	if($old_대화_지현 == 0)
 	{
 //		SendMessage("타이머", "스크립트설정", "0 0 1 대화#2-1.Talking");
-		SendMessage("매크로", "Play", "old_talk2_1.cut01");
+		if($old_LegacyEvents == ON)
+			SendMessage("타이머", "스크립트설정", "0 0 1 old_대화2-1.Talking");
+		else
+			SendMessage("매크로", "Play", "old_talk2_1.cut01");
 //		$대화_지현 = 2;
 		$old_대화_지현 = 2;
 //		$TalkingStep = 0;
+		if($old_LegacyEvents == ON)
+			$old_TalkingStep = 0;
 	}
 }
 
 Talking()
 {
-	switch($TalkingStep)
+//	switch($TalkingStep)
+	switch($old_TalkingStep)
 	{
 		case 0:
 		{
 			SendMessage("자막", "활성화", "");
 			SendMessage("자막", "와이드모드", "켜기");
-			SendMessage("자막", "SetObject", "지현");
-			SendMessage("자막", "SetFunction", "대화#2-1.Talking");
-			SendMessage("유저", "바라보기", "지현");
-			SendMessage("타이머", "스크립트설정", "1 0 1 대화#2-1.Talking");
+//			SendMessage("자막", "SetObject", "지현");
+//			SendMessage("자막", "SetFunction", "대화#2-1.Talking");
+			SendMessage("자막", "말하는사람", "지현");
+//			SendMessage("유저", "바라보기", "지현");
+			SendMessage("유저", "쳐다보기", "지현");
+//			SendMessage("타이머", "스크립트설정", "1 0 1 대화#2-1.Talking");
+			SendMessage("타이머", "스크립트설정", "1 0 1 old_대화2-1.Talking");
 			break;
 		}
 		case 1:
 		{
-			SendMessage("타이머", "스크립트설정", "2 0 1 대화#2-1.Talking");
+//			SendMessage("타이머", "스크립트설정", "2 0 1 대화#2-1.Talking");
+			SendMessage("타이머", "스크립트설정", "2 0 1 old_대화2-1.Talking");
 			break;
 		}
 		case 2:
 		{
 			SendMessage("유저", "쳐다보지말기", "");
-			SendMessage("자막", "다이얼로그출력", "d03_001");
+//			SendMessage("자막", "다이얼로그출력", "d03_001");
+			SendMessage("자막", "다이얼로그출력", "old_d03_001");
+			SendMessage("타이머", "스크립트설정", "2 0 1 old_대화2-1.Talking");
 			break;
 		}
 		case 3:
 		{
-			SendMessage("자막", "선택", "난 2학년 4반의 이희민이야.\n어 그게...\n넌 누군데?");
+//			SendMessage("자막", "선택", "난 2학년 4반의 이희민이야.\n어 그게...\n넌 누군데?");
+			SendMessage("자막", "선택", GetString("old_s105"));
+			SendMessage("자막", "실행함수", "old_대화2-1.Talking");
 			break;
 		}
 		case 4:
 		{
-			SendMessage("지현", "바라보기", "유저");
+//			SendMessage("지현", "바라보기", "유저");
+			SendMessage("지현", "쳐다보기", "유저");
 			SendMessage("지현", "애니메이션", "상체내밀기");
-			switch($USER_SELECT)
+//			switch($USER_SELECT)
+			switch($G_UserSelect)
 			{
 				case 0:
 				{
-					SendMessage("자막", "다이얼로그출력", "d03_002");
+//					SendMessage("자막", "다이얼로그출력", "d03_002");
+					SendMessage("자막", "다이얼로그출력", "old_d03_002");
+					SendMessage("타이머", "스크립트설정", "2 0 1 old_대화2-1.Talking");
 					break;
 				}
 				case 1:
 				{
-					SendMessage("자막", "다이얼로그출력", "d03_003");
+//					SendMessage("자막", "다이얼로그출력", "d03_003");
+					SendMessage("자막", "다이얼로그출력", "old_d03_003");
+					SendMessage("타이머", "스크립트설정", "2 0 1 old_대화2-1.Talking");
 					break;
 				}
 				case 2:
 				{
-					SendMessage("자막", "다이얼로그출력", "d03_004");
+//					SendMessage("자막", "다이얼로그출력", "d03_004");
+					SendMessage("자막", "다이얼로그출력", "old_d03_004");
+					SendMessage("타이머", "스크립트설정", "3 0 1 old_대화2-1.Talking");
 					break;
 				}
 			}
@@ -97,38 +124,52 @@ Talking()
 		case 5:
 		{
 			SendMessage("지현", "애니메이션", "상체내밀기");
-			SendMessage("자막", "다이얼로그출력", "d03_005");
+//			SendMessage("자막", "다이얼로그출력", "d03_005");
+			SendMessage("자막", "다이얼로그출력", "old_d03_005");
+			SendMessage("타이머", "스크립트설정", "4 0 1 old_대화2-1.Talking");
 			break;
 		}
 		case 6:
 		{
-			SendMessage("자막", "다이얼로그출력", "d03_006");
+//			SendMessage("자막", "다이얼로그출력", "d03_006");
+			SendMessage("자막", "다이얼로그출력", "old_d03_006");
+			SendMessage("타이머", "스크립트설정", "3 0 1 old_대화2-1.Talking");
 			break;
 		}
 		case 7:
 		{
-			SendMessage("자막", "다이얼로그출력", "d03_007");
+//			SendMessage("자막", "다이얼로그출력", "d03_007");
+			SendMessage("자막", "다이얼로그출력", "old_d03_007");
+			SendMessage("타이머", "스크립트설정", "3 0 1 old_대화2-1.Talking");
 			break;
 		}
 		case 8:
 		{
 			SendMessage("지현", "애니메이션", "서있기");
-			SendMessage("자막", "선택", "나도 잘부탁해.\n뭘 부탁해?");
+//			SendMessage("자막", "선택", "나도 잘부탁해.\n뭘 부탁해?");
+			SendMessage("자막", "선택", GetString("old_s106"));
+			SendMessage("자막", "실행함수", "old_대화2-1.Talking");
 			break;
 		}
 		case 9:
 		{
-			switch($USER_SELECT)
+//			switch($USER_SELECT)
+			switch($G_UserSelect)
 			{
 				case 0:
 				{
-					SendMessage("자막", "다이얼로그출력", "d03_008");
+//					SendMessage("자막", "다이얼로그출력", "d03_008");
+					SendMessage("자막", "다이얼로그출력", "old_d03_008");
+					SendMessage("타이머", "스크립트설정", "3 0 1 old_대화2-1.Talking");
 					break;
 				}
 				case 1:
 				{
-					SendMessage("자막", "다이얼로그출력", "d03_012");
-					$TalkingStep = 19;
+//					SendMessage("자막", "다이얼로그출력", "d03_012");
+					SendMessage("자막", "다이얼로그출력", "old_d03_012");
+//					$TalkingStep = 19;
+					$old_TalkingStep = 19;
+					SendMessage("타이머", "스크립트설정", "6 0 1 old_대화2-1.Talking");
 					break;
 				}
 			}
@@ -136,57 +177,81 @@ Talking()
 		}
 		case 10:
 		{
-			SendMessage("자막", "다이얼로그출력", "d03_009");
+//			SendMessage("자막", "다이얼로그출력", "d03_009");
+			SendMessage("자막", "다이얼로그출력", "old_d03_009");
+			SendMessage("타이머", "스크립트설정", "4 0 1 old_대화2-1.Talking");
 			break;
 		}
 		case 11:
 		{
-			SendMessage("자막", "다이얼로그출력", "d03_010");
+//			SendMessage("자막", "다이얼로그출력", "d03_010");
+			SendMessage("자막", "다이얼로그출력", "old_d03_010");
+			SendMessage("타이머", "스크립트설정", "4 0 1 old_대화2-1.Talking");
 			break;
 		}
 		case 12:
 		{
-			SendMessage("자막", "다이얼로그출력", "d03_011");
-			SendMessage("지현", "이동", FindPoint($대화_지현 == 1 ? "지현퇴장위치2" : "지현퇴장위치1") + " 손흔들며달리기");
-			SendMessage("타이머", "스크립트설정", "3 0 1 대화#2-1.Talking");
+//			SendMessage("자막", "다이얼로그출력", "d03_011");
+			SendMessage("자막", "다이얼로그출력", "old_d03_011");
+//			SendMessage("지현", "이동", FindPoint($대화_지현 == 1 ? "지현퇴장위치2" : "지현퇴장위치1") + " 손흔들며달리기");
+			SendMessage("지현", "빨리돌기포인트", FindPoint($old_대화_지현 == 1 ? "old_지현퇴장위치2" : "old_지현퇴장위치1") + "");
+			SendMessage("타이머", "스크립트설정", "0.2 0 1 old_대화2-1.Run");
+//			SendMessage("타이머", "스크립트설정", "3 0 1 대화#2-1.Talking");
+			SendMessage("타이머", "스크립트설정", "3 0 1 old_대화2-1.Talking");
 			break;
 		}
 		case 13:
 		{
+			SendMessage("타이머", "스크립트설정", "0 0 1 old_대화2-1.Talking");
 			break;
 		}
 		case 14:
 		{
 			SendMessage("지현", "쳐다보지말기", "");
-			SendMessage("지현", "이동", FindPoint("지현퇴장위치") + " 걷기2 *script 대화#2-1.Ending");
+//			SendMessage("지현", "이동", FindPoint("지현퇴장위치") + " 걷기2 *script 대화#2-1.Ending");
+			SendMessage("지현", "빨리돌기포인트", "" + FindPoint("old_지현퇴장위치"));
+			SendMessage("타이머", "스크립트설정", "0.2 0 1 old_대화2-1.Walk");
+			SendMessage("타이머", "스크립트설정", "4 0 1 old_대화2-1.Ending");
 			break;
 		}
 		case 20:
 		{
 			SendMessage("지현", "애니메이션", "쉬기");
-			SendMessage("자막", "다이얼로그출력", "d03_013");
+//			SendMessage("자막", "다이얼로그출력", "d03_013");
+			SendMessage("자막", "다이얼로그출력", "old_d03_013");
+			SendMessage("타이머", "스크립트설정", "4 0 1 old_대화2-1.Talking");
 			break;
 		}
 		case 21:
 		{
-			SendMessage("자막", "다이얼로그출력", "d03_014");
+//			SendMessage("자막", "다이얼로그출력", "d03_014");
+			SendMessage("자막", "다이얼로그출력", "old_d03_014");
+			SendMessage("타이머", "스크립트설정", "3 0 1 old_대화2-1.Talking");
 			break;
 		}
 		case 22:
 		{
-			SendMessage("자막", "다이얼로그출력", "d03_015");
-			SendMessage("지현", "이동", FindPoint($대화_지현 == 1 ? "지현퇴장위치2" : "지현퇴장위치1") + " 걷기2");
-			SendMessage("타이머", "스크립트설정", "3 0 1 대화#2-1.Talking");
+//			SendMessage("자막", "다이얼로그출력", "d03_015");
+			SendMessage("자막", "다이얼로그출력", "old_d03_015");
+//			SendMessage("지현", "이동", FindPoint($대화_지현 == 1 ? "지현퇴장위치2" : "지현퇴장위치1") + " 걷기2");
+			SendMessage("지현", "빨리돌기포인트", FindPoint($old_대화_지현 == 1 ? "old_지현퇴장위치2" : "old_지현퇴장위치1") + "");
+			SendMessage("타이머", "스크립트설정", "0.2 0 1 old_대화2-1.Walk");
+//			SendMessage("타이머", "스크립트설정", "3 0 1 대화#2-1.Talking");
+			SendMessage("타이머", "스크립트설정", "3 0 1 old_대화2-1.Talking");
 			break;
 		}
 		case 23:
 		{
+			SendMessage("타이머", "스크립트설정", "0 0 1 old_대화2-1.Talking");
 			break;
 		}
 		case 24:
 		{
 			SendMessage("지현", "쳐다보지말기", "");
-			SendMessage("지현", "이동", FindPoint("지현퇴장위치") + " 걷기2 *script 대화#2-1.Ending");
+//			SendMessage("지현", "이동", FindPoint("지현퇴장위치") + " 걷기2 *script 대화#2-1.Ending");
+			SendMessage("지현", "빨리돌기포인트", "" + FindPoint("old_지현퇴장위치"));
+			SendMessage("타이머", "스크립트설정", "0.2 0 1 old_대화2-1.Walk");
+			SendMessage("타이머", "스크립트설정", "4 0 1 old_대화2-1.Ending");
 			break;
 		}
 	}
@@ -194,12 +259,24 @@ Talking()
 	$TalkingStep++;
 }
 
+Run()
+{
+	SendMessage("지현", "애니메이션", "손흔들며달리기");
+}
+
+Walk()
+{
+	SendMessage("지현", "애니메이션", "걷기2");
+}
+
 Ending()
 {
 	DeleteObject("지현");
 	SendMessage("자막", "비활성", "");
 	SendMessage("자막", "와이드모드", "끄기");
-	SendMessage("자막", "SetObject", "");
-	SendMessage("자막", "SetFunction", "");
-	$대화_지현 = 3;
+//	SendMessage("자막", "SetObject", "");
+//	SendMessage("자막", "SetFunction", "");
+	SendMessage("자막", "말하는사람", "");
+//	$대화_지현 = 3;
+	$old_대화_지현 = 3;
 }
