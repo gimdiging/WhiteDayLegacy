@@ -15,46 +15,65 @@
 Init()
 {
 //	$TalkingStep = 0;
-	SetValue("$old_TalkingStep", $old_TalkingStep <= 2 ? $old_TalkingStep + 1 : 1);
-	SendMessage("매크로", "Play", "old_talk1_2.cut01");
+	if($old_LegacyEvents == ON)
+	{
+		$old_TalkingStep = 0;
+		SendMessage("타이머", "스크립트설정", "0 0 1 old_대화1-2.Talking");
+	}
+	else
+	{
+		SetValue("$old_TalkingStep", $old_TalkingStep <= 2 ? $old_TalkingStep + 1 : 1);
+		SendMessage("매크로", "Play", "old_talk1_2.cut01");
+	}
 }
 
 Talking()
 {
 	$TalkIndex = GetObjValue("TalkIndex");
 	
-	if($TalkingStep == 0)
+//	if($TalkingStep == 0)
+	if($old_TalkingStep == 0)
 	{
 		SendMessage("자막", "활성화", "");
-		SendMessage("자막", "SetFunction", "대화#1-2.Talking");
-		SendMessage("자막", "SetObject", "성아");
+//		SendMessage("자막", "SetFunction", "대화#1-2.Talking");
+//		SendMessage("자막", "SetObject", "성아");
+		SendMessage("자막", "말하는사람", "성아");
 
 		switch($TalkIndex)
 		{
 			case 0:
 			{
-				SendMessage("자막", "다이얼로그출력", "d02_001");
+//				SendMessage("자막", "다이얼로그출력", "d02_001");
+				SendMessage("자막", "다이얼로그출력", "old_d02_001");
+				SendMessage("타이머", "스크립트설정", "2 0 1 old_대화1-2.Talking");
 				break;
 			}
 			case 1:
 			{
-				SendMessage("자막", "다이얼로그출력", "d02_002");
+//				SendMessage("자막", "다이얼로그출력", "d02_002");
+				SendMessage("자막", "다이얼로그출력", "old_d02_002");
+				SendMessage("타이머", "스크립트설정", "1 0 1 old_대화1-2.Talking");
 				break;
 			}
 			case 2:
 			{
-				SendMessage("자막", "다이얼로그출력", "d02_003");
+//				SendMessage("자막", "다이얼로그출력", "d02_003");
+				SendMessage("자막", "다이얼로그출력", "old_d02_003");
+				SendMessage("타이머", "스크립트설정", "2 0 1 old_대화1-2.Talking");
 				break;
 			}
 		}
-		$TalkingStep = 1;
+//		$TalkingStep = 1;
+		$old_TalkingStep = 1;
 	}
 	else
 	{
 		SendMessage("자막", "비활성", "");
-		SendMessage("자막", "SetFunction", "");
-		SendMessage("자막", "SetObject", "");
-		$TalkingStep = 0;
+//		SendMessage("자막", "SetFunction", "");
+//		SendMessage("자막", "SetObject", "");
+		SendMessage("자막", "말하는사람", "");
+//		$TalkingStep = 0;
+		$old_TalkingStep = 0;
 		return;
 	}
 	
