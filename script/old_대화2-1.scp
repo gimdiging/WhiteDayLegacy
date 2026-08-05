@@ -256,7 +256,8 @@ Talking()
 		}
 	}
 	
-	$TalkingStep++;
+//	$TalkingStep++;
+	$old_TalkingStep++;
 }
 
 Run()
