@@ -1,4 +1,4 @@
-3 2889
+3 2898
 "index" "eng" "kor" 
 "1층수도꼭지" "1층수도꼭지" "Washroom" 
 "1층자판대" "1층자판대" "Hallway" 
@@ -2887,5 +2887,14 @@
 "old_s96" "축구공이다." "it's a football" 
 "old_s97" "흙 '토'자가 음각되어 있다." "The letter soil is embossed." 
 "old_s98" "불 '화'자가 음각되어 있다." "The letter fire is embossed." 
+"old_s101" "넌 누구?\n누굴 좀 만나려고..\n...신경쓰지마." "Who are you?\nI gotta meet someone here...\nIt's none of your business." 
+"old_s102" "그래서 넌 여기서 뭐하고 있던건데?\n2학년 8반 교실이 어디야?" "So, what are YOU doing here?\nWhere is the classroom 2-8?" 
+"old_s103" "들었어.\n너 비명밖엔" "I did.\nIt was your scream, I think..." 
+"old_s104" "그래, 같이 있어줄게.\n하지만 난 지금 가야 돼.\n닥쳐." "Okay, I'll be with you.\nBut I have to go.\nShut up..." 
+"old_s105" "난 2학년 4반의 이희민이야.\n어 그게...\n넌 누군데?" "I'm Lee Hee min from Year 2, Class 4.\nUh that...\nWho are you?" 
+"old_s106" "나도 잘부탁해.\n뭘 부탁해?" "I wish you well too.\nWhat do you ask for?" 
+"old_s107" "내가 도와 줄께!\n너 거기서 뭐해?" "I'll help!\nWhat are you doing there?" 
+"old_s108" "내 이름은 이희민. 기억나니? 지난 번에..\n괜찮아?\n여기서 뭐하고 있었니?" "My name is Lee Hee min. do you remember Last time...\nAre you okay?\nWhat were you doing here?" 
+"old_s109" "무슨일인지 모르지만 내가 도와줄께\n......\n오늘 학교 분위기가 이상해" "I don't know what's going on, but I'll help you\n......\nThe atmosphere at school is strange today" 
 
 
