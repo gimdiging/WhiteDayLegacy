@@ -201,8 +201,8 @@ Talking()
 		}
 		case 16:
 		{
-			SendMessage("타이머", "스크립트설정", "1 0 1 old_대화1-1.Rotate");
 			SendMessage("타이머", "스크립트설정", "1 0 1 old_대화1-1.Run");
+			SendMessage("타이머", "스크립트설정", "1 0 1 old_대화1-1.Rotate");
 //			SendMessage("타이머", "스크립트설정", "5 0 1 대화#1-1.Talking");
 			SendMessage("타이머", "스크립트설정", "5 0 1 old_대화1-1.Talking");
 			break;
@@ -240,8 +240,8 @@ Rotate()
 
 SitDown()
 {
-	SendMessage("성아", "회전", "90");
 	SendMessage("성아", "애니메이션", "귀막고쪼그리기");
+	SendMessage("성아", "회전", "90");
 	SendMessage("성아", "위치", "" + FindPoint("old_성아위치2"));
 //	$대화_성아 = "대화#1-2";
 	$old_대화_성아 = "old_대화1-2";
