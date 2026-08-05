@@ -120,6 +120,7 @@ $old_대화_지현				= 0;
 	
 $old_아이템_야광스틱_충전중	= FALSE;
 
+$old_LegacyEvents = ON;
 $old_Mission4_대화 = OFF;
 $old_e_매크로 = 0;
 $old_모기번호 = 0;
