@@ -14,8 +14,8 @@
 
 Init()
 {
-//	SendMessage("타이머", "스크립트설정", "0 0 1 대화#1-1.Talking");
 	if($old_LegacyEvents == ON)
+//		SendMessage("타이머", "스크립트설정", "0 0 1 대화#1-1.Talking");
 		SendMessage("타이머", "스크립트설정", "0 0 1 old_대화1-1.Talking");
 	else
 		SendMessage("매크로", "Play", "old_talk1_1.cut01");
