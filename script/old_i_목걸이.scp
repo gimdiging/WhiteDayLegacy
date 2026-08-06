@@ -65,7 +65,7 @@ GetItem()
 	SendMessage("유저", "획득", "@old_소영이의목걸이");
 	SendMessage("타이머", "스크립트설정", "1 0 1 old_i_목걸이.Release");
 	SendMessage("사운드", "연주", "data/sound/old_아이템획득.wav");
-	SendMessage("매크로", "Play", "old_talk4_1.cut01");
+	SendMessage("타이머", "스크립트설정", "0 0 1 old_대화4-1.Init");
 }
 
 Release()

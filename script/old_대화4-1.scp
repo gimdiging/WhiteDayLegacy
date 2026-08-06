@@ -1,0 +1,72 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  
+//				
+//					T a l k i n g S c r i p t F i l e 
+//
+//  (C) Sonnori 2000					대화#4-1.scp
+//
+//	熱血man: matzzang		last update: 2000.07.21
+//  --------------------------------------------------
+
+Init()
+{
+	if($old_LegacyEvents == ON)
+	{
+		$old_TalkingStep = 0;
+		Talking();
+	}
+	else
+		SendMessage("매크로", "Play", "old_talk4_1.cut01");
+}
+
+Talking()
+{
+	switch($old_TalkingStep)
+	{
+		case 0:
+		{
+			SendMessage("자막", "활성화", "");
+			SendMessage("자막", "와이드모드", "켜기");
+			SendMessage("자막", "말하는사람", "은미");
+			SendMessage("은미", "발광", "Recursive on");
+			SendMessage("은미", "발광색", "Recursive 104 96 23");
+			SendMessage("타이머", "스크립트설정", "1 0 1 old_대화4-1.Talking");
+			break;
+		}
+		case 1:
+		{
+			SendMessage("본관2연결문3", "애니메이션", "열기1");
+			SendMessage("본관2연결문4", "애니메이션", "열기2");
+			SendMessage("유저", "쳐다보기", "은미");
+			SendMessage("타이머", "스크립트설정", "1 0 1 old_대화4-1.Talking");
+			break;
+		}
+		case 2:
+		{	
+			SendMessage("자막", "다이얼로그출력", "old_d05_001");
+			SendMessage("타이머", "스크립트설정", "4 0 1 old_대화4-1.Talking");
+			break;
+		}
+		case 3:
+		{	
+			SendMessage("본관2연결문3", "애니메이션", "닫기1");
+			SendMessage("본관2연결문4", "애니메이션", "닫기2");
+			SendMessage("타이머", "스크립트설정", "3 0 1 old_대화4-1.Talking");
+			break;
+		}
+		case 4:
+		{	
+			SendMessage("유저", "쳐다보지말기", "");
+			SendMessage("자막", "비활성", "");
+			SendMessage("자막", "와이드모드", "끄기");
+			SendMessage("자막", "말하는사람", "");
+			DeleteObject("은미");
+			break;
+		}
+	}
+	$old_TalkingStep++;
+}
