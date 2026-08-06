@@ -14,8 +14,10 @@
 
 Process()
 {
+//	if($USER_RISE == OFF && $USER_CAPTUREITEM == TRUE)
 	if($old_USER_RISE == OFF && $old_USER_CAPTUREITEM == TRUE)
 	{
+//		$USER_CAPTUREITEM = FALSE;
 		$old_USER_CAPTUREITEM = FALSE;
 		SendMessage("유저", "놓기", "팔");
 		SendMessage("사운드", "연주", "당기는문잠긴것,data/sound/물건놓기.wav");
@@ -39,24 +41,35 @@ Event학생구타이벤트()
 {
 	DeleteObject("");		// delete event area
 
-	SendMessage("매크로","Play","old_hittedboy.cut01");
-/*
+	if($old_LegacyEvents == OFF)
+	{
+		SendMessage("매크로","Play","old_hittedboy.cut01");
+		return;
+	}
+
 	SendMessage("1층방화셔터", "애니메이션", "열기2");
 
-	SendMessage("사운드", "연주", "data/sound/event/구타씬.adp");
+//	SendMessage("사운드", "연주", "data/sound/event/구타씬.adp");
+	SendMessage("사운드", "연주", "data/sound/event/old_구타씬.wav");
 
 	SendMessage("때리는놈", "애니메이션", "때리기");
 	SendMessage("맞는놈", "애니메이션", "맞기");
 
 	SendMessage("자막", "활성화", "");
-	SendMessage("타이머", "스크립트설정", "0 0 1 오브젝트_유저.e학생구타이벤트1");
-	SendMessage("타이머", "스크립트설정", "2 0 1 오브젝트_유저.e학생구타이벤트2");
-	SendMessage("타이머", "스크립트설정", "4 0 1 오브젝트_유저.e학생구타이벤트3");
-	SendMessage("타이머", "스크립트설정", "8 0 1 오브젝트_유저.e학생구타이벤트4");
-	SendMessage("타이머", "스크립트설정", "35 0 1 오브젝트_유저.e학생구타이벤트5");
-	SendMessage("타이머", "스크립트설정", "32 0 1 오브젝트_유저.e학생구타이벤트6");
-	SendMessage("타이머", "스크립트설정", "12.9333 0 1 오브젝트_유저.e학생구타이벤트7");
-*/
+//	SendMessage("타이머", "스크립트설정", "0 0 1 오브젝트_유저.e학생구타이벤트1");
+	SendMessage("타이머", "스크립트설정", "0 0 1 old_오브젝트_유저.e학생구타이벤트1");
+//	SendMessage("타이머", "스크립트설정", "2 0 1 오브젝트_유저.e학생구타이벤트2");
+	SendMessage("타이머", "스크립트설정", "2 0 1 old_오브젝트_유저.e학생구타이벤트2");
+//	SendMessage("타이머", "스크립트설정", "4 0 1 오브젝트_유저.e학생구타이벤트3");
+	SendMessage("타이머", "스크립트설정", "4 0 1 old_오브젝트_유저.e학생구타이벤트3");
+//	SendMessage("타이머", "스크립트설정", "8 0 1 오브젝트_유저.e학생구타이벤트4");
+	SendMessage("타이머", "스크립트설정", "8 0 1 old_오브젝트_유저.e학생구타이벤트4");
+//	SendMessage("타이머", "스크립트설정", "35 0 1 오브젝트_유저.e학생구타이벤트5");
+	SendMessage("타이머", "스크립트설정", "35 0 1 old_오브젝트_유저.e학생구타이벤트5");
+//	SendMessage("타이머", "스크립트설정", "32 0 1 오브젝트_유저.e학생구타이벤트6");
+	SendMessage("타이머", "스크립트설정", "32 0 1 old_오브젝트_유저.e학생구타이벤트6");
+//	SendMessage("타이머", "스크립트설정", "12.9333 0 1 오브젝트_유저.e학생구타이벤트7");
+	SendMessage("타이머", "스크립트설정", "12.9333 0 1 old_오브젝트_유저.e학생구타이벤트7");
 }
 
 e학생구타이벤트1()
@@ -66,26 +79,31 @@ e학생구타이벤트1()
 
 e학생구타이벤트2()
 {
-	SendMessage("유저", "바라보기", "1층방화셔터앞의자");
+//	SendMessage("유저", "바라보기", "1층방화셔터앞의자");
+	SendMessage("유저", "쳐다보기", "1층방화셔터앞의자");
 }
 
 e학생구타이벤트3()
 {
-	SendMessage("뚤린창살", "스크립트실행", "오브젝트_뚤린창살.FadeIn");
+//	SendMessage("뚤린창살", "스크립트실행", "오브젝트_뚤린창살.FadeIn");
+	SendMessage("뚤린창살", "스크립트실행", "old_오브젝트_뚤린창살.FadeIn");
 }
 
 e학생구타이벤트4()
 {
 	SendMessage("유저", "쳐다보지말기", "");
-	SendMessage("main", "fov", "18");
+//	SendMessage("main", "fov", "18");
+	SendMessage("카메라", "fov", "18");
 }
 
 e학생구타이벤트5()
 {
 	SendMessage("1층방화셔터", "애니메이션", "닫기2");
 
-	SendMessage("뚤린창살", "스크립트실행", "오브젝트_뚤린창살.FadeOut");
-	SendMessage("main", "fov", "60");
+//	SendMessage("뚤린창살", "스크립트실행", "오브젝트_뚤린창살.FadeOut");
+	SendMessage("뚤린창살", "스크립트실행", "old_오브젝트_뚤린창살.FadeOut");
+//	SendMessage("main", "fov", "60");
+	SendMessage("카메라", "fov", "60");
 	SendMessage("자막", "비활성", "");
 	SendMessage("자막", "와이드모드", "끄기");
 }
@@ -104,6 +122,7 @@ e학생구타이벤트7()
 Event양동이()
 {
 	DeleteObject("");	// delete event area
+//	SendMessage("사운드", "연주", "data/sound/양동이구르는소리.wav");
 	SendMessage("사운드", "연주", "data/sound/old_양동이구르는소리.wav");
 }
 
