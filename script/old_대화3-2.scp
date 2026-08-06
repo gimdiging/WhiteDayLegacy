@@ -151,8 +151,6 @@ Talking()
 		case 8:
 		{
 			SendMessage("자막", "비활성", "");
-//			SendMessage("자막", "SetFunction", "");
-//			SendMessage("자막", "SetObject", "");
 			SendMessage("자막", "말하는사람", "");
 			SendMessage("자막", "와이드모드", "끄기");
 			DeleteObject("소영");
