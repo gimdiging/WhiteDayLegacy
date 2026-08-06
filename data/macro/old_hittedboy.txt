@@ -11,8 +11,11 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=7
 	Event=0.000	[ 
+//	DeleteObject("");		// delete event area
+
 	SendMessage("1층방화셔터", "애니메이션", "열기2");
 
+//	SendMessage("사운드", "연주", "data/sound/event/구타씬.adp");
 	SendMessage("사운드", "연주", "data/sound/event/old_구타씬.wav");
 
 	SendMessage("때리는놈", "애니메이션", "때리기");
@@ -29,13 +32,16 @@ TrackNum=1
 	SendMessage("자막", "와이드모드", "켜기");
  ]
 	Event=2.000	[ 
+//	SendMessage("유저", "바라보기", "1층방화셔터앞의자");
 	SendMessage("유저", "쳐다보기", "1층방화셔터앞의자");
  ]
 	Event=4.000	[ 
+//	SendMessage("뚤린창살", "스크립트실행", "오브젝트_뚤린창살.FadeIn");
 	SendMessage("뚤린창살", "스크립트실행", "old_오브젝트_뚤린창살.FadeIn");
  ]
 	Event=8.000	[ 
 	SendMessage("유저", "쳐다보지말기", "");
+//	SendMessage("main", "fov", "18");
 	SendMessage("카메라", "fov", "18");
  ]
 	Event=12.9333	[ 
@@ -48,7 +54,9 @@ TrackNum=1
 	Event=35.000	[ 
 	SendMessage("1층방화셔터", "애니메이션", "닫기2");
 
+//	SendMessage("뚤린창살", "스크립트실행", "오브젝트_뚤린창살.FadeOut");
 	SendMessage("뚤린창살", "스크립트실행", "old_오브젝트_뚤린창살.FadeOut");
+//	SendMessage("main", "fov", "60");
 	SendMessage("카메라", "fov", "60");
 	SendMessage("자막", "비활성", "");
 	SendMessage("자막", "와이드모드", "끄기");
