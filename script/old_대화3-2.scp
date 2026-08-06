@@ -14,53 +14,75 @@
 
 Init()
 {
-//	$TalkingStep = 0;
-//	Talking();
-	SendMessage("매크로", "Play", "old_talk3_2.cut01");
+	if($old_LegacyEvents == ON)
+	{
+//		$TalkingStep = 0;
+		$old_TalkingStep = 0;
+		Talking();
+	}
+	else
+		SendMessage("매크로", "Play", "old_talk3_2.cut01");
 }
 
 Talking()
 {
-	switch($TalkingStep)
+//	switch($TalkingStep)
+	switch($old_TalkingStep)
 	{
 		case 0:
 		{
 			SendMessage("자막", "활성화", "");
-			SendMessage("자막", "SetFunction", "대화#3-2.Talking");
-			SendMessage("자막", "SetObject", "소영");
-			SendMessage("소영", "바라보기", "유저");
+//			SendMessage("자막", "SetFunction", "대화#3-2.Talking");
+//			SendMessage("자막", "SetObject", "소영");
+			SendMessage("자막", "말하는사람", "소영");
+//			SendMessage("소영", "바라보기", "유저");
+			SendMessage("소영", "쳐다보기", "유저");
 			SendMessage("소영", "애니메이션", "쉬기");
 			SendMessage("자막", "와이드모드", "켜기");
-			SendMessage("타이머", "스크립트설정", "1 0 1 대화#3-2.Talking");
+			SendMessage("유저", "쳐다보기", "소영");
+//			SendMessage("타이머", "스크립트설정", "1 0 1 대화#3-2.Talking");
+			SendMessage("타이머", "스크립트설정", "1 0 1 old_대화3-2.Talking");
 			break;
 		}
 		case 1:
 		{
-			SendMessage("자막", "다이얼로그출력", "d04_004");
+//			SendMessage("자막", "다이얼로그출력", "d04_004");
+			SendMessage("자막", "다이얼로그출력", "old_d04_004");
+			SendMessage("타이머", "스크립트설정", "7 0 1 old_대화3-2.Talking");
 			break;
 		}
 		case 2:
 		{
-			SendMessage("자막", "선택", "내 이름은 이희민. 기억나니? 지난 번에..\n괜찮아?\n여기서 뭐하고 있었니?");
+			SendMessage("유저", "쳐다보지말기", "");
+//			SendMessage("자막", "선택", "내 이름은 이희민. 기억나니? 지난 번에..\n괜찮아?\n여기서 뭐하고 있었니?");
+			SendMessage("자막", "선택", GetString("old_s108"));
+			SendMessage("자막", "실행함수", "old_대화3-2.Talking");
 			break;
 		}
 		case 3:
 		{
-			switch($USER_SELECT)
+//			switch($USER_SELECT)
+			switch($G_UserSelect)
 			{
 				case 0:
 				{
-					SendMessage("자막", "다이얼로그출력", "d04_005");
+//					SendMessage("자막", "다이얼로그출력", "d04_005");
+					SendMessage("자막", "다이얼로그출력", "old_d04_005");
+					SendMessage("타이머", "스크립트설정", "5 0 1 old_대화3-2.Talking");
 					break;
 				}
 				case 1:
 				{
-					SendMessage("자막", "다이얼로그출력", "d04_006");
+//					SendMessage("자막", "다이얼로그출력", "d04_006");
+					SendMessage("자막", "다이얼로그출력", "old_d04_006");
+					SendMessage("타이머", "스크립트설정", "3 0 1 old_대화3-2.Talking");
 					break;
 				}
 				case 2:
 				{
-					SendMessage("자막", "다이얼로그출력", "d04_007");
+//					SendMessage("자막", "다이얼로그출력", "d04_007");
+					SendMessage("자막", "다이얼로그출력", "old_d04_007");
+					SendMessage("타이머", "스크립트설정", "3 0 1 old_대화3-2.Talking");
 					break;
 				}
 			}
@@ -68,26 +90,35 @@ Talking()
 		}	
 		case 4:
 		{
-			SendMessage("자막", "선택", "무슨일인지 모르지만 내가 도와줄께\n......\n오늘 학교 분위기가 이상해");
+//			SendMessage("자막", "선택", "무슨일인지 모르지만 내가 도와줄께\n......\n오늘 학교 분위기가 이상해");
+			SendMessage("자막", "선택", GetString("old_s109"));
+			SendMessage("자막", "실행함수", "old_대화3-2.Talking");
 			break;
 		}
 		case 5:
 		{
-			switch($USER_SELECT)
+//			switch($USER_SELECT)
+			switch($G_UserSelect)
 			{
 				case 0:
 				{
-					SendMessage("자막", "다이얼로그출력", "d04_008");
+//					SendMessage("자막", "다이얼로그출력", "d04_008");
+					SendMessage("자막", "다이얼로그출력", "old_d04_008");
+					SendMessage("타이머", "스크립트설정", "3 0 1 old_대화3-2.Talking");
 					break;
 				}
 				case 1:
 				{
-					SendMessage("자막", "다이얼로그출력", "d04_009");
+//					SendMessage("자막", "다이얼로그출력", "d04_009");
+					SendMessage("자막", "다이얼로그출력", "old_d04_009");
+					SendMessage("타이머", "스크립트설정", "3 0 1 old_대화3-2.Talking");
 					break;
 				}
 				case 2:
 				{
-					SendMessage("자막", "다이얼로그출력", "d04_010");
+//					SendMessage("자막", "다이얼로그출력", "d04_010");
+					SendMessage("자막", "다이얼로그출력", "old_d04_010");
+					SendMessage("타이머", "스크립트설정", "4 0 1 old_대화3-2.Talking");
 					break;
 				}
 			}
@@ -95,20 +126,49 @@ Talking()
 		}
 		case 6:
 		{
+//			SendMessage("자막", "비활성", "");
+//			SendMessage("자막", "SetFunction", "");
+//			SendMessage("자막", "SetObject", "");
+//			SendMessage("성아", "쳐다보지말기", "");
+			SendMessage("소영", "쳐다보지말기", "");
+//			SendMessage("자막", "와이드모드", "끄기");
+			
+//			SendMessage("자막", "문자출력", "50,Show Time~~~");
+//			SendMessage("소영", "페이드", "Recursive 1 1 0");
+			
+//			SendMessage("소영2", "페이드", "Recursive 1 0 1");
+//			SendMessage("소영2", "애니메이션", "ShowTime");
+			SendMessage("타이머", "스크립트설정", "1 0 1 old_대화3-2.Talking");
+			break;
+		}
+		case 7:
+		{
+			SendMessage("소영", "빨리돌기포인트", "" + FindPoint("old_소영위치2"));
+			SendMessage("타이머", "스크립트설정", "0.3 0 1 old_대화3-2.Run");
+			SendMessage("타이머", "스크립트설정", "3 0 1 old_대화3-2.Talking");
+			break;
+		}
+		case 8:
+		{
 			SendMessage("자막", "비활성", "");
-			SendMessage("자막", "SetFunction", "");
-			SendMessage("자막", "SetObject", "");
-			SendMessage("성아", "쳐다보지말기", "");
+//			SendMessage("자막", "SetFunction", "");
+//			SendMessage("자막", "SetObject", "");
+			SendMessage("자막", "말하는사람", "");
 			SendMessage("자막", "와이드모드", "끄기");
-			
-			SendMessage("자막", "문자출력", "50,Show Time~~~");
-			SendMessage("소영", "페이드", "Recursive 1 1 0");
-			
-			SendMessage("소영2", "페이드", "Recursive 1 0 1");
-			SendMessage("소영2", "애니메이션", "ShowTime");
+			DeleteObject("소영");
+			SendMessage("토의조각", "켜기", "");
+			SendMessage("토의조각커서용", "켜기", "");
+			SendMessage("소영이의목걸이", "켜기", "");
+			SendMessage("소영이의목걸이커서용", "켜기", "");
 			break;
 		}
 	}
 
-	$TalkingStep++;
+//	$TalkingStep++;
+	$old_TalkingStep++;
+}
+
+Run()
+{
+	SendMessage("소영", "애니메이션", "달리기1");
 }
