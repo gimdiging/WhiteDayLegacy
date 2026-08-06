@@ -26,8 +26,7 @@ Init1()
 //		$대화_지현 = 1;
 		$old_대화_지현 = 1;
 //		$TalkingStep = 0;
-		if($old_LegacyEvents == ON)
-			$old_TalkingStep = 0;
+		$old_TalkingStep = 0;
 	}
 }
 
@@ -45,8 +44,7 @@ Init2()
 //		$대화_지현 = 2;
 		$old_대화_지현 = 2;
 //		$TalkingStep = 0;
-		if($old_LegacyEvents == ON)
-			$old_TalkingStep = 0;
+		$old_TalkingStep = 0;
 	}
 }
 
