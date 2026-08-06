@@ -206,15 +206,15 @@ SendMessage("지현", "빨리돌기포인트", FindPoint($old_대화_지현 == 1 ? "old_지현�
 	Event=11.200	[ 
 SendMessage("지현", "애니메이션", "손흔들며달리기");
  ]
-	Event=14.000	[ 
+	Event=16.000	[ 
 SendMessage("지현", "쳐다보지말기", "");
 //SendMessage("지현", "이동", FindPoint("지현퇴장위치") + " 걷기2 *script 대화#2-1.Ending");
 SendMessage("지현", "빨리돌기포인트", "" + FindPoint("old_지현퇴장위치"));
  ]
-	Event=14.200	[ 
+	Event=16.200	[ 
 SendMessage("지현", "애니메이션", "걷기2");
  ]
-	Event=18.000	[ 
+	Event=20.000	[ 
 SendMessage("매크로","Play","cut05");
  ]
 
