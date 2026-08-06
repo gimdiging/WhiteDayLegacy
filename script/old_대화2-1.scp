@@ -195,12 +195,12 @@ Talking()
 			SendMessage("지현", "빨리돌기포인트", FindPoint($old_대화_지현 == 1 ? "old_지현퇴장위치2" : "old_지현퇴장위치1") + "");
 			SendMessage("타이머", "스크립트설정", "0.2 0 1 old_대화2-1.Run");
 //			SendMessage("타이머", "스크립트설정", "3 0 1 대화#2-1.Talking");
-			SendMessage("타이머", "스크립트설정", "3 0 1 old_대화2-1.Talking");
+			$old_TalkingStep++;
+			SendMessage("타이머", "스크립트설정", "5 0 1 old_대화2-1.Talking");
 			break;
 		}
 		case 13:
 		{
-			SendMessage("타이머", "스크립트설정", "0 0 1 old_대화2-1.Talking");
 			break;
 		}
 		case 14:
@@ -235,12 +235,12 @@ Talking()
 			SendMessage("지현", "빨리돌기포인트", FindPoint($old_대화_지현 == 1 ? "old_지현퇴장위치2" : "old_지현퇴장위치1") + "");
 			SendMessage("타이머", "스크립트설정", "0.2 0 1 old_대화2-1.Walk");
 //			SendMessage("타이머", "스크립트설정", "3 0 1 대화#2-1.Talking");
+			$old_TalkingStep++;
 			SendMessage("타이머", "스크립트설정", "3 0 1 old_대화2-1.Talking");
 			break;
 		}
 		case 23:
 		{
-			SendMessage("타이머", "스크립트설정", "0 0 1 old_대화2-1.Talking");
 			break;
 		}
 		case 24:
