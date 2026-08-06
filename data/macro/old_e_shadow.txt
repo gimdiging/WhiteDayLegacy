@@ -12,7 +12,8 @@ TrackNum=1
  	EventNum=2
 	Event=0.000	[ 
 	SendMessage("자막", "활성화", "");
-	SendMessage("자막", "와이드모드", "켜기"); 
+	SendMessage("자막", "와이드모드", "켜기");
+//	SendMessage("유저", "위치바라보기", "" + FindPoint("나영그림자위치"));
 	SendMessage("유저", "위치쳐다보기", "" + FindPoint("old_나영그림자위치"));
 //	SendMessage("타이머", "스크립트설정", "1 0 1 e_그림자.RunEvent *obj 그림자");
  ]
@@ -28,26 +29,35 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=6
 	Event=0.000	[ 
+//	SendMessage("사운드", "연주", "data/sound/event/본관1_벼락강타.wav");
 	SendMessage("사운드", "연주", "data/sound/event/old_본관1_벼락강타.wav");
 //	SendMessage("타이머", "스크립트설정", "0.07 0 1 e_그림자.RunEvent *obj 그림자");
  ]
 	Event=0.070	[ 
+//	ShowAllObject();
 	RunScript("", "old_e_그림자.ShowAllObject");
 //	SendMessage("타이머", "스크립트설정", "0 0 1 e_그림자.RunEvent *obj 그림자");
 
+//	SetObjValue("FadeStep", 255);
 	ChangeObjValue("그림자", "FadeStep", 255);
+//	SetObjValue("FadeDelta", 255 / (30.0 * 0.26) + 1);
 	ChangeObjValue("그림자", "FadeDelta", 255 / (30.0 * 0.26) + 1);
+//	SendMessage("타이머", "스크립트설정", "0 0.03333 " + (30.0 * 0.26) + " e_그림자.FadeOut *obj 그림자");
 	SendMessage("타이머", "스크립트설정", "0 0.03333 " + (30.0 * 0.26) + " old_e_그림자.FadeOut *obj 그림자");
 
 	SendMessage("그림자", "페이드", "Recursive 0.26 1 0");
 //	SendMessage("타이머", "스크립트설정", "0.26 0 1 e_그림자.RunEvent *obj 그림자");
  ]
 	Event=0.330	[ 
+//	ShowAllObject();
 	RunScript("", "old_e_그림자.ShowAllObject");
 //	SendMessage("타이머", "스크립트설정", "0 0 1 e_그림자.RunEvent *obj 그림자");
 
+//	SetObjValue("FadeStep", 255);
 	ChangeObjValue("그림자", "FadeStep", 255);
+//	SetObjValue("FadeDelta", 255 / (30.0 * 3.0) + 1);
 	ChangeObjValue("그림자", "FadeDelta", 255 / (30.0 * 3.0) + 1);
+//	SendMessage("타이머", "스크립트설정", "0 0.03333 " + (30.0 * 3.0) + " e_그림자.FadeOut *obj 그림자");
 	SendMessage("타이머", "스크립트설정", "0 0.03333 " + (30.0 * 3.0) + " old_e_그림자.FadeOut *obj 그림자");
 
 	SendMessage("그림자", "페이드", "Recursive 3 1 0");
@@ -87,12 +97,15 @@ TrackNum=1
  	EventNum=2
 	Event=0.000	[ 
 //	SetObjValue("Step", 0);
+//	SetObjValue("LightCount", GetObjValue("LightCount") + 1);
 	ChangeObjValue("그림자", "LightCount", TakeObjValue("그림자", "LightCount") + 1);
 //	SendMessage("타이머", "스크립트설정", "2.5 0 1 e_그림자.RunEvent *obj 그림자");
 
+//	if(GetObjValue("LightCount") == 5)
 	if(TakeObjValue("그림자", "LightCount") == 5)
 	{
 		SendMessage("나영", "페이드", "Recursive 1 1 0");
+//		SendMessage("타이머", "스크립트설정", "1 0 1 e_그림자.Delete나영 *obj 그림자");
 		SendMessage("타이머", "스크립트설정", "1 0 1 old_e_그림자.Delete나영 *obj 그림자");
 	}
  ]
@@ -108,16 +121,20 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=3
 	Event=0.000	[ 
+//	SetObjValue("LightCount", GetObjValue("LightCount") + 1);
 	ChangeObjValue("그림자", "LightCount", TakeObjValue("그림자", "LightCount") + 1);
 //	SendMessage("타이머", "스크립트설정", "1.5 0 1 e_그림자.RunEvent *obj 그림자");
 
+//	if(GetObjValue("LightCount") == 1)
 	if(TakeObjValue("그림자", "LightCount") == 1)
 	{
 		SendMessage("그림자", "텍스쳐변경", "shadow2");
+//		SendMessage("", "애니메이션", "그림자숨기기");
 		SendMessage("그림자", "애니메이션", "그림자숨기기");
 		SendMessage("나영", "애니메이션", "떨어지기");
 //		SetObjValue("Step", 1);
 	}
+//	else
 	else if(TakeObjValue("그림자", "LightCount") == 2)
 	{
 //		SendMessage("나영", "이동", FindPoint("나영이동위치") + " 기어달리기");
@@ -141,11 +158,13 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=1
 	Event=0.000	[ 
+//	SendMessage("사운드", "연주", "data/sound/event/본관1_벼락준비.wav");
 	SendMessage("사운드", "연주", "data/sound/event/old_본관1_벼락준비.wav");
 	SendMessage("나영", "발광", "Recursive off");
 	SendMessage("창틀", "발광", "Recursive off");
 	SendMessage("자막", "비활성", "");
 	SendMessage("자막", "와이드모드", "끄기");
 	SendMessage("유저", "쳐다보지말기", "");
+//	DeleteObject("");
 	DeleteObject("그림자");
  ]
