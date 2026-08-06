@@ -11,8 +11,6 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=7
 	Event=0.000	[ 
-//	DeleteObject("");		// delete event area
-
 	SendMessage("1층방화셔터", "애니메이션", "열기2");
 
 //	SendMessage("사운드", "연주", "data/sound/event/구타씬.adp");
