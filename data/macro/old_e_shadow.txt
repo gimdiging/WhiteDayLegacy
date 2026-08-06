@@ -130,6 +130,7 @@ TrackNum=1
 	{
 //		SendMessage("", "애니메이션", "그림자숨기기");
 		SendMessage("그림자", "애니메이션", "그림자숨기기");
+//		SendMessage("", "텍스쳐변경", "shadow2");
 		SendMessage("그림자", "텍스쳐변경", "shadow2");
 		SendMessage("나영", "애니메이션", "떨어지기");
 //		SetObjValue("Step", 1);
