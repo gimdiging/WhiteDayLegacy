@@ -15,6 +15,7 @@ SendMessage("자막", "활성화", "");
 //SendMessage("자막", "SetFunction", "대화#3-2.Talking");
 //SendMessage("자막", "SetObject", "소영");
 SendMessage("자막", "말하는사람", "소영");
+//SendMessage("소영", "바라보기", "유저");
 SendMessage("소영", "쳐다보기", "유저");
 SendMessage("소영", "애니메이션", "쉬기");
 SendMessage("자막", "와이드모드", "켜기");
@@ -22,6 +23,7 @@ SendMessage("유저", "쳐다보기", "소영");
 //SendMessage("타이머", "스크립트설정", "1 0 1 대화#3-2.Talking");
  ]
 	Event=1.000	[ 
+//SendMessage("자막", "다이얼로그출력", "d04_004");
 SendMessage("자막", "다이얼로그출력", "old_d04_004");
  ]
 	Event=8.000	[ 
@@ -37,6 +39,7 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=1
 	Event=0.000	[ 
+//SendMessage("자막", "선택", "내 이름은 이희민. 기억나니? 지난 번에..\n괜찮아?\n여기서 뭐하고 있었니?");
 SendMessage("자막", "자막선택", GetString("old_s9"));
  ]
 
@@ -48,6 +51,7 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=2
 	Event=0.000	[ 
+//SendMessage("자막", "다이얼로그출력", "d04_005");
 SendMessage("자막", "다이얼로그출력", "old_d04_005");
  ]
 	Event=5.000	[ 
@@ -62,6 +66,7 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=2
 	Event=0.000	[ 
+//SendMessage("자막", "다이얼로그출력", "d04_006");
 SendMessage("자막", "다이얼로그출력", "old_d04_006");
  ]
 	Event=3.000	[ 
@@ -76,6 +81,7 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=2
 	Event=0.000	[ 
+//SendMessage("자막", "다이얼로그출력", "d04_007");
 SendMessage("자막", "다이얼로그출력", "old_d04_007");
  ]
 	Event=3.000	[ 
@@ -90,6 +96,7 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=1
 	Event=0.000	[ 
+//SendMessage("자막", "선택", "무슨일인지 모르지만 내가 도와줄께\n......\n오늘 학교 분위기가 이상해");
 SendMessage("자막", "자막선택", GetString("old_s10"));
  ]
 
@@ -101,6 +108,7 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=2
 	Event=0.000	[ 
+//SendMessage("자막", "다이얼로그출력", "d04_008");
 SendMessage("자막", "다이얼로그출력", "old_d04_008");
  ]
 	Event=3.000	[ 
@@ -115,6 +123,7 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=2
 	Event=0.000	[ 
+//SendMessage("자막", "다이얼로그출력", "d04_009");
 SendMessage("자막", "다이얼로그출력", "old_d04_009");
  ]
 	Event=3.000	[ 
@@ -129,6 +138,7 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=2
 	Event=0.000	[ 
+//SendMessage("자막", "다이얼로그출력", "d04_010");
 SendMessage("자막", "다이얼로그출력", "old_d04_010");
  ]
 	Event=4.000	[ 
@@ -146,6 +156,7 @@ TrackNum=1
 //SendMessage("자막", "비활성", "");
 //SendMessage("자막", "SetFunction", "");
 //SendMessage("자막", "SetObject", "");
+//SendMessage("성아", "쳐다보지말기", "");
 SendMessage("소영", "쳐다보지말기", "");
 //SendMessage("자막", "와이드모드", "끄기");
 
