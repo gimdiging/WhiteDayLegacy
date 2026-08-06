@@ -12,7 +12,7 @@ TrackNum=1
  	EventNum=2
 	Event=0.000	[ 
 	SendMessage("자막", "활성화", "");
-	SendMessage("자막", "와이드모드", "켜기");
+	SendMessage("자막", "와이드모드", "켜기"); 
 //	SendMessage("유저", "위치바라보기", "" + FindPoint("나영그림자위치"));
 	SendMessage("유저", "위치쳐다보기", "" + FindPoint("old_나영그림자위치"));
 //	SendMessage("타이머", "스크립트설정", "1 0 1 e_그림자.RunEvent *obj 그림자");
@@ -128,9 +128,9 @@ TrackNum=1
 //	if(GetObjValue("LightCount") == 1)
 	if(TakeObjValue("그림자", "LightCount") == 1)
 	{
-		SendMessage("그림자", "텍스쳐변경", "shadow2");
 //		SendMessage("", "애니메이션", "그림자숨기기");
 		SendMessage("그림자", "애니메이션", "그림자숨기기");
+		SendMessage("그림자", "텍스쳐변경", "shadow2");
 		SendMessage("나영", "애니메이션", "떨어지기");
 //		SetObjValue("Step", 1);
 	}
