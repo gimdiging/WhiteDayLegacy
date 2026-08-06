@@ -16,11 +16,15 @@ Init()
 {
 	DeleteObject("");
 //	SendMessage("타이머", "스크립트설정", "0 0 1 e_그림자.RunEvent *obj 그림자");
-	SendMessage("매크로","Play","old_e_shadow.cut01");
+	if($old_LegacyEvents == ON)
+		SendMessage("타이머", "스크립트설정", "0 0 1 old_e_그림자.RunEvent *obj 그림자");
+	else
+		SendMessage("매크로","Play","old_e_shadow.cut01");
 }
 
 Init준비()
 {
 	DeleteObject("");
+//	SendMessage("사운드", "연주", "data/sound/event/본관1_벼락준비.wav");
 	SendMessage("사운드", "연주", "data/sound/event/old_본관1_벼락준비.wav");
 }
