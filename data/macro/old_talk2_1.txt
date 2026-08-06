@@ -1,7 +1,7 @@
 SceneName="C:\whiteday\data\macro\old_talk2_1.txt"
 BspName="C:\whiteday\wangEDdata\map\\old_main1.bsp"
 StartCut="cut01"
-CutNum=10
+CutNum=14
 
 
 CutName="cut01"
@@ -50,16 +50,10 @@ TrackNum=1
 
 	TrackName=""
 	TrackType="SCRIPT"
- 	EventNum=2
+ 	EventNum=1
 	Event=0.000	[ 
-//SendMessage("지현", "바라보기", "유저");
-SendMessage("지현", "쳐다보기", "유저");
-SendMessage("지현", "애니메이션", "상체내밀기");
-//SendMessage("자막", "다이얼로그출력", "d03_002");
-SendMessage("자막", "다이얼로그출력", "old_d03_002");
- ]
-	Event=2.000	[ 
-SendMessage("매크로","Play","cut03");
+$old_TalkingStep = 5;
+SendMessage("매크로","Play","cut02_4");
  ]
 
 
@@ -68,16 +62,10 @@ TrackNum=1
 
 	TrackName=""
 	TrackType="SCRIPT"
- 	EventNum=2
+ 	EventNum=1
 	Event=0.000	[ 
-//SendMessage("지현", "바라보기", "유저");
-SendMessage("지현", "쳐다보기", "유저");
-SendMessage("지현", "애니메이션", "상체내밀기");
-//SendMessage("자막", "다이얼로그출력", "d03_003");
-SendMessage("자막", "다이얼로그출력", "old_d03_003");
- ]
-	Event=2.000	[ 
-SendMessage("매크로","Play","cut03");
+$old_TalkingStep = 6;
+SendMessage("매크로","Play","cut02_4");
  ]
 
 
@@ -86,11 +74,65 @@ TrackNum=1
 
 	TrackName=""
 	TrackType="SCRIPT"
- 	EventNum=2
+ 	EventNum=1
+	Event=0.000	[ 
+$old_TalkingStep = 7;
+SendMessage("매크로","Play","cut02_4");
+ ]
+
+
+CutName="cut02_4"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=1
 	Event=0.000	[ 
 //SendMessage("지현", "바라보기", "유저");
 SendMessage("지현", "쳐다보기", "유저");
 SendMessage("지현", "애니메이션", "상체내밀기");
+SendMessage("매크로","Play","cut02_" + $old_TalkingStep);
+$old_TalkingStep = 0;
+ ]
+
+
+CutName="cut02_5"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+//SendMessage("자막", "다이얼로그출력", "d03_002");
+SendMessage("자막", "다이얼로그출력", "old_d03_002");
+ ]
+	Event=2.000	[ 
+SendMessage("매크로","Play","cut03");
+ ]
+
+
+CutName="cut02_6"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
+//SendMessage("자막", "다이얼로그출력", "d03_003");
+SendMessage("자막", "다이얼로그출력", "old_d03_003");
+ ]
+	Event=2.000	[ 
+SendMessage("매크로","Play","cut03");
+ ]
+
+
+CutName="cut02_7"
+TrackNum=1
+
+	TrackName=""
+	TrackType="SCRIPT"
+ 	EventNum=2
+	Event=0.000	[ 
 //SendMessage("자막", "다이얼로그출력", "d03_004");
 SendMessage("자막", "다이얼로그출력", "old_d03_004");
  ]
