@@ -38,7 +38,7 @@ TrackNum=1
  	EventNum=1
 	Event=0.000	[ 
 //SendMessage("자막", "선택", "I did.\nIt was your scream, I think...");
-SendMessage("자막", "자막선택", GetString("old_s3"));
+SendMessage("자막", "자막선택", GetString("old_s35_49"));
  ]
 
 
@@ -69,7 +69,7 @@ TrackNum=1
  	EventNum=1
 	Event=0.000	[ 
 //SendMessage("자막", "선택", "Okay, I'll be with you.\nBut I have to go.\nShut up...");
-SendMessage("자막", "자막선택", GetString("old_s4"));
+SendMessage("자막", "자막선택", GetString("old_s35_59"));
  ]
 
 
@@ -113,7 +113,7 @@ TrackNum=1
  	EventNum=2
 	Event=0.000	[ 
 //SendMessage("자막", "문자출력", "1.5,......");
-SendMessage("자막", "문자출력", "1.5," +  GetString("old_s1"));
+SendMessage("자막", "문자출력", "1.5," +  GetString("old_s35_2"));
 //SendMessage("성아", "표정바꿔", "책망");
 SendMessage("성아", "표정바꿔", "책망m");
 //SendMessage("타이머", "스크립트설정", "3 0 1 대화#1-3.Talking");

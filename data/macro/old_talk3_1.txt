@@ -29,7 +29,7 @@ SendMessage("나무윗쪽", "애니메이션", "공격");
  ]
 	Event=6.000	[ 
 //SendMessage("자막", "문자출력", "2,한소영이 보인다");
-SendMessage("자막", "문자출력", "2," +  GetString("old_s7"));
+SendMessage("자막", "문자출력", "2," +  GetString("old_s35_9"));
  ]
 	Event=8.000	[ 
 SendMessage("매크로", "Play", "cut02");
@@ -44,7 +44,7 @@ TrackNum=1
  	EventNum=1
 	Event=0.000	[ 
 //SendMessage("자막", "선택", "내가 도와 줄께!\n너 거기서 뭐해?");
-SendMessage("자막", "자막선택", GetString("old_s8"));
+SendMessage("자막", "자막선택", GetString("old_s35_109"));
  ]
 
 
