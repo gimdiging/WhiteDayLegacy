@@ -52,12 +52,12 @@ click()
 	{
 		if($Step == 0)
 		{
-			SendMessage("자막", "문자출력", "3," +  GetString("old_s19"));
+			SendMessage("자막", "문자출력", "3," +  GetString("old_s8"));
 			SetObjValue("Step", $Step + 1);
 		}
 		else
 		{
-			SendMessage("자막", "문자출력", "2," +  GetString("old_s20"));
+			SendMessage("자막", "문자출력", "2," +  GetString("old_s9"));
 		}
 	}
 	else

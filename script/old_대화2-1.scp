@@ -83,7 +83,7 @@ Talking()
 		case 3:
 		{
 //			SendMessage("자막", "선택", "난 2학년 4반의 이희민이야.\n어 그게...\n넌 누군데?");
-			SendMessage("자막", "선택", GetString("old_s35_7"));
+			SendMessage("자막", "선택", GetString("old_s36"));
 			SendMessage("자막", "실행함수", "old_대화2-1.Talking");
 			break;
 		}
@@ -145,7 +145,7 @@ Talking()
 		{
 			SendMessage("지현", "애니메이션", "서있기");
 //			SendMessage("자막", "선택", "나도 잘부탁해.\n뭘 부탁해?");
-			SendMessage("자막", "선택", GetString("old_s35_8"));
+			SendMessage("자막", "선택", GetString("old_s37"));
 			SendMessage("자막", "실행함수", "old_대화2-1.Talking");
 			break;
 		}

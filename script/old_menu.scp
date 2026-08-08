@@ -249,7 +249,7 @@ Logo.WhiteDay()
 		}
 
 		SendMessage("타이머", "스크립트설정", "5 0 1 old_menu.WhiteDay");
-		SendMessage("자막", "문자출력", "5," +  GetString("old_s29"));
+		SendMessage("자막", "문자출력", "5," +  GetString("old_s22"));
 		SendMessage("Logo.WhiteDay", "값지정", "델타 -1");
 		$old_GameStatus = "Logo.Wizard";
 		$old_GameStep = 1;

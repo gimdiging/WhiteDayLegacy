@@ -80,20 +80,20 @@ click()
 	{
 		if($old_USER_RISE == FALSE)
 		{
-			SendMessage("자막", "문자출력", "3," +  GetString("old_s90"));
+			SendMessage("자막", "문자출력", "3," +  GetString("old_s108"));
 		}
 		else
 		{
 			if($Step == 0)
 			{
-				SendMessage("자막", "문자출력", "3," +  GetString("old_s91"));
+				SendMessage("자막", "문자출력", "3," +  GetString("old_s109"));
 				SetObjValue("step", 1);
 			}
 			else if($Step != 2)
 			{
 				if($G_UserItem != "old_니퍼")
 				{
-					SendMessage("자막", "문자출력", "3," +  GetString("old_s92"));
+					SendMessage("자막", "문자출력", "3," +  GetString("old_s110"));
 				}
 				else
 				{
@@ -109,14 +109,14 @@ click()
 	{
 		if($Step == 0)
 		{
-			SendMessage("자막", "문자출력", "2," +  GetString("old_s93"));
+			SendMessage("자막", "문자출력", "2," +  GetString("old_s111"));
 			SetObjValue("step", 1);
 		}
 		else
 		{
 			if($G_UserItem != "old_니퍼")
 			{
-				SendMessage("자막", "문자출력", "3," +  GetString("old_s92"));
+				SendMessage("자막", "문자출력", "3," +  GetString("old_s110"));
 			}
 			else if($Step != 2)
 			{

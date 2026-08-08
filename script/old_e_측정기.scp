@@ -28,11 +28,11 @@ click()
 {
 	if(GetObjValue("Step") == 0)
 	{
-		SendMessage("자막", "문자출력", "2," +  GetString("old_s21"));
+		SendMessage("자막", "문자출력", "2," +  GetString("old_s10"));
 		SetObjValue("Step", GetObjValue("Step") + 1);
 	}
 	else
 	{
-		SendMessage("자막", "문자출력", "2," +  GetString("old_s22"));
+		SendMessage("자막", "문자출력", "2," +  GetString("old_s11"));
 	}
 }

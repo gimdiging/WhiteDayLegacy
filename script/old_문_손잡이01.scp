@@ -28,12 +28,12 @@ click()
 	{
 		case 0:
 		{
-			$Info = GetString("old_s32");
+			$Info = GetString("old_s25");
 			break;
 		}
 		case 1:
 		{
-			$Info = GetString("old_s20");
+			$Info = GetString("old_s9");
 			break;
 		}
 	}

@@ -30,7 +30,7 @@ click()
 		if(GetObjValue("FindEvent") == FALSE)
 		{
 			$old_Mission2_야구공++;
-			SendMessage("자막", "문자출력", "3," + $old_Mission2_야구공 + GetString("old_s81"));
+			SendMessage("자막", "문자출력", "3," + $old_Mission2_야구공 + GetString("old_s99"));
 			SendMessage("사운드", "연주", "data/sound/old_아이템획득.wav");
 			
 			SetObjValue("FindEvent", TRUE);
@@ -41,17 +41,17 @@ click()
 			{
 				case 0:
 				{
-					SendMessage("자막", "문자출력", "2," +  GetString("old_s64"));
+					SendMessage("자막", "문자출력", "2," +  GetString("old_s82"));
 					break;
 				}
 				case 1:
 				{
-					SendMessage("자막", "문자출력", "2," +  GetString("old_s65"));
+					SendMessage("자막", "문자출력", "2," +  GetString("old_s83"));
 					break;
 				}
 				case 2:
 				{
-					SendMessage("자막", "문자출력", "2," +  GetString("old_s66"));
+					SendMessage("자막", "문자출력", "2," +  GetString("old_s84"));
 					break;
 				}
 			}
@@ -59,6 +59,6 @@ click()
 	}
 	else
 	{
-		SendMessage("자막", "문자출력", "2," +  GetString("old_s82"));
+		SendMessage("자막", "문자출력", "2," +  GetString("old_s100"));
 	}	
 }

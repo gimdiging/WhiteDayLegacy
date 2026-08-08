@@ -87,7 +87,7 @@ Event4()
 
 	DeleteObject("");	// EventArea
 	SendMessage("문_본관21층", "애니메이션", "열려있기1");
-	SendMessage("자막", "문자출력", "3," +  GetString("old_s15"));
+	SendMessage("자막", "문자출력", "3," +  GetString("old_s4"));
 	SendMessage("주인공macro", "켜기", "");
 	SendMessage("수위macro", "켜기", "");
 	SendMessage("유저", "이동속도", "0.1");
@@ -106,7 +106,7 @@ Event5()
 		return;
 
 	DeleteObject("");	// EventArea
-	SendMessage("자막", "문자출력", "3," +  GetString("old_s16"));
+	SendMessage("자막", "문자출력", "3," +  GetString("old_s5"));
 	SendMessage("유저", "이동속도", "0.1");
 	SendMessage("유저", "damage", "50");
 	$HP -= 50;
@@ -122,7 +122,7 @@ Event6()
 		return;
 
 	DeleteObject("");	// EventArea
-	SendMessage("자막", "문자출력", "3," +  GetString("old_s17"));
+	SendMessage("자막", "문자출력", "3," +  GetString("old_s6"));
 	SendMessage("유저", "이동속도", "0.1");
 	SendMessage("유저", "damage", "50");
 	$HP -= 50;

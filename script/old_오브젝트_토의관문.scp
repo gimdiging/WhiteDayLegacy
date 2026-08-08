@@ -59,11 +59,11 @@ click()
 		{
 			if($LUM_STICK <= 128.0)
 			{
-				SendMessage("자막", "문자출력", "2," +  GetString("old_s68"));
+				SendMessage("자막", "문자출력", "2," +  GetString("old_s86"));
 			}
 			else
 			{
-				SendMessage("자막", "문자출력", "2," +  GetString("old_s97"));
+				SendMessage("자막", "문자출력", "2," +  GetString("old_s115"));
 			}
 			SetObjValue("Step", $Step + 1);
 		}
@@ -73,7 +73,7 @@ click()
 			{
 				if($LUM_STICK <= 128.0)
 				{
-					SendMessage("자막", "문자출력", "2," +  GetString("old_s70"));
+					SendMessage("자막", "문자출력", "2," +  GetString("old_s88"));
 				}
 				else
 				{
@@ -84,7 +84,7 @@ click()
 			}
 			else
 			{
-				SendMessage("자막", "문자출력", "2," +  GetString("old_s62"));
+				SendMessage("자막", "문자출력", "2," +  GetString("old_s80"));
 			}
 		}
 	}

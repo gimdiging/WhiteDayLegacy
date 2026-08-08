@@ -21,13 +21,13 @@ Init()
 Init배구공()
 {
 	Init();
-	SetObjValue("InfoText", GetString("old_s88"));
+	SetObjValue("InfoText", GetString("old_s106"));
 }
 
 Init농구공()
 {
 	Init();
-	SetObjValue("InfoText", GetString("old_s89"));
+	SetObjValue("InfoText", GetString("old_s107"));
 }
 
 pick()

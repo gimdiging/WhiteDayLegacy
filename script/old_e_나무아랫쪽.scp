@@ -417,7 +417,7 @@ e모기공격()
 
 			SendMessage("사운드", "연주", "data/sound/모기약.wav");
 //			SendMessage("자막", "문자출력", "2,다죽어버려~~~");
-			SendMessage("자막", "문자출력", "2," +  GetString("old_s11"));
+			SendMessage("자막", "문자출력", "2," +  GetString("old_s0"));
 
 			LoadObject("WObjGas", "모기약연기", GetCameraInfo() + " *aabb -60 -60 -30 60 60 30 *velocity 4");
 //			SendMessage("타이머", "스크립트설정", "2 0 1 e_나무아랫쪽.e모기약죽이기 *obj 나무아랫쪽");
@@ -429,7 +429,7 @@ e모기공격()
 		{
 			SendMessage("유저", "공격", "");
 //			SendMessage("자막", "문자출력", "1,앗! 따가워~~, 모기약이 필요해~~~");
-			SendMessage("자막", "문자출력", "1," +  GetString("old_s12"));
+			SendMessage("자막", "문자출력", "1," +  GetString("old_s1"));
 
 //			SendMessage("타이머", "스크립트설정", "2 0 1 e_나무아랫쪽.e모기공격 *obj 나무아랫쪽");
 			SendMessage("타이머", "스크립트설정", "2 0 1 old_e_나무아랫쪽.e모기공격 *obj 나무아랫쪽");

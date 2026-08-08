@@ -87,7 +87,7 @@ Talking()
 		{
 			SendMessage("성아", "애니메이션", "쉬기");
 //			SendMessage("자막", "선택", "Who are you?\nI gotta meet someone here...\nIt's none of your business.");
-			SendMessage("자막", "선택", GetString("old_s35_1"));
+			SendMessage("자막", "선택", GetString("old_s30"));
 			SendMessage("자막", "실행함수", "old_대화1-1.Talking");
 			break;
 		}
@@ -113,7 +113,7 @@ Talking()
 				case 2:
 				{
 //					SendMessage("자막", "문자출력", "3, ......");
-					SendMessage("자막", "문자출력", "3," +  GetString("old_s1"));
+					SendMessage("자막", "문자출력", "3," +  GetString("old_s31"));
 //					SendMessage("성아", "표정바꿔", "책망");
 					SendMessage("성아", "표정바꿔", "책망m");
 //					SendMessage("타이머", "스크립트설정", "8 0 1 대화#1-1.Talking");
@@ -133,7 +133,7 @@ Talking()
 		case 9:
 		{
 //			SendMessage("자막", "선택", "So, what are YOU doing here?\nWhere is the classroom 2-8?");
-			SendMessage("자막", "선택", GetString("old_s35_3"));
+			SendMessage("자막", "선택", GetString("old_s32"));
 			SendMessage("자막", "실행함수", "old_대화1-1.Talking");
 			break;
 		}

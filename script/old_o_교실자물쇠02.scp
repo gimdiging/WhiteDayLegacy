@@ -175,14 +175,14 @@ click()
 //				SendMessage("자막", "문자출력", "100,This is the end of WhiteDay demo version.\nPress ALT+F4 to exit.");
 			}
 
-			SendMessage("자막", "문자출력", "2," +  GetString("old_s31"));
+			SendMessage("자막", "문자출력", "2," +  GetString("old_s24"));
 			SendMessage("사운드", "연주", "열쇠로자물쇠열기,열쇠로자물쇠열기.wav");
 			SetValue(GetObjValue("Lock"), UNLOCK);
 		}
 		else
 		{
 			SendMessage("사운드", "연주", "자물쇠흔드는소리,data\sound\old_자물쇠흔드는소리.wav");
-			SendMessage("자막", "문자출력", "2," +  GetString("old_s32"));
+			SendMessage("자막", "문자출력", "2," +  GetString("old_s25"));
 		}
 	}
 }

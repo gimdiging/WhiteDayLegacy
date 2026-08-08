@@ -48,7 +48,7 @@ click()
 	
 	if($Step == 0)
 	{
-		SendMessage("자막", "문자출력", "3," +  GetString("old_s37"));
+		SendMessage("자막", "문자출력", "3," +  GetString("old_s44"));
 	}
 	else if($Step == 1)
 	{

@@ -55,7 +55,7 @@ click()
 
 	if($Step == 0)
 	{
-		SendMessage("자막", "문자출력", "2," +  GetString("old_s80"));
+		SendMessage("자막", "문자출력", "2," +  GetString("old_s98"));
 		SetObjValue("Step", $Step + 1);
 	}
 	else
@@ -69,7 +69,7 @@ click()
 		}
 		else
 		{
-			SendMessage("자막", "문자출력", "2," +  GetString("old_s62"));
+			SendMessage("자막", "문자출력", "2," +  GetString("old_s80"));
 		}
 	}
 }

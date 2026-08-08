@@ -81,5 +81,5 @@ click()
 	}
 
 	SendMessage("사운드", "연주", "중앙통로문잠긴소리,data\sound\돌리는문잠긴것.wav");
-	SendMessage("자막", "문자출력", "2," +  GetString("old_s32"));
+	SendMessage("자막", "문자출력", "2," +  GetString("old_s25"));
 }

@@ -37,7 +37,7 @@ click()
 	{
 		case 0:
 		{
-			SendMessage("자막", "문자출력", "2," +  GetString("old_s34"));
+			SendMessage("자막", "문자출력", "2," +  GetString("old_s27"));
 			break;
 		}
 		case 1:

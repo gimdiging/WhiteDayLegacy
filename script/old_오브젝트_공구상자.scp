@@ -32,12 +32,12 @@ click()
 	{
 		case 0:
 		{
-			SendMessage("자막", "문자출력", "3," +  GetString("old_s49"));
+			SendMessage("자막", "문자출력", "3," +  GetString("old_s67"));
 			break;
 		}
 		default:
 		{
-			SendMessage("자막", "문자출력", "2," +  GetString("old_s50"));
+			SendMessage("자막", "문자출력", "2," +  GetString("old_s68"));
 			return;
 		}
 	}

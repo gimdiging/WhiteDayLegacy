@@ -35,7 +35,7 @@ info.click()
 {
 	if(GetObjValue("Step") == 0)
 	{
-		SendMessage("자막", "문자출력", "3," +  GetString("old_s83"));
+		SendMessage("자막", "문자출력", "3," +  GetString("old_s101"));
 		SetObjValue("Step", 1);
 	}
 }

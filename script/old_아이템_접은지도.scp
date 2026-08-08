@@ -32,7 +32,7 @@ click()
 	{
 		case 0:
 		{
-			SendMessage("자막", "문자출력", "2," + (Random() % 2 ? GetString("old_s44") : GetString("old_s45")));
+			SendMessage("자막", "문자출력", "2," + (Random() % 2 ? GetString("old_s58") : GetString("old_s59")));
 			break;
 		}
 		case 1:

@@ -55,7 +55,7 @@ click()
 	if($LockFlag == LOCK)
 	{
 		SendMessage("사운드", "연주", "화장실실내잠긴소리,data\sound\나무문잠긴것.wav");
-		SendMessage("자막", "문자출력", "2," +  GetString("old_s32"));
+		SendMessage("자막", "문자출력", "2," +  GetString("old_s25"));
 	}
 	else
 	{

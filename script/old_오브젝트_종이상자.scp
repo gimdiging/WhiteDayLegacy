@@ -32,7 +32,7 @@ click()
 	
 	if(GetObjValue("OpenFlag") == 0)
 	{
-		SendMessage("자막", "문자출력", "2," +  GetString("old_s87"));
+		SendMessage("자막", "문자출력", "2," +  GetString("old_s105"));
 		SetObjValue("OpenFlag", 1);
 	}
 	else

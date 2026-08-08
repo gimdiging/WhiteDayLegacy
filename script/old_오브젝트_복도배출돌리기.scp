@@ -56,7 +56,7 @@ click()
 	
 	if($Step == 0)
 	{
-		SendMessage("자막", "문자출력", "3," +  GetString("old_s73"));
+		SendMessage("자막", "문자출력", "3," +  GetString("old_s91"));
 	}
 	else if($Step == 1)
 	{
@@ -67,7 +67,7 @@ click()
 	}
 	else
 	{
-		SendMessage("자막", "문자출력", "2," +  GetString("old_s74"));
+		SendMessage("자막", "문자출력", "2," +  GetString("old_s92"));
 	}
 	SetObjValue("Step", $Step++);
 }
@@ -77,5 +77,5 @@ Event()
 	SendMessage("자막", "비활성", "");
 	SendMessage("자막", "와이드모드", "끄기");
 	SendMessage(GetObjValue("mission"), "스크립트실행", "old_오브젝트_복도가스배출기.Mission");
-	SendMessage("자막", "문자출력", "3," +  GetString("old_s75"));
+	SendMessage("자막", "문자출력", "3," +  GetString("old_s93"));
 }

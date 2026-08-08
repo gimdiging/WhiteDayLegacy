@@ -37,5 +37,5 @@ pick()
 
 click()
 {
-	SendMessage("자막", "문자출력", "2," +  GetString("old_s33"));
+	SendMessage("자막", "문자출력", "2," +  GetString("old_s26"));
 }
