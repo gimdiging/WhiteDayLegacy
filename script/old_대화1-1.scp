@@ -117,7 +117,7 @@ Talking()
 //					SendMessage("성아", "표정바꿔", "책망");
 					SendMessage("성아", "표정바꿔", "책망m");
 //					SendMessage("타이머", "스크립트설정", "8 0 1 대화#1-1.Talking");
-					SendMessage("타이머", "스크립트설정", "8 0 1 old_대화1-1.Talking");
+					SendMessage("타이머", "스크립트설정", "3 0 1 old_대화1-1.Talking");
 					break;
 				}
 			}
