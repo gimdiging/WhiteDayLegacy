@@ -40,7 +40,7 @@ TrackNum=1
  	EventNum=1
 	Event=0.000	[ 
 //SendMessage("자막", "선택", "내 이름은 이희민. 기억나니? 지난 번에..\n괜찮아?\n여기서 뭐하고 있었니?");
-SendMessage("자막", "자막선택", GetString("old_s35_119"));
+SendMessage("자막", "자막선택", GetString("old_s40m"));
  ]
 
 
@@ -97,7 +97,7 @@ TrackNum=1
  	EventNum=1
 	Event=0.000	[ 
 //SendMessage("자막", "선택", "무슨일인지 모르지만 내가 도와줄께\n......\n오늘 학교 분위기가 이상해");
-SendMessage("자막", "자막선택", GetString("old_s35_129"));
+SendMessage("자막", "자막선택", GetString("old_s41m"));
  ]
 
 

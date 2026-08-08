@@ -41,7 +41,7 @@ TrackNum=1
  	EventNum=1
 	Event=0.000	[ 
 //SendMessage("자막", "선택", "난 2학년 4반의 이희민이야.\n어 그게...\n넌 누군데?");
-SendMessage("자막", "자막선택", GetString("old_s35_79"));
+SendMessage("자막", "자막선택", GetString("old_s36m"));
  ]
 
 
@@ -174,7 +174,7 @@ TrackNum=1
  	EventNum=1
 	Event=0.000	[ 
 //SendMessage("자막", "선택", "나도 잘부탁해.\n뭘 부탁해?");
-SendMessage("자막", "자막선택", GetString("old_s35_89"));
+SendMessage("자막", "자막선택", GetString("old_s37m"));
  ]
 
 
