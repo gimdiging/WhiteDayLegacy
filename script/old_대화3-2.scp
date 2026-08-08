@@ -55,7 +55,7 @@ Talking()
 		{
 			SendMessage("유저", "쳐다보지말기", "");
 //			SendMessage("자막", "선택", "내 이름은 이희민. 기억나니? 지난 번에..\n괜찮아?\n여기서 뭐하고 있었니?");
-			SendMessage("자막", "선택", GetString("old_s108"));
+			SendMessage("자막", "선택", GetString("old_s35_11"));
 			SendMessage("자막", "실행함수", "old_대화3-2.Talking");
 			break;
 		}
@@ -91,7 +91,7 @@ Talking()
 		case 4:
 		{
 //			SendMessage("자막", "선택", "무슨일인지 모르지만 내가 도와줄께\n......\n오늘 학교 분위기가 이상해");
-			SendMessage("자막", "선택", GetString("old_s109"));
+			SendMessage("자막", "선택", GetString("old_s35_12"));
 			SendMessage("자막", "실행함수", "old_대화3-2.Talking");
 			break;
 		}

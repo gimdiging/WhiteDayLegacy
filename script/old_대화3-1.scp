@@ -72,7 +72,7 @@ Talking()
 		case 4:
 		{
 //			SendMessage("자막", "선택", "내가 도와 줄께!\n너 거기서 뭐해?");
-			SendMessage("자막", "선택", GetString("old_s107"));
+			SendMessage("자막", "선택", GetString("old_s35_10"));
 			SendMessage("자막", "실행함수", "old_대화3-1.Talking");
 			break;
 		}

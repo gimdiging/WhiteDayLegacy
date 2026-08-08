@@ -51,7 +51,7 @@ Talking()
 		case 2:
 		{
 //			SendMessage("자막", "선택", "I did.\nIt was your scream, I think...");
-			SendMessage("자막", "선택", GetString("old_s103"));
+			SendMessage("자막", "선택", GetString("old_s35_4"));
 			SendMessage("자막", "실행함수", "old_대화1-3.Talking");
 			break;
 		}
@@ -72,7 +72,7 @@ Talking()
 		case 5:
 		{
 //			SendMessage("자막", "선택", "Okay, I'll be with you.\nBut I have to go.\nShut up...");
-			SendMessage("자막", "선택", GetString("old_s104"));
+			SendMessage("자막", "선택", GetString("old_s35_5"));
 			SendMessage("자막", "실행함수", "old_대화1-3.Talking");
 			break;
 		}
