@@ -2698,7 +2698,7 @@
 "old_d_7 " "신관 기물 망실 보고서" "Damaged artifact report" 
 "old_d_8 " "\n             신관 기물 망실 보고서\n---------------------------------\n\n\n카세트 재생/녹음기 제품 No.RD-102 2대.\n현재 두 대 모두 파손.\n\n어학실용 : 벨트교체요망\n\n음악감상실용: 전원부 수리요망" "\n             Damaged artifact report\n---------------------------------\n\n\nCassette player/Recorder product No.RD-102\n2 pairs are damaged.\n\nLanguage room : Drive belt replace\n\nMusic room: Power supply repair" 
 "old_d_9 " "패스맨" "Passman" 
-"old_d_10 " "\n                     패스맨\n---------------------------------\n\n\n이 사람은 손노리의 사장이다.\n\<img src=passman.bmp size=256 256 rect=0 0 256 256 scale=0.5 offset=0 0>" "\n                     PassMan\n---------------------------------\n\n\nThis person is the president of Sonnori.\n\<img src=passman.bmp size=256 256 rect=0 0 256 256 scale=0.5 offset=0 0>" 
+"old_d_10 " "\n                     패스맨\n---------------------------------\n\n\n이 사람은 손노리의 사장이다.\n\<img src=photo_01.bmp size=256 256 rect=0 0 256 256 scale=0.5 offset=0 0>" "\n                     PassMan\n---------------------------------\n\n\nThis person is the president of Sonnori.\n\<img src=photo_01.bmp size=256 256 rect=0 0 256 256 scale=0.5 offset=0 0>" 
 "old_d_11 " "쪽지 03" "Paper03" 
 "old_d_12 " "\n                     금고위의 쪽지\n---------------------------------\n\n\n\1우로 돌려 야구만큼, 좌로 돌려 배구만큼,\0\n\1우로 돌려 축구만큼, 좌로 돌려 농구만큼.\0" "\n                     Note on the cashbox.\n---------------------------------\n\n\n\1Turn right as much as baseballs, turn left as much as volleyballs,\0\n\1Turn right as much as footballs, and turn left as much as basketballs.\0" 
 "old_d_13 " "쪽지 05" "Paper05"
