@@ -14,6 +14,7 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "handle " + $WorkingFile);
 	SendMessage("", "스크립트설정", "handle " + $G_File);
 }
 
@@ -28,11 +29,13 @@ click()
 	{
 		case 0:
 		{
+//			$Info = "It's locked";
 			$Info = GetString("old_s25");
 			break;
 		}
 		case 1:
 		{
+//			$Info = "You can't open it";
 			$Info = GetString("old_s9");
 			break;
 		}

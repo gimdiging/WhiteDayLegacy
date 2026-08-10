@@ -20,7 +20,9 @@ Init()
 Kill금의부적()
 {
 	SendMessage("금의부적", "페이드", "Recursive 1 1 0");	
+//	SendMessage("사운드", "연주", "data/sound/아이템획득.wav");
 	SendMessage("사운드", "연주", "data/sound/old_아이템획득.wav");
+//	SendMessage("타이머", "스크립트설정", "1 0 1 e_금의부적.Release");
 	SendMessage("타이머", "스크립트설정", "1 0 1 old_o_금의부적.Release");
 }
 

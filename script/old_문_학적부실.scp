@@ -14,7 +14,9 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "handleA " + $WorkingFile + ".type1");
 	SendMessage("", "스크립트설정", "handleA " + $G_File + ".type1");
+//	SendMessage("", "스크립트설정", "handleB " + $WorkingFile + ".type2");
 	SendMessage("", "스크립트설정", "handleB " + $G_File + ".type2");
 	SendMessage("", "스크립트설정", "dummy " + "null");
 	
@@ -35,6 +37,7 @@ type1.click()
 	$OpenFlag = GetObjValue("OpenFlag");
 	$LockFlag = GetObjValue("LockFlag");
 	
+//	if($LockFlag == 1)
 	if($LockFlag == LOCK)
 	{
 		SendMessage("사운드", "연주", "잠긴소리01,data\sound\돌리는문잠긴것_나무.wav");
@@ -85,6 +88,7 @@ type2.click()
 	$OpenFlag = GetObjValue("OpenFlag");
 	$LockFlag = GetObjValue("LockFlag");
 	
+//	if($LockFlag == 1)
 	if($LockFlag == LOCK)
 	{
 		SendMessage("사운드", "연주", "잠긴소리01,data\sound\돌리는문잠긴것_나무.wav");

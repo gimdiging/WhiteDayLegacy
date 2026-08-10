@@ -14,6 +14,7 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "info " + $WorkingFile);
 	SendMessage("", "스크립트설정", "info " + $G_File);
 	SetObjName("양동이");
 }
@@ -25,5 +26,6 @@ pick()
 
 click()
 {
+//	SendMessage("자막", "문자출력", "3,양동이다");
 	SendMessage("자막", "문자출력", "3," +  GetString("old_s29"));
 }

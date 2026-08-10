@@ -14,6 +14,7 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "ball " + $WorkingFile);
 	SendMessage("", "스크립트설정", "ball " + $G_File);
 	SetObjValue("FindEvent", FALSE);
 }
@@ -25,12 +26,16 @@ pick()
 
 click()
 {
+//	if($Mission2_공이벤트 == TRUE)
 	if($old_Mission2_공이벤트 == TRUE)
 	{
 		if(GetObjValue("FindEvent") == FALSE)
 		{
+//			$Mission2_축구공++;
 			$old_Mission2_축구공++;
+//			SendMessage("자막", "문자출력", "3," + $Mission2_축구공 + "번째 축구공이다");
 			SendMessage("자막", "문자출력", "3," + $old_Mission2_축구공 + GetString("old_s113"));
+//			SendMessage("사운드", "연주", "data/sound/아이템획득.wav");
 			SendMessage("사운드", "연주", "data/sound/old_아이템획득.wav");
 			
 			SetObjValue("FindEvent", TRUE);
@@ -41,16 +46,19 @@ click()
 			{
 				case 0:
 				{
+//					SendMessage("자막", "문자출력", "2,아까 찾은 공인것 같다");
 					SendMessage("자막", "문자출력", "2," +  GetString("old_s82"));
 					break;
 				}
 				case 1:
 				{
+//					SendMessage("자막", "문자출력", "2,또 그공이다... 지겹군...");
 					SendMessage("자막", "문자출력", "2," +  GetString("old_s83"));
 					break;
 				}
 				case 2:
 				{
+//					SendMessage("자막", "문자출력", "2,이미 보았던 공이다");
 					SendMessage("자막", "문자출력", "2," +  GetString("old_s84"));
 					break;
 				}
@@ -59,6 +67,7 @@ click()
 	}
 	else
 	{
+//		SendMessage("자막", "문자출력", "2,축구공이다");
 		SendMessage("자막", "문자출력", "2," +  GetString("old_s114"));
 	}	
 }

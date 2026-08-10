@@ -14,6 +14,7 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "info " + $WorkingFile);
 	SendMessage("", "스크립트설정", "info " + $G_File);
 }
 
@@ -24,5 +25,6 @@ pick()
 	
 click()
 {
+//	SendMessage("자막", "문자출력", "3,[달빛] 4학년 4반 다크거북이\\4학년은 재수생이 아니고 동물학년이란 말인가?\\한번에 대학 못 가서 재수하면 동물 취급 받겠구나");
 	SendMessage("자막", "문자출력", "3," +  GetString("old_s74"));
 }

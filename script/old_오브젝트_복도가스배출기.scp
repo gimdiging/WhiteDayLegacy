@@ -37,6 +37,7 @@ Init바깥쪽()
 
 Mission()
 {
+//	SendMessage("복도가스배출기1", "스크립트실행", "오브젝트_복도가스배출기.CheckMission");
 	SendMessage("복도가스배출기1", "스크립트실행", "old_오브젝트_복도가스배출기.CheckMission");
 	DeleteObject(GetObjValue("GasName"));
 	DeleteObject(GetObjValue("GasBoundName"));
@@ -51,5 +52,6 @@ CheckMission()
 		SendMessage("사운드", "연주멈춤", "가스나오는소리");
 		SendMessage("사운드", "연주", "data/sound/가스밸브닫는소리.wav");
 	}
+//	SendMessage("사운드", "연주", "data/sound/아이템획득.wav");
 	SendMessage("사운드", "연주", "data/sound/old_아이템획득.wav");
 }

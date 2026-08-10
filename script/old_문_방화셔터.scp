@@ -14,12 +14,15 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "handleA " + $WorkingFile + ".type1");
 	SendMessage("", "스크립트설정", "handleA " + $G_File + ".type1");
+//	SendMessage("", "스크립트설정", "handleB " + $WorkingFile + ".type2");
 	SendMessage("", "스크립트설정", "handleB " + $G_File + ".type2");
 	SendMessage("", "스크립트설정", "dummy " + "null");
 	
 	SetObjValue("MotionName", "");
 	SetObjValue("OpenFlag", 0);
+//	SetObjValue("Lock", "$문_이유없이열린문");
 	SetObjValue("Lock", "$old_문_이유없이열린문");
 	SendMessage("", "애니메이션", "서있기");
 }
@@ -28,6 +31,7 @@ Init1층방화셔터()
 {
 	Init();
 	SetObjName("1층방화셔터");
+//	SetObjValue("Lock", "$문_1층방화셔터");
 	SetObjValue("Lock", "$old_문_1층방화셔터");
 	SetObjValue("KeyName", "old_방화셔터열쇠");
 }
@@ -36,11 +40,13 @@ Init1층서무실옆방화셔터()
 {
 	Init();
 	SetObjName("1층서무실옆방화셔터");
+//	SetObjValue("Lock", "$문_1층서무실옆방화셔터");
 	SetObjValue("Lock", "$old_문_1층서무실옆방화셔터");
 }
 
 type1.pick()
 {
+//	return "잡기";
 	return (GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == GetObjValue("KeyName")) ? "iold_방화셔터열쇠" : "잡기";
 }
 
@@ -92,11 +98,13 @@ type1.click()
 	}
 	
 	SendMessage("사운드", "연주", "잠긴소리01,data/sound/돌리는문잠긴것.wav");
+//	SendMessage("자막", "문자출력", "2,Locked");
 	SendMessage("자막", "문자출력", "2," +  GetString("old_s25"));
 }
 
 type2.pick()
 {
+//	return "잡기";
 	return (GetValue(GetObjValue("Lock")) == LOCK && $G_UserItem == GetObjValue("KeyName")) ? "iold_방화셔터열쇠" : "잡기";
 }
 
@@ -148,5 +156,6 @@ type2.click()
 	}
 
 	SendMessage("사운드", "연주", "잠긴소리01,data/sound/돌리는문잠긴것.wav");
+//	SendMessage("자막", "문자출력", "2,Locked");
 	SendMessage("자막", "문자출력", "2," +  GetString("old_s25"));
 }

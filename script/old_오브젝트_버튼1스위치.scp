@@ -14,6 +14,7 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "switch " + $WorkingFile);
 	SendMessage("", "스크립트설정", "switch " + $G_File);
 	SetObjValue("MotionName", "");
 	SetObjValue("TurnOnFlag", OFF);

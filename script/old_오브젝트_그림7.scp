@@ -14,6 +14,7 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "info " + $WorkingFile);
 	SendMessage("", "스크립트설정", "info " + $G_File);
 }
 
@@ -24,5 +25,6 @@ pick()
 	
 click()
 {
+//	SendMessage("자막", "문자출력", "3,[웬수들] 군휴학중 이선우\\군대에서 제한된 도구만으로 이런 결과물을 만들다니 놀랍다");
 	SendMessage("자막", "문자출력", "3," +  GetString("old_s75"));
 }

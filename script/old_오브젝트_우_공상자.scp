@@ -15,18 +15,21 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "info " + $WorkingFile);
 	SendMessage("", "스크립트설정", "info " + $G_File);
 }
 
 Init야구공()
 {
 	Init();
+//	SetObjValue("InfoText", "야구공이 3개 있다");
 	SetObjValue("InfoText", GetString("old_s102"));
 }
 
 Init축구공()
 {
 	Init();
+//	SetObjValue("InfoText", "축구공이 1개 있다");
 	SetObjValue("InfoText", GetString("old_s103"));
 }
 

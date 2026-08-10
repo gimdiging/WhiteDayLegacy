@@ -14,9 +14,11 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "handleA " + $WorkingFile + ".type1");
 	SendMessage("", "스크립트설정", "handleA " + $G_File + ".type1");
+//	SendMessage("", "스크립트설정", "handleB " + $WorkingFile + ".type2");
 	SendMessage("", "스크립트설정", "handleB " + $G_File + ".type2");
-	SendMessage("", "스크립트설정", "dummy null");
+	SendMessage("", "스크립트설정", "dummy " + "null");
 	
 	SetObjValue("OpenFlag", CLOSE);
 	SetObjValue("LockFlag", UNLOCK);
@@ -51,6 +53,7 @@ type1.click()
 	if($LockFlag == LOCK)
 	{
 		SendMessage("사운드", "연주", "중앙통로문잠긴소리,data\sound\돌리는문잠긴것.wav");
+//		SendMessage("자막", "문자출력", "2,It's locked");	
 		SendMessage("자막", "문자출력", "2," +  GetString("old_s25"));	
 	}
 	else
@@ -101,6 +104,7 @@ type2.click()
 	if($LockFlag == LOCK)
 	{
 		SendMessage("사운드", "연주", "중앙통로문잠긴소리,data\sound\돌리는문잠긴것.wav");
+//		SendMessage("자막", "문자출력", "2,It's locked");	
 		SendMessage("자막", "문자출력", "2," +  GetString("old_s25"));	
 	}
 	else

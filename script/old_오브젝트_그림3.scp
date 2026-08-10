@@ -14,6 +14,7 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "info " + $WorkingFile);
 	SendMessage("", "스크립트설정", "info " + $G_File);
 }
 
@@ -24,5 +25,6 @@ pick()
 	
 click()
 {
+//	SendMessage("자막", "문자출력", "3,[무제] 의문사내\\펼쳐지는 대자연의 광경이 할 말을 잃게 만\\든다 도대체 누가 그렸는지 의문이 간다");
 	SendMessage("자막", "문자출력", "3," +  GetString("old_s71"));
 }

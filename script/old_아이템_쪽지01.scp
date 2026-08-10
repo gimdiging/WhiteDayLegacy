@@ -14,6 +14,7 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "item " + $WorkingFile);
 	SendMessage("", "스크립트설정", "item " + $G_File);
 	SetObjValue("Step", 0);
 }
@@ -21,6 +22,7 @@ Init()
 Init쪽지01()
 {
 	Init();
+//	SetObjValue("ObjName", "Paper1");
 	SetObjValue("ObjName", "쪽지01");
 	SetObjName(GetObjValue("ObjName"));
 }
@@ -28,6 +30,7 @@ Init쪽지01()
 Init쪽지02()
 {
 	Init();
+//	SetObjValue("ObjName", "Paper2");
 	SetObjValue("ObjName", "쪽지02");
 	SetObjName(GetObjValue("ObjName"));
 }
@@ -42,6 +45,7 @@ Init쪽지03()		// 금고 설명
 Init쪽지04()
 {
 	Init();
+//	SetObjValue("ObjName", "Paper3");
 	SetObjValue("ObjName", "쪽지04");
 	SetObjName(GetObjValue("ObjName"));
 }
@@ -73,14 +77,17 @@ click()
 	{
 		case 0:
 		{
+//			SendMessage("자막", "문자출력", "2,Somebody left a memo");
 			SendMessage("자막", "문자출력", "2," +  GetString("old_s61"));
 			break;
 		}
 		case 1:
 		{
+//			SendMessage("타이머", "스크립트설정", "0 0 1 아이템_쪽지01.GetItem *obj " + GetObjValue("ObjName"));
 			SendMessage("타이머", "스크립트설정", "0 0 1 old_아이템_쪽지01.GetItem *obj " + GetObjValue("ObjName"));
 			if(GetObjValue("ObjName") == "쪽지03")
 			{
+//				$Mission2_공이벤트 = TRUE;
 				$old_Mission2_공이벤트 = TRUE;
 			}
 			break;
@@ -92,8 +99,11 @@ click()
 GetItem()
 {
 	SendMessage(GetObjValue("ObjName"), "페이드", "Recursive 1 1 0");
+//	SendMessage("유저", "획득", GetObjValue("ObjName"));
 	SendMessage("다이어리", "획득", GetObjValue("ObjName"));
+//	SendMessage("타이머", "스크립트설정", "1 0 1 아이템_쪽지01.Release *obj " + GetObjValue("ObjName"));
 	SendMessage("타이머", "스크립트설정", "1 0 1 old_아이템_쪽지01.Release *obj " + GetObjValue("ObjName"));
+//	SendMessage("사운드", "연주", "data/sound/아이템획득.wav");
 	SendMessage("사운드", "연주", "data/sound/old_아이템획득.wav");
 }
 

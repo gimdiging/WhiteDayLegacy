@@ -14,11 +14,17 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "handle1 " + $WorkingFile + ".handle");
 	SendMessage("", "스크립트설정", "handle1 " + $G_File + ".handle");
+//	SendMessage("", "스크립트설정", "handle2 " + $WorkingFile + ".handle");
 	SendMessage("", "스크립트설정", "handle2 " + $G_File + ".handle");
+//	SendMessage("", "스크립트설정", "info1 " + $WorkingFile + ".info");
 	SendMessage("", "스크립트설정", "info1 " + $G_File + ".info");
+//	SendMessage("", "스크립트설정", "info2 " + $WorkingFile + ".info");
 	SendMessage("", "스크립트설정", "info2 " + $G_File + ".info");
+//	SendMessage("", "스크립트설정", "info3 " + $WorkingFile + ".info");
 	SendMessage("", "스크립트설정", "info3 " + $G_File + ".info");
+//	SendMessage("", "스크립트설정", "info4 " + $WorkingFile + ".info");
 	SendMessage("", "스크립트설정", "info4 " + $G_File + ".info");
 	
 	SetObjValue("OpenFlag", CLOSE);
@@ -36,6 +42,7 @@ info.click()
 {
 	if(GetObjValue("Step") == 0)
 	{
+//		SendMessage("자막", "문자출력", "3,뭔가가 안에 있다");	
 		SendMessage("자막", "문자출력", "3," +  GetString("old_s23"));
 		SetObjValue("Step", 1);
 	}
@@ -65,6 +72,7 @@ handle.click()
 		SendMessage("자막", "와이드모드", "켜기");		
 		SendMessage("고양이출몰장", "애니메이션", "열기");
 		SetObjValue("OpenFlag", OPEN);
+//		SendMessage("타이머", "스크립트설정", "3 0 1 o_고양이출몰장.Event1");
 		SendMessage("타이머", "스크립트설정", "1 0 1 old_o_고양이출몰장.Event1");
 	}
 }
@@ -72,7 +80,9 @@ handle.click()
 Event1()
 {
 //	SendMessage("고양이", "애니메이션", "갇혀서있기");
+//	SendMessage("고양이", "애니메이션", "날아공격");
 	SendMessage("고양이", "애니메이션", "날아공격");
+//	SendMessage("타이머", "스크립트설정", "3 0 1 o_고양이출몰장.Event2");
 	SendMessage("타이머", "스크립트설정", "1 0 1 old_o_고양이출몰장.Event2");
 }
 

@@ -14,14 +14,19 @@
 
 ScriptMain()
 {
+//	LoadObject("WObjWallPaper", "Logo.Wizard", "*image data/misc/wallpaper/위자드로고.jpg");
 	LoadObject("WObjWallPaper", "Logo.Wizard", "*image data/misc/image/위자드로고.jpg");
+//	LoadObject("WObjWallPaper", "Logo.Sonnori", "*image data/misc/wallpaper/손노리로고.jpg");
 	LoadObject("WObjWallPaper", "Logo.Sonnori", "*image data/misc/image/손노리로고.jpg");
+//	LoadObject("WObjWallPaper", "Logo.WangReal", "*image data/misc/wallpaper/왕리얼로고.jpg");
 	LoadObject("WObjWallPaper", "Logo.WangReal", "*image data/misc/image/왕리얼로고.jpg");
+//	LoadObject("WObjWallPaper", "Logo.WhiteDay", "*image data/misc/wallpaper/화이트데이로고.jpg");
 	LoadObject("WObjWallPaper", "Logo.WhiteDay", "*image data/misc/image/화이트데이로고.jpg");
 
 //	LoadObject("WObjMovie", "동영상재생기", "");
 
 //	SendMessage("타이머", "켜기", "");
+//	SendMessage("타이머", "스크립트설정", "2 0 1 _menu.WhiteDay");
 	SendMessage("타이머", "스크립트설정", "2 0 1 old_menu.WhiteDay");
 
 // 	SendMessage("main", "게임시작", "시작");
@@ -62,6 +67,7 @@ Process()
 
 WhiteDay()
 {
+//	switch($GameStatus)
 	switch($old_GameStatus)
 	{
 		case "Menu":
@@ -135,58 +141,73 @@ WhiteDay()
 
 Logo.Wizard()
 {
+//	if($GameStep == 1)
 	if($old_GameStep == 1)
 	{
 		SendMessage("Logo.Wizard", "값지정", "알파 0");
 		SendMessage("Logo.Wizard", "값지정", "델타 1");
 		SendMessage("Logo.Wizard", "켜기", "");
 		SendMessage("Logo.WhiteDay", "끄기", "");
+//		SendMessage("타이머", "스크립트설정", "4 0 1 _menu.WhiteDay");
 		SendMessage("타이머", "스크립트설정", "4 0 1 old_menu.WhiteDay");
+//		$GameStep++;
 		$old_GameStep++;
 	}
 	else
 	{
 		SendMessage("Logo.Wizard", "값지정", "델타 -1");
+//		SendMessage("타이머", "스크립트설정", "2 0 1 _menu.WhiteDay");
 		SendMessage("타이머", "스크립트설정", "2 0 1 old_menu.WhiteDay");
+//		$GameStatus = "Logo.Sonnori";
 		$old_GameStatus = "Logo.Sonnori";
 	}
 }
 
 Logo.Sonnori()
 {
+//	if($GameStep == 2)
 	if($old_GameStep == 2)
 	{
 		SendMessage("Logo.Sonnori", "값지정", "알파 0");
 		SendMessage("Logo.Sonnori", "값지정", "델타 1");
 		SendMessage("Logo.Sonnori", "켜기", "");
 		SendMessage("Logo.Wizard", "끄기", "");
+//		SendMessage("타이머", "스크립트설정", "5 0 1 _menu.WhiteDay");
 		SendMessage("타이머", "스크립트설정", "5 0 1 old_menu.WhiteDay");
+//		$GameStep++;
 		$old_GameStep++;
 	}
 	else
 	{
 		SendMessage("Logo.Sonnori", "값지정", "델타 -1");
+//		SendMessage("타이머", "스크립트설정", "2 0 1 _menu.WhiteDay");
 		SendMessage("타이머", "스크립트설정", "2 0 1 old_menu.WhiteDay");
+//		$GameStatus = "Logo.WangReal";
 		$old_GameStatus = "Logo.WangReal";
 	}
 }
 
 Logo.WangReal()
 {
+//	if($GameStep == 3)
 	if($old_GameStep == 3)
 	{
 		SendMessage("Logo.WangReal", "값지정", "알파 0");
 		SendMessage("Logo.WangReal", "값지정", "델타 1");
 		SendMessage("Logo.WangReal", "켜기", "");
 		SendMessage("Logo.Sonnori", "끄기", "");
+//		SendMessage("타이머", "스크립트설정", "4 0 1 _menu.WhiteDay");
 		SendMessage("타이머", "스크립트설정", "4 0 1 old_menu.WhiteDay");
+//		$GameStep++;
 		$old_GameStep++;
 	}
 	else
 	{
 		SendMessage("Logo.WangReal", "값지정", "델타 -1");
+//		SendMessage("타이머", "스크립트설정", "2 0 1 _menu.WhiteDay");
 		SendMessage("타이머", "스크립트설정", "2 0 1 old_menu.WhiteDay");
 //		$GameStatus = (!$DemoMode ? "RealTimeScene" : "PlayMovie");
+//		$GameStatus = "Menu";
 		$old_GameStatus = "Logo.WhiteDay";
 	}
 }
@@ -229,17 +250,21 @@ Demo.PlayMovie()
 
 Logo.WhiteDay()
 {
+//	if($GameStep == 5)
 	if($old_GameStep == 4)
 	{
 		SendMessage("Logo.WhiteDay", "값지정", "알파 0");
 		SendMessage("Logo.WhiteDay", "값지정", "델타 1");
 		SendMessage("Logo.WhiteDay", "켜기", "");
 		SendMessage("Logo.WangReal", "끄기", "");
+//		SendMessage("타이머", "스크립트설정", "6 0 1 _menu.WhiteDay");
 		SendMessage("타이머", "스크립트설정", "6 0 1 old_menu.WhiteDay");
+//		$GameStep++;
 		$old_GameStep++;
 	}
 	else
 	{
+//		if($GameOver == TRUE)
 		if($old_GameOver == TRUE)
 		{
 //			SendMessage("main", "exit");
@@ -248,16 +273,20 @@ Logo.WhiteDay()
 			return;
 		}
 
+//		SendMessage("타이머", "스크립트설정", "5 0 1 _menu.WhiteDay");
 		SendMessage("타이머", "스크립트설정", "5 0 1 old_menu.WhiteDay");
 		SendMessage("자막", "문자출력", "5," +  GetString("old_s22"));
 		SendMessage("Logo.WhiteDay", "값지정", "델타 -1");
+//		$GameStatus = "Logo.Wizard";
 		$old_GameStatus = "Logo.Wizard";
+//		$GameStep = 1;
 		$old_GameStep = 1;
 	}
 }
 
 Menu()
 {
+//	if($GameStep != 0)
 	if($old_GameStep != 0)
 	{
 //		DeleteObject("동영상재생기");
@@ -267,6 +296,7 @@ Menu()
 		DeleteObject("Logo.WhiteDay");
 
 //		LoadObject("WObjTitle", "메뉴", "");
+//		$GameStep = 0;
 		$old_GameStep = 0;
 		RunScript("", "_whiteday.DestroyStage");
 		SendMessage("main", "게임시작", "멈춤");

@@ -14,7 +14,9 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "use1 " + $WorkingFile + ".use1");
 	SendMessage("", "스크립트설정", "use1 " + $G_File + ".use1");
+//	SendMessage("", "스크립트설정", "use2 " + $WorkingFile + ".use2");
 	SendMessage("", "스크립트설정", "use2 " + $G_File + ".use2");
 	SetObjValue("climb", 0);
 }
@@ -30,13 +32,16 @@ Init서무실의자()
 use1.pick()
 {
 	if(GetObjValue("climb") == 1)
+//		return $USER_RISE == OFF ? "사다리오르기" : ""	
 		return $old_USER_RISE == OFF ? "사다리오르기" : "";
 }
 
 use1.click()
 {
+//	if($USER_RISE == OFF)
 	if($old_USER_RISE == OFF)
 	{
+//		$USER_RISE = ON;
 		$old_USER_RISE = ON;
 //		SendMessage("유저", "이동제한", "on");
 		SendMessage("자막", "활성화", "");
@@ -48,13 +53,16 @@ use1.click()
 use2.pick()
 {
 	if(GetObjValue("climb") == 1)
+//	return $USER_RISE == ON ? "사다리내려오기" : "";
 		return $old_USER_RISE == ON ? "뒤로보기" : "";
 }
 
 use2.click()
 {
+//	if($USER_RISE == ON)
 	if($old_USER_RISE == ON)
 	{
+//		$USER_RISE = OFF;
 		$old_USER_RISE = OFF;
 		SendMessage("유저", "이동제한", "off");
 		SendMessage("유저", "내려오기", "");

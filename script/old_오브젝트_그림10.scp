@@ -14,6 +14,7 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "info " + $WorkingFile);
 	SendMessage("", "스크립트설정", "info " + $G_File);
 }
 
@@ -24,5 +25,6 @@ pick()
 	
 click()
 {
+//	SendMessage("자막", "문자출력", "3,[무제] 작자미상\\--;");
 	SendMessage("자막", "문자출력", "3," +  GetString("old_s78"));
 }

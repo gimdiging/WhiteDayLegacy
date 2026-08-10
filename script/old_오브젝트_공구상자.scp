@@ -14,6 +14,7 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "item " + $WorkingFile);
 	SendMessage("", "스크립트설정", "item " + $G_File);
 	SetObjValue("Step", 0);
 	SetObjName("공구상자");
@@ -32,11 +33,13 @@ click()
 	{
 		case 0:
 		{
+//			SendMessage("자막", "문자출력", "3,A toolbox is placed on the floor. \nMaybe someone was fixing the light");
 			SendMessage("자막", "문자출력", "3," +  GetString("old_s67"));
 			break;
 		}
 		default:
 		{
+//			SendMessage("자막", "문자출력", "2,You see nothing useful");
 			SendMessage("자막", "문자출력", "2," +  GetString("old_s68"));
 			return;
 		}

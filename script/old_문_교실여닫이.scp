@@ -14,10 +14,12 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "handle " + $WorkingFile);
 	SendMessage("", "스크립트설정", "handle " + $G_File);
+//	SendMessage("", "스크립트설정", "lock " + $WorkingFile + ".lockbox");
 	SendMessage("", "스크립트설정", "lock " + $G_File + ".lockbox");
-	SendMessage("", "스크립트설정", "dummy1 null");
-	SendMessage("", "스크립트설정", "dummy2 null");
+	SendMessage("", "스크립트설정", "dummy1 " + "null");
+	SendMessage("", "스크립트설정", "dummy2 " + "null");
 	SetObjValue("MotionName", "");
 	SetObjValue("OpenFlag", CLOSE);
 	SetObjValue("LockFlag", UNLOCK);
@@ -113,74 +115,88 @@ Init문_상담실()
 Init교실2_1앞()
 {
 	Init();
+//	SetObjValue("Lock", "$문_교실2_1앞");
 	SetObjValue("Lock", "$old_문_교실2_1앞");
 }
 
 Init교실2_1뒤()
 {
 	Init();
+//	SetObjValue("Lock", "$문_교실2_1뒤");
 	SetObjValue("Lock", "$old_문_교실2_1뒤");
 }
 
 Init교실2_2앞()
 {
 	Init();
+//	SetObjValue("Lock", "$문_교실2_2앞");
 	SetObjValue("Lock", "$old_문_교실2_2앞");
 }
 
 Init교실2_2뒤()
 {
 	Init();
+//	SetObjValue("Lock", "$문_교실2_2뒤");
 	SetObjValue("Lock", "$old_문_교실2_2뒤");
 }
 
 Init교실2_3앞()
 {
 	Init();
+//	SetObjValue("Lock", "$문_교실2_3앞");
 	SetObjValue("Lock", "$old_문_교실2_3앞");
 }
 
 Init교실2_3뒤()
 {
 	Init();
+//	SetObjValue("Lock", "$문_교실2_3뒤");
 	SetObjValue("Lock", "$old_문_교실2_3뒤");
 }
 
 Init교실2_4앞()
 {
 	Init();
+//	SetObjValue("Lock", "$문_교실2_4앞");
 	SetObjValue("Lock", "$old_문_교실2_4앞");
 }
 
 Init교실2_4뒤()
 {
 	Init();
+//	SetObjValue("Lock", "$문_교실2_4뒤");
 	SetObjValue("Lock", "$old_문_교실2_4뒤");
 }
 
 Init교실2_5앞()
 {
 	Init();
+//	SetObjValue("Lock", "$문_교실2_5앞");
 	SetObjValue("Lock", "$old_문_교실2_5앞");
 }
 
 Init교실2_5뒤()
 {
 	Init();
+//	SetObjValue("Lock", "$문_교실2_5뒤");
 	SetObjValue("Lock", "$old_문_교실2_5뒤");
 }
 
 Init교실2_6앞()
 {
 	Init();
+//	SetObjValue("Lock", "$문_교실2_6앞");
 	SetObjValue("Lock", "$old_문_교실2_6앞");
+//	$문_교실2_6앞 = UNLOCK;
 	$old_문_교실2_6앞 = UNLOCK;
 }
 
 Init교실2_6뒤()
 {
 	Init();
+//	SetObjValue("Lock", "$문_교실2_6뒤");
 	SetObjValue("Lock", "$old_문_교실2_6뒤");
+//	$문_교실2_6뒤 = UNLOCK;
 	$old_문_교실2_6뒤 = UNLOCK;
 	OpenDoor();
 }
@@ -188,84 +204,98 @@ Init교실2_6뒤()
 Init교실2_7앞()
 {
 	Init();
+//	SetObjValue("Lock", "$문_교실2_7앞");
 	SetObjValue("Lock", "$old_문_교실2_7앞");
 }
 
 Init교실2_7뒤()
 {
 	Init();
+//	SetObjValue("Lock", "$문_교실2_7뒤");
 	SetObjValue("Lock", "$old_문_교실2_7뒤");
 }
 
 Init교실2_8앞()
 {
 	Init();
+//	SetObjValue("Lock", "$문_교실2_8앞");
 	SetObjValue("Lock", "$old_문_교실2_8앞");
 }
 
 Init교실2_8뒤()
 {
 	Init();
+//	SetObjValue("Lock", "$문_교실2_8뒤");
 	SetObjValue("Lock", "$old_문_교실2_8뒤");
 }
 
 Init교실2_9앞()
 {
 	Init();
+//	SetObjValue("Lock", "$문_교실2_9앞");
 	SetObjValue("Lock", "$old_문_교실2_9앞");
 }
 
 Init교실2_9뒤()
 {
 	Init();
+//	SetObjValue("Lock", "$문_교실2_9뒤");
 	SetObjValue("Lock", "$old_문_교실2_9뒤");
 }
 
 Init교실2_10앞()
 {
 	Init();
+//	SetObjValue("Lock", "$문_교실2_10앞");
 	SetObjValue("Lock", "$old_문_교실2_10앞");
 }
 
 Init교실2_10뒤()
 {
 	Init();
+//	SetObjValue("Lock", "$문_교실2_10뒤");
 	SetObjValue("Lock", "$old_문_교실2_10뒤");
 }
 
 Init교실2_11앞()
 {
 	Init();
+//	SetObjValue("Lock", "$문_교실2_11앞");
 	SetObjValue("Lock", "$old_문_교실2_11앞");
 }
 
 Init교실2_11뒤()
 {
 	Init();
+//	SetObjValue("Lock", "$문_교실2_11뒤");
 	SetObjValue("Lock", "$old_문_교실2_11뒤");
 }
 
 Init교실2_12앞()
 {
 	Init();
+//	SetObjValue("Lock", "$문_교실2_12앞");
 	SetObjValue("Lock", "$old_문_교실2_12앞");
 }
 
 Init교실2_12뒤()
 {
 	Init();
+//	SetObjValue("Lock", "$문_교실2_12뒤");
 	SetObjValue("Lock", "$old_문_교실2_12뒤");
 }
 
 Init기계실습실앞()
 {
 	Init();
+//	SetObjValue("Lock", "$문_기계실습실앞");
 	SetObjValue("Lock", "$old_문_기계실습실앞");
 }
 
 Init기계실습실뒤()
 {
 	Init();
+//	SetObjValue("Lock", "$문_기계실습실뒤");
 	SetObjValue("Lock", "$old_문_기계실습실뒤");
 }
 
@@ -273,7 +303,9 @@ Init가정실습실앞()
 {
 	Init();
 	SetObjValue("LockFlag", LOCK);
+//	SetObjValue("Lock", "$문_가정실습실앞");
 	SetObjValue("Lock", "$old_문_가정실습실앞");
+//	SetObjValue("KeyName", "Key of the Cooking Practice Room");
 	SetObjValue("KeyName", "old_가정실습실열쇠");
 }
 
@@ -281,31 +313,37 @@ Init가정실습실뒤()
 {
 	Init();
 	SetObjValue("LockFlag", LOCK);
+//	SetObjValue("Lock", "$문_가정실습실뒤");
 	SetObjValue("Lock", "$old_문_가정실습실뒤");
+//	SetObjValue("KeyName", "Key of the Cooking Practice Room");
 	SetObjValue("KeyName", "old_가정실습실열쇠");
 }
 
 Init산악동아리()
 {
 	Init();
+//	SetObjValue("Lock", "$문_산악동아리");
 	SetObjValue("Lock", "$old_문_산악동아리");
 }
 
 Init사진동아리()
 {
 	Init();
+//	SetObjValue("Lock", "$문_사진동아리");
 	SetObjValue("Lock", "$old_문_사진동아리");
 }
 
 Init체육창고앞()
 {
 	Init();
+//	SetObjValue("Lock", "$문_체육창고앞");
 	SetObjValue("Lock", "$old_문_체육창고앞");
 }
 
 Init체육창고뒤()
 {
 	Init();
+//	SetObjValue("Lock", "$문_체육창고뒤");
 	SetObjValue("Lock", "$old_문_체육창고뒤");
 }
 
@@ -317,6 +355,7 @@ OpenDoor()
 
 lockbox.pick()
 {
+//	return (GetObjValue("UserItem") == "Key of the Cooking Practice Room" && GetObjValue("OpenFlag") == CLOSE) ? "i가정실습실열쇠" : "";
 	return ($G_UserItem == "old_가정실습실열쇠" && GetObjValue("OpenFlag") == CLOSE) ? "iold_가정실습실열쇠" : "";
 }
 
@@ -326,8 +365,10 @@ lockbox.click()
 	$LockFlag = GetObjValue("LockFlag");
 //	$LockValue = GetValue(GetObjValue("Lock"));
 	
+//	if(GetObjValue("UserItem") == GetObjValue("KeyName") && GetObjValue("OpenFlag") == CLOSE)
 	if($G_UserItem == GetObjValue("KeyName") && GetObjValue("OpenFlag") == CLOSE)
 	{
+//		SendMessage("자막", "문자출력", "2," + ($LockFlag == LOCK ? "It's unlocked" : "It's locked"));
 		SendMessage("자막", "문자출력", "2," + ($LockFlag == LOCK ? GetString("old_s24") : GetString("old_s25")));
 		SetObjValue("LockFlag", $LockFlag == LOCK ? UNLOCK : LOCK);
 //		SetValue(GetObjValue("Lock"),($LockValue == LOCK ? UNLOCK : LOCK));
@@ -372,5 +413,6 @@ click()
 	}
 
 	SendMessage("사운드", "연주", "잠긴소리01,data/sound/나무문잠긴것.wav");
+//	SendMessage("자막", "문자출력", "2,Locked");
 	SendMessage("자막", "문자출력", "2," +  GetString("old_s25"));
 }

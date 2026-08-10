@@ -14,6 +14,7 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "info " + $WorkingFile);	
 	SendMessage("", "스크립트설정", "info " + $G_File);	
 	SendMessage("", "디스플레이", "숨기기");
 }
@@ -37,5 +38,6 @@ pick()
 
 click()
 {
+//	SendMessage("자막", "문자출력", "3,You can't go ahead because of hot steam");
 	SendMessage("자막", "문자출력", "2," +  GetString("old_s26"));
 }

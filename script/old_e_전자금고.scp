@@ -14,6 +14,7 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "handle " + $WorkingFile);
 	SendMessage("", "스크립트설정", "handle " + $G_File);
 	SendMessage("", "스크립트설정", "dummy1 " + "null");
 	SendMessage("", "스크립트설정", "dummy2 " + "null");
@@ -34,6 +35,7 @@ pick()
 {
 	$Step = GetObjValue("Step");
 	
+//	if($Mission1 == OFF)
 	if($old_Mission1 == OFF)
 	{
 		return GetObjValue("Step") == 0 ? "보기" : "잡기";
@@ -48,15 +50,18 @@ click()
 {
 	$Step = GetObjValue("Step");
 	
+//	if($Mission1 == OFF)
 	if($old_Mission1 == OFF)
 	{
 		if($Step == 0)
 		{
+//			SendMessage("자막", "문자출력", "3,It's a electronic safe. There is a \nstrange-looking rope around it");
 			SendMessage("자막", "문자출력", "3," +  GetString("old_s8"));
 			SetObjValue("Step", $Step + 1);
 		}
 		else
 		{
+//			SendMessage("자막", "문자출력", "2,You can't open it.");
 			SendMessage("자막", "문자출력", "2," +  GetString("old_s9"));
 		}
 	}
@@ -87,6 +92,7 @@ BeginEvent()
 	SendMessage("전자금고", "애니메이션", "열기");
 	SetObjValue("OpenFlag", OPEN);
 	SendMessage("유저", "쳐다보지말기", "");
+//	SendMessage("타이머", "스크립트설정", "3 0 1 e_전자금고.EndEvent");
 	SendMessage("타이머", "스크립트설정", "3 0 1 old_e_전자금고.EndEvent");
 }
 

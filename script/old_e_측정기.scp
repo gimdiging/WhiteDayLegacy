@@ -14,6 +14,7 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "info " + $WorkingFile);
 	SendMessage("", "스크립트설정", "info " + $G_File);
 	SetObjValue("Step", 0);
 	SetObjName("측정기");
@@ -28,11 +29,13 @@ click()
 {
 	if(GetObjValue("Step") == 0)
 	{
+//		SendMessage("자막", "문자출력", "2,It seems to be overloaded");
 		SendMessage("자막", "문자출력", "2," +  GetString("old_s10"));
 		SetObjValue("Step", GetObjValue("Step") + 1);
 	}
 	else
 	{
+//		SendMessage("자막", "문자출력", "2,You can do nothing. You should cut the power off");
 		SendMessage("자막", "문자출력", "2," +  GetString("old_s11"));
 	}
 }

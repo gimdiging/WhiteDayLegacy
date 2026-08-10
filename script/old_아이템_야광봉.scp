@@ -30,6 +30,7 @@ lost()
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "item " + $WorkingFile);
 	SendMessage("", "스크립트설정", "item " + $G_File);
 	SendMessage("", "발광", "bong on");
 	SetObjValue("Step", 0);
@@ -56,11 +57,13 @@ click()
 	$Step = GetObjValue("Step");
 	if($Step == 0)
 	{
+//		SendMessage("자막", "문자출력", "2,It's a luminous stick");
 		SendMessage("자막", "문자출력", "2," +  GetString("old_s56"));
 	}
 	else if($Step == 1)
 	{
 		GetItem();
+//		$아이템_야광스틱_충전중 = FALSE;
 		$old_아이템_야광스틱_충전중 = FALSE;
 	}
 	SetObjValue("Step", $Step + 1);
@@ -69,8 +72,10 @@ click()
 GetItem()
 {
 	SendMessage("야광스틱", "페이드", "Recursive 1 1 0");
+//	SendMessage("유저", "획득", "Luminous Stick");
 	SendMessage("유저", "획득", "@old_야광스틱");
 	SendMessage("사운드", "연주", "data/sound/old_아이템획득.wav");
+//	SendMessage("타이머", "스크립트설정", "1 0 1 아이템_야광봉.Release");
 	SendMessage("타이머", "스크립트설정", "1 0 1 old_아이템_야광봉.Release");
 	SendMessage("유저", "캡춰", "다이나믹라이트 손");
 }

@@ -14,16 +14,20 @@
 // 숙직실문을 창우씨가 양호실문으로 잘못명명하여.
 Init()
 {
+//	SendMessage("", "스크립트설정", "handleA " + $WorkingFile + ".type1");
 	SendMessage("", "스크립트설정", "handleA " + $G_File + ".type1");
+//	SendMessage("", "스크립트설정", "handleB " + $WorkingFile + ".type2");
 	SendMessage("", "스크립트설정", "handleB " + $G_File + ".type2");
 	SendMessage("", "스크립트설정", "dummy " + "null");
 	
 	SetObjValue("MotionName", "");
 	SetObjValue("OpenFlag", 0);
+//	SetObjValue("Lock", "$문_이유없이열린문");
 	SetObjValue("Lock", "$old_문_이유없이열린문");
 	SendMessage("", "애니메이션", "서있기");
 }
 
+//Init()
 Init숙직실()
 {
 	Init();

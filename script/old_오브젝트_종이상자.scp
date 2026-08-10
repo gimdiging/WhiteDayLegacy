@@ -14,6 +14,7 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "push " + $WorkingFile);
 	SendMessage("", "스크립트설정", "push " + $G_File);
 	SetObjValue("OpenFlag", 0);
 	SetObjValue("MotionName", "");
@@ -32,6 +33,7 @@ click()
 	
 	if(GetObjValue("OpenFlag") == 0)
 	{
+//		SendMessage("자막", "문자출력", "2,It's a paper box. It's empty");
 		SendMessage("자막", "문자출력", "2," +  GetString("old_s105"));
 		SetObjValue("OpenFlag", 1);
 	}

@@ -14,9 +14,11 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "handleA " + $WorkingFile);
 	SendMessage("", "스크립트설정", "handleA " + $G_File);
+//	SendMessage("", "스크립트설정", "handleB " + $WorkingFile);
 	SendMessage("", "스크립트설정", "handleB " + $G_File);
-	SendMessage("", "스크립트설정", "dummy null");
+	SendMessage("", "스크립트설정", "dummy " + "null");
 	
 	SetObjValue("OpenFlag", CLOSE);
 	SetObjValue("LockFlag", UNLOCK);
@@ -55,10 +57,12 @@ click()
 	if($LockFlag == LOCK)
 	{
 		SendMessage("사운드", "연주", "화장실실내잠긴소리,data\sound\나무문잠긴것.wav");
+//		SendMessage("자막", "문자출력", "2,It's locked");
 		SendMessage("자막", "문자출력", "2," +  GetString("old_s25"));
 	}
 	else
 	{
+//		if(!$OpenFlag) 
 		if($OpenFlag == CLOSE) 
 		{
 			SendMessage("", "애니메이션", "열기");
@@ -75,6 +79,7 @@ click()
 				return;
 			}
 		}
+//		SetObjValue("OpenFlag", $OpenFlag == LOCK ? UNLOCK : LOCK);
 		SetObjValue("OpenFlag", $OpenFlag == OPEN ? CLOSE : OPEN);
 	} 
 }

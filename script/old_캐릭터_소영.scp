@@ -14,6 +14,7 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "talk " + $WorkingFile);
 	SendMessage("", "스크립트설정", "talk " + $G_File);
 	SetObjName("소영");
 	SendMessage("소영", "애니메이션", "나무에묶임");
@@ -22,11 +23,13 @@ Init()
 
 pick()
 {
+//	return $Mission4_나무 == TRUE ? "말하기" : "";
 	return $old_Mission4_나무 == TRUE ? "말하기" : "";
 }
 
 click()
 {
+//	if($Mission4_나무 == TRUE)
 	if($old_Mission4_나무 == TRUE)
 	{
 //		SendMessage("소영", "스크립트실행", "대화#3-2.Init");

@@ -14,6 +14,7 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "info " + $WorkingFile);
 	SendMessage("", "스크립트설정", "info " + $G_File);
 	SetObjValue("Step", 0);
 	SetObjName("도난방지기");
@@ -28,11 +29,13 @@ click()
 {
 	if(GetObjValue("Step") == 0)
 	{
+//		SendMessage("자막", "문자출력", "2,It's a security alarm");
 		SendMessage("자막", "문자출력", "2," +  GetString("old_s2"));
 		SetObjValue("Step", GetObjValue("Step") + 1);
 	}
 	else
 	{
+//		SendMessage("자막", "문자출력", "3,To stop the operation, cut off the power");
 		SendMessage("자막", "문자출력", "3," +  GetString("old_s3"));
 	}
 }

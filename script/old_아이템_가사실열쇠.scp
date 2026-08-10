@@ -14,6 +14,7 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "item " + $WorkingFile);
 	SendMessage("", "스크립트설정", "item " + $G_File);
 	SetObjName("가정실습실열쇠");
 	SetObjValue("Step", 0);
@@ -40,10 +41,12 @@ click()
 	
 	if($Step == 0)
 	{
+//		SendMessage("자막", "문자출력", "2,There is a key inside the safe");
 		SendMessage("자막", "문자출력", "2," +  GetString("old_s42"));
 	}
 	else if($Step == 1)
 	{
+//		SendMessage("타이머", "스크립트설정", "0 0 1 아이템_가사실열쇠.GetItem");
 		SendMessage("타이머", "스크립트설정", "0 0 1 old_아이템_가사실열쇠.GetItem");
 	}
 	SetObjValue("Step", $Step + 1);
@@ -52,7 +55,9 @@ click()
 GetItem()
 {
 	SendMessage("가정실습실열쇠", "페이드", "Recursive 1 1 0");
+//	SendMessage("유저", "획득", "Key of the Cooking Practice Room");
 	SendMessage("유저", "획득", "@old_가정실습실열쇠");
+//	SendMessage("타이머", "스크립트설정", "1 0 1 아이템_가사실열쇠.Release");
 	SendMessage("타이머", "스크립트설정", "1 0 1 old_아이템_가사실열쇠.Release");
 	SendMessage("사운드", "연주", "data/sound/old_아이템획득.wav");
 }

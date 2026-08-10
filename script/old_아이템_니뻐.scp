@@ -14,6 +14,7 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "item " + $WorkingFile);
 	SendMessage("", "스크립트설정", "item " + $G_File);
 	SetObjName("니퍼");
 	SetObjValue("Step", 0);
@@ -32,6 +33,7 @@ click()
 	{
 		case 0:
 		{
+//			SendMessage("자막", "문자출력", "3,There's a pair of nippers on the table");
 			SendMessage("자막", "문자출력", "3," +  GetString("old_s48"));
 			break;
 		}
@@ -48,7 +50,9 @@ click()
 GetItem()
 {
 	SendMessage("니퍼", "페이드", "Recursive 1 1 0");
+//	SendMessage("유저", "획득", "Nippers");
 	SendMessage("유저", "획득", "@old_니퍼");
+//	SendMessage("타이머", "스크립트설정", "1 0 1 아이템_니뻐.Release");
 	SendMessage("타이머", "스크립트설정", "1 0 1 old_아이템_니뻐.Release");
 	SendMessage("사운드", "연주", "data/sound/old_아이템획득.wav");
 }

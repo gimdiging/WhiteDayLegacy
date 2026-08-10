@@ -14,14 +14,18 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "handleA " + $WorkingFile);
 	SendMessage("", "스크립트설정", "handleA " + $G_File);
+//	SendMessage("", "스크립트설정", "handleB " + $WorkingFile);
 	SendMessage("", "스크립트설정", "handleB " + $G_File);
+//	SendMessage("", "스크립트설정", "lockbox " + $WorkingFile + ".lockbox");
 	SendMessage("", "스크립트설정", "lockbox " + $G_File + ".lockbox");
-	SendMessage("", "스크립트설정", "dummy null");
+	SendMessage("", "스크립트설정", "dummy " + "null");
 	
 	SetObjName("중앙통로문");
 	SetObjValue("OpenFlag", CLOSE);
 	SetObjValue("LockFlag", LOCK);
+//	SetObjValue("Lock", "$문_중앙통로");
 	SetObjValue("Lock", "$old_문_중앙통로");
 	SetObjValue("MotionName", "");
 	SendMessage("", "애니메이션", "서있기");
@@ -29,11 +33,13 @@ Init()
 
 lockbox.pick()
 {
+//	return ($문_중앙통로 == UNLOCK && GetObjValue("LockFlag") == LOCK) ? "잡기" : "";
 	return ($old_문_중앙통로 == UNLOCK && GetObjValue("LockFlag") == LOCK) ? "잡기" : "";
 }
 
 lockbox.click()
 {
+//	if($문_중앙통로 == UNLOCK)
 	if($old_문_중앙통로 == UNLOCK)
 	{
 		if(GetObjValue("LockFlag") == LOCK)
@@ -81,5 +87,6 @@ click()
 	}
 
 	SendMessage("사운드", "연주", "중앙통로문잠긴소리,data\sound\돌리는문잠긴것.wav");
+//	SendMessage("자막", "문자출력", "2,It's locked");
 	SendMessage("자막", "문자출력", "2," +  GetString("old_s25"));
 }

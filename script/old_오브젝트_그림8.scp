@@ -14,6 +14,7 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "info " + $WorkingFile);
 	SendMessage("", "스크립트설정", "info " + $G_File);
 }
 
@@ -24,5 +25,6 @@ pick()
 	
 click()
 {
+//	SendMessage("자막", "문자출력", "3,[피의미학] 1학년 4반 안군\\작명 솜씨와는 다르게 그림은 미학적으로 느껴지지 않는다");
 	SendMessage("자막", "문자출력", "3," +  GetString("old_s76"));
 }

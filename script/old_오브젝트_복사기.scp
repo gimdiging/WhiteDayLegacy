@@ -14,8 +14,11 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "button " + $WorkingFile + ".button");
 	SendMessage("", "스크립트설정", "button " + $G_File + ".button");
+//	SendMessage("", "스크립트설정", "table " + $WorkingFile + ".table");
 	SendMessage("", "스크립트설정", "table " + $G_File + ".table");
+//	SendMessage("", "스크립트설정", "open " + $WorkingFile);
 	SendMessage("", "스크립트설정", "open " + $G_File);
 	SendMessage("", "페이드", "lighting_ray 0 0 0");
 	
@@ -26,16 +29,21 @@ Init()
 
 table.pick()
 {
+//	return (GetObjValue("Step") == 2 && GetObjValue("UserItem") == "야광스틱") ? "i야광스틱" : "";
 	return (GetObjValue("Step") == 2 && $G_UserItem == "old_야광스틱") ? "iold_야광스틱" : "";
 }
 
 table.click()
 {
+//	if(GetObjValue("Step") == 2 && GetObjValue("UserItem") == "야광스틱")
 	if(GetObjValue("Step") == 2 && $G_UserItem == "old_야광스틱"))
 	{
+//		SendMessage("유저", "폐기", "야광스틱");
 		SendMessage("유저", "폐기", "@old_야광스틱");
+//		LoadObject("WObjStaticBody", "야광스틱", "*pos -831.1 10 1633.2 *rot 90 0 0 *pet data/puppet/item/아이템_야광봉.pet *scale 1.0 *script 아이템_야광봉.Init2");
 		LoadObject("WObjStaticBody", "야광스틱", "*pos -831.1 10 1633.2 *rot 90 0 0 *pet data/puppet/item/아이템_야광봉.pet *scale 1.0 *script old_아이템_야광봉.Init2");
 		SendMessage("다이나믹라이트", "끄기", "");
+//		$아이템_야광스틱_충전중 = TRUE;
 		$old_아이템_야광스틱_충전중 = TRUE;
 		SendMessage("유저", "놓기", "");
 	}
@@ -48,12 +56,15 @@ button.pick()
 
 button.click()
 {
+//	if($Mission3_복사기전원 == OFF)	
 	if($old_Mission3_복사기전원 == OFF)	
 	{
+//		SendMessage("자막", "문자출력", "3,전원이 공급되지 않고 있다. 전원 플러그가 빠져 있나 보다");
 		SendMessage("자막", "문자출력", "3," +  GetString("old_s94"));
 	}
 	else if(GetObjValue("Step") != 2)
 	{
+//		SendMessage("자막", "문자출력", "3,먼저 복사기 덮개을 열어야 한다");
 		SendMessage("자막", "문자출력", "3," +  GetString("old_s95"));
 	}
 	else
@@ -62,6 +73,7 @@ button.click()
 		SendMessage("", "페이드", "lighting_ray 0 1 1");
 		SendMessage("타이머", "스크립트설정", "0.5 0 1 old_오브젝트_복사기.light_on *obj 복사기");
 
+//		if($아이템_야광스틱_충전중 == TRUE)
 		if($old_아이템_야광스틱_충전중 == TRUE)
 		{
 			SendMessage("다이나믹라이트", "켜기", "");
@@ -89,6 +101,7 @@ click()
 	$Step = GetObjValue("Step");
 	if($Step == 0)
 	{
+//		SendMessage("자막", "문자출력", "2,복사기이다");
 		SendMessage("자막", "문자출력", "2," +  GetString("old_s96"));
 		SetObjValue("Step", $Step + 1);
 	}

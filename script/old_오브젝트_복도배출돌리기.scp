@@ -14,6 +14,7 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "handle " + $WorkingFile);	
 	SendMessage("", "스크립트설정", "handle " + $G_File);	
 	SetObjValue("MotionName", "");
 	SetObjValue("Step", 0);
@@ -56,6 +57,7 @@ click()
 	
 	if($Step == 0)
 	{
+//		SendMessage("자막", "문자출력", "3,This valve seems to be connected \nwith the hot steam pipe");
 		SendMessage("자막", "문자출력", "3," +  GetString("old_s91"));
 	}
 	else if($Step == 1)
@@ -63,10 +65,12 @@ click()
 		SendMessage("", "애니메이션", "열기");
 		SendMessage("자막", "활성화", "");
 		SendMessage("자막", "와이드모드", "켜기");
+//		SendMessage("타이머", "스크립트설정", "6 0 1 오브젝트_복도배출돌리기.Event *obj " + GetObjValue("this"));
 		SendMessage("타이머", "스크립트설정", "6 0 1 old_오브젝트_복도배출돌리기.Event *obj " + GetObjValue("this"));
 	}
 	else
 	{
+//		SendMessage("자막", "문자출력", "2,You can't turn it anymore");
 		SendMessage("자막", "문자출력", "2," +  GetString("old_s92"));
 	}
 	SetObjValue("Step", $Step++);
@@ -76,6 +80,8 @@ Event()
 {
 	SendMessage("자막", "비활성", "");
 	SendMessage("자막", "와이드모드", "끄기");
+//	SendMessage(GetObjValue("mission"), "스크립트실행", "오브젝트_복도가스배출기.Mission");
 	SendMessage(GetObjValue("mission"), "스크립트실행", "old_오브젝트_복도가스배출기.Mission");
+//	SendMessage("자막", "문자출력", "3,You turned off the valve completely");
 	SendMessage("자막", "문자출력", "3," +  GetString("old_s93"));
 }

@@ -14,10 +14,15 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "use1 " + $WorkingFile + ".Ladder잡기");		// 잡기
 	SendMessage("", "스크립트설정", "use1 " + $G_File + ".Ladder잡기");		// 잡기
+//	SendMessage("", "스크립트설정", "use2 " + $WorkingFile + ".Ladder오르기1");		// 오르기1
 	SendMessage("", "스크립트설정", "use2 " + $G_File + ".Ladder오르기1");		// 오르기1
+//	SendMessage("", "스크립트설정", "use5 " + $WorkingFile + ".Ladder오르기2");		// 오르기2
 	SendMessage("", "스크립트설정", "use5 " + $G_File + ".Ladder오르기2");		// 오르기2
+//	SendMessage("", "스크립트설정", "use3 " + $WorkingFile + ".Ladder내려오기1");	// 내려오기1
 	SendMessage("", "스크립트설정", "use3 " + $G_File + ".Ladder내려오기1");	// 내려오기1
+//	SendMessage("", "스크립트설정", "use4 " + $WorkingFile + ".Ladder내려오기2");	// 내려오기2
 	SendMessage("", "스크립트설정", "use4 " + $G_File + ".Ladder내려오기2");	// 내려오기2
 	SendMessage("", "스크립트설정", "dummy1 " + "null");
 	SendMessage("", "스크립트설정", "dummy2 " + "null");
@@ -30,6 +35,7 @@ Init()
 
 Ladder잡기.pick()
 {
+//	if($USER_CAPTUREITEM == FALSE && $USER_RISE == OFF)
 	if($old_USER_CAPTUREITEM == FALSE && $old_USER_RISE == OFF)
 	{
 		return GetObjValue("Step") == 0 ? "보기" : "잡기";
@@ -39,10 +45,13 @@ Ladder잡기.pick()
 
 Ladder잡기.click()
 {
+//	if(ShowInfo() == FALSE && $USER_RISE == OFF && $USER_CAPTUREITEM == FALSE)
 	if(ShowInfo() == FALSE && $old_USER_RISE == OFF && $old_USER_CAPTUREITEM == FALSE)
 	{
+//		$USER_CAPTUREITEM = TRUE;
 		$old_USER_CAPTUREITEM = TRUE;
 		SendMessage("유저", "캡춰", "작업용사다리 팔");
+//		SendMessage("사운드", "연주", "당기는문잠긴것,data/sound/사다리들기.wav");
 		SendMessage("사운드", "연주", "당기는문잠긴것,data/sound/old_사다리들기.wav");
 	}
 }
@@ -55,6 +64,7 @@ Ladder오르기1.pick()
 		return "";
 	}
 
+//	if($USER_CAPTUREITEM == FALSE && $USER_RISE == OFF)
 	if($old_USER_CAPTUREITEM == FALSE && $old_USER_RISE == OFF)
 	{
 		return GetObjValue("Step") == 0 ? "보기" : "사다리오르기";
@@ -64,8 +74,10 @@ Ladder오르기1.pick()
 
 Ladder오르기1.click()
 {
+//	if(ShowInfo() == FALSE && $USER_RISE == OFF && $USER_CAPTUREITEM == FALSE)
 	if(ShowInfo() == FALSE && $old_USER_RISE == OFF && $old_USER_CAPTUREITEM == FALSE)
 	{
+//		$USER_RISE = ON;
 		$old_USER_RISE = ON;
 		SetObjValue("Case", 1);
 //		SendMessage("유저", "이동제한", "on");
@@ -83,6 +95,7 @@ Ladder오르기2.pick()
 		return "";
 	}
 
+//	if($USER_CAPTUREITEM == FALSE && $USER_RISE == OFF)
 	if($old_USER_CAPTUREITEM == FALSE && $old_USER_RISE == OFF)
 	{
 		return GetObjValue("Step") == 0 ? "보기" : "사다리오르기";
@@ -92,8 +105,10 @@ Ladder오르기2.pick()
 
 Ladder오르기2.click()
 {
+//	if(ShowInfo() == FALSE && $USER_RISE == OFF && $USER_CAPTUREITEM == FALSE)
 	if(ShowInfo() == FALSE && $old_USER_RISE == OFF && $old_USER_CAPTUREITEM == FALSE)
 	{
+//		$USER_RISE = ON;
 		$old_USER_RISE = ON;
 		SetObjValue("Case", 2);
 //		SendMessage("유저", "이동제한", "on");
@@ -105,13 +120,16 @@ Ladder오르기2.click()
 
 Ladder내려오기1.pick()
 {
+//	return ($USER_RISE == ON && GetObjValue("Case") == 1) ? "사다리내려오기" : "";
 	return ($old_USER_RISE == ON && GetObjValue("Case") == 1) ? "뒤로보기" : "";
 }
 
 Ladder내려오기1.click()
 {
+//	if($USER_RISE == ON && $USER_CAPTUREITEM == FALSE && GetObjValue("Case") == 1)
 	if($old_USER_RISE == ON && $old_USER_CAPTUREITEM == FALSE && GetObjValue("Case") == 1)
 	{
+//		$USER_RISE = OFF;
 		$old_USER_RISE = OFF;
 		SendMessage("유저", "이동제한", "off");
 		SendMessage("유저", "내려오기", "");
@@ -120,13 +138,16 @@ Ladder내려오기1.click()
 
 Ladder내려오기2.pick()
 {
+//	return ($USER_RISE == ON && GetObjValue("Case") == 2) ? "사다리내려오기" : "";
 	return ($old_USER_RISE == ON && GetObjValue("Case") == 2) ? "뒤로보기" : "";
 }
 
 Ladder내려오기2.click()
 {
+//	if($USER_RISE == ON && $USER_CAPTUREITEM == FALSE && GetObjValue("Case") == 2)
 	if($old_USER_RISE == ON && $old_USER_CAPTUREITEM == FALSE && GetObjValue("Case") == 2)
 	{
+//		$USER_RISE = OFF;
 		$old_USER_RISE = OFF;
 		SendMessage("유저", "이동제한", "off");
 		SendMessage("유저", "내려오기", "");
@@ -138,6 +159,7 @@ ShowInfo()
 	$Step = GetObjValue("Step");
 	if($Step == 0)
 	{
+//		SendMessage("자막", "문자출력", "2,It's a ladder. You can climb up using it");
 		SendMessage("자막", "문자출력", "2," +  GetString("old_s104"));
 		SetObjValue("Step", $Step + 1);
 		return TRUE;

@@ -14,6 +14,7 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "handle " + $WorkingFile);
 	SendMessage("", "스크립트설정", "handle " + $G_File);
 	SetObjValue("MotionName", "");
 	SetObjValue("OpenFlag", CLOSE);

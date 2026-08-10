@@ -14,8 +14,11 @@
 
 Init()
 {
+//	SendMessage("", "스크립트설정", "left " + $WorkingFile + ".left");
 	SendMessage("", "스크립트설정", "left " + $G_File + ".left");
+//	SendMessage("", "스크립트설정", "right " + $WorkingFile + ".right");
 	SendMessage("", "스크립트설정", "right " + $G_File + ".right");
+//	SendMessage("", "스크립트설정", "handle " + $WorkingFile + ".handle");
 	SendMessage("", "스크립트설정", "handle " + $G_File + ".handle");
 	
 	SendMessage("", "스크립트설정", "dummy1 null");
@@ -94,11 +97,13 @@ CheckLock()
 	{
 		case 0:
 		{
+//			if($RotateValue == $Mission2_야구공max)
 			if($RotateValue == $old_Mission2_야구공max)
 			{
 				SetObjValue("Step", $Step++);
 				SetObjValue("RotateValue", 0);
 			}
+//			else if($RotateValue > $Mission2_야구공max)
 			else if($RotateValue > $old_Mission2_야구공max)
 			{
 				SetObjValue("Step", 0);
@@ -108,11 +113,13 @@ CheckLock()
 		}
 		case 1:
 		{
+//			if($RotateValue == -$Mission2_배구공max)
 			if($RotateValue == -$old_Mission2_배구공max)
 			{
 				SetObjValue("Step", $Step++);
 				SetObjValue("RotateValue", 0);
 			}
+//			else if($RotateValue < -$Mission2_배구공max)
 			else if($RotateValue < -$old_Mission2_배구공max)
 			{
 				SetObjValue("Step", 0);
@@ -122,11 +129,13 @@ CheckLock()
 		}
 		case 2:
 		{
+//			if($RotateValue == $Mission2_축구공max)
 			if($RotateValue == $old_Mission2_축구공max)
 			{
 				SetObjValue("RotateValue", 0);
 				SetObjValue("Step", $Step++);
 			}
+//			else if($RotateValue > $Mission2_축구공max)
 			else if($RotateValue > $old_Mission2_축구공max)
 			{
 				SetObjValue("Step", 0);
@@ -136,12 +145,14 @@ CheckLock()
 		}
 		case 3:
 		{
+//			if($RotateValue == -$Mission2_농구공max)
 			if($RotateValue == -$old_Mission2_농구공max)
 			{
 				SetObjValue("Step", $Step++);
 				SetObjValue("RotateValue", 0);
 				SendMessage("사운드", "연주", "data/sound/event/금고_맞음.wav");
 			}
+//			else if($RotateValue < -$Mission2_농구공max)
 			else if($RotateValue < -$old_Mission2_농구공max)
 			{
 				SetObjValue("Step", 0);
@@ -174,6 +185,7 @@ handle.click()
 	}
 	else
 	{
+//		SendMessage("자막", "문자출력", "2,금고는 잠겨있다");
 		SendMessage("자막", "문자출력", "2," +  GetString("old_s112"));
 	}
 }
