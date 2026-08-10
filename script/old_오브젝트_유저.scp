@@ -28,13 +28,15 @@ Process()
 Event무섭게깔리는음악()
 {
 	DeleteObject("");		// delete event area
-	SendMessage("오디오", "연주", "data/sound/bgm/무서운소리01.adp");
+//	SendMessage("오디오", "연주", "data/sound/bgm/무서운소리01.adp");
+	SendMessage("오디오", "연주", "data/sound/bgm/old_무서운소리01.wav");
 }
 
 Event나무이벤트준비음악()
 {
 	DeleteObject("");		// delete event area
-	SendMessage("오디오", "연주", "data/sound/bgm/미궁02.adp");
+//	SendMessage("오디오", "연주", "data/sound/bgm/미궁02.adp");
+	SendMessage("오디오", "연주", "data/sound/bgm/old_미궁02.wav");
 }
 
 Event학생구타이벤트()
