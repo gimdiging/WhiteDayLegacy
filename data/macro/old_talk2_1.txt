@@ -200,7 +200,7 @@ SendMessage("자막", "다이얼로그출력", "old_d03_010");
 //SendMessage("자막", "다이얼로그출력", "d03_011");
 SendMessage("자막", "다이얼로그출력", "old_d03_011");
 //SendMessage("지현", "이동", FindPoint($대화_지현 == 1 ? "지현퇴장위치2" : "지현퇴장위치1") + " 손흔들며달리기");
-SendMessage("지현", "빨리돌기포인트", FindPoint($old_대화_지현 == 1 ? "old_지현퇴장위치2" : "old_지현퇴장위치1") + "");
+SendMessage("지현", "빨리돌기포인트", FindPoint($old_대화_지현 == 1 ? "지현퇴장위치2" : "지현퇴장위치1") + "");
 //SendMessage("타이머", "스크립트설정", "3 0 1 대화#2-1.Talking");
 //$TalkingStep++;
  ]
@@ -210,7 +210,7 @@ SendMessage("지현", "애니메이션", "손흔들며달리기");
 	Event=16.000	[ 
 SendMessage("지현", "쳐다보지말기", "");
 //SendMessage("지현", "이동", FindPoint("지현퇴장위치") + " 걷기2 *script 대화#2-1.Ending");
-SendMessage("지현", "빨리돌기포인트", "" + FindPoint("old_지현퇴장위치"));
+SendMessage("지현", "빨리돌기포인트", "" + FindPoint("지현퇴장위치"));
  ]
 	Event=16.200	[ 
 SendMessage("지현", "애니메이션", "걷기2");
@@ -244,7 +244,7 @@ SendMessage("자막", "다이얼로그출력", "old_d03_014");
 //SendMessage("자막", "다이얼로그출력", "d03_015");
 SendMessage("자막", "다이얼로그출력", "old_d03_015");
 //SendMessage("지현", "이동", FindPoint($대화_지현 == 1 ? "지현퇴장위치2" : "지현퇴장위치1") + " 걷기2");
-SendMessage("지현", "빨리돌기포인트", FindPoint($old_대화_지현 == 1 ? "old_지현퇴장위치2" : "old_지현퇴장위치1") + "");
+SendMessage("지현", "빨리돌기포인트", FindPoint($old_대화_지현 == 1 ? "지현퇴장위치2" : "지현퇴장위치1") + "");
 //SendMessage("타이머", "스크립트설정", "3 0 1 대화#2-1.Talking");
 //$TalkingStep++;
  ]
@@ -254,7 +254,7 @@ SendMessage("지현", "애니메이션", "걷기2");
 	Event=16.000	[ 
 SendMessage("지현", "쳐다보지말기", "");
 //SendMessage("지현", "이동", FindPoint("지현퇴장위치") + " 걷기2 *script 대화#2-1.Ending");
-SendMessage("지현", "빨리돌기포인트", "" + FindPoint("old_지현퇴장위치"));
+SendMessage("지현", "빨리돌기포인트", "" + FindPoint("지현퇴장위치"));
  ]
 	Event=16.200	[ 
 SendMessage("지현", "애니메이션", "걷기2");

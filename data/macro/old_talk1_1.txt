@@ -33,7 +33,7 @@ SendMessage("자막", "다이얼로그출력", "old_d01_001");
  ]
 	Event=7.000	[ 
 //SendMessage("성아", "이동", FindPoint("성아위치1") + " 걷기2");
-SendMessage("성아", "빨리돌기포인트", "" + FindPoint("old_성아위치1"));
+SendMessage("성아", "빨리돌기포인트", "" + FindPoint("성아위치1"));
 //SendMessage("타이머", "스크립트설정", "1 0 1 대화#1-1.Talking");
  ]
 	Event=7.200	[ 
@@ -201,7 +201,7 @@ SendMessage("자막", "다이얼로그출력", "old_d01_012");
  ]
 	Event=15.000	[ 
 //SendMessage("성아", "이동", FindPoint("성아위치2") + " 귀막고달리기 *script 대화#1-1.SitDown");
-SendMessage("성아", "빨리돌기포인트", "" + FindPoint("old_성아위치1_2"));
+SendMessage("성아", "빨리돌기포인트", "" + FindPoint("성아위치1_2"));
 //SendMessage("타이머", "스크립트설정", "2 0 1 대화#1-1.Talking");
  ]
 	Event=15.300	[ 
@@ -222,7 +222,7 @@ SendMessage("자막", "와이드모드", "끄기");
 SendMessage("자막", "말하는사람", "");
 SendMessage("성아", "애니메이션", "귀막고쪼그리기");
 SendMessage("성아", "회전", "90");
-SendMessage("성아", "위치", "" + FindPoint("old_성아위치2"));
+SendMessage("성아", "위치", "" + FindPoint("성아위치2"));
 //$대화_성아 = "대화#1-2";
 $old_대화_성아 = "old_대화1-2";
  ]
