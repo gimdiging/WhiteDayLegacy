@@ -279,7 +279,7 @@ EventMode()
 		SendMessage("배경", "끄기", "fri");
 
 		$old_대화_성아 = "old_대화1-3";
-		SendMessage("성아", "위치", "" + FindPoint("old_성아위치3"));
+		SendMessage("성아", "위치", "" + FindPoint("성아위치3"));
 		SendMessage("성아", "회전", "6");
 		SendMessage("성아", "애니메이션", "두리번거리기");
 		SendMessage("성아", "표정바꿔", "무섭m");

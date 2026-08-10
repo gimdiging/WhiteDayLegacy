@@ -62,7 +62,7 @@ Talking()
 		case 3:
 		{
 //			SendMessage("성아", "이동", FindPoint("성아위치1") + " 걷기2");
-			SendMessage("성아", "빨리돌기포인트", "" + FindPoint("old_성아위치1"));
+			SendMessage("성아", "빨리돌기포인트", "" + FindPoint("성아위치1"));
 			SendMessage("타이머", "스크립트설정", "0.2 0 1 old_대화1-1.Walk");
 //			SendMessage("타이머", "스크립트설정", "1 0 1 대화#1-1.Talking");
 			SendMessage("타이머", "스크립트설정", "1 0 1 old_대화1-1.Talking");
@@ -196,7 +196,7 @@ Talking()
 		case 15:
 		{
 //			SendMessage("성아", "이동", FindPoint("성아위치2") + " 귀막고달리기 *script 대화#1-1.SitDown");
-			SendMessage("성아", "빨리돌기포인트", "" + FindPoint("old_성아위치1_2"));
+			SendMessage("성아", "빨리돌기포인트", "" + FindPoint("성아위치1_2"));
 			SendMessage("타이머", "스크립트설정", "0.3 0 1 old_대화1-1.Run");
 //			SendMessage("타이머", "스크립트설정", "2 0 1 대화#1-1.Talking");
 			SendMessage("타이머", "스크립트설정", "2 0 1 old_대화1-1.Talking");
@@ -245,7 +245,7 @@ SitDown()
 {
 	SendMessage("성아", "애니메이션", "귀막고쪼그리기");
 	SendMessage("성아", "회전", "90");
-	SendMessage("성아", "위치", "" + FindPoint("old_성아위치2"));
+	SendMessage("성아", "위치", "" + FindPoint("성아위치2"));
 //	$대화_성아 = "대화#1-2";
 	$old_대화_성아 = "old_대화1-2";
 }

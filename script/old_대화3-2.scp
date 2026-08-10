@@ -143,7 +143,7 @@ Talking()
 		}
 		case 7:
 		{
-			SendMessage("소영", "빨리돌기포인트", "" + FindPoint("old_소영위치2"));
+			SendMessage("소영", "빨리돌기포인트", "" + FindPoint("소영위치2"));
 			SendMessage("타이머", "스크립트설정", "0.3 0 1 old_대화3-2.Run");
 			SendMessage("타이머", "스크립트설정", "3 0 1 old_대화3-2.Talking");
 			break;
