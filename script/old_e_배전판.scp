@@ -173,7 +173,7 @@ EventMode()
 		}
 	}
 
-	$old_count = 0;
+	$count = 0;
 	
 	if(GetObjValue("Steel1") == ON)
 	{
@@ -197,7 +197,7 @@ EventMode()
 			SendMessage("사운드", "연주3d", GetObjPos("도난방지기") + " data/sound/event/도난방지기_끝.wav");
 			SetObjValue("Play1", FALSE);
 		}
-		$old_count++;
+		$count++;
 	}
 
 	if(GetObjValue("Steel2") == ON)
@@ -215,7 +215,7 @@ EventMode()
 		SendMessage("전자금고", "발광", "safe-lamp01 off");
 		SendMessage("전자금고", "발광", "safe-lamp02 off");
 		SendMessage("사운드", "연주멈춤", "전자금고_루프");
-		$old_count++;
+		$count++;
 	}
 
 	if(GetObjValue("Steel3") == ON)
@@ -241,7 +241,7 @@ EventMode()
 			SendMessage("사운드", "연주3d", GetObjPos("화재경보기") + " data/sound/event/화재경보기_끝.wav");
 			SetObjValue("Play3", FALSE);
 		}
-		$old_count++;
+		$count++;
 	}
 
 	if(GetObjValue("Steel4") == ON)
@@ -259,10 +259,10 @@ EventMode()
 		SendMessage("측정기", "발광", "lamp05 off");
 		SendMessage("측정기", "발광", "lamp06 off");
 		SendMessage("사운드", "연주멈춤", "측정기_루프");
-		$old_count++;
+		$count++;
 	}
 
-	if($old_count == 4 && $old_Mission1 == OFF)
+	if($count == 4 && $old_Mission1 == OFF)
 	{
 		$old_Mission1 = ON;
 

@@ -124,7 +124,6 @@ $old_LegacyEvents = ON;
 $old_Mission4_대화 = OFF;
 $old_e_매크로 = 0;
 $old_모기번호 = 0;
-$old_count = 0;
 $old_동전 = 0;
 $old_문_이유없이잠긴문 = LOCK;
 $old_문_본관2연결문 = LOCK;
