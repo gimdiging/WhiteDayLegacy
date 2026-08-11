@@ -193,9 +193,9 @@ Talking()
 			SendMessage("자막", "다이얼로그출력", "old_d03_011");
 //			SendMessage("지현", "이동", FindPoint($대화_지현 == 1 ? "지현퇴장위치2" : "지현퇴장위치1") + " 손흔들며달리기");
 			SendMessage("지현", "빨리돌기포인트", FindPoint($old_대화_지현 == 1 ? "지현퇴장위치2" : "지현퇴장위치1") + "");
-//			SendMessage("타이머", "스크립트설정", "3 0 1 대화#2-1.Talking");
-			$old_TalkingStep++;
 			SendMessage("타이머", "스크립트설정", "0.2 0 1 old_대화2-1.Run");
+			$old_TalkingStep++;
+//			SendMessage("타이머", "스크립트설정", "3 0 1 대화#2-1.Talking");
 			SendMessage("타이머", "스크립트설정", "5 0 1 old_대화2-1.Talking");
 			break;
 		}
@@ -233,9 +233,9 @@ Talking()
 			SendMessage("자막", "다이얼로그출력", "old_d03_015");
 //			SendMessage("지현", "이동", FindPoint($대화_지현 == 1 ? "지현퇴장위치2" : "지현퇴장위치1") + " 걷기2");
 			SendMessage("지현", "빨리돌기포인트", FindPoint($old_대화_지현 == 1 ? "지현퇴장위치2" : "지현퇴장위치1") + "");
-//			SendMessage("타이머", "스크립트설정", "3 0 1 대화#2-1.Talking");
-			$old_TalkingStep++;
 			SendMessage("타이머", "스크립트설정", "0.2 0 1 old_대화2-1.Walk");
+			$old_TalkingStep++;
+//			SendMessage("타이머", "스크립트설정", "3 0 1 대화#2-1.Talking");
 			SendMessage("타이머", "스크립트설정", "3 0 1 old_대화2-1.Talking");
 			break;
 		}
