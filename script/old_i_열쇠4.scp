@@ -66,6 +66,7 @@ GetItem()
 	SendMessage("마스터키", "페이드", "Recursive 1 1 0");
 //	SendMessage("유저", "획득", "마스터키");
 	SendMessage("유저", "획득", "@old_마스터키");
+	SendMessage("자막", "문자출력", "2," +  GetString("old_s21"));
 //	SendMessage("타이머", "스크립트설정", "1 0 1 i_열쇠4.Release");
 	SendMessage("타이머", "스크립트설정", "1 0 1 old_i_열쇠4.Release");
 	SendMessage("사운드", "연주", "data/sound/old_아이템획득.wav");

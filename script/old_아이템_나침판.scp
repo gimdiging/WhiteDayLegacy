@@ -47,6 +47,7 @@ GetItem()
 {
 	SendMessage("나침반", "페이드", "Recursive 1 1 0");
 	SendMessage("유저", "획득", "나침반");
+	SendMessage("자막", "문자출력", "2," +  GetString("old_s47"));
 //	SendMessage("타이머", "스크립트설정", "1 0 1 아이템_나침판.Release");
 	SendMessage("타이머", "스크립트설정", "1 0 1 old_아이템_나침판.Release");
 	SendMessage("사운드", "연주", "data/sound/old_아이템획득.wav");

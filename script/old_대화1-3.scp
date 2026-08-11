@@ -132,6 +132,7 @@ Talking()
 		{
 //			SendMessage("유저", "획득", "Key of the Main Hallway");
 			SendMessage("유저", "획득", "@old_중앙통로열쇠");
+			SendMessage("자막", "문자출력", "2," +  GetString("old_s35"));
 			SendMessage("사운드", "연주", "data/sound/old_아이템획득.wav");
 			SendMessage("성아", "애니메이션", "쉬기");
 //			SendMessage("성아", "표정바꿔", "보통");

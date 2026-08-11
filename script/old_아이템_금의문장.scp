@@ -61,6 +61,7 @@ GetItem()
 {
 	SendMessage("금의조각", "페이드", "Recursive 1 1 0");
 	SendMessage("유저", "획득", "@old_금의조각");
+	SendMessage("자막", "문자출력", "2," +  GetString("old_s45"));
 	SendMessage("타이머", "스크립트설정", "1 0 1 old_아이템_금의문장.Release");
 	SendMessage("사운드", "연주", "data/sound/old_아이템획득.wav");
 }

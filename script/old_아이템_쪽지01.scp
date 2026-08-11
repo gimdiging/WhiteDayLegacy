@@ -101,6 +101,7 @@ GetItem()
 	SendMessage(GetObjValue("ObjName"), "페이드", "Recursive 1 1 0");
 //	SendMessage("유저", "획득", GetObjValue("ObjName"));
 	SendMessage("다이어리", "획득", GetObjValue("ObjName"));
+	SendMessage("자막", "문자출력", "2," +  GetString("old_s62"));
 //	SendMessage("타이머", "스크립트설정", "1 0 1 아이템_쪽지01.Release *obj " + GetObjValue("ObjName"));
 	SendMessage("타이머", "스크립트설정", "1 0 1 old_아이템_쪽지01.Release *obj " + GetObjValue("ObjName"));
 //	SendMessage("사운드", "연주", "data/sound/아이템획득.wav");
