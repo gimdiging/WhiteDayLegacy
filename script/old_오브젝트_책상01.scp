@@ -21,6 +21,7 @@ Init()
 	SetObjValue("special", 0);
 	SetObjValue("lock", LOCK);
 	SendMessage("", "애니메이션", "서있기");
+	SendMessage("", "픽거리설정", "50 100");
 }
 
 Init열린책상()
@@ -43,37 +44,30 @@ pick()
 }
 
 click()
-{
+{	
+	if(GetObjValue("special") == 1)
+	{
+		SetObjValue("special", 2);
+		SendMessage("방화셔터열쇠", "켜기", "");
+	}
+
 	if(GetObjValue("lock") == LOCK)
 	{
 		SendMessage("자막", "문자출력", "2," +  GetString("old_s25"));
 		return;
 	}
 
-	if(GetObjValue("special") == 1)
-	{
-	SetObjValue("special", 2);
-	SendMessage("방화셔터열쇠", "켜기", "");
-	}
-
 	$OpenFlag = GetObjValue("OpenFlag");
 
-	if($OpenFlag == 0)
+	switch($OpenFlag)
 	{
-		SendMessage("", "애니메이션", "열기");
-		if(GetObjValue("MotionName") != "열기")
-		{
-			return;
-		}
-		SetObjValue("OpenFlag", 1);
-	}
-	else
-	{
-		SendMessage("", "애니메이션", "닫기");
-		if(GetObjValue("MotionName") != "닫기")
-		{
-			return;
-		}
-		SetObjValue("OpenFlag", 0);
+		case 0:
+			SendMessage("", "애니메이션", "열기");
+			SetObjValue("OpenFlag", 1);
+			break;
+		case 1:
+			SendMessage("", "애니메이션", "닫기");
+			SetObjValue("OpenFlag", 0);
+			break;
 	}
 }
