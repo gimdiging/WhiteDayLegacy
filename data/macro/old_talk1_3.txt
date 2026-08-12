@@ -11,22 +11,24 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=3
 	Event=0.000	[ 
-SendMessage("자막", "활성화", "");
-SendMessage("자막", "와이드모드", "켜기");
-//SendMessage("자막", "SetObject", "성아");
-//SendMessage("자막", "SetFunction", "대화#1-3.Talking");
-SendMessage("자막", "말하는사람", "성아");
-//SendMessage("성아", "바라보기", "유저");
-SendMessage("성아", "쳐다보기", "유저");
-//SendMessage("자막", "다이얼로그출력", "d02_004");
-SendMessage("자막", "다이얼로그출력", "old_d02_004");
+	SendMessage("자막", "활성화", "");
+	SendMessage("자막", "와이드모드", "켜기");
+//	SendMessage("자막", "SetObject", "성아");
+//	SendMessage("자막", "SetFunction", "대화#1-3.Talking");
+	SendMessage("자막", "말하는사람", "성아");
+//	SendMessage("성아", "바라보기", "유저");
+	SendMessage("성아", "쳐다보기", "유저");
+//	SendMessage("자막", "다이얼로그출력", "d02_004");
+	SendMessage("자막", "다이얼로그출력", "old_d02_004");
+//	SendMessage("타이머", "스크립트설정", "1.97 0 1 old_대화1-3.Talking");
  ]
-	Event=2.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d02_005");
-SendMessage("자막", "다이얼로그출력", "old_d02_005");
+	Event=1.970	[ 
+//	SendMessage("자막", "다이얼로그출력", "d02_005");
+	SendMessage("자막", "다이얼로그출력", "old_d02_005");
+//	SendMessage("타이머", "스크립트설정", "5.17 0 1 old_대화1-3.Talking");
  ]
-	Event=7.000	[ 
-SendMessage("매크로", "Play", "cut02");
+	Event=7.140	[ 
+	SendMessage("매크로", "Play", "cut02");
  ]
 
 
@@ -37,8 +39,10 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=1
 	Event=0.000	[ 
-//SendMessage("자막", "선택", "I did.\nIt was your scream, I think...");
-SendMessage("자막", "자막선택", GetString("old_s33m"));
+//	SendMessage("자막", "선택", "I did.\nIt was your scream, I think...");
+//	SendMessage("자막", "선택", GetString("old_s33"));
+//	SendMessage("자막", "실행함수", "old_대화1-3.Talking");
+	SendMessage("자막", "자막선택", GetString("old_s33m"));
  ]
 
 
@@ -49,15 +53,17 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=3
 	Event=0.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d02_006");
-SendMessage("자막", "다이얼로그출력", "old_d02_006");
+//	SendMessage("자막", "다이얼로그출력", "d02_006");
+	SendMessage("자막", "다이얼로그출력", "old_d02_006");
+//	SendMessage("타이머", "스크립트설정", "5.61 0 1 old_대화1-3.Talking");
  ]
-	Event=5.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d02_007");
-SendMessage("자막", "다이얼로그출력", "old_d02_007");
+	Event=5.610	[ 
+//	SendMessage("자막", "다이얼로그출력", "d02_007");
+	SendMessage("자막", "다이얼로그출력", "old_d02_007");
+//	SendMessage("타이머", "스크립트설정", "5.17 0 1 old_대화1-3.Talking");
  ]
-	Event=10.000	[ 
-SendMessage("매크로","Play","cut03");
+	Event=10.780	[ 
+	SendMessage("매크로", "Play", "cut03");
  ]
 
 
@@ -68,8 +74,10 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=1
 	Event=0.000	[ 
-//SendMessage("자막", "선택", "Okay, I'll be with you.\nBut I have to go.\nShut up...");
-SendMessage("자막", "자막선택", GetString("old_s34m"));
+//	SendMessage("자막", "선택", "Okay, I'll be with you.\nBut I have to go.\nShut up...");
+//	SendMessage("자막", "선택", GetString("old_s34"));
+//	SendMessage("자막", "실행함수", "old_대화1-3.Talking");
+	SendMessage("자막", "자막선택", GetString("old_s34m"));
  ]
 
 
@@ -80,12 +88,14 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=2
 	Event=0.000	[ 
-//$TalkingStep++;
-//SendMessage("자막", "다이얼로그출력", "d02_008");
-SendMessage("자막", "다이얼로그출력", "old_d02_008");
+//	$TalkingStep++;
+//	$old_TalkingStep++;
+//	SendMessage("자막", "다이얼로그출력", "d02_008");
+	SendMessage("자막", "다이얼로그출력", "old_d02_008");
+//	SendMessage("타이머", "스크립트설정", "5.06 0 1 old_대화1-3.Talking");
  ]
-	Event=5.000	[ 
-SendMessage("매크로","Play","cut05");
+	Event=5.060	[ 
+	SendMessage("매크로", "Play", "cut05");
  ]
 
 
@@ -96,12 +106,14 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=2
 	Event=0.000	[ 
-//$TalkingStep++;
-//SendMessage("자막", "다이얼로그출력", "d02_009");
-SendMessage("자막", "다이얼로그출력", "old_d02_009");
+//	$TalkingStep++;
+//	$old_TalkingStep++;
+//	SendMessage("자막", "다이얼로그출력", "d02_009");
+	SendMessage("자막", "다이얼로그출력", "old_d02_009");
+//	SendMessage("타이머", "스크립트설정", "3.26 0 1 old_대화1-3.Talking");
  ]
-	Event=3.000	[ 
-SendMessage("매크로","Play","cut05");
+	Event=3.260	[ 
+	SendMessage("매크로", "Play", "cut05");
  ]
 
 
@@ -112,14 +124,15 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=2
 	Event=0.000	[ 
-//SendMessage("자막", "문자출력", "1.5,......");
-SendMessage("자막", "문자출력", "1.5," +  GetString("old_s31"));
-//SendMessage("성아", "표정바꿔", "책망");
-SendMessage("성아", "표정바꿔", "책망m");
-//SendMessage("타이머", "스크립트설정", "3 0 1 대화#1-3.Talking");
+//	SendMessage("자막", "문자출력", "1.5,......");
+	SendMessage("자막", "문자출력", "1.5," + GetString("old_s31"));
+//	SendMessage("성아", "표정바꿔", "책망");
+	SendMessage("성아", "표정바꿔", "책망m");
+//	SendMessage("타이머", "스크립트설정", "3 0 1 대화#1-3.Talking");
+//	SendMessage("타이머", "스크립트설정", "1.5 0 1 old_대화1-3.Talking");
  ]
 	Event=1.500	[ 
-SendMessage("매크로","Play","cut04");
+	SendMessage("매크로", "Play", "cut04");
  ]
 
 
@@ -130,12 +143,14 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=2
 	Event=0.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d02_010");
-SendMessage("자막", "다이얼로그출력", "old_d02_010");
-//$TalkingStep++;
+//	SendMessage("자막", "다이얼로그출력", "d02_010");
+	SendMessage("자막", "다이얼로그출력", "old_d02_010");
+//	$TalkingStep++;
+//	$old_TalkingStep++;
+//	SendMessage("타이머", "스크립트설정", "3.27 0 1 old_대화1-3.Talking");
  ]
-	Event=3.000	[ 
-SendMessage("매크로","Play","cut06");
+	Event=3.270	[ 
+	SendMessage("매크로", "Play", "cut06");
  ]
 
 
@@ -146,11 +161,12 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=2
 	Event=0.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d02_011");
-SendMessage("자막", "다이얼로그출력", "old_d02_011");
+//	SendMessage("자막", "다이얼로그출력", "d02_011");
+	SendMessage("자막", "다이얼로그출력", "old_d02_011");
+//	SendMessage("타이머", "스크립트설정", "4.31 0 1 old_대화1-3.Talking");
  ]
-	Event=4.000	[ 
-SendMessage("매크로","Play","cut06");
+	Event=4.310	[ 
+	SendMessage("매크로", "Play", "cut06");
  ]
 
 
@@ -161,18 +177,19 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=1
 	Event=0.000	[ 
-//SendMessage("유저", "획득", "Key of the Main Hallway");
-SendMessage("유저", "획득", "@old_중앙통로열쇠");
-SendMessage("사운드", "연주", "data/sound/old_아이템획득.wav");
-SendMessage("성아", "애니메이션", "쉬기");
-//SendMessage("성아", "표정바꿔", "보통");
-SendMessage("성아", "표정바꿔", "보통m");
-SendMessage("성아", "쳐다보지말기", "");
-SendMessage("자막", "비활성", "");
-SendMessage("자막", "와이드모드", "끄기");
-//SendMessage("자막", "SetObject", "");
-//SendMessage("자막", "SetFunction", "");
-SendMessage("자막", "말하는사람", "");
-//$대화_성아 = "대화#1-4";
-$old_대화_성아 = "old_대화1-4";
+//	SendMessage("유저", "획득", "Key of the Main Hallway");
+	SendMessage("유저", "획득", "@old_중앙통로열쇠");
+	SendMessage("자막", "문자출력", "2," + GetString("old_s35"));
+	SendMessage("사운드", "연주", "data/sound/old_아이템획득.wav");
+	SendMessage("성아", "애니메이션", "쉬기");
+//	SendMessage("성아", "표정바꿔", "보통");
+	SendMessage("성아", "표정바꿔", "보통m");
+	SendMessage("성아", "쳐다보지말기", "");
+	SendMessage("자막", "비활성", "");
+	SendMessage("자막", "와이드모드", "끄기");
+//	SendMessage("자막", "SetObject", "");
+//	SendMessage("자막", "SetFunction", "");
+	SendMessage("자막", "말하는사람", "");
+//	$대화_성아 = "대화#1-4";
+	$old_대화_성아 = "old_대화1-4";
  ]
