@@ -48,7 +48,7 @@ Talking()
 		case 2:
 		{	
 			SendMessage("자막", "다이얼로그출력", "old_d05_001");
-			SendMessage("타이머", "스크립트설정", "4 0 1 old_대화4-1.Talking");
+			SendMessage("타이머", "스크립트설정", "4.62 0 1 old_대화4-1.Talking");
 			break;
 		}
 		case 3:
