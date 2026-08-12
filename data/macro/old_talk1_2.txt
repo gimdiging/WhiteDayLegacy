@@ -11,12 +11,12 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=1
 	Event=0.000	[ 
-//$TalkIndex = GetObjValue("TalkIndex");
-SendMessage("자막", "활성화", "");
-//SendMessage("자막", "SetFunction", "대화#1-2.Talking");
-//SendMessage("자막", "SetObject", "성아");
-SendMessage("자막", "말하는사람", "성아");
-SendMessage("매크로", "Play", "cut01_" + $old_TalkingStep);
+//	$TalkIndex = GetObjValue("TalkIndex");
+	SendMessage("자막", "활성화", "");
+//	SendMessage("자막", "SetFunction", "대화#1-2.Talking");
+//	SendMessage("자막", "SetObject", "성아");
+	SendMessage("자막", "말하는사람", "성아");
+	SendMessage("매크로", "Play", "cut01_" + $old_TalkingStep);
  ]
 
 
@@ -27,11 +27,12 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=2
 	Event=0.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d02_001");
-SendMessage("자막", "다이얼로그출력", "old_d02_001");
+//	SendMessage("자막", "다이얼로그출력", "d02_001");
+	SendMessage("자막", "다이얼로그출력", "old_d02_001");
+//	SendMessage("타이머", "스크립트설정", "2.62 0 1 old_대화1-2.Talking");
  ]
-	Event=2.000	[ 
-SendMessage("매크로","Play","cut02");
+	Event=2.620	[ 
+	SendMessage("매크로", "Play", "cut02");
  ]
 
 
@@ -42,11 +43,12 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=2
 	Event=0.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d02_002");
-SendMessage("자막", "다이얼로그출력", "old_d02_002");
+//	SendMessage("자막", "다이얼로그출력", "d02_002");
+	SendMessage("자막", "다이얼로그출력", "old_d02_002");
+//	SendMessage("타이머", "스크립트설정", "1.67 0 1 old_대화1-2.Talking");
  ]
-	Event=1.000	[ 
-SendMessage("매크로","Play","cut02");
+	Event=1.670	[ 
+	SendMessage("매크로", "Play", "cut02");
  ]
 
 
@@ -57,11 +59,12 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=2
 	Event=0.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d02_003");
-SendMessage("자막", "다이얼로그출력", "old_d02_003");
+//	SendMessage("자막", "다이얼로그출력", "d02_003");
+	SendMessage("자막", "다이얼로그출력", "old_d02_003");
+//	SendMessage("타이머", "스크립트설정", "2.04 0 1 old_대화1-2.Talking");
  ]
-	Event=2.000	[ 
-SendMessage("매크로","Play","cut02");
+	Event=2.040	[ 
+	SendMessage("매크로", "Play", "cut02");
  ]
 
 
@@ -72,9 +75,9 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=1
 	Event=0.000	[ 
-SendMessage("자막", "비활성", "");
-//SendMessage("자막", "SetFunction", "");
-//SendMessage("자막", "SetObject", "");
-SendMessage("자막", "말하는사람", "");
-//SetObjValue("TalkIndex", $TalkIndex <= 1 ? $TalkIndex + 1 : 0);
+	SendMessage("자막", "비활성", "");
+//	SendMessage("자막", "SetFunction", "");
+//	SendMessage("자막", "SetObject", "");
+	SendMessage("자막", "말하는사람", "");
+//	SetObjValue("TalkIndex", $TalkIndex <= 1 ? $TalkIndex + 1 : 0);
  ]
