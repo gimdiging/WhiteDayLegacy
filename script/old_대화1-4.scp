@@ -47,14 +47,14 @@ Talking()
 			{
 //				SendMessage("자막", "다이얼로그출력", "d02_012");
 				SendMessage("자막", "다이얼로그출력", "old_d02_012");
-				SendMessage("타이머", "스크립트설정", "6 0 1 old_대화1-4.Talking");
+				SendMessage("타이머", "스크립트설정", "6.60 0 1 old_대화1-4.Talking");
 				break;
 			}
 			case 1:
 			{
 //				SendMessage("자막", "다이얼로그출력", "d02_013");
 				SendMessage("자막", "다이얼로그출력", "old_d02_013");
-				SendMessage("타이머", "스크립트설정", "2 0 1 old_대화1-4.Talking");
+				SendMessage("타이머", "스크립트설정", "2.78 0 1 old_대화1-4.Talking");
 				break;
 			}
 		}
