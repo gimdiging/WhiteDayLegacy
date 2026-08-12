@@ -59,13 +59,13 @@ Talking()
 			SendMessage("자막", "다이얼로그출력", "old_d04_001");
 //			SendMessage("나무윗쪽", "애니메이션", "*force 공격");
 			SendMessage("나무윗쪽", "애니메이션", "공격");
-			SendMessage("타이머", "스크립트설정", "5 0 1 old_대화3-1.Talking");
+			SendMessage("타이머", "스크립트설정", "5.53 0 1 old_대화3-1.Talking");
 			break;
 		}	
 		case 3:
 		{
 //			SendMessage("자막", "문자출력", "2,한소영이 보인다");
-			SendMessage("자막", "문자출력", "2," +  GetString("old_s38"));
+			SendMessage("자막", "문자출력", "2," + GetString("old_s38"));
 			SendMessage("타이머", "스크립트설정", "2 0 1 old_대화3-1.Talking");
 			break;
 		}	
@@ -80,7 +80,7 @@ Talking()
 		{
 //			SendMessage("자막", "다이얼로그출력", "d04_003");
 			SendMessage("자막", "다이얼로그출력", "old_d04_003");
-			SendMessage("타이머", "스크립트설정", "4 0 1 old_대화3-1.Talking");
+			SendMessage("타이머", "스크립트설정", "4.74 0 1 old_대화3-1.Talking");
 			break;
 		}
 		case 6:
