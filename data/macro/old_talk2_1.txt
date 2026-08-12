@@ -11,25 +11,28 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=4
 	Event=0.000	[ 
-SendMessage("자막", "활성화", "");
-SendMessage("자막", "와이드모드", "켜기");
-//SendMessage("자막", "SetObject", "지현");
-//SendMessage("자막", "SetFunction", "대화#2-1.Talking");
-SendMessage("자막", "말하는사람", "지현");
-//SendMessage("유저", "바라보기", "지현");
-SendMessage("유저", "쳐다보기", "지현");
-//SendMessage("타이머", "스크립트설정", "1 0 1 대화#2-1.Talking");
+	SendMessage("자막", "활성화", "");
+	SendMessage("자막", "와이드모드", "켜기");
+//	SendMessage("자막", "SetObject", "지현");
+//	SendMessage("자막", "SetFunction", "대화#2-1.Talking");
+	SendMessage("자막", "말하는사람", "지현");
+//	SendMessage("유저", "바라보기", "지현");
+	SendMessage("유저", "쳐다보기", "지현");
+//	SendMessage("타이머", "스크립트설정", "1 0 1 대화#2-1.Talking");
+//	SendMessage("타이머", "스크립트설정", "1 0 1 old_대화2-1.Talking");
  ]
 	Event=1.000	[ 
-//SendMessage("타이머", "스크립트설정", "2 0 1 대화#2-1.Talking");
+//	SendMessage("타이머", "스크립트설정", "2 0 1 대화#2-1.Talking");
+//	SendMessage("타이머", "스크립트설정", "2 0 1 old_대화2-1.Talking");
  ]
 	Event=3.000	[ 
-SendMessage("유저", "쳐다보지말기", "");
-//SendMessage("자막", "다이얼로그출력", "d03_001");
-SendMessage("자막", "다이얼로그출력", "old_d03_001");
+	SendMessage("유저", "쳐다보지말기", "");
+//	SendMessage("자막", "다이얼로그출력", "d03_001");
+	SendMessage("자막", "다이얼로그출력", "old_d03_001");
+//	SendMessage("타이머", "스크립트설정", "2.61 0 1 old_대화2-1.Talking");
  ]
-	Event=5.000	[ 
-SendMessage("매크로", "Play", "cut02");
+	Event=5.610	[ 
+	SendMessage("매크로", "Play", "cut02");
  ]
 
 
@@ -40,8 +43,10 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=1
 	Event=0.000	[ 
-//SendMessage("자막", "선택", "난 2학년 4반의 이희민이야.\n어 그게...\n넌 누군데?");
-SendMessage("자막", "자막선택", GetString("old_s36m"));
+//	SendMessage("자막", "선택", "난 2학년 4반의 이희민이야.\n어 그게...\n넌 누군데?");
+//	SendMessage("자막", "선택", GetString("old_s36"));
+//	SendMessage("자막", "실행함수", "old_대화2-1.Talking");
+	SendMessage("자막", "자막선택", GetString("old_s36m"));
  ]
 
 
@@ -52,8 +57,8 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=1
 	Event=0.000	[ 
-$old_TalkingStep = 5;
-SendMessage("매크로","Play","cut02_4");
+	$old_TalkingStep = 5;
+	SendMessage("매크로", "Play", "cut02_4");
  ]
 
 
@@ -64,8 +69,8 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=1
 	Event=0.000	[ 
-$old_TalkingStep = 6;
-SendMessage("매크로","Play","cut02_4");
+	$old_TalkingStep = 6;
+	SendMessage("매크로", "Play", "cut02_4");
  ]
 
 
@@ -76,8 +81,8 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=1
 	Event=0.000	[ 
-$old_TalkingStep = 7;
-SendMessage("매크로","Play","cut02_4");
+	$old_TalkingStep = 7;
+	SendMessage("매크로", "Play", "cut02_4");
  ]
 
 
@@ -88,11 +93,11 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=1
 	Event=0.000	[ 
-//SendMessage("지현", "바라보기", "유저");
-SendMessage("지현", "쳐다보기", "유저");
-SendMessage("지현", "애니메이션", "상체내밀기");
-SendMessage("매크로","Play","cut02_" + $old_TalkingStep);
-$old_TalkingStep = 0;
+//	SendMessage("지현", "바라보기", "유저");
+	SendMessage("지현", "쳐다보기", "유저");
+	SendMessage("지현", "애니메이션", "상체내밀기");
+	SendMessage("매크로", "Play", "cut02_" + $old_TalkingStep);
+	$old_TalkingStep = 0;
  ]
 
 
@@ -103,11 +108,12 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=2
 	Event=0.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d03_002");
-SendMessage("자막", "다이얼로그출력", "old_d03_002");
+//	SendMessage("자막", "다이얼로그출력", "d03_002");
+	SendMessage("자막", "다이얼로그출력", "old_d03_002");
+//	SendMessage("타이머", "스크립트설정", "2.92 0 1 old_대화2-1.Talking");
  ]
-	Event=2.000	[ 
-SendMessage("매크로","Play","cut03");
+	Event=2.920	[ 
+	SendMessage("매크로", "Play", "cut03");
  ]
 
 
@@ -118,11 +124,12 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=2
 	Event=0.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d03_003");
-SendMessage("자막", "다이얼로그출력", "old_d03_003");
+//	SendMessage("자막", "다이얼로그출력", "d03_003");
+	SendMessage("자막", "다이얼로그출력", "old_d03_003");
+//	SendMessage("타이머", "스크립트설정", "2.57 0 1 old_대화2-1.Talking");
  ]
-	Event=2.000	[ 
-SendMessage("매크로","Play","cut03");
+	Event=2.570	[ 
+	SendMessage("매크로", "Play", "cut03");
  ]
 
 
@@ -133,11 +140,12 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=2
 	Event=0.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d03_004");
-SendMessage("자막", "다이얼로그출력", "old_d03_004");
+//	SendMessage("자막", "다이얼로그출력", "d03_004");
+	SendMessage("자막", "다이얼로그출력", "old_d03_004");
+//	SendMessage("타이머", "스크립트설정", "3.02 0 1 old_대화2-1.Talking");
  ]
-	Event=3.000	[ 
-SendMessage("매크로","Play","cut03");
+	Event=3.020	[ 
+	SendMessage("매크로", "Play", "cut03");
  ]
 
 
@@ -148,21 +156,24 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=4
 	Event=0.000	[ 
-SendMessage("지현", "애니메이션", "상체내밀기");
-//SendMessage("자막", "다이얼로그출력", "d03_005");
-SendMessage("자막", "다이얼로그출력", "old_d03_005");
+	SendMessage("지현", "애니메이션", "상체내밀기");
+//	SendMessage("자막", "다이얼로그출력", "d03_005");
+	SendMessage("자막", "다이얼로그출력", "old_d03_005");
+//	SendMessage("타이머", "스크립트설정", "4.76 0 1 old_대화2-1.Talking");
  ]
-	Event=4.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d03_006");
-SendMessage("자막", "다이얼로그출력", "old_d03_006");
+	Event=4.760	[ 
+//	SendMessage("자막", "다이얼로그출력", "d03_006");
+	SendMessage("자막", "다이얼로그출력", "old_d03_006");
+//	SendMessage("타이머", "스크립트설정", "2.95 0 1 old_대화2-1.Talking");
  ]
-	Event=7.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d03_007");
-SendMessage("자막", "다이얼로그출력", "old_d03_007");
+	Event=7.710	[ 
+//	SendMessage("자막", "다이얼로그출력", "d03_007");
+	SendMessage("자막", "다이얼로그출력", "old_d03_007");
+//	SendMessage("타이머", "스크립트설정", "3.08 0 1 old_대화2-1.Talking");
  ]
-	Event=10.000	[ 
-SendMessage("지현", "애니메이션", "서있기");
-SendMessage("매크로","Play","cut04");
+	Event=10.790	[ 
+	SendMessage("지현", "애니메이션", "서있기");
+	SendMessage("매크로", "Play", "cut04");
  ]
 
 
@@ -173,8 +184,10 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=1
 	Event=0.000	[ 
-//SendMessage("자막", "선택", "나도 잘부탁해.\n뭘 부탁해?");
-SendMessage("자막", "자막선택", GetString("old_s37m"));
+//	SendMessage("자막", "선택", "나도 잘부탁해.\n뭘 부탁해?");
+//	SendMessage("자막", "선택", GetString("old_s37"));
+//	SendMessage("자막", "실행함수", "old_대화2-1.Talking");
+	SendMessage("자막", "자막선택", GetString("old_s37m"));
  ]
 
 
@@ -185,37 +198,45 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=8
 	Event=0.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d03_008");
-SendMessage("자막", "다이얼로그출력", "old_d03_008");
+//	SendMessage("자막", "다이얼로그출력", "d03_008");
+	SendMessage("자막", "다이얼로그출력", "old_d03_008");
+//	SendMessage("타이머", "스크립트설정", "3.60 0 1 old_대화2-1.Talking");
  ]
-	Event=3.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d03_009");
-SendMessage("자막", "다이얼로그출력", "old_d03_009");
+	Event=3.600	[ 
+//	SendMessage("자막", "다이얼로그출력", "d03_009");
+	SendMessage("자막", "다이얼로그출력", "old_d03_009");
+//	SendMessage("타이머", "스크립트설정", "4.81 0 1 old_대화2-1.Talking");
  ]
-	Event=7.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d03_010");
-SendMessage("자막", "다이얼로그출력", "old_d03_010");
+	Event=8.410	[ 
+//	SendMessage("자막", "다이얼로그출력", "d03_010");
+	SendMessage("자막", "다이얼로그출력", "old_d03_010");
+//	SendMessage("타이머", "스크립트설정", "4.06 0 1 old_대화2-1.Talking");
  ]
-	Event=11.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d03_011");
-SendMessage("자막", "다이얼로그출력", "old_d03_011");
-//SendMessage("지현", "이동", FindPoint($대화_지현 == 1 ? "지현퇴장위치2" : "지현퇴장위치1") + " 손흔들며달리기");
-SendMessage("지현", "빨리돌기포인트", FindPoint($old_대화_지현 == 1 ? "지현퇴장위치2" : "지현퇴장위치1") + "");
-//SendMessage("타이머", "스크립트설정", "3 0 1 대화#2-1.Talking");
+	Event=12.470	[ 
+//	SendMessage("자막", "다이얼로그출력", "d03_011");
+	SendMessage("자막", "다이얼로그출력", "old_d03_011");
+//	SendMessage("지현", "이동", FindPoint($대화_지현 == 1 ? "지현퇴장위치2" : "지현퇴장위치1") + " 손흔들며달리기");
+	SendMessage("지현", "빨리돌기포인트", FindPoint($old_대화_지현 == 1 ? "지현퇴장위치2" : "지현퇴장위치1") + "");
+//	SendMessage("타이머", "스크립트설정", "0.2 0 1 old_대화2-1.Run");
+//	$old_TalkingStep++;
+//	SendMessage("타이머", "스크립트설정", "3 0 1 대화#2-1.Talking");
+//	SendMessage("타이머", "스크립트설정", "5.08 0 1 old_대화2-1.Talking");
  ]
-	Event=11.200	[ 
-SendMessage("지현", "애니메이션", "손흔들며달리기");
+	Event=12.670	[ 
+	SendMessage("지현", "애니메이션", "손흔들며달리기");
  ]
-	Event=16.000	[ 
-SendMessage("지현", "쳐다보지말기", "");
-//SendMessage("지현", "이동", FindPoint("지현퇴장위치") + " 걷기2 *script 대화#2-1.Ending");
-SendMessage("지현", "빨리돌기포인트", "" + FindPoint("지현퇴장위치"));
+	Event=17.550	[ 
+	SendMessage("지현", "쳐다보지말기", "");
+//	SendMessage("지현", "이동", FindPoint("지현퇴장위치") + " 걷기2 *script 대화#2-1.Ending");
+	SendMessage("지현", "빨리돌기포인트", FindPoint("지현퇴장위치") + "");
+//	SendMessage("타이머", "스크립트설정", "0.2 0 1 old_대화2-1.Walk");
+//	SendMessage("타이머", "스크립트설정", "4 0 1 old_대화2-1.Ending");
  ]
-	Event=16.200	[ 
-SendMessage("지현", "애니메이션", "걷기2");
+	Event=17.750	[ 
+	SendMessage("지현", "애니메이션", "걷기2");
  ]
-	Event=20.000	[ 
-SendMessage("매크로","Play","cut05");
+	Event=21.550	[ 
+	SendMessage("매크로", "Play", "cut05");
  ]
 
 
@@ -226,39 +247,48 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=8
 	Event=0.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d03_012");
-SendMessage("자막", "다이얼로그출력", "old_d03_012");
-//$TalkingStep = 19;
+//	SendMessage("자막", "다이얼로그출력", "d03_012");
+	SendMessage("자막", "다이얼로그출력", "old_d03_012");
+//	$TalkingStep = 19;
+//	$old_TalkingStep = 19;
+//	SendMessage("타이머", "스크립트설정", "6.14 0 1 old_대화2-1.Talking");
  ]
-	Event=6.000	[ 
-SendMessage("지현", "애니메이션", "쉬기");
-//SendMessage("자막", "다이얼로그출력", "d03_013");
-SendMessage("자막", "다이얼로그출력", "old_d03_013");
+	Event=6.140	[ 
+	SendMessage("지현", "애니메이션", "쉬기");
+//	SendMessage("자막", "다이얼로그출력", "d03_013");
+	SendMessage("자막", "다이얼로그출력", "old_d03_013");
+//	SendMessage("타이머", "스크립트설정", "4.24 0 1 old_대화2-1.Talking");
  ]
-	Event=10.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d03_014");
-SendMessage("자막", "다이얼로그출력", "old_d03_014");
+	Event=10.380	[ 
+//	SendMessage("자막", "다이얼로그출력", "d03_014");
+	SendMessage("자막", "다이얼로그출력", "old_d03_014");
+//	SendMessage("타이머", "스크립트설정", "3.01 0 1 old_대화2-1.Talking");
  ]
-	Event=13.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d03_015");
-SendMessage("자막", "다이얼로그출력", "old_d03_015");
-//SendMessage("지현", "이동", FindPoint($대화_지현 == 1 ? "지현퇴장위치2" : "지현퇴장위치1") + " 걷기2");
-SendMessage("지현", "빨리돌기포인트", FindPoint($old_대화_지현 == 1 ? "지현퇴장위치2" : "지현퇴장위치1") + "");
-//SendMessage("타이머", "스크립트설정", "3 0 1 대화#2-1.Talking");
+	Event=13.390	[ 
+//	SendMessage("자막", "다이얼로그출력", "d03_015");
+	SendMessage("자막", "다이얼로그출력", "old_d03_015");
+//	SendMessage("지현", "이동", FindPoint($대화_지현 == 1 ? "지현퇴장위치2" : "지현퇴장위치1") + " 걷기2");
+	SendMessage("지현", "빨리돌기포인트", FindPoint($old_대화_지현 == 1 ? "지현퇴장위치2" : "지현퇴장위치1") + "");
+//	SendMessage("타이머", "스크립트설정", "0.2 0 1 old_대화2-1.Walk");
+//	$old_TalkingStep++;
+//	SendMessage("타이머", "스크립트설정", "3 0 1 대화#2-1.Talking");
+//	SendMessage("타이머", "스크립트설정", "2.99 0 1 old_대화2-1.Talking");
  ]
-	Event=13.200	[ 
-SendMessage("지현", "애니메이션", "걷기2");
+	Event=13.590	[ 
+	SendMessage("지현", "애니메이션", "걷기2");
  ]
-	Event=16.000	[ 
-SendMessage("지현", "쳐다보지말기", "");
-//SendMessage("지현", "이동", FindPoint("지현퇴장위치") + " 걷기2 *script 대화#2-1.Ending");
-SendMessage("지현", "빨리돌기포인트", "" + FindPoint("지현퇴장위치"));
+	Event=16.380	[ 
+	SendMessage("지현", "쳐다보지말기", "");
+//	SendMessage("지현", "이동", FindPoint("지현퇴장위치") + " 걷기2 *script 대화#2-1.Ending");
+	SendMessage("지현", "빨리돌기포인트", FindPoint("지현퇴장위치") + "");
+//	SendMessage("타이머", "스크립트설정", "0.2 0 1 old_대화2-1.Walk");
+//	SendMessage("타이머", "스크립트설정", "4 0 1 old_대화2-1.Ending");
  ]
-	Event=16.200	[ 
-SendMessage("지현", "애니메이션", "걷기2");
+	Event=16.580	[ 
+	SendMessage("지현", "애니메이션", "걷기2");
  ]
-	Event=20.000	[ 
-SendMessage("매크로","Play","cut05");
+	Event=20.380	[ 
+	SendMessage("매크로", "Play", "cut05");
  ]
 
 
@@ -269,12 +299,12 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=1
 	Event=0.000	[ 
-DeleteObject("지현");
-SendMessage("자막", "비활성", "");
-SendMessage("자막", "와이드모드", "끄기");
-//SendMessage("자막", "SetObject", "");
-//SendMessage("자막", "SetFunction", "");
-SendMessage("자막", "말하는사람", "");
-//$대화_지현 = 3;
-$old_대화_지현 = 3;
+	DeleteObject("지현");
+	SendMessage("자막", "비활성", "");
+	SendMessage("자막", "와이드모드", "끄기");
+//	SendMessage("자막", "SetObject", "");
+//	SendMessage("자막", "SetFunction", "");
+	SendMessage("자막", "말하는사람", "");
+//	$대화_지현 = 3;
+	$old_대화_지현 = 3;
  ]
