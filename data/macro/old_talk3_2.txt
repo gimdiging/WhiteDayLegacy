@@ -11,24 +11,26 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=3
 	Event=0.000	[ 
-SendMessage("자막", "활성화", "");
-//SendMessage("자막", "SetFunction", "대화#3-2.Talking");
-//SendMessage("자막", "SetObject", "소영");
-SendMessage("자막", "말하는사람", "소영");
-//SendMessage("소영", "바라보기", "유저");
-SendMessage("소영", "쳐다보기", "유저");
-SendMessage("소영", "애니메이션", "쉬기");
-SendMessage("자막", "와이드모드", "켜기");
-SendMessage("유저", "쳐다보기", "소영");
-//SendMessage("타이머", "스크립트설정", "1 0 1 대화#3-2.Talking");
+	SendMessage("자막", "활성화", "");
+//	SendMessage("자막", "SetFunction", "대화#3-2.Talking");
+//	SendMessage("자막", "SetObject", "소영");
+	SendMessage("자막", "말하는사람", "소영");
+//	SendMessage("소영", "바라보기", "유저");
+	SendMessage("소영", "쳐다보기", "유저");
+	SendMessage("소영", "애니메이션", "쉬기");
+	SendMessage("자막", "와이드모드", "켜기");
+	SendMessage("유저", "쳐다보기", "소영");
+//	SendMessage("타이머", "스크립트설정", "1 0 1 대화#3-2.Talking");
+//	SendMessage("타이머", "스크립트설정", "1 0 1 old_대화3-2.Talking");
  ]
 	Event=1.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d04_004");
-SendMessage("자막", "다이얼로그출력", "old_d04_004");
+//	SendMessage("자막", "다이얼로그출력", "d04_004");
+	SendMessage("자막", "다이얼로그출력", "old_d04_004");
+//	SendMessage("타이머", "스크립트설정", "6.89 0 1 old_대화3-2.Talking");
  ]
-	Event=8.000	[ 
-SendMessage("유저", "쳐다보지말기", "");
-SendMessage("매크로", "Play", "cut02");
+	Event=7.890	[ 
+	SendMessage("유저", "쳐다보지말기", "");
+	SendMessage("매크로", "Play", "cut02");
  ]
 
 
@@ -39,8 +41,10 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=1
 	Event=0.000	[ 
-//SendMessage("자막", "선택", "내 이름은 이희민. 기억나니? 지난 번에..\n괜찮아?\n여기서 뭐하고 있었니?");
-SendMessage("자막", "자막선택", GetString("old_s40m"));
+//	SendMessage("자막", "선택", "내 이름은 이희민. 기억나니? 지난 번에..\n괜찮아?\n여기서 뭐하고 있었니?");
+//	SendMessage("자막", "선택", GetString("old_s40"));
+//	SendMessage("자막", "실행함수", "old_대화3-2.Talking");
+	SendMessage("자막", "자막선택", GetString("old_s40m"));
  ]
 
 
@@ -51,11 +55,12 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=2
 	Event=0.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d04_005");
-SendMessage("자막", "다이얼로그출력", "old_d04_005");
+//	SendMessage("자막", "다이얼로그출력", "d04_005");
+	SendMessage("자막", "다이얼로그출력", "old_d04_005");
+//	SendMessage("타이머", "스크립트설정", "5.10 0 1 old_대화3-2.Talking");
  ]
-	Event=5.000	[ 
-SendMessage("매크로","Play","cut03");
+	Event=5.100	[ 
+	SendMessage("매크로", "Play", "cut03");
  ]
 
 
@@ -66,11 +71,12 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=2
 	Event=0.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d04_006");
-SendMessage("자막", "다이얼로그출력", "old_d04_006");
+//	SendMessage("자막", "다이얼로그출력", "d04_006");
+	SendMessage("자막", "다이얼로그출력", "old_d04_006");
+//	SendMessage("타이머", "스크립트설정", "3.25 0 1 old_대화3-2.Talking");
  ]
-	Event=3.000	[ 
-SendMessage("매크로","Play","cut03");
+	Event=3.250	[ 
+	SendMessage("매크로", "Play", "cut03");
  ]
 
 
@@ -81,11 +87,12 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=2
 	Event=0.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d04_007");
-SendMessage("자막", "다이얼로그출력", "old_d04_007");
+//	SendMessage("자막", "다이얼로그출력", "d04_007");
+	SendMessage("자막", "다이얼로그출력", "old_d04_007");
+//	SendMessage("타이머", "스크립트설정", "3.43 0 1 old_대화3-2.Talking");
  ]
-	Event=3.000	[ 
-SendMessage("매크로","Play","cut03");
+	Event=3.430	[ 
+	SendMessage("매크로", "Play", "cut03");
  ]
 
 
@@ -96,8 +103,10 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=1
 	Event=0.000	[ 
-//SendMessage("자막", "선택", "무슨일인지 모르지만 내가 도와줄께\n......\n오늘 학교 분위기가 이상해");
-SendMessage("자막", "자막선택", GetString("old_s41m"));
+//	SendMessage("자막", "선택", "무슨일인지 모르지만 내가 도와줄께\n......\n오늘 학교 분위기가 이상해");
+//	SendMessage("자막", "선택", GetString("old_s41"));
+//	SendMessage("자막", "실행함수", "old_대화3-2.Talking");
+	SendMessage("자막", "자막선택", GetString("old_s41m"));
  ]
 
 
@@ -108,11 +117,12 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=2
 	Event=0.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d04_008");
-SendMessage("자막", "다이얼로그출력", "old_d04_008");
+//	SendMessage("자막", "다이얼로그출력", "d04_008");
+	SendMessage("자막", "다이얼로그출력", "old_d04_008");
+//	SendMessage("타이머", "스크립트설정", "3.82 0 1 old_대화3-2.Talking");
  ]
-	Event=3.000	[ 
-SendMessage("매크로","Play","cut04");
+	Event=3.820	[ 
+	SendMessage("매크로", "Play", "cut04");
  ]
 
 
@@ -123,11 +133,12 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=2
 	Event=0.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d04_009");
-SendMessage("자막", "다이얼로그출력", "old_d04_009");
+//	SendMessage("자막", "다이얼로그출력", "d04_009");
+	SendMessage("자막", "다이얼로그출력", "old_d04_009");
+//	SendMessage("타이머", "스크립트설정", "3.07 0 1 old_대화3-2.Talking");
  ]
-	Event=3.000	[ 
-SendMessage("매크로","Play","cut04");
+	Event=3.070	[ 
+	SendMessage("매크로", "Play", "cut04");
  ]
 
 
@@ -138,11 +149,12 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=2
 	Event=0.000	[ 
-//SendMessage("자막", "다이얼로그출력", "d04_010");
-SendMessage("자막", "다이얼로그출력", "old_d04_010");
+//	SendMessage("자막", "다이얼로그출력", "d04_010");
+	SendMessage("자막", "다이얼로그출력", "old_d04_010");
+//	SendMessage("타이머", "스크립트설정", "3.88 0 1 old_대화3-2.Talking");
  ]
-	Event=4.000	[ 
-SendMessage("매크로","Play","cut04");
+	Event=3.880	[ 
+	SendMessage("매크로", "Play", "cut04");
  ]
 
 
@@ -153,32 +165,35 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=4
 	Event=0.000	[ 
-//SendMessage("자막", "비활성", "");
-//SendMessage("자막", "SetFunction", "");
-//SendMessage("자막", "SetObject", "");
-//SendMessage("성아", "쳐다보지말기", "");
-SendMessage("소영", "쳐다보지말기", "");
-//SendMessage("자막", "와이드모드", "끄기");
+//	SendMessage("자막", "비활성", "");
+//	SendMessage("자막", "SetFunction", "");
+//	SendMessage("자막", "SetObject", "");
+//	SendMessage("성아", "쳐다보지말기", "");
+	SendMessage("소영", "쳐다보지말기", "");
+//	SendMessage("자막", "와이드모드", "끄기");
 
-//SendMessage("자막", "문자출력", "50,Show Time~~~");
-//SendMessage("소영", "페이드", "Recursive 1 1 0");
+//	SendMessage("자막", "문자출력", "50,Show Time~~~");
+//	SendMessage("소영", "페이드", "Recursive 1 1 0");
 
-//SendMessage("소영2", "페이드", "Recursive 1 0 1");
-//SendMessage("소영2", "애니메이션", "ShowTime");
+//	SendMessage("소영2", "페이드", "Recursive 1 0 1");
+//	SendMessage("소영2", "애니메이션", "ShowTime");
+//	SendMessage("타이머", "스크립트설정", "1 0 1 old_대화3-2.Talking");
  ]
 	Event=1.000	[ 
-SendMessage("소영", "빨리돌기포인트", "" + FindPoint("소영위치2"));
+	SendMessage("소영", "빨리돌기포인트", FindPoint("소영위치2") + "");
+//	SendMessage("타이머", "스크립트설정", "0.3 0 1 old_대화3-2.Run");
+//	SendMessage("타이머", "스크립트설정", "3 0 1 old_대화3-2.Talking");
  ]
-	Event=1.200	[ 
-SendMessage("소영", "애니메이션", "달리기1");
+	Event=1.300	[ 
+	SendMessage("소영", "애니메이션", "달리기1");
  ]
 	Event=4.000	[ 
-SendMessage("자막", "비활성", "");
-SendMessage("자막", "말하는사람", "");
-SendMessage("자막", "와이드모드", "끄기");
-DeleteObject("소영");
-SendMessage("토의조각", "켜기", "");
-SendMessage("토의조각커서용", "켜기", "");
-SendMessage("소영이의목걸이", "켜기", "");
-SendMessage("소영이의목걸이커서용", "켜기", "");
+	SendMessage("자막", "비활성", "");
+	SendMessage("자막", "말하는사람", "");
+	SendMessage("자막", "와이드모드", "끄기");
+	DeleteObject("소영");
+	SendMessage("토의조각", "켜기", "");
+	SendMessage("토의조각커서용", "켜기", "");
+	SendMessage("소영이의목걸이", "켜기", "");
+	SendMessage("소영이의목걸이커서용", "켜기", "");
  ]
