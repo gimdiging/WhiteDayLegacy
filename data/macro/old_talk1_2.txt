@@ -11,7 +11,6 @@ TrackNum=1
 	TrackType="SCRIPT"
  	EventNum=1
 	Event=0.000	[ 
-//	$TalkIndex = GetObjValue("TalkIndex");
 	SendMessage("자막", "활성화", "");
 //	SendMessage("자막", "SetFunction", "대화#1-2.Talking");
 //	SendMessage("자막", "SetObject", "성아");
@@ -79,5 +78,4 @@ TrackNum=1
 //	SendMessage("자막", "SetFunction", "");
 //	SendMessage("자막", "SetObject", "");
 	SendMessage("자막", "말하는사람", "");
-//	SetObjValue("TalkIndex", $TalkIndex <= 1 ? $TalkIndex + 1 : 0);
  ]
