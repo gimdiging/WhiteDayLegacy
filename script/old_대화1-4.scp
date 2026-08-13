@@ -14,9 +14,9 @@
 
 Init()
 {
+//	$TalkingStep = 0;
 	if($old_LegacyEvents == ON)
 	{
-//		$TalkingStep = 0;
 		$old_TalkingStep = 0;
 		SendMessage("타이머", "스크립트설정", "0 0 1 old_대화1-4.Talking");
 	}

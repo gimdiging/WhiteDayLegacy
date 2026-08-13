@@ -18,9 +18,10 @@ Init()
 //	if($Mission4_나무 == OFF)
 	if($old_Mission4_나무 == OFF)
 	{
+//		$TalkingStep = 0;
+//		Talking();
 		if($old_LegacyEvents == ON)
 		{
-//			$TalkingStep = 0;
 			$old_TalkingStep = 0;
 			Talking();
 		}
@@ -111,6 +112,7 @@ ShotUp()
 	if($old_Mission4_나무 == OFF)
 	{
 //		SendMessage("사운드", "연주3d", GetObjPos("소영") + " data/sound/voice/" + (GetObjValue("ShotIndex") ? "d04_002.adp" : "d04_003.adp"));
+//		SetObjValue("ShotIndex", !GetObjValue("ShotIndex"));
 		if(xz_distance(GetObjPos("유저"), GetObjPos("소영")) < 1000)
 		{
 			SendMessage("자막", "말하는사람", "소영");

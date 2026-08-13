@@ -14,9 +14,10 @@
 
 Init()
 {
+//	$TalkingStep = 0;
+//	Talking();
 	if($old_LegacyEvents == ON)
 	{
-//		$TalkingStep = 0;
 		$old_TalkingStep = 0;
 		Talking();
 	}

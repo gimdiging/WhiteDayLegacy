@@ -18,8 +18,8 @@ Init1()
 //	if($대화_지현 == 0)
 	if($old_대화_지현 == 0)
 	{
+//		SendMessage("타이머", "스크립트설정", "0 0 1 대화#2-1.Talking");
 		if($old_LegacyEvents == ON)
-//			SendMessage("타이머", "스크립트설정", "0 0 1 대화#2-1.Talking");
 			SendMessage("타이머", "스크립트설정", "0 0 1 old_대화2-1.Talking");
 		else
 			SendMessage("매크로", "Play", "old_talk2_1.cut01");
@@ -36,8 +36,8 @@ Init2()
 //	if($대화_지현 == 0)
 	if($old_대화_지현 == 0)
 	{
+//		SendMessage("타이머", "스크립트설정", "0 0 1 대화#2-1.Talking");
 		if($old_LegacyEvents == ON)
-//			SendMessage("타이머", "스크립트설정", "0 0 1 대화#2-1.Talking");
 			SendMessage("타이머", "스크립트설정", "0 0 1 old_대화2-1.Talking");
 		else
 			SendMessage("매크로", "Play", "old_talk2_1.cut01");
