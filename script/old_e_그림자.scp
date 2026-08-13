@@ -128,7 +128,7 @@ Step1()
 			else
 			{
 //				SendMessage("나영", "이동", FindPoint("나영이동위치") + " 기어달리기");
-				SendMessage("나영", "빨리돌기포인트", "" + FindPoint("나영이동위치"));
+				SendMessage("나영", "빨리돌기포인트", FindPoint("나영이동위치") + "");
 				SendMessage("타이머", "스크립트설정", "0.2 0 1 old_e_그림자.Run");
 				SetObjValue("Step", 0);
 			}
