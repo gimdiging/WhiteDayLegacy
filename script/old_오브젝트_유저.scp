@@ -45,7 +45,7 @@ Event학생구타이벤트()
 
 	if($old_LegacyEvents == OFF)
 	{
-		SendMessage("매크로","Play","old_hittedboy.cut01");
+		SendMessage("매크로", "Play", "old_hittedboy.cut01");
 		return;
 	}
 
