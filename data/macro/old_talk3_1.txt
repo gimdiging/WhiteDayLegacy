@@ -36,7 +36,7 @@ TrackNum=1
 //	SendMessage("타이머", "스크립트설정", "2 0 1 old_대화3-1.Talking");
  ]
 	Event=8.530	[ 
-	SendMessage("매크로", "Play", "cut02");
+	SendMessage("매크로", "Play", "old_talk3_1.cut02");
  ]
 
 

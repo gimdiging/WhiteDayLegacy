@@ -28,7 +28,7 @@ TrackNum=1
 //	SendMessage("타이머", "스크립트설정", "5.17 0 1 old_대화1-3.Talking");
  ]
 	Event=7.140	[ 
-	SendMessage("매크로", "Play", "cut02");
+	SendMessage("매크로", "Play", "old_talk1_3.cut02");
  ]
 
 
@@ -63,7 +63,7 @@ TrackNum=1
 //	SendMessage("타이머", "스크립트설정", "5.17 0 1 old_대화1-3.Talking");
  ]
 	Event=10.780	[ 
-	SendMessage("매크로", "Play", "cut03");
+	SendMessage("매크로", "Play", "old_talk1_3.cut03");
  ]
 
 
@@ -95,7 +95,7 @@ TrackNum=1
 //	SendMessage("타이머", "스크립트설정", "5.06 0 1 old_대화1-3.Talking");
  ]
 	Event=5.060	[ 
-	SendMessage("매크로", "Play", "cut05");
+	SendMessage("매크로", "Play", "old_talk1_3.cut05");
  ]
 
 
@@ -113,7 +113,7 @@ TrackNum=1
 //	SendMessage("타이머", "스크립트설정", "3.26 0 1 old_대화1-3.Talking");
  ]
 	Event=3.260	[ 
-	SendMessage("매크로", "Play", "cut05");
+	SendMessage("매크로", "Play", "old_talk1_3.cut05");
  ]
 
 
@@ -132,7 +132,7 @@ TrackNum=1
 //	SendMessage("타이머", "스크립트설정", "1.5 0 1 old_대화1-3.Talking");
  ]
 	Event=1.500	[ 
-	SendMessage("매크로", "Play", "cut04");
+	SendMessage("매크로", "Play", "old_talk1_3.cut04");
  ]
 
 
@@ -150,7 +150,7 @@ TrackNum=1
 //	SendMessage("타이머", "스크립트설정", "3.27 0 1 old_대화1-3.Talking");
  ]
 	Event=3.270	[ 
-	SendMessage("매크로", "Play", "cut06");
+	SendMessage("매크로", "Play", "old_talk1_3.cut06");
  ]
 
 
@@ -166,7 +166,7 @@ TrackNum=1
 //	SendMessage("타이머", "스크립트설정", "4.31 0 1 old_대화1-3.Talking");
  ]
 	Event=4.310	[ 
-	SendMessage("매크로", "Play", "cut06");
+	SendMessage("매크로", "Play", "old_talk1_3.cut06");
  ]
 
 

@@ -32,7 +32,7 @@ TrackNum=1
 //	SendMessage("타이머", "스크립트설정", "2.61 0 1 old_대화2-1.Talking");
  ]
 	Event=5.610	[ 
-	SendMessage("매크로", "Play", "cut02");
+	SendMessage("매크로", "Play", "old_talk2_1.cut02");
  ]
 
 
@@ -58,7 +58,7 @@ TrackNum=1
  	EventNum=1
 	Event=0.000	[ 
 	$old_TalkingStep = 5;
-	SendMessage("매크로", "Play", "cut02_4");
+	SendMessage("매크로", "Play", "old_talk2_1.cut02_4");
  ]
 
 
@@ -70,7 +70,7 @@ TrackNum=1
  	EventNum=1
 	Event=0.000	[ 
 	$old_TalkingStep = 6;
-	SendMessage("매크로", "Play", "cut02_4");
+	SendMessage("매크로", "Play", "old_talk2_1.cut02_4");
  ]
 
 
@@ -82,7 +82,7 @@ TrackNum=1
  	EventNum=1
 	Event=0.000	[ 
 	$old_TalkingStep = 7;
-	SendMessage("매크로", "Play", "cut02_4");
+	SendMessage("매크로", "Play", "old_talk2_1.cut02_4");
  ]
 
 
@@ -96,7 +96,7 @@ TrackNum=1
 //	SendMessage("지현", "바라보기", "유저");
 	SendMessage("지현", "쳐다보기", "유저");
 	SendMessage("지현", "애니메이션", "상체내밀기");
-	SendMessage("매크로", "Play", "cut02_" + $old_TalkingStep);
+	SendMessage("매크로", "Play", "old_talk2_1.cut02_" + $old_TalkingStep);
 	$old_TalkingStep = 0;
  ]
 
@@ -113,7 +113,7 @@ TrackNum=1
 //	SendMessage("타이머", "스크립트설정", "2.92 0 1 old_대화2-1.Talking");
  ]
 	Event=2.920	[ 
-	SendMessage("매크로", "Play", "cut03");
+	SendMessage("매크로", "Play", "old_talk2_1.cut03");
  ]
 
 
@@ -129,7 +129,7 @@ TrackNum=1
 //	SendMessage("타이머", "스크립트설정", "2.57 0 1 old_대화2-1.Talking");
  ]
 	Event=2.570	[ 
-	SendMessage("매크로", "Play", "cut03");
+	SendMessage("매크로", "Play", "old_talk2_1.cut03");
  ]
 
 
@@ -145,7 +145,7 @@ TrackNum=1
 //	SendMessage("타이머", "스크립트설정", "3.02 0 1 old_대화2-1.Talking");
  ]
 	Event=3.020	[ 
-	SendMessage("매크로", "Play", "cut03");
+	SendMessage("매크로", "Play", "old_talk2_1.cut03");
  ]
 
 
@@ -173,7 +173,7 @@ TrackNum=1
  ]
 	Event=10.790	[ 
 	SendMessage("지현", "애니메이션", "서있기");
-	SendMessage("매크로", "Play", "cut04");
+	SendMessage("매크로", "Play", "old_talk2_1.cut04");
  ]
 
 
@@ -236,7 +236,7 @@ TrackNum=1
 	SendMessage("지현", "애니메이션", "걷기2");
  ]
 	Event=21.550	[ 
-	SendMessage("매크로", "Play", "cut05");
+	SendMessage("매크로", "Play", "old_talk2_1.cut05");
  ]
 
 
@@ -288,7 +288,7 @@ TrackNum=1
 	SendMessage("지현", "애니메이션", "걷기2");
  ]
 	Event=20.380	[ 
-	SendMessage("매크로", "Play", "cut05");
+	SendMessage("매크로", "Play", "old_talk2_1.cut05");
  ]
 
 

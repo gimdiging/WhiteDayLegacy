@@ -18,7 +18,7 @@ TrackNum=1
 	SendMessage("자막", "말하는사람", "성아");
 //	SendMessage("성아", "바라보기", "유저");
 	SendMessage("성아", "쳐다보기", "유저");
-	SendMessage("매크로", "Play", "cut01_" + $old_TalkingStep);
+	SendMessage("매크로", "Play", "old_talk1_4.cut01_" + $old_TalkingStep);
  ]
 
 
@@ -34,7 +34,7 @@ TrackNum=1
 //	SendMessage("타이머", "스크립트설정", "6.60 0 1 old_대화1-4.Talking");
  ]
 	Event=6.600	[ 
-	SendMessage("매크로", "Play", "cut02");
+	SendMessage("매크로", "Play", "old_talk1_4.cut02");
  ]
 
 
@@ -50,7 +50,7 @@ TrackNum=1
 //	SendMessage("타이머", "스크립트설정", "2.78 0 1 old_대화1-4.Talking");
  ]
 	Event=2.780	[ 
-	SendMessage("매크로", "Play", "cut02");
+	SendMessage("매크로", "Play", "old_talk1_4.cut02");
  ]
 
 
