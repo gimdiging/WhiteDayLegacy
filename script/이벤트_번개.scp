@@ -23,7 +23,10 @@ Init()
 	SendMessage("나영", "켜기", "");
 	RunScript("정찰용수위", "캐릭터_수위.Disable");	
 //	RunScript("그림자", "e_그림자.RunEvent");
-	SendMessage("매크로","Play","e_shadow.cut01");
+	if($LegacyEvents == ON)
+		RunScript("그림자", "e_그림자.RunEvent");
+	else
+		SendMessage("매크로", "Play", "e_shadow.cut01");
 }
 
 Init준비()
