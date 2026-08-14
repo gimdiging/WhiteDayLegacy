@@ -17,8 +17,12 @@ _홀처음진입()
 	if($진행루트 == 1 || $신관_세환_열쇠쳐다보기 == 1)
 		return;
 	
-	SendMessage("매크로","Play","e_newkey.cut01");
-/*
+	if($LegacyEvents == OFF)
+	{
+		SendMessage("매크로", "Play", "e_newkey.cut01");
+		return;
+	}
+
 	LoadObject("WObjDyLight", "조명에걸린열쇠light", "*pos " + FindPoint("천장열쇠조명") + " *diffuse ffff55 *intensity 150");
 	SendMessage("조명에걸린열쇠light", "켜기", "");
 
@@ -31,7 +35,6 @@ _홀처음진입()
 	SendMessage("유저", "쳐다보기", "열쇠10");
 	SendMessage("카메라", "fov", "50");
 	SendMessage("타이머", "스크립트설정", "2 0 1 e_신관._홀처음진입2");
-*/
 }
 
 _홀처음진입2()
@@ -59,4 +62,5 @@ _홀처음진입끝()
 	ChangeObjValue("문_K2", "No_Auto", 0);
 	RunScript("정찰용수위", "캐릭터_수위._리셋");
 //	SetTimer(5,"문_신관.auto_close *obj 2층중앙홀진입문");
+	SetTimer(0,"e_핸드폰메시지._중앙홀전등");
 }
