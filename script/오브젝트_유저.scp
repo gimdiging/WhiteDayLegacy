@@ -2851,8 +2851,12 @@ Event학생구타이벤트()
 
 	$b_학생구타이벤트 = 1;
 
-	SendMessage("매크로","Play","hittedboy.cut01");
-/*
+	if($LegacyEvents == OFF)
+	{
+		SendMessage("매크로", "Play", "hittedboy.cut02");
+		return;
+	}
+
 	SendMessage("때리는놈", "켜기", "");
 	SendMessage("맞는놈", "켜기", "");
 //	SendMessage("때리는놈", "회전", "90");
@@ -2868,7 +2872,6 @@ Event학생구타이벤트()
 	SendMessage("타이머", "스크립트설정", "19 0 1 오브젝트_유저.e학생구타이벤트5");
 	SendMessage("타이머", "스크립트설정", "18 0 1 오브젝트_유저.e학생구타이벤트6");
 	SendMessage("타이머", "스크립트설정", "5 0 1 오브젝트_유저.e학생구타이벤트7");
-*/
 }
 
 e학생구타이벤트1()
@@ -2905,7 +2908,8 @@ e학생구타이벤트5()
 	SendMessage("자막", "와이드모드", "끄기");
 	SendMessage("카메라", "쳐다보지말기", "");
 	SendMessage("자막", "비활성", "");	
-	SetTimer(3,"e_핸드폰메시지._본관1수위구타이벤트");
+//	SetTimer(3,"e_핸드폰메시지._본관1수위구타이벤트");
+	SetTimer(0,"e_핸드폰메시지._본관1수위구타이벤트");
 }
 
 e학생구타이벤트6()
