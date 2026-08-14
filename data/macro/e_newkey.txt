@@ -43,6 +43,6 @@ TrackNum=1
 	$신관_세환_열쇠쳐다보기 = 1;
 	ChangeObjValue("문_K2", "No_Auto", 0);
 	RunScript("정찰용수위", "캐릭터_수위._리셋");
-	SetTimer(0,"e_핸드폰메시지._중앙홀전등");
 //	SetTimer(5,"문_신관.auto_close *obj 2층중앙홀진입문");
+	SetTimer(0,"e_핸드폰메시지._중앙홀전등");
  ]
