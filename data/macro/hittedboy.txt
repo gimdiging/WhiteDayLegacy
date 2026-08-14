@@ -87,6 +87,14 @@ TrackNum=5
 	SetTimer(0,"e_핸드폰메시지._본관1수위구타이벤트");
  ]
 
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=0
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
 	TrackName="맞는놈"
 	TrackType="PUPPET"
  	EventNum=1
