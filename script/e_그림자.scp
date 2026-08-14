@@ -60,7 +60,7 @@ Step1()
 		{			
 			if(GetObjValue("LightCount") == 0)
 			{
-				SendMessage("카메라", "FOV변환", "75 40 0.2");
+//				SendMessage("카메라", "FOV변환", "75 40 0.2");
 				SendMessage("사운드", "연주멈춤", "나영울음소리");
 				SendMessage("사운드", "연주멈춤", "나영울음루프");
 				SendMessage("오디오", "연주멈춤", "");
@@ -113,7 +113,7 @@ Step1()
 			{
 				SendMessage("그림자", "텍스쳐변경", "shadow2");
 				SendMessage("나영", "애니메이션", "떨어지기");
-				SendMessage("카메라", "FOV변환", "40 75 0.5");
+//				SendMessage("카메라", "FOV변환", "40 75 0.5");
 				SetObjValue("Step", 2);
 				SetObjValue("LightCount", 1);
 			}
@@ -121,7 +121,7 @@ Step1()
 			{
 				SendMessage("나영", "회전", "-165");
 				SendMessage("나영", "애니메이션", "기어달리기");
-				SendMessage("카메라", "카메라쳐다보기", GetObjPos("나영") + " 5");
+//				SendMessage("카메라", "카메라쳐다보기", GetObjPos("나영") + " 5");
 //				SendMessage("카메라", "타겟오브젝트로", "나영");
 				SendMessage("사운드", "연주", "data/sound/event/본관귀신/기어올때.wav");
 				SetObjValue("Step", 0);
