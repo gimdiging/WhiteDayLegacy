@@ -9,6 +9,31 @@ TrackNum=5
 
 	TrackName=""
 	TrackType="SCRIPT"
+ 	EventNum=0
+
+	TrackName=""
+	TrackType="CAMERA"
+ 	EventNum=0
+
+	TrackName=""
+	TrackType="SOUND"
+ 	EventNum=0
+
+	TrackName="맞는놈"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-1797.32 10.22 -290.28 Rot=0.00 79.00 0.00 Speed=1.00 Motion="맞기" Action="워프+애니메이션" Loop=0  ]
+
+	TrackName="때리는놈"
+	TrackType="PUPPET"
+ 	EventNum=1
+	Event=0.000	[ Sync=1 Pos=-1832.96 3.58 -309.99 Rot=0.00 90.00 0.00 Speed=1.00 Motion="때리기" Action="워프+애니메이션" Loop=0  ]
+
+CutName="cut02"
+TrackNum=5
+
+	TrackName=""
+	TrackType="SCRIPT"
  	EventNum=7
 	Event=0.000	[ 
 	SendMessage("때리는놈", "켜기", "");
@@ -58,16 +83,9 @@ TrackNum=5
 	SendMessage("자막", "와이드모드", "끄기");
 	SendMessage("카메라", "쳐다보지말기", "");
 	SendMessage("자막", "비활성", "");	
+//	SetTimer(3,"e_핸드폰메시지._본관1수위구타이벤트");
 	SetTimer(0,"e_핸드폰메시지._본관1수위구타이벤트");
  ]
-
-	TrackName=""
-	TrackType="CAMERA"
- 	EventNum=0
-
-	TrackName=""
-	TrackType="SOUND"
- 	EventNum=0
 
 	TrackName="맞는놈"
 	TrackType="PUPPET"
