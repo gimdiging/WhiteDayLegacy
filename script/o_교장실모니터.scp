@@ -25,10 +25,11 @@ Init()
 //	SetObjName("교장실모니터");
 	SetObjValue("모니터번호" , -1);
 
+//	SetObjValue("열쇠보기한번" , 0);
 	if($본2_영호_교장실모디터보았나 == 0)
-	SetObjValue("열쇠보기한번" , 0);
+		SetObjValue("열쇠보기한번" , 0);
 	else
-	SetObjValue("열쇠보기한번" , 1);
+		SetObjValue("열쇠보기한번" , 1);
 
 }
 
@@ -60,13 +61,18 @@ click()
 		// 교장실
 		case 0:
 		{
-			SendMessage("매크로","Play","e_cctv.cut01");
-/*
+			if($LegacyEvents == OFF)
+			{
+				SendMessage("매크로", "Play", "e_cctv.cut01");
+				return;
+			}
+
 			SendMessage("자막", "활성화", ""); 
 			SendMessage("유저", "카메라3인칭뷰", "on");
 			SendMessage("타이머", "스크립트설정", "0 0 1 " + "오브젝트_버튼1스위치._불켜기" + " *obj 스위치_교무실Ab");
 			SendMessage("카메라","fov", "-20");
-			SendMessage("cctv","켜기","cctv,CCTV-1F교무실");
+//			SendMessage("cctv","켜기","cctv,CCTV-1F교무실");
+			SendMessage("cctv","켜기","cctv," + GetString("s438"));
 			SendMessage("카메라", "쳐다보기", FindPoint("카메라위치1") + " " + FindPoint("카메라대상1"));
 			RunScript("정찰용수위", "캐릭터_수위.Disable");
 			
@@ -82,27 +88,40 @@ click()
 				$본2_영호_교장실모디터보았나 = 1;
 			}
 
-			SetTimer(18,"캐릭터_수위._정지 *obj 정찰용수위");
+//			SetTimer(18,"캐릭터_수위._정지 *obj 정찰용수위");
 
 
-			SetTimer(18, "o_교장실모니터._카메라꺼 *obj 교장실모니터");
-*/
+//			SetTimer(18, "o_교장실모니터._카메라꺼 *obj 교장실모니터");
+			if(GetObjValue("열쇠보기한번") == 1)
+			{
+				SetTimer(10,"캐릭터_수위._정지 *obj 정찰용수위");
+				SetTimer(10, "o_교장실모니터._카메라꺼 *obj 교장실모니터");
+			}
+			else
+			{
+				SetTimer(18,"캐릭터_수위._정지 *obj 정찰용수위");
+				SetTimer(18, "o_교장실모니터._카메라꺼 *obj 교장실모니터");
+			}
 			break;
 		}
 
 		// 미술실
 		case 1:
 		{
-			SendMessage("매크로","Play","e_cctv.cut02");
-/*
+			if($LegacyEvents == OFF)
+			{
+				SendMessage("매크로", "Play", "e_cctv.cut02");
+				return;
+			}
+
 			SendMessage("자막", "활성화", ""); 
 			SendMessage("유저", "카메라3인칭뷰", "on");
 			SendMessage("타이머", "스크립트설정", "0 0 1 " + "오브젝트_버튼1스위치._불켜기" + " *obj 스위치_미술실b");
 			SendMessage("카메라","fov", "-100");
-			SendMessage("cctv","켜기","cctv,CCTV-4F미술실");
+//			SendMessage("cctv","켜기","cctv,CCTV-4F미술실");
+			SendMessage("cctv","켜기","cctv," + GetString("s439"));
 			SendMessage("카메라", "쳐다보기", FindPoint("카메라위치2") + " " + FindPoint("카메라대상2"));
 			SetTimer(10, "o_교장실모니터._카메라꺼 *obj 교장실모니터");
-*/
 			break;
 		}
 
@@ -147,15 +166,19 @@ click()
 			}
 			else
 			{
-				SendMessage("매크로","Play","e_cctv.cut03");
-/*
+				if($LegacyEvents == OFF)
+				{
+					SendMessage("매크로", "Play", "e_cctv.cut03");
+					return;
+				}
+
 				SendMessage("자막", "활성화", ""); 
 				SendMessage("유저", "카메라3인칭뷰", "on");
 				SendMessage("카메라","fov", "-80");
-				SendMessage("cctv","켜기","cctv,CCTV-1F복도");
+//				SendMessage("cctv","켜기","cctv,CCTV-1F복도");
+				SendMessage("cctv","켜기","cctv," + GetString("s440"));
 				SendMessage("카메라", "쳐다보기", FindPoint("카메라위치3") + " " + FindPoint("카메라대상3"));
 				SetTimer(10, "o_교장실모니터._카메라꺼 *obj 교장실모니터");
-*/
 			}
 
 
@@ -165,16 +188,20 @@ click()
 		// 과학실
 		case 3:
 		{
-			SendMessage("매크로","Play","e_cctv.cut04");
-/*
+			if($LegacyEvents == OFF)
+			{
+				SendMessage("매크로", "Play", "e_cctv.cut04");
+				return;
+			}
+
 			SendMessage("자막", "활성화", ""); 
 			SendMessage("유저", "카메라3인칭뷰", "on");
 			SendMessage("타이머", "스크립트설정", "0 0 1 " + "오브젝트_버튼1스위치._불켜기" + " *obj 스위치_과학실Ab");
 			SendMessage("카메라","fov", "-120");
-			SendMessage("cctv","켜기","cctv,CCTV-3F과학실");
+//			SendMessage("cctv","켜기","cctv,CCTV-3F과학실");
+			SendMessage("cctv","켜기","cctv," + GetString("s441"));
 			SendMessage("카메라", "쳐다보기", FindPoint("카메라위치4") + " " + FindPoint("카메라대상4"));
 			SetTimer(10, "o_교장실모니터._카메라꺼 *obj 교장실모니터");
-*/
 			break;
 		}
 	}
