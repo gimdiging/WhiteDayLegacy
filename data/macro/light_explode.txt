@@ -48,7 +48,8 @@ SetTimer(0, "o_신관스위치.particle");
 SendMessage("main", "게임속도", "0.2");
  ]
 	Event=5.657	[ 
-SendMessage("main", "게임속도", "" + GetRegistry("Option\CustomGameSpeed"));
+if (GetRegistry("Option\CustomGameSpeed") != "")
+	SendMessage("main", "게임속도", "" + GetRegistry("Option\CustomGameSpeed"));
 SendMessage("열쇠10", "애니메이션", "*떨어져있기");
  ]
 	Event=7.975	[ 

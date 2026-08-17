@@ -162,7 +162,8 @@ SendMessage("main","게임속도","0.3");
 SendMessage("매크로용이수위","쳐다보지말기","");
  ]
 	Event=8.744	[ 
-SendMessage("main", "게임속도", "" + GetRegistry("Option\CustomGameSpeed"));
+if (GetRegistry("Option\CustomGameSpeed") != "")
+	SendMessage("main", "게임속도", "" + GetRegistry("Option\CustomGameSpeed"));
  ]
 	Event=9.750	[ 
 SendMessage("매크로","Play","cut05");

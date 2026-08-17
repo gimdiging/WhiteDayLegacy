@@ -27,7 +27,8 @@ SetTimer(0, "o_무용실거울._깨져라");
 SendMessage("main", "게임속도", "0.2");
  ]
 	Event=4.680	[ 
-SendMessage("main", "게임속도", "" + GetRegistry("Option\CustomGameSpeed"));
+if (GetRegistry("Option\CustomGameSpeed") != "")
+	SendMessage("main", "게임속도", "" + GetRegistry("Option\CustomGameSpeed"));
  ]
 	Event=4.990	[ 
 SendMessage("도플갱어", "애니메이션", "정지");

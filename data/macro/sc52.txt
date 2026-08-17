@@ -67,7 +67,8 @@ TrackNum=7
 SendMessage("main","게임속도","0.5");
  ]
 	Event=0.407	[ 
-SendMessage("main", "게임속도", "" + GetRegistry("Option\CustomGameSpeed"));
+if (GetRegistry("Option\CustomGameSpeed") != "")
+	SendMessage("main", "게임속도", "" + GetRegistry("Option\CustomGameSpeed"));
  ]
 	Event=2.000	[ 
 SendMessage("사운드","연주","loop,52분위기06,분위기06.adp");
@@ -76,7 +77,8 @@ SendMessage("사운드","연주","loop,52분위기06,분위기06.adp");
 SendMessage("main","게임속도","0.5");
  ]
 	Event=2.810	[ 
-SendMessage("main", "게임속도", "" + GetRegistry("Option\CustomGameSpeed"));
+if (GetRegistry("Option\CustomGameSpeed") != "")
+	SendMessage("main", "게임속도", "" + GetRegistry("Option\CustomGameSpeed"));
  ]
 	Event=6.225	[ 
 SendMessage("매크로", "Play", "sc52.cut03");
@@ -169,7 +171,8 @@ TrackNum=8
 SendMessage("main","게임속도","0.3");
  ]
 	Event=4.000	[ 
-SendMessage("main", "게임속도", "" + GetRegistry("Option\CustomGameSpeed"));
+if (GetRegistry("Option\CustomGameSpeed") != "")
+	SendMessage("main", "게임속도", "" + GetRegistry("Option\CustomGameSpeed"));
  ]
 	Event=13.840	[ 
 SendMessage("매크로", "Play", "sc52.cut05");
