@@ -2,17 +2,33 @@
 #This is auto generated project file which is made by WangED. Don't edit this file.
 
 
-*NumPuppet 0
+*NumPuppet 1
+ 0 : "obj/오브젝트_유저그림.pet"
 
 *NumVisGroup 0
 
-*NumElement 1
+*NumElement 2
 
 *Element 0
 {
 	*Type  "GAME"
 	*WadFile "data\map\texture\whiteday.WAD"
 	*BspFile "data\map\test.bsp"
+}
+
+*Element 1
+{
+	*Type  "PUPPET"
+	*Class "WObjStaticBody"
+	*Name  "유저그림"
+	*Filename "obj/오브젝트_유저그림.pet"
+	*Script "*init 오브젝트_그림.Init유저"
+	*Pos 0.0 0.0 0.0
+	*Rot 0.0 0.0 0.0
+	*Scale 1.00
+	*FlagShow 1
+	*VisGroup -1
+	*BlockWay 0
 }
 
 #End of WangED project file.
