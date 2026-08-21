@@ -1,0 +1,18 @@
+#WEP V1.00
+#This is auto generated project file which is made by WangED. Don't edit this file.
+
+
+*NumPuppet 0
+
+*NumVisGroup 0
+
+*NumElement 1
+
+*Element 0
+{
+	*Type  "GAME"
+	*WadFile "data\map\texture\whiteday.WAD"
+	*BspFile "data\map\test.bsp"
+}
+
+#End of WangED project file.
