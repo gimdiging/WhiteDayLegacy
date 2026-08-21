@@ -23,5 +23,4 @@ Destroy()
 /*
 	RunScript("", "_whiteday.DestroyStage");
 	SetTimer(1,"old_main11.Create");
-//	Load Script
 */
