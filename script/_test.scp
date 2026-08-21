@@ -1,0 +1,26 @@
+//   _____      _____
+//   |   ||__  /   //
+//   |   |/  |/   //
+//   |           //
+//   |    /|    //
+//   |___//|___//  h i t e D a y  S c r i p t F i l e 
+//
+//  (C) Sonnori 2000						_test.scp
+//
+//	æðúìman: matzzang		last update: 2000.07.24
+//  --------------------------------------------------
+
+Create()
+{
+	LoadWed("data/test.wep", 1);
+	SendMessage("À¯Àú", "À§Ä¡", "-147.01 41.37 135.58");
+}
+
+Destroy()
+{
+	RunScript("", "_whiteday.ResetMainGameObject");
+}
+
+//	RunScript("", "_whiteday.DestroyStage");
+//	SetTimer(1,"_test.Create");
+//	Load Script
