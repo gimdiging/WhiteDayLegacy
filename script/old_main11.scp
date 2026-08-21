@@ -20,6 +20,8 @@ Destroy()
 	RunScript("", "_whiteday.ResetMainGameObject");
 }
 
-//	RunScript("", "_whiteday.DestroyStage");
-//	SetTimer(1,"old_main11.Create");
+/*
+	RunScript("", "_whiteday.DestroyStage");
+	SetTimer(1,"old_main11.Create");
 //	Load Script
+*/

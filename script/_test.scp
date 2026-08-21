@@ -21,6 +21,39 @@ Destroy()
 	RunScript("", "_whiteday.ResetMainGameObject");
 }
 
-//	RunScript("", "_whiteday.DestroyStage");
-//	SetTimer(1,"_test.Create");
+/*
+	RunScript("", "_whiteday.DestroyStage");
+	SetTimer(1,"_test.Create");
 //	Load Script
+
+	SendMessage("main", "WAD지정", "data/map/texture/");
+	haunted.wad
+	hurdle.wad
+	playground.wad
+	sendtosh.wad
+	subway.wad
+	themepark.wad
+	warehouse.wad
+	whiteday.wad
+
+	SendMessage("유저", "위치", "");
+	15sec.bsp 0.00 128.00 0.00
+	a_type.bsp 2.00 -262.00 -176.00
+	b_type.bsp -512.00 64.00 -1216.00
+	devil.bsp -41.00 75.00 0.00
+	goodbye.bsp -512.00 64.00 -1216.00
+	gym.bsp 576.00 12.00 -195.00
+	haunted1f.bsp -160.00 36.00 840.00
+	hurdle.bsp 0.00 64.00 -1984.00
+	last.bsp -608.00 48.00 64.00
+	main1.bsp -2000.00 19.00 -504.00
+	main2.bsp -1078.00 16.00 2041.00
+	multi_test.bsp 296.00 -472.00 -72.00
+	new.bsp 319.00 12.00 851.00
+	oilbank.bsp -64.00 128.00 704.00
+	playground.bsp 488.00 72.00 104.00
+	sendtosh.bsp -8.00 -264.00 64.00
+	themepark.bsp 0.00 -347.00 0.00
+	train-chw02.bsp -220.00 -208.00 55.00
+	warehouse.bsp -320.00 -448.00 -320.00
+*/
