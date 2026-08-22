@@ -159,6 +159,8 @@ Destroy()
 {
 	RunScript("", "_whiteday.ResetMainGameObject");
 
-	DeleteObject("가스1");
-	DeleteObject("가스2");
+	if(TakeObjValue("복도배출돌리기1", "Step") < 2)
+		DeleteObject("가스1");
+	if(TakeObjValue("복도배출돌리기2", "Step") < 2)
+		DeleteObject("가스2");
 }
