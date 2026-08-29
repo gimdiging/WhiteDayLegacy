@@ -5,21 +5,21 @@
 //   |    /|    //
 //   |___//|___//  h i t e D a y  S c r i p t F i l e 
 //
-//  (C) Sonnori 2000						_test.scp
+//  (C) Sonnori 2000						_testmap.scp
 //
-//	Ä‡Ä‘ÃºÄ›man: matzzang		last update: 2000.07.24
+//	æğúìman: matzzang		last update: 2000.07.24
 //  --------------------------------------------------
 
 Create()
 {
-	LoadWed("data/test.wep", 1);
-	SendMessage("Å”Å»Å”Ãº", "Å”Â§Ã„Ä„", "-147.01 41.37 135.58");
-//	SendMessage("main", "WADÃÃ¶ÃÂ¤", "data/map/texture/");
+	LoadWed("data/testmap.wep", 1);
+	SendMessage("À¯Àú", "À§Ä¡", "-147.01 41.37 135.58");
+//	SendMessage("main", "WADÁöÁ¤", "data/map/texture/");
 }
 
 /*
 	RunScript("", "_whiteday.DestroyStage");
-	SetTimer(1,"_test.Create");
+	SetTimer(1,"_testmap.Create");
 
 	15sec.bsp 0.00 128.00 0.00
 	a_type.bsp 2.00 -262.00 -176.00
