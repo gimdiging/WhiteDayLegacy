@@ -3,7 +3,7 @@
 
 
 *NumPuppet 1
- 0 : "obj/¿ÀºêÁ§Æ®_À¯Àú±×¸².pet"
+ 0 : "obj/ì˜¤ë¸Œì íŠ¸_ìœ ì €ê·¸ë¦¼.pet"
 
 *NumVisGroup 0
 
@@ -20,9 +20,9 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Name  "À¯Àú±×¸²"
-	*Filename "obj/¿ÀºêÁ§Æ®_À¯Àú±×¸².pet"
-	*Script "*init ¿ÀºêÁ§Æ®_±×¸².InitÀ¯Àú"
+	*Name  "ìœ ì €ê·¸ë¦¼"
+	*Filename "obj/ì˜¤ë¸Œì íŠ¸_ìœ ì €ê·¸ë¦¼.pet"
+	*Script "*init ì˜¤ë¸Œì íŠ¸_ê·¸ë¦¼.Initìœ ì €"
 	*Pos 0.0 0.0 0.0
 	*Rot 0.0 0.0 0.0
 	*Scale 1.00
