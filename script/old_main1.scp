@@ -159,8 +159,19 @@ Destroy()
 {
 	RunScript("", "_whiteday.ResetMainGameObject");
 
-	if(TakeObjValue("복도배출돌리기1", "Step") < 2)
-		DeleteObject("가스1");
-	if(TakeObjValue("복도배출돌리기2", "Step") < 2)
-		DeleteObject("가스2");
+	switch($old_가스밸브상태)
+	{
+		case 0:
+			DeleteObject("가스1");
+			DeleteObject("가스2");
+			break;
+		case 1:
+			DeleteObject("가스2");
+			break;
+		case 2:
+			DeleteObject("가스1");
+			break;
+		case 3:
+			break;
+	}
 }

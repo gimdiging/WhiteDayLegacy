@@ -67,6 +67,23 @@ click()
 		SendMessage("자막", "와이드모드", "켜기");
 //		SendMessage("타이머", "스크립트설정", "6 0 1 오브젝트_복도배출돌리기.Event *obj " + GetObjValue("this"));
 		SendMessage("타이머", "스크립트설정", "6 0 1 old_오브젝트_복도배출돌리기.Event *obj " + GetObjValue("this"));
+
+		switch(GetObjValue("this"))
+		{
+			case "복도배출돌리기1" :
+				if($old_가스밸브상태 == 2)
+					$old_가스밸브상태 = 3;
+				else
+					$old_가스밸브상태 = 1;
+				break;
+
+			case "복도배출돌리기2" :
+				if($old_가스밸브상태 == 1)
+					$old_가스밸브상태 = 3;
+				else
+					$old_가스밸브상태 = 2;
+				break;
+		}
 	}
 	else
 	{
