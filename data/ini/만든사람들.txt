@@ -2,7 +2,7 @@
 
 $a labyrinth named School
 
-$Curse of Yeondu High School
+$White Day Legacy
 
 
 
@@ -725,19 +725,21 @@ Mod Producer
 
 Special Thanks from gimdiging To:
 
-@물순이아빠
+@물순이아빠 (Starsaver)
+
+@뭉클영이 (MongcleGY)
+
+@블랙리스트 (Blacklist)
+
+@emuyia
 
 @oh1min
-
-@JK
 
 @Diszxchat
 
 @heemin
 
-@뭉클영이
-
-@떵디희민
+@JK
 
 
 Fan Clubs
