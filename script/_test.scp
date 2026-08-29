@@ -17,11 +17,6 @@ Create()
 //	SendMessage("main", "WADÁöÁ¤", "data/map/texture/");
 }
 
-Destroy()
-{
-	RunScript("", "_whiteday.ResetMainGameObject");
-}
-
 /*
 	RunScript("", "_whiteday.DestroyStage");
 	SetTimer(1,"_test.Create");

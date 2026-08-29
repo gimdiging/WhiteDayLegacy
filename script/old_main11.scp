@@ -15,11 +15,6 @@ Create()
 	LoadWed("data/old_main11.wep", 1);
 }
 
-Destroy()
-{
-	RunScript("", "_whiteday.ResetMainGameObject");
-}
-
 /*
 	RunScript("", "_whiteday.DestroyStage");
 	SetTimer(1,"old_main11.Create");
