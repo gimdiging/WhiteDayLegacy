@@ -13,7 +13,7 @@
 Create()
 {
 	LoadWed("data/testmap.wep", 1);
-	SendMessage("유저", "위치", "-147.01 41.37 135.58");
+	SendMessage("유저", "위치", "-192.00 37.00 0.00");
 //	SendMessage("main", "WAD지정", "data/map/texture/");
 }
 
