@@ -7,14 +7,14 @@
 //
 //  (C) Sonnori 2000						_test.scp
 //
-//	æğúìman: matzzang		last update: 2000.07.24
+//	Ä‡Ä‘ÃºÄ›man: matzzang		last update: 2000.07.24
 //  --------------------------------------------------
 
 Create()
 {
 	LoadWed("data/test.wep", 1);
-	SendMessage("À¯Àú", "À§Ä¡", "-147.01 41.37 135.58");
-//	SendMessage("main", "WADÁöÁ¤", "data/map/texture/");
+	SendMessage("Å”Å»Å”Ãº", "Å”Â§Ã„Ä„", "-147.01 41.37 135.58");
+//	SendMessage("main", "WADÃÃ¶ÃÂ¤", "data/map/texture/");
 }
 
 /*
