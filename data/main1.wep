@@ -2,7 +2,7 @@
 #This is auto generated project file which is made by WangED. Don't edit this file.
 
 
-*NumPuppet 347
+*NumPuppet 349
    0 : "Obj/o_가스스토어안킨것.pet"
    1 : "Obj/o_가스호수관-꺽.pet"
    2 : "Obj/o_가스호수관-직.pet"
@@ -350,6 +350,8 @@
  344 : "obj/o_개수대물.pet"
  345 : "item/i_미궁석판.pet"
  346 : "Obj/o_비이커.pet"
+ 347 : "char/캐릭터_손수위.pet"
+ 348 : "movie/m_a캔커피.pet"
 
 
 *NumVisGroup 50
@@ -23866,7 +23868,7 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Name  "패스맨"
-	*Filename "o_사진03.pet"
+	*Filename "Obj/o_사진03.pet"
 	*Script "*init 문서.Init패스맨"
 	*Pos -1449 -22 -308
 	*Rot -90.0 -90.0 0.0
@@ -23998,7 +24000,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "item/e_2d귀신.pet"
+	*Filename "event/e_2d귀신.pet"
 	*Script "*init 캐릭터_수위1.Init *gravity"
 	*Pos -998.55 142.00 -720.53
 	*Rot -90.0 0.0 180.0
@@ -24084,7 +24086,7 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Name  "태울종이1"
-	*Filename "char/아이템_접은지도.pet"
+	*Filename "item/아이템_접은지도.pet"
 	*Script "*init 태울종이.Init1"
 	*Pos -1328 55 -609
 	*Rot 0.0 0.0 0.0
@@ -24099,7 +24101,7 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Name  "태울종이2"
-	*Filename "char/아이템_접은지도.pet"
+	*Filename "item/아이템_접은지도.pet"
 	*Script "*init 태울종이.Init2"
 	*Pos -1519 55 -470
 	*Rot 0.0 0.0 0.0
@@ -24578,7 +24580,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "item/m_a캔커피.pet"
+	*Filename "movie/m_a캔커피.pet"
 	*Pos -2020 133 1119
 	*Rot 0.0 90.0 0.0
 	*Scale 1.00
@@ -24607,7 +24609,7 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Name  "나영벽"
-	*Filename "o_환각벽.pet"
+	*Filename "Obj/o_환각벽.pet"
 	*Script "*init o_환각벽.Init나영벽"
 	*Pos -865.99 104 -730
 	*Rot 0.0 180.0 0.0
@@ -24621,7 +24623,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "o_천장용파이프.pet"
+	*Filename "obj/new/o_천장용파이프.pet"
 	*Pos -1500 73 -294
 	*Rot 0.0 90.0 0.0
 	*Scale 6.00
@@ -24634,7 +24636,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "o_천장용파이프.pet"
+	*Filename "obj/new/o_천장용파이프.pet"
 	*Pos -1520 73 -294
 	*Rot 0.0 90.0 0.0
 	*Scale 6.00
@@ -24647,7 +24649,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "오브젝트_파이프02.pet"
+	*Filename "Obj/오브젝트_파이프02.pet"
 	*Pos -928 73 -295
 	*Rot 0.0 0.0 -90.0
 	*Scale 3.00
@@ -24660,7 +24662,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "오브젝트_파이프02.pet"
+	*Filename "Obj/오브젝트_파이프02.pet"
 	*Pos -1490 73 -294
 	*Rot 0.0 0.0 90.0
 	*Scale 3.00
@@ -24673,7 +24675,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "o_천장용파이프.pet"
+	*Filename "obj/new/o_천장용파이프.pet"
 	*Pos -1500 201 -294
 	*Rot 0.0 90.0 0.0
 	*Scale 6.00
@@ -24686,7 +24688,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "o_천장용파이프.pet"
+	*Filename "obj/new/o_천장용파이프.pet"
 	*Pos -1520 201 -294
 	*Rot 0.0 90.0 0.0
 	*Scale 6.00
@@ -24699,7 +24701,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "오브젝트_파이프02.pet"
+	*Filename "Obj/오브젝트_파이프02.pet"
 	*Pos -928 201 -295
 	*Rot 0.0 0.0 -90.0
 	*Scale 3.00
@@ -24712,7 +24714,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "오브젝트_파이프02.pet"
+	*Filename "Obj/오브젝트_파이프02.pet"
 	*Pos -1490 201 -294
 	*Rot 0.0 0.0 90.0
 	*Scale 3.00
@@ -24944,7 +24946,7 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Name  "비이커"
-	*Filename "o_비이커.pet"
+	*Filename "Obj/o_비이커.pet"
 	*Pos -1616.82 17.21 -121.89
 	*Rot 0.0 0.0 0.0
 	*Scale 1.00
