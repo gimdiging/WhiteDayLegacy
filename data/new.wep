@@ -266,7 +266,7 @@
  260 : "obj/o_양동이.pet"
  261 : "item/i_응급치료.pet"
  262 : "item/i_회복약품.pet"
- 263 : "Obj/o_에어컨리모콘.pet"
+ 263 : "Obj/new/o_에어컨리모콘.pet"
  264 : "item/아이템_니뻐.pet"
  265 : "event/e_2d귀신.pet"
  266 : "item/i_태극.pet"
@@ -276,7 +276,7 @@
  270 : "obj/오브젝트_작업용사다리.pet"
  271 : "movie/사진줍기_사진.pet"
  272 : "item/i_열쇠9.pet"
- 273 : "obj/문_화장실신관.pet"
+ 273 : "obj/new/문_화장실신관.pet"
  274 : "obj/o_신관3층자물쇠.pet"
  275 : "obj/오브젝트_게시판03.pet"
  276 : "obj/오브젝트_전기판넬.pet"
@@ -20689,7 +20689,7 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Name  "리모컨1"
-	*Filename "Obj/o_에어컨리모콘.pet"
+	*Filename "Obj/new/o_에어컨리모콘.pet"
 	*Pos 1710.50 387.52 1346.62
 	*Rot 0.0 0.0 0.0
 	*Scale 1.00
@@ -20819,7 +20819,7 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Name  "돌아앉은귀신클릭"
-	*Filename "char/아이템_접은지도.pet"
+	*Filename "item/아이템_접은지도.pet"
 	*Script "*init 돌아앉은귀신.Init"
 	*Pos 0.0 0.0 0.0
 	*Rot 0.0 0.0 0.0
@@ -20909,7 +20909,7 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Name  "음악실길막a"
-	*Filename "Obj/i_수의부적.pet"
+	*Filename "item/i_수의부적.pet"
 	*Script "*init 돌아앉은귀신.Init음악실길막"
 	*Pos 1537.70 12.40 1293.80
 	*Rot 90.0 0.0 0.0
@@ -21011,7 +21011,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "obj/new/오브젝트_게시판03.pet"
+	*Filename "obj/오브젝트_게시판03.pet"
 	*Pos 2030 235 950
 	*Rot 0.0 90.0 0.0
 	*Scale 4.00
@@ -21121,7 +21121,7 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Name  "잠금고리"
-	*Filename "obj/문_잠금고리.pet"
+	*Filename "obj/new/문_잠금고리.pet"
 	*Script "*init o_신관3층자물쇠.Init잠금고리"
 	*Pos 1551 20 607
 	*Rot 0.0 270.0 0.0
