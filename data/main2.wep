@@ -2,7 +2,7 @@
 #This is auto generated project file which is made by WangED. Don't edit this file.
 
 
-*NumPuppet 251
+*NumPuppet 253
    0 : "Obj/문_교실여닫이.pet"
    1 : "Obj/문_방화셔터.pet"
    2 : "Obj/문_화장실.pet"
@@ -248,12 +248,14 @@
  242 : "Obj/o_환각벽.pet"
  243 : "Obj/o_교장실글씨.pet"
  244 : "Obj/오브젝트_작업용사다리.pet"
- 245 : "Obj/o_bio책장1.pet"
- 246 : "Obj/o_bio책장2.pet"
- 247 : "Obj/o_bio책장3.pet"
- 248 : "Obj/o_bio액자1.pet"
- 249 : "Obj/o_bio액자2.pet"
+ 245 : "Obj/new/o_bio책장1.pet"
+ 246 : "Obj/new/o_bio책장2.pet"
+ 247 : "Obj/new/o_bio책장3.pet"
+ 248 : "Obj/new/o_bio액자1.pet"
+ 249 : "Obj/new/o_bio액자2.pet"
  250 : "obj/new/o_천장용파이프.pet"
+ 251 : "char/캐릭터_손수위.pet"
+ 252 : "Obj/오브젝트_작업중인형광등.pet"
 
 
 *NumVisGroup 33
@@ -11073,7 +11075,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "Obj/o_bio책장1.pet"
+	*Filename "Obj/new/o_bio책장1.pet"
 	*Pos -573.24 360.52 2126.65
 	*Rot 0.0 -90.0 0.0
 	*Scale 1.00
@@ -11086,7 +11088,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "Obj/o_bio책장2.pet"
+	*Filename "Obj/new/o_bio책장2.pet"
 	*Pos -573.02 360.52 2192.60
 	*Rot 0.0 -90.0 0.0
 	*Scale 1.00
@@ -11099,7 +11101,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "Obj/o_bio책장3.pet"
+	*Filename "Obj/new/o_bio책장3.pet"
 	*Pos -701.43 360.52 2295.00
 	*Rot 0.0 90.0 0.0
 	*Scale 1.00
@@ -11112,7 +11114,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "Obj/o_bio책장1.pet"
+	*Filename "Obj/new/o_bio책장1.pet"
 	*Pos -701.67 360.52 2237.88
 	*Rot 0.0 90.0 0.0
 	*Scale 1.00
@@ -11125,7 +11127,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "Obj/o_bio책장2.pet"
+	*Filename "Obj/new/o_bio책장2.pet"
 	*Pos -702.10 360.52 2172.09
 	*Rot 0.0 90.0 0.0
 	*Scale 1.00
@@ -11138,7 +11140,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "Obj/o_bio책장3.pet"
+	*Filename "Obj/new/o_bio책장3.pet"
 	*Pos -702.15 360.52 2116.76
 	*Rot 0.0 90.0 0.0
 	*Scale 1.00
@@ -17794,7 +17796,7 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Name  "물양동이"
-	*Filename "o_물담긴양동이.pet"
+	*Filename "Obj/o_물담긴양동이.pet"
 	*Script "*init o_물담긴양동이.Init양동이2"
 	*Pos -675 238 2309
 	*Rot 0.0 0.0 0.0
@@ -17809,7 +17811,7 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Name  "캠코더"
-	*Filename "item/o_감시카메라.pet"
+	*Filename "obj/o_감시카메라.pet"
 	*Script "*init item.Init캠코더"
 	*Pos -517 108 1121
 	*Rot 180.0 0.0 90.0
@@ -17897,7 +17899,7 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Name  "본관벽"
-	*Filename "o_환각벽.pet"
+	*Filename "Obj/o_환각벽.pet"
 	*Script "*init o_환각벽.Init본관벽"
 	*Pos 21.70 104.90 1880.00
 	*Rot 0.0 180.0 0.0
@@ -17912,7 +17914,7 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Name  "신관벽"
-	*Filename "o_환각벽.pet"
+	*Filename "Obj/o_환각벽.pet"
 	*Script "*init o_환각벽.Init신관벽"
 	*Pos 280.00 104.70 852.00
 	*Rot 0.0 270.0 0.0
@@ -17942,7 +17944,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "Obj/o_bio액자1.pet"
+	*Filename "Obj/new/o_bio액자1.pet"
 	*Pos -555 440 2308
 	*Rot 0.0 90.0 0.0
 	*Scale 0.80
@@ -17955,7 +17957,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "Obj/o_bio액자2.pet"
+	*Filename "Obj/new/o_bio액자2.pet"
 	*Pos -84 410 2308
 	*Rot 0.0 -90.0 0.0
 	*Scale 0.80
@@ -17982,7 +17984,7 @@
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
 	*Name  "비이커"
-	*Filename "o_비이커.pet"
+	*Filename "Obj/o_비이커.pet"
 	*Pos -150 385 2203
 	*Rot 0.0 0.0 0.0
 	*Scale 1.00
@@ -18167,7 +18169,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "o_천장용파이프.pet"
+	*Filename "obj/new/o_천장용파이프.pet"
 	*Pos -930 73 2010
 	*Rot 0.0 90.0 0.0
 	*Scale 6.00
@@ -18180,7 +18182,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "o_천장용파이프.pet"
+	*Filename "obj/new/o_천장용파이프.pet"
 	*Pos -746 73 2010
 	*Rot 0.0 90.0 0.0
 	*Scale 6.00
@@ -18193,7 +18195,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "오브젝트_파이프02.pet"
+	*Filename "Obj/오브젝트_파이프02.pet"
 	*Pos -930 73 2010
 	*Rot 0.0 180.0 90.0
 	*Scale 3.00
@@ -18206,7 +18208,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "오브젝트_파이프02.pet"
+	*Filename "Obj/오브젝트_파이프02.pet"
 	*Pos -195 73 2010
 	*Rot 0.0 180.0 -90.0
 	*Scale 3.00
@@ -18219,7 +18221,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "o_천장용파이프.pet"
+	*Filename "obj/new/o_천장용파이프.pet"
 	*Pos -930 201 2010
 	*Rot 0.0 90.0 0.0
 	*Scale 6.00
@@ -18232,7 +18234,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "o_천장용파이프.pet"
+	*Filename "obj/new/o_천장용파이프.pet"
 	*Pos -746 201 2010
 	*Rot 0.0 90.0 0.0
 	*Scale 6.00
@@ -18245,7 +18247,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "오브젝트_파이프02.pet"
+	*Filename "Obj/오브젝트_파이프02.pet"
 	*Pos -930 201 2010
 	*Rot 0.0 180.0 90.0
 	*Scale 3.00
@@ -18258,7 +18260,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "오브젝트_파이프02.pet"
+	*Filename "Obj/오브젝트_파이프02.pet"
 	*Pos -195 201 2010
 	*Rot 0.0 180.0 -90.0
 	*Scale 3.00
@@ -18271,7 +18273,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "o_천장용파이프.pet"
+	*Filename "obj/new/o_천장용파이프.pet"
 	*Pos -930 329 2010
 	*Rot 0.0 90.0 0.0
 	*Scale 6.00
@@ -18284,7 +18286,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "o_천장용파이프.pet"
+	*Filename "obj/new/o_천장용파이프.pet"
 	*Pos -746 329 2010
 	*Rot 0.0 90.0 0.0
 	*Scale 6.00
@@ -18297,7 +18299,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "오브젝트_파이프02.pet"
+	*Filename "Obj/오브젝트_파이프02.pet"
 	*Pos -930 329 2010
 	*Rot 0.0 180.0 90.0
 	*Scale 3.00
@@ -18310,7 +18312,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "오브젝트_파이프02.pet"
+	*Filename "Obj/오브젝트_파이프02.pet"
 	*Pos -195 329 2010
 	*Rot 0.0 180.0 -90.0
 	*Scale 3.00
@@ -18323,7 +18325,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "o_천장용파이프.pet"
+	*Filename "obj/new/o_천장용파이프.pet"
 	*Pos -930 467 2010
 	*Rot 0.0 90.0 0.0
 	*Scale 6.00
@@ -18336,7 +18338,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "o_천장용파이프.pet"
+	*Filename "obj/new/o_천장용파이프.pet"
 	*Pos -746 467 2010
 	*Rot 0.0 90.0 0.0
 	*Scale 6.00
@@ -18349,7 +18351,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "오브젝트_파이프02.pet"
+	*Filename "Obj/오브젝트_파이프02.pet"
 	*Pos -930 467 2010
 	*Rot 0.0 180.0 90.0
 	*Scale 3.00
@@ -18362,7 +18364,7 @@
 {
 	*Type  "PUPPET"
 	*Class "WObjStaticBody"
-	*Filename "오브젝트_파이프02.pet"
+	*Filename "Obj/오브젝트_파이프02.pet"
 	*Pos -195 467 2010
 	*Rot 0.0 180.0 -90.0
 	*Scale 3.00
