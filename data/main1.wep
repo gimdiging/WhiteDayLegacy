@@ -4550,7 +4550,7 @@
 	*Rot 0.0 180.0 0.0
 	*Scale 1.00
 	*FlagShow 1
-	*VisGroup -1
+	*VisGroup 35
 	*BlockWay 0
 }
 
@@ -4563,7 +4563,7 @@
 	*Rot 0.0 180.0 0.0
 	*Scale 1.00
 	*FlagShow 1
-	*VisGroup -1
+	*VisGroup 35
 	*BlockWay 0
 }
 
@@ -8894,7 +8894,7 @@
 	*Rot 0.0 180.0 0.0
 	*Scale 1.00
 	*FlagShow 1
-	*VisGroup -1
+	*VisGroup 39
 	*BlockWay 0
 }
 
