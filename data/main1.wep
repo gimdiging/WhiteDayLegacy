@@ -2775,7 +2775,7 @@
 	*Rot 0.0 180.0 0.0
 	*Scale 1.00
 	*FlagShow 1
-	*VisGroup -1
+	*VisGroup 10
 	*BlockWay 0
 }
 
@@ -2831,7 +2831,7 @@
 	*Rot 0.0 0.0 0.0
 	*Scale 1.00
 	*FlagShow 1
-	*VisGroup -1
+	*VisGroup 10
 	*BlockWay 0
 }
 
@@ -3856,7 +3856,7 @@
 	*Rot 0.0 0.0 0.0
 	*Scale 1.00
 	*FlagShow 1
-	*VisGroup -1
+	*VisGroup 8
 	*BlockWay 0
 }
 
@@ -12051,7 +12051,7 @@
 	*Rot 0.0 0.0 0.0
 	*Scale 1.00
 	*FlagShow 1
-	*VisGroup -1
+	*VisGroup 34
 	*BlockWay 0
 }
 
@@ -12131,7 +12131,7 @@
 	*Rot 0.0 180.0 0.0
 	*Scale 1.00
 	*FlagShow 1
-	*VisGroup -1
+	*VisGroup 7
 	*BlockWay 0
 }
 
@@ -12144,7 +12144,7 @@
 	*Rot 0.0 180.0 0.0
 	*Scale 1.00
 	*FlagShow 1
-	*VisGroup -1
+	*VisGroup 7
 	*BlockWay 0
 }
 
@@ -12263,7 +12263,7 @@
 	*Rot 0.0 0.0 0.0
 	*Scale 1.00
 	*FlagShow 1
-	*VisGroup -1
+	*VisGroup 20
 	*BlockWay 0
 }
 
@@ -14280,7 +14280,7 @@
 	*Rot 0.0 0.0 0.0
 	*Scale 1.00
 	*FlagShow 1
-	*VisGroup -1
+	*VisGroup 9
 	*BlockWay 0
 }
 
@@ -14293,7 +14293,7 @@
 	*Rot 0.0 180.0 0.0
 	*Scale 1.00
 	*FlagShow 1
-	*VisGroup -1
+	*VisGroup 8
 	*BlockWay 0
 }
 
@@ -14306,7 +14306,7 @@
 	*Rot 0.0 180.0 0.0
 	*Scale 1.00
 	*FlagShow 1
-	*VisGroup -1
+	*VisGroup 8
 	*BlockWay 0
 }
 
@@ -14416,7 +14416,7 @@
 	*Rot 0.0 180.0 0.0
 	*Scale 1.00
 	*FlagShow 1
-	*VisGroup -1
+	*VisGroup 5
 	*BlockWay 0
 }
 
@@ -14429,7 +14429,7 @@
 	*Rot 0.0 180.0 0.0
 	*Scale 1.00
 	*FlagShow 1
-	*VisGroup -1
+	*VisGroup 5
 	*BlockWay 0
 }
 
@@ -14455,7 +14455,7 @@
 	*Rot 0.0 0.0 0.0
 	*Scale 1.00
 	*FlagShow 1
-	*VisGroup -1
+	*VisGroup 5
 	*BlockWay 0
 }
 
@@ -19210,7 +19210,7 @@
 	*Rot 0.0 0.0 0.0
 	*Scale 1.00
 	*FlagShow 1
-	*VisGroup -1
+	*VisGroup 6
 	*BlockWay 0
 }
 
@@ -20551,7 +20551,7 @@
 	*Rot 0.0 0.0 0.0
 	*Scale 1.00
 	*FlagShow 1
-	*VisGroup -1
+	*VisGroup 6
 	*BlockWay 0
 }
 
@@ -20902,7 +20902,7 @@
 	*Rot 0.0 0.0 0.0
 	*Scale 1.00
 	*FlagShow 1
-	*VisGroup -1
+	*VisGroup 19
 	*BlockWay 0
 }
 
@@ -21031,7 +21031,7 @@
 	*Rot 0.0 180.0 0.0
 	*Scale 1.00
 	*FlagShow 1
-	*VisGroup -1
+	*VisGroup 39
 	*BlockWay 0
 }
 
@@ -21213,7 +21213,7 @@
 	*Rot 0.0 0.0 0.0
 	*Scale 1.00
 	*FlagShow 1
-	*VisGroup -1
+	*VisGroup 21
 	*BlockWay 0
 }
 
